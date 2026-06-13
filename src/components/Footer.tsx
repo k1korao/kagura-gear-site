@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { siteConfig, supportMailto } from "@/lib/site";
 
 const policies = [
   { href: "/shipping-policy", label: "Shipping" },
@@ -31,6 +32,12 @@ export function Footer() {
             Japanese-inspired gaming surfaces for FPS players, desk setup builders,
             and mechanical keyboard enthusiasts.
           </p>
+          <a
+            href={supportMailto()}
+            className="mt-5 inline-flex text-sm font-black uppercase tracking-[0.16em] text-sakura transition hover:text-bone"
+          >
+            {siteConfig.supportEmail}
+          </a>
         </div>
 
         <div>

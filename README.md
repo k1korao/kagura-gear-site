@@ -83,6 +83,29 @@ When your Shopify products are ready:
 
 Future headless Shopify placeholders are listed in `.env.example`.
 
+## Support Email and Contact Form
+
+The production support inbox is:
+
+```txt
+support@kaguragear.com
+```
+
+The website includes direct `mailto:` links so customers can email Kagura Gear
+immediately. The contact page also includes a server route at `/api/contact`.
+To make the web form send email directly from Vercel, connect an email provider
+and add these Vercel environment variables:
+
+```txt
+RESEND_API_KEY=your-resend-api-key
+CONTACT_FROM_EMAIL=Kagura Gear <support@kaguragear.com>
+CONTACT_TO_EMAIL=support@kaguragear.com
+```
+
+Do not add real secrets to GitHub. Add them only in Vercel Project Settings >
+Environment Variables. If the provider is not connected yet, the form shows a
+safe direct-email fallback instead of pretending the message was sent.
+
 ## Vercel Deployment
 
 1. Push this project to GitHub.

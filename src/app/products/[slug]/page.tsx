@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ProductVisual } from "@/components/ProductVisual";
 import { ShopifyBuyButtonSlot } from "@/components/ShopifyBuyButtonSlot";
-import { absoluteUrl, siteConfig } from "@/lib/site";
+import { absoluteUrl, siteConfig, supportMailto } from "@/lib/site";
 import { products } from "@/lib/products";
 
 type ProductPageProps = {
@@ -151,6 +151,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
             Shopify checkout placeholder: paste this product Buy Button embed into
             the checkout slot above when your Shopify product is ready.
           </p>
+          <a
+            href={supportMailto(`Question about ${product.name}`)}
+            className="mt-4 inline-flex border border-white/15 px-5 py-3 text-sm font-black uppercase tracking-[0.18em] text-bone transition hover:border-sakura hover:text-sakura"
+          >
+            Ask support about this product
+          </a>
         </div>
       </section>
     </main>
