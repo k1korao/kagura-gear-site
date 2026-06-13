@@ -80,7 +80,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         message:
-          "The contact form is ready, but the email provider is not connected yet. Please email support directly.",
+          `The secure website sender is not connected yet. Your email app should open with this message addressed to ${siteConfig.supportEmail}. Send it there so we can reply.`,
         mailtoHref,
       },
       { status: 503 },
@@ -124,7 +124,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         message:
-          "The message could not be sent from the website. Please email support directly.",
+          `The message could not be sent from the website. Your email app should open with this message addressed to ${siteConfig.supportEmail}.`,
         mailtoHref,
       },
       { status: 502 },

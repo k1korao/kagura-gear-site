@@ -61,11 +61,20 @@ export function ContactForm() {
       };
 
       if (!response.ok) {
+        const fallbackHref = result.mailtoHref || defaultMailto;
+
         setState({
           status: "error",
-          message: result.message || "Message could not be sent.",
-          mailtoHref: result.mailtoHref || defaultMailto,
+          message:
+            result.message ||
+            `Your email app should open with this message addressed to ${siteConfig.supportEmail}. Send it there so we can reply.`,
+          mailtoHref: fallbackHref,
         });
+
+        if (response.status === 502 || response.status === 503) {
+          window.location.href = fallbackHref;
+        }
+
         return;
       }
 
@@ -77,9 +86,10 @@ export function ContactForm() {
     } catch {
       setState({
         status: "error",
-        message: "Message could not be sent from the website. Please email support directly.",
+        message: `Your email app should open with this message addressed to ${siteConfig.supportEmail}. Send it there so we can reply.`,
         mailtoHref: defaultMailto,
       });
+      window.location.href = defaultMailto;
     }
   }
 
@@ -149,7 +159,14 @@ export function ContactForm() {
         {state.status === "sending" ? "Sending..." : "Send Message"}
       </button>
       <div className="border border-white/10 bg-black/25 p-4 text-sm leading-6 text-steel">
-        {state.message ? <p>{state.message}</p> : <p>We reply from {siteConfig.supportEmail}.</p>}
+        {state.message ? (
+          <p>{state.message}</p>
+        ) : (
+          <p>
+            We reply from {siteConfig.supportEmail}. If the secure website sender is not
+            connected yet, this form will open your email app with the message ready to send.
+          </p>
+        )}
         {state.mailtoHref ? (
           <a
             href={state.mailtoHref}
