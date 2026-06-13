@@ -42,3 +42,15 @@ summary::-webkit-details-marker {
     linear-gradient(90deg, rgba(5, 5, 7, 0.95), rgba(5, 5, 7, 0.7) 42%, rgba(5, 5, 7, 0.22)),
     linear-gradient(0deg, rgba(5, 5, 7, 0.96), rgba(5, 5, 7, 0.08) 48%, rgba(5, 5, 7, 0.72));
 }
+
+.keyboard-perspective {
+  transform: perspective(1200px) rotateX(58deg) rotateZ(-18deg);
+  transform-origin: center;
+}
+
+.noise-mask {
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(246, 165, 189, 0.12), transparent 24%),
+    radial-gradient(circle at 70% 35%, rgba(214, 181, 109, 0.1), transparent 26%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 34%);
+}

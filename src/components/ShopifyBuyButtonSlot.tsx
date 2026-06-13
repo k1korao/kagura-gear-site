@@ -21,7 +21,7 @@ export function ShopifyBuyButtonSlot({ productName, compact = false }: ShopifyBu
         type="button"
         className="w-full border border-sakura bg-sakura px-4 py-3 text-sm font-black uppercase tracking-[0.18em] text-ink transition hover:border-bone hover:bg-bone"
       >
-        Buy Now
+        Buy Now with Shopify
       </button>
       {!compact ? (
         <p className="mt-3 text-xs leading-5 text-steel">
