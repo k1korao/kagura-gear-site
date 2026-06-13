@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    #050507;
+  background-size: 44px 44px;
+  color: #f7f3ed;
+}
+
+::selection {
+  background: #f6a5bd;
+  color: #050507;
+}
+
+a {
+  text-decoration: none;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+.hero-vignette {
+  background:
+    linear-gradient(90deg, rgba(5, 5, 7, 0.95), rgba(5, 5, 7, 0.7) 42%, rgba(5, 5, 7, 0.22)),
+    linear-gradient(0deg, rgba(5, 5, 7, 0.96), rgba(5, 5, 7, 0.08) 48%, rgba(5, 5, 7, 0.72));
+}
