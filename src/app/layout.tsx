@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
+import { SiteEffects } from "@/components/SiteEffects";
 import { absoluteUrl, siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -58,6 +59,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <SiteEffects />
         <Navbar />
         {children}
         <Footer />

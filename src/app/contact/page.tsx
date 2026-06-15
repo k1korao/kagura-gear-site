@@ -23,7 +23,7 @@ export default function ContactPage() {
       </section>
 
       <section className="mx-auto grid max-w-7xl gap-8 px-4 py-16 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:px-8">
-        <aside className="border border-white/10 bg-smoke p-7">
+        <aside data-tilt data-reveal className="overflow-hidden border border-white/10 bg-smoke p-7">
           <h2 className="text-2xl font-black text-bone">Support</h2>
           <p className="mt-4 leading-7 text-steel">
             Customers can contact Kagura Gear directly. Replies come from the same
@@ -31,7 +31,7 @@ export default function ContactPage() {
           </p>
           <a
             href={supportMailto()}
-            className="mt-6 inline-flex border border-sakura px-5 py-3 text-sm font-black uppercase tracking-[0.18em] text-sakura transition hover:bg-sakura hover:text-ink"
+            className="premium-button mt-6 inline-flex border border-sakura px-5 py-3 text-sm font-black uppercase tracking-[0.18em] text-sakura transition hover:bg-sakura hover:text-ink"
           >
             {siteConfig.supportEmail}
           </a>

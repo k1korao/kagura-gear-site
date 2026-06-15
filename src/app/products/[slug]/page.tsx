@@ -66,9 +66,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   return (
     <main className="bg-ink">
-      <section className="border-b border-white/10 bg-edge-light">
+      <section className="relative overflow-hidden border-b border-white/10 bg-edge-light">
+        <div className="absolute inset-0 bg-woven-grid bg-[length:38px_38px] opacity-[0.08]" />
         <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_0.88fr] lg:px-8">
-          <div>
+          <div data-reveal className="relative z-10">
             <ProductVisual product={product} />
             <div className="mt-4 grid grid-cols-3 gap-3">
               {[
@@ -76,7 +77,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 ["Control", product.control],
                 ["Profile", "4mm"],
               ].map(([label, value]) => (
-                <div key={label} className="border border-white/10 bg-black/40 p-4 text-center">
+                <div key={label} data-tilt className="overflow-hidden border border-white/10 bg-black/40 p-4 text-center">
                   <p className="text-xs font-black uppercase tracking-[0.18em] text-sakura">
                     {label}
                   </p>
@@ -86,7 +87,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             </div>
           </div>
 
-          <div className="lg:pt-8">
+          <div data-reveal className="relative z-10 lg:pt-8">
             <Link
               href="/shop"
               className="text-sm font-black uppercase tracking-[0.18em] text-sakura transition hover:text-bone"
@@ -111,7 +112,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
       </section>
 
       <section className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
-        <div>
+        <div data-reveal>
           <p className="mb-3 text-xs font-black uppercase tracking-[0.28em] text-sakura">
             Product Details
           </p>
@@ -120,14 +121,14 @@ export default async function ProductPage({ params }: ProductPageProps) {
           </h2>
           <div className="mt-8 grid gap-3">
             {product.features.map((feature) => (
-              <div key={feature} className="border border-white/10 bg-smoke p-5">
+              <div key={feature} data-tilt className="overflow-hidden border border-white/10 bg-smoke p-5">
                 <p className="font-black text-bone">{feature}</p>
               </div>
             ))}
           </div>
         </div>
 
-        <div>
+        <div data-reveal>
           <div className="grid gap-3 border-y border-white/10 py-6">
             <div className="flex justify-between gap-4 text-sm">
               <span className="font-black uppercase tracking-[0.18em] text-bone">Size</span>
@@ -153,7 +154,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           </p>
           <a
             href={supportMailto(`Question about ${product.name}`)}
-            className="mt-4 inline-flex border border-white/15 px-5 py-3 text-sm font-black uppercase tracking-[0.18em] text-bone transition hover:border-sakura hover:text-sakura"
+            className="premium-button mt-4 inline-flex border border-white/15 px-5 py-3 text-sm font-black uppercase tracking-[0.18em] text-bone transition hover:border-sakura hover:text-sakura"
           >
             Ask support about this product
           </a>

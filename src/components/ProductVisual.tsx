@@ -29,6 +29,8 @@ export function ProductVisual({ product }: { product: Product }) {
     <div className="relative aspect-[1.18] overflow-hidden border border-white/10 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.12),transparent_38%),linear-gradient(145deg,#171922,#050507_64%)]">
       {/* Replace this CSS placeholder with a real product image in public/images when product photography is ready. */}
       <div className="absolute inset-0 bg-woven-grid bg-[length:28px_28px] opacity-[0.08]" />
+      <div className="surface-sheen absolute inset-y-0 left-0 w-[160%] opacity-0" />
+      <div className={`scanline absolute inset-x-0 top-0 h-px ${accent.beam} opacity-0 shadow-[0_0_18px_currentColor]`} />
       <div className={`absolute -left-20 top-10 h-28 w-72 rotate-[-22deg] blur-3xl ${accent.beam} opacity-35`} />
       <div className="absolute right-[-15%] top-[-22%] h-52 w-52 border border-white/10 bg-white/[0.03]" />
       <Image
@@ -39,7 +41,7 @@ export function ProductVisual({ product }: { product: Product }) {
         className="absolute left-5 top-5 h-20 w-20 object-contain opacity-55 mix-blend-screen"
       />
 
-      <div className="absolute left-1/2 top-[58%] h-[52%] w-[84%] -translate-x-1/2 -translate-y-1/2 -skew-x-6 border border-white/12 bg-black/60 shadow-card">
+      <div className="absolute left-1/2 top-[58%] h-[52%] w-[84%] -translate-x-1/2 -translate-y-1/2 -skew-x-6 border border-white/12 bg-black/60 shadow-card transition duration-500 group-hover:border-sakura/35">
         <div className={`absolute inset-3 border ${accent.print} opacity-45`} />
         <div className="absolute left-6 top-6 h-5 w-24 border border-white/15 bg-white/5" />
         <div className="absolute bottom-5 left-6 right-6 h-px bg-white/12" />
@@ -47,12 +49,13 @@ export function ProductVisual({ product }: { product: Product }) {
         <div className="absolute bottom-9 right-10 h-6 w-6 border border-white/15" />
       </div>
 
-      <div className={`absolute left-[17%] top-[23%] h-[23%] w-[62%] -skew-x-6 border border-white/14 bg-[#11131a] ${accent.glow}`}>
+      <div className={`absolute left-[17%] top-[23%] h-[23%] w-[62%] -skew-x-6 border border-white/14 bg-[#11131a] ${accent.glow} transition duration-500 group-hover:-translate-y-1 group-hover:border-sakura/30`}>
         <div className="grid h-full grid-cols-12 gap-1 p-2">
           {Array.from({ length: 36 }).map((_, index) => (
             <span
               key={index}
-              className={`border border-white/8 bg-white/[0.075] ${
+              style={{ animationDelay: `${index * 46}ms` }}
+              className={`key-pulse border border-white/8 bg-white/[0.075] ${
                 index === 2 || index === 14 || index === 27 ? accent.key : ""
               }`}
             />

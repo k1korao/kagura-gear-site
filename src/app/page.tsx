@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { CSSProperties } from "react";
 import { BrandLogo } from "@/components/BrandLogo";
 import { ProductCard } from "@/components/ProductCard";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -33,10 +34,21 @@ const comparisonRows = [
   ["Shrine Desk Mat", "Balanced", "Balanced", "Keyboard setups", "900 x 400 mm"],
 ];
 
+const sakuraPetals = [
+  ["8%", "7px", "18s", "-3s", "24vw", "28deg", "0.38"],
+  ["18%", "5px", "22s", "-12s", "16vw", "-14deg", "0.28"],
+  ["31%", "6px", "19s", "-7s", "-18vw", "64deg", "0.36"],
+  ["44%", "4px", "25s", "-17s", "12vw", "11deg", "0.24"],
+  ["57%", "8px", "21s", "-9s", "-22vw", "-38deg", "0.34"],
+  ["69%", "5px", "24s", "-4s", "18vw", "48deg", "0.26"],
+  ["82%", "7px", "20s", "-14s", "-14vw", "-22deg", "0.32"],
+  ["93%", "4px", "27s", "-21s", "-26vw", "19deg", "0.22"],
+];
+
 export default function Home() {
   return (
     <main>
-      <section className="relative min-h-[88svh] overflow-hidden border-b border-white/10 bg-black">
+      <section className="hero-cinematic relative min-h-[88svh] overflow-hidden border-b border-white/10 bg-black">
         <Image
           src="/images/kagura-hero.png"
           alt="Kagura Gear Japanese-inspired gaming desk setup"
@@ -48,6 +60,25 @@ export default function Home() {
         <div className="hero-vignette absolute inset-0" />
         <div className="absolute inset-0 bg-woven-grid bg-[length:42px_42px] opacity-[0.08]" />
         <div className="absolute bottom-0 left-0 right-0 h-36 bg-gradient-to-t from-black to-transparent" />
+        <div className="sakura-field" aria-hidden="true">
+          {sakuraPetals.map(([left, size, duration, delay, drift, rotate, opacity], index) => (
+            <span
+              key={index}
+              className="sakura-petal"
+              style={
+                {
+                  "--petal-left": left,
+                  "--petal-size": size,
+                  "--petal-duration": duration,
+                  "--petal-delay": delay,
+                  "--petal-drift": drift,
+                  "--petal-rotate": rotate,
+                  "--petal-opacity": opacity,
+                } as CSSProperties
+              }
+            />
+          ))}
+        </div>
 
         <div className="relative z-10 mx-auto grid min-h-[88svh] max-w-7xl items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[0.92fr_1.08fr] lg:px-8">
           <div className="max-w-3xl">
@@ -57,33 +88,34 @@ export default function Home() {
               width={420}
               height={170}
               priority
+              data-reveal
               className="mb-6 h-20 w-auto max-w-full object-contain object-left sm:h-24"
             />
-            <p className="mb-5 inline-flex border border-sakura/40 bg-black/45 px-3 py-2 text-xs font-black uppercase tracking-[0.28em] text-sakura">
+            <p data-reveal className="mb-5 inline-flex border border-sakura/40 bg-black/45 px-3 py-2 text-xs font-black uppercase tracking-[0.28em] text-sakura">
               Precision Meets Ritual
             </p>
-            <h1 className="text-5xl font-black leading-none text-bone sm:text-7xl lg:text-8xl">
+            <h1 data-reveal style={{ "--reveal-delay": "90ms" } as CSSProperties} className="text-5xl font-black leading-none text-bone sm:text-7xl lg:text-8xl">
               Premium surfaces for focused play.
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-steel sm:text-xl">
+            <p data-reveal style={{ "--reveal-delay": "160ms" } as CSSProperties} className="mt-6 max-w-2xl text-lg leading-8 text-steel sm:text-xl">
               Japanese-inspired gaming desk gear for FPS players, mechanical keyboard
               users, and setup builders who want every movement to feel intentional.
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div data-reveal style={{ "--reveal-delay": "230ms" } as CSSProperties} className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link
                 href="/shop"
-                className="border border-sakura bg-sakura px-6 py-4 text-center text-sm font-black uppercase tracking-[0.18em] text-ink transition hover:border-bone hover:bg-bone"
+                className="premium-button border border-sakura bg-sakura px-6 py-4 text-center text-sm font-black uppercase tracking-[0.18em] text-ink transition hover:border-bone hover:bg-bone"
               >
                 Shop Gear
               </Link>
               <Link
                 href="/shop#series"
-                className="border border-white/18 bg-black/35 px-6 py-4 text-center text-sm font-black uppercase tracking-[0.18em] text-bone transition hover:border-sakura hover:text-sakura"
+                className="premium-button border border-white/18 bg-black/35 px-6 py-4 text-center text-sm font-black uppercase tracking-[0.18em] text-bone transition hover:border-sakura hover:text-sakura"
               >
                 Explore Series
               </Link>
             </div>
-            <dl className="mt-10 grid max-w-xl grid-cols-3 border-y border-white/10 py-5">
+            <dl data-reveal style={{ "--reveal-delay": "300ms" } as CSSProperties} className="mt-10 grid max-w-xl grid-cols-3 border-y border-white/10 py-5">
               {[
                 ["3", "Launch products"],
                 ["4mm", "Base profile"],
@@ -99,7 +131,7 @@ export default function Home() {
             </dl>
           </div>
 
-          <div className="relative hidden min-h-[520px] lg:block">
+          <div data-reveal style={{ "--reveal-delay": "180ms" } as CSSProperties} className="hero-device relative hidden min-h-[520px] lg:block">
             <div className="absolute inset-x-8 top-28 h-72 keyboard-perspective border border-white/12 bg-black/70 shadow-card">
               <div className="absolute inset-4 border border-shrine/60" />
               <Image
@@ -117,7 +149,8 @@ export default function Home() {
                 {Array.from({ length: 48 }).map((_, index) => (
                   <span
                     key={index}
-                    className={`border border-white/10 bg-white/[0.075] ${
+                    style={{ animationDelay: `${index * 42}ms` }}
+                    className={`key-pulse border border-white/10 bg-white/[0.075] ${
                       index === 5 || index === 18 || index === 43 ? "bg-sakura" : ""
                     }`}
                   />
@@ -142,7 +175,7 @@ export default function Home() {
             ["03", "Sakura and shrine visual language"],
             ["04", "Official support inbox"],
           ].map(([index, label]) => (
-            <div key={label} className="flex items-center gap-4 border-l border-white/10 pl-4">
+            <div key={label} data-reveal className="flex items-center gap-4 border-l border-white/10 pl-4">
               <span className="text-xs font-black uppercase tracking-[0.18em] text-sakura">
                 {index}
               </span>
@@ -165,7 +198,9 @@ export default function Home() {
             {categories.map((category, index) => (
               <article
                 key={category.title}
-                className="group border border-white/10 bg-smoke p-5 transition hover:border-sakura/50 hover:bg-white/[0.055]"
+                data-tilt
+                data-reveal
+                className="group overflow-hidden border border-white/10 bg-smoke p-5 transition hover:border-sakura/50 hover:bg-white/[0.055]"
               >
                 <div className="mb-8 flex items-center justify-between">
                   <span className="text-xs font-black uppercase tracking-[0.24em] text-brass">
@@ -191,7 +226,7 @@ export default function Home() {
             />
             <Link
               href="/shop"
-              className="w-fit border border-white/15 px-5 py-3 text-sm font-black uppercase tracking-[0.18em] text-bone transition hover:border-sakura hover:text-sakura"
+              className="premium-button w-fit border border-white/15 px-5 py-3 text-sm font-black uppercase tracking-[0.18em] text-bone transition hover:border-sakura hover:text-sakura"
             >
               View Shop
             </Link>
@@ -218,7 +253,7 @@ export default function Home() {
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
             {setupModes.map((mode) => (
-              <div key={mode} className="border border-white/10 bg-black/45 p-6">
+              <div key={mode} data-tilt data-reveal className="overflow-hidden border border-white/10 bg-black/45 p-6">
                 <p className="text-xl font-black text-bone">{mode}</p>
                 <p className="mt-3 text-sm leading-6 text-steel">
                   Built for a cleaner desk, faster decisions, and a consistent surface language.
@@ -238,7 +273,7 @@ export default function Home() {
           />
           <div className="mt-10 grid gap-5 md:grid-cols-3">
             {features.map((feature) => (
-              <article key={feature.title} className="border border-white/10 bg-smoke p-7">
+              <article key={feature.title} data-tilt data-reveal className="overflow-hidden border border-white/10 bg-smoke p-7">
                 <h3 className="text-2xl font-black text-bone">{feature.title}</h3>
                 <p className="mt-4 leading-7 text-steel">{feature.body}</p>
               </article>
@@ -254,7 +289,7 @@ export default function Home() {
             title="Pick by aim feel, not by guesswork."
             body="A simple comparison table gives shoppers a product-led reason to click into the right page."
           />
-          <div className="mt-10 overflow-x-auto border border-white/10">
+          <div data-reveal className="mt-10 overflow-x-auto border border-white/10">
             <table className="min-w-[760px] w-full border-collapse bg-smoke text-left">
               <thead>
                 <tr className="border-b border-white/10 text-xs font-black uppercase tracking-[0.18em] text-sakura">
@@ -270,7 +305,7 @@ export default function Home() {
                   <tr key={row[0]} className="border-b border-white/8 last:border-b-0">
                     {row.map((cell, index) => (
                       <td
-                        key={`${row[0]}-${cell}`}
+                        key={`${row[0]}-${index}`}
                         className={`px-5 py-5 text-sm ${
                           index === 0 ? "font-black text-bone" : "font-semibold text-steel"
                         }`}
@@ -305,7 +340,7 @@ export default function Home() {
             />
             <button
               type="submit"
-              className="min-h-14 border border-sakura bg-sakura px-6 text-sm font-black uppercase tracking-[0.18em] text-ink transition hover:border-bone hover:bg-bone"
+              className="premium-button min-h-14 border border-sakura bg-sakura px-6 text-sm font-black uppercase tracking-[0.18em] text-ink transition hover:border-bone hover:bg-bone"
             >
               Sign Up
             </button>

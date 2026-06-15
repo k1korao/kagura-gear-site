@@ -12,7 +12,10 @@ export function SectionHeading({
   align = "left",
 }: SectionHeadingProps) {
   return (
-    <div className={align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
+    <div
+      data-reveal
+      className={align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}
+    >
       <p className="mb-3 text-xs font-black uppercase tracking-[0.28em] text-sakura">
         {eyebrow}
       </p>

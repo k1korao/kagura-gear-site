@@ -5,11 +5,15 @@ import { ShopifyBuyButtonSlot } from "@/components/ShopifyBuyButtonSlot";
 
 export function ProductCard({ product }: { product: Product }) {
   return (
-    <article className="group border border-white/10 bg-smoke shadow-card transition duration-300 hover:-translate-y-1 hover:border-sakura/50 hover:bg-[#13161d]">
+    <article
+      data-tilt
+      data-reveal
+      className="group overflow-hidden border border-white/10 bg-smoke shadow-card transition duration-300 hover:border-sakura/50 hover:bg-[#13161d]"
+    >
       <Link href={`/products/${product.slug}`} className="block" aria-label={`View ${product.name}`}>
         <ProductVisual product={product} />
       </Link>
-      <div className="grid gap-5 p-5">
+      <div className="relative z-10 grid gap-5 p-5">
         <div className="flex items-start justify-between gap-4">
           <div>
             <p className="text-xs font-black uppercase tracking-[0.22em] text-sakura">
@@ -36,7 +40,7 @@ export function ProductCard({ product }: { product: Product }) {
         <ShopifyBuyButtonSlot productName={product.name} compact />
         <Link
           href={`/products/${product.slug}`}
-          className="text-sm font-black uppercase tracking-[0.18em] text-sakura transition hover:text-bone"
+          className="premium-button w-fit border border-sakura/30 px-4 py-3 text-sm font-black uppercase tracking-[0.18em] text-sakura transition hover:border-sakura hover:text-bone"
         >
           View Details
         </Link>

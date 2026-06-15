@@ -10,7 +10,7 @@ type FormState = {
 };
 
 const inputClass =
-  "min-h-12 border border-white/15 bg-black/35 px-4 text-bone outline-none transition placeholder:text-steel/50 focus:border-sakura";
+  "min-h-12 border border-white/15 bg-black/35 px-4 text-bone outline-none transition placeholder:text-steel/50 focus:border-sakura focus:shadow-[0_0_28px_rgba(246,165,189,0.12)]";
 const labelClass = "text-sm font-black uppercase tracking-[0.18em] text-bone";
 
 export function ContactForm() {
@@ -94,7 +94,7 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="grid gap-4 border border-white/10 bg-smoke p-7">
+    <form onSubmit={handleSubmit} data-reveal className="grid gap-4 border border-white/10 bg-smoke p-7">
       <div className="grid gap-2">
         <label className={labelClass} htmlFor="name">
           Name
@@ -147,14 +147,14 @@ export function ContactForm() {
           name="message"
           rows={6}
           required
-          className="border border-white/15 bg-black/35 p-4 text-bone outline-none transition placeholder:text-steel/50 focus:border-sakura"
+          className="border border-white/15 bg-black/35 p-4 text-bone outline-none transition placeholder:text-steel/50 focus:border-sakura focus:shadow-[0_0_28px_rgba(246,165,189,0.12)]"
           placeholder="Tell us what you need help with."
         />
       </div>
       <button
         type="submit"
         disabled={state.status === "sending"}
-        className="border border-sakura bg-sakura px-5 py-4 text-sm font-black uppercase tracking-[0.18em] text-ink transition hover:border-bone hover:bg-bone disabled:cursor-not-allowed disabled:border-white/15 disabled:bg-white/15 disabled:text-steel"
+        className="premium-button border border-sakura bg-sakura px-5 py-4 text-sm font-black uppercase tracking-[0.18em] text-ink transition hover:border-bone hover:bg-bone disabled:cursor-not-allowed disabled:border-white/15 disabled:bg-white/15 disabled:text-steel"
       >
         {state.status === "sending" ? "Sending..." : "Send Message"}
       </button>

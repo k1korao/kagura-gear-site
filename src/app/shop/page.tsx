@@ -12,9 +12,10 @@ export const metadata = pageMetadata({
 export default function ShopPage() {
   return (
     <main className="bg-ink">
-      <section className="border-b border-white/10 bg-edge-light">
+      <section className="relative overflow-hidden border-b border-white/10 bg-edge-light">
+        <div className="absolute inset-0 bg-woven-grid bg-[length:38px_38px] opacity-[0.08]" />
         <div className="mx-auto grid max-w-7xl gap-10 px-4 py-20 sm:px-6 lg:grid-cols-[0.85fr_1.15fr] lg:px-8">
-          <div>
+          <div data-reveal className="relative z-10">
             <p className="mb-4 text-xs font-black uppercase tracking-[0.28em] text-sakura">
               Kagura Gear Shop
             </p>
@@ -26,9 +27,9 @@ export default function ShopPage() {
               setup coverage.
             </p>
           </div>
-          <div className="grid gap-3 self-end sm:grid-cols-2">
+          <div className="relative z-10 grid gap-3 self-end sm:grid-cols-2">
             {["FPS aim", "Keyboard setups", "Desk mats", "Shopify checkout"].map((item) => (
-              <div key={item} className="border border-white/10 bg-black/40 p-5">
+              <div key={item} data-tilt data-reveal className="overflow-hidden border border-white/10 bg-black/40 p-5">
                 <p className="text-sm font-black uppercase tracking-[0.18em] text-bone">
                   {item}
                 </p>
@@ -45,7 +46,9 @@ export default function ShopPage() {
               <a
                 key={category.title}
                 href="#products"
-                className="border border-white/10 bg-smoke p-5 transition hover:border-sakura/50 hover:bg-white/[0.055]"
+                data-tilt
+                data-reveal
+                className="overflow-hidden border border-white/10 bg-smoke p-5 transition hover:border-sakura/50 hover:bg-white/[0.055]"
               >
                 <p className="text-xs font-black uppercase tracking-[0.2em] text-sakura">
                   Series
@@ -59,7 +62,7 @@ export default function ShopPage() {
       </section>
 
       <section id="products" className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mb-8 flex flex-col justify-between gap-4 border-b border-white/10 pb-6 md:flex-row md:items-end">
+        <div data-reveal className="mb-8 flex flex-col justify-between gap-4 border-b border-white/10 pb-6 md:flex-row md:items-end">
           <SectionHeading
             eyebrow="Launch Products"
             title="Choose your surface."
@@ -86,7 +89,7 @@ export default function ShopPage() {
               ["Surface-first catalog", "Every product lists size, surface type, base feel, speed, and control."],
               ["Official support", "Questions route through support@kaguragear.com for clean replies."],
             ].map(([title, body]) => (
-              <article key={title} className="border border-white/10 bg-smoke p-6">
+              <article key={title} data-tilt data-reveal className="overflow-hidden border border-white/10 bg-smoke p-6">
                 <h2 className="text-xl font-black text-bone">{title}</h2>
                 <p className="mt-3 text-sm leading-6 text-steel">{body}</p>
               </article>

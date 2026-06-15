@@ -35,7 +35,7 @@ export default function AboutPage() {
           ["Competitive", "The product direction starts with FPS control, glide consistency, and daily reliability."],
           ["Premium", "Materials, packaging, and product pages should feel elevated from the first visit."],
         ].map(([title, body]) => (
-          <article key={title} className="border border-white/10 bg-smoke p-7">
+          <article key={title} data-tilt data-reveal className="overflow-hidden border border-white/10 bg-smoke p-7">
             <h2 className="text-2xl font-black text-bone">{title}</h2>
             <p className="mt-4 leading-7 text-steel">{body}</p>
           </article>

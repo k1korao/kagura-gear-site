@@ -6,6 +6,7 @@ type ShopifyBuyButtonSlotProps = {
 export function ShopifyBuyButtonSlot({ productName, compact = false }: ShopifyBuyButtonSlotProps) {
   return (
     <div
+      data-reveal={!compact ? true : undefined}
       className={`border border-sakura/30 bg-sakura/10 ${
         compact ? "p-3" : "p-4"
       }`}
@@ -19,7 +20,7 @@ export function ShopifyBuyButtonSlot({ productName, compact = false }: ShopifyBu
       */}
       <button
         type="button"
-        className="w-full border border-sakura bg-sakura px-4 py-3 text-sm font-black uppercase tracking-[0.18em] text-ink transition hover:border-bone hover:bg-bone"
+        className="premium-button w-full border border-sakura bg-sakura px-4 py-3 text-sm font-black uppercase tracking-[0.18em] text-ink transition hover:border-bone hover:bg-bone"
       >
         Buy Now with Shopify
       </button>

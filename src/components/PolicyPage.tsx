@@ -4,7 +4,7 @@ export function PolicyPage({ content }: { content: PolicyPageContent }) {
   return (
     <main className="bg-ink">
       <section className="border-b border-white/10 bg-edge-light">
-        <div className="mx-auto max-w-4xl px-4 py-20 sm:px-6 lg:px-8">
+        <div data-reveal className="mx-auto max-w-4xl px-4 py-20 sm:px-6 lg:px-8">
           <p className="mb-4 text-xs font-black uppercase tracking-[0.28em] text-sakura">
             {content.eyebrow}
           </p>
@@ -15,7 +15,7 @@ export function PolicyPage({ content }: { content: PolicyPageContent }) {
 
       <section className="mx-auto grid max-w-4xl gap-5 px-4 py-16 sm:px-6 lg:px-8">
         {content.sections.map((section) => (
-          <article key={section.heading} className="border border-white/10 bg-smoke p-6">
+          <article key={section.heading} data-tilt data-reveal className="overflow-hidden border border-white/10 bg-smoke p-6">
             <h2 className="text-xl font-black text-bone">{section.heading}</h2>
             <p className="mt-3 leading-7 text-steel">{section.body}</p>
           </article>

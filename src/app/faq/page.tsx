@@ -45,7 +45,7 @@ export default function FaqPage() {
 
       <section className="mx-auto grid max-w-4xl gap-4 px-4 py-16 sm:px-6 lg:px-8">
         {faqs.map((faq) => (
-          <details key={faq.question} className="border border-white/10 bg-smoke p-6">
+          <details key={faq.question} data-reveal className="border border-white/10 bg-smoke p-6 transition hover:border-sakura/35">
             <summary className="cursor-pointer text-lg font-black text-bone">
               {faq.question}
             </summary>
