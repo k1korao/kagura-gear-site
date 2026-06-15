@@ -18,7 +18,10 @@ export const metadata: Metadata = {
     canonical: absoluteUrl(),
   },
   icons: {
-    icon: "/favicon.svg",
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/images/kagura-favicon.png", type: "image/png" },
+    ],
   },
   openGraph: {
     type: "website",

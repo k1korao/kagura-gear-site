@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BrandLogo } from "@/components/BrandLogo";
 import { siteConfig, supportMailto } from "@/lib/site";
 
 const policies = [
@@ -13,21 +14,9 @@ const socials = ["Instagram", "TikTok", "X", "YouTube"];
 export function Footer() {
   return (
     <footer className="border-t border-white/10 bg-black">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-[1.2fr_0.8fr_0.8fr] lg:px-8">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-[1.35fr_0.75fr_0.75fr] lg:px-8">
         <div>
-          <div className="mb-4 flex items-center gap-3">
-            <span className="grid h-10 w-10 place-items-center border border-sakura/40 bg-shrine/20 text-sm font-black text-bone">
-              KG
-            </span>
-            <span>
-              <span className="block text-sm font-black uppercase tracking-[0.26em] text-bone">
-                Kagura Gear
-              </span>
-              <span className="block text-xs font-semibold uppercase tracking-[0.24em] text-sakura">
-                Precision Meets Ritual
-              </span>
-            </span>
-          </div>
+          <BrandLogo className="mb-4" />
           <p className="max-w-md text-sm leading-6 text-steel">
             Japanese-inspired gaming surfaces for FPS players, desk setup builders,
             and mechanical keyboard enthusiasts.

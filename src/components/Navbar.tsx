@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BrandLogo } from "@/components/BrandLogo";
 
 const navItems = [
   { href: "/", label: "Home" },
@@ -11,24 +12,12 @@ const navItems = [
 
 export function Navbar() {
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-ink/86 backdrop-blur-xl">
-      <div className="border-b border-white/10 bg-bone px-4 py-2 text-center text-[0.7rem] font-black uppercase tracking-[0.2em] text-ink">
-        Kagura Gear launch site live. Shopify checkout slots ready.
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-ink/88 backdrop-blur-xl">
+      <div className="border-b border-white/10 bg-[linear-gradient(90deg,#f6a5bd,#f2c0a7,#d6b56d)] px-4 py-2 text-center text-[0.7rem] font-black uppercase tracking-[0.2em] text-ink">
+        Launch collection preview / Shopify checkout slots ready / support@kaguragear.com
       </div>
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
-        <Link href="/" className="group flex items-center gap-3" aria-label="Kagura Gear home">
-          <span className="grid h-10 w-10 place-items-center border border-sakura/40 bg-shrine/20 text-sm font-black text-bone shadow-glow">
-            KG
-          </span>
-          <span className="flex flex-col leading-none">
-            <span className="text-sm font-black uppercase tracking-[0.26em] text-bone">
-              Kagura
-            </span>
-            <span className="text-[0.66rem] font-semibold uppercase tracking-[0.31em] text-sakura">
-              Gear
-            </span>
-          </span>
-        </Link>
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-5 px-4 py-3 sm:px-6 lg:px-8">
+        <BrandLogo compact />
 
         <nav className="hidden items-center gap-1 md:flex" aria-label="Primary navigation">
           {navItems.map((item) => (
@@ -44,7 +33,7 @@ export function Navbar() {
 
         <Link
           href="/shop"
-          className="hidden border border-sakura/40 bg-sakura px-4 py-2 text-sm font-black uppercase text-ink transition hover:border-bone hover:bg-bone lg:inline-flex"
+          className="hidden border border-sakura/40 bg-sakura px-4 py-2 text-sm font-black uppercase tracking-[0.12em] text-ink transition hover:border-bone hover:bg-bone lg:inline-flex"
         >
           Shop Drop
         </Link>

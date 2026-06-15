@@ -10,7 +10,7 @@ export const siteConfig = {
   supportEmail: "support@kaguragear.com",
   description:
     "Premium Japanese-inspired gaming mousepads, desk mats, keyboard accessories, and setup gear for FPS players, mechanical keyboard users, and desk setup fans.",
-  ogImage: "/images/kagura-hero.png",
+  ogImage: "/images/kagura-logo-card.jpg",
 };
 
 export const coreRoutes = [

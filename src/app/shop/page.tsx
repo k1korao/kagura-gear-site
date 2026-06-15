@@ -22,8 +22,8 @@ export default function ShopPage() {
               Mousepads, desk mats, and keyboard setup gear.
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-steel">
-              A product-led storefront for the launch collection. Shopify Buy Button
-              slots are ready for live checkout when your catalog is connected.
+              A focused launch collection built around control, speed, and full-desk
+              setup coverage.
             </p>
           </div>
           <div className="grid gap-3 self-end sm:grid-cols-2">
@@ -63,7 +63,7 @@ export default function ShopPage() {
           <SectionHeading
             eyebrow="Launch Products"
             title="Choose your surface."
-            body="Placeholder products can be replaced with real Shopify products later."
+            body="Pick by aim feel, desk footprint, and the role each surface plays in your setup."
           />
           <div className="grid grid-cols-3 gap-2 text-center text-[0.65rem] font-black uppercase tracking-[0.12em] text-steel">
             <span className="border border-white/10 bg-smoke px-3 py-2">Control</span>
@@ -82,9 +82,9 @@ export default function ShopPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-5 md:grid-cols-3">
             {[
-              ["No custom payment", "Buy Now buttons are placeholders for Shopify Buy Button embed code."],
-              ["Catalog ready", "Product names, prices, descriptions, sizes, and surface types are structured."],
-              ["Vercel live", "Every push to GitHub can redeploy this storefront automatically."],
+              ["Secure checkout path", "Checkout will run through Shopify when live products are connected."],
+              ["Surface-first catalog", "Every product lists size, surface type, base feel, speed, and control."],
+              ["Official support", "Questions route through support@kaguragear.com for clean replies."],
             ].map(([title, body]) => (
               <article key={title} className="border border-white/10 bg-smoke p-6">
                 <h2 className="text-xl font-black text-bone">{title}</h2>

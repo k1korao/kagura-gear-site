@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { BrandLogo } from "@/components/BrandLogo";
 import { ProductCard } from "@/components/ProductCard";
 import { SectionHeading } from "@/components/SectionHeading";
 import { categories, products } from "@/lib/products";
@@ -7,15 +8,15 @@ import { categories, products } from "@/lib/products";
 const features = [
   {
     title: "Hall-ready desk feel",
-    body: "Mouse surface, keyboard position, and cable space are treated as one setup instead of separate accessories.",
+    body: "Mouse surface, keyboard position, and cable space are tuned as one focused setup.",
   },
   {
     title: "FPS control layers",
-    body: "Each surface is framed around speed, stopping power, and repeatable aim movement.",
+    body: "Each surface is framed around glide speed, stopping power, and repeatable aim movement.",
   },
   {
     title: "Ritual visual system",
-    body: "Sakura, shrine-line artwork, and restrained esports contrast give the brand a clear identity.",
+    body: "Sakura accents, shrine-line artwork, and restrained esports contrast give each drop a clear identity.",
   },
 ];
 
@@ -23,7 +24,7 @@ const setupModes = [
   "65% keyboard space",
   "Low mouse cable drag",
   "Full desk coverage",
-  "Shopify checkout ready",
+  "Support-ready ordering",
 ];
 
 const comparisonRows = [
@@ -50,15 +51,23 @@ export default function Home() {
 
         <div className="relative z-10 mx-auto grid min-h-[88svh] max-w-7xl items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[0.92fr_1.08fr] lg:px-8">
           <div className="max-w-3xl">
+            <Image
+              src="/images/kagura-logo-full.png"
+              alt="Kagura Gear"
+              width={420}
+              height={170}
+              priority
+              className="mb-6 h-20 w-auto max-w-full object-contain object-left sm:h-24"
+            />
             <p className="mb-5 inline-flex border border-sakura/40 bg-black/45 px-3 py-2 text-xs font-black uppercase tracking-[0.28em] text-sakura">
               Precision Meets Ritual
             </p>
             <h1 className="text-5xl font-black leading-none text-bone sm:text-7xl lg:text-8xl">
-              Kagura Gear
+              Premium surfaces for focused play.
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-steel sm:text-xl">
               Japanese-inspired gaming desk gear for FPS players, mechanical keyboard
-              users, and setup builders who want the desk to feel intentional.
+              users, and setup builders who want every movement to feel intentional.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link
@@ -78,7 +87,7 @@ export default function Home() {
               {[
                 ["3", "Launch products"],
                 ["4mm", "Base profile"],
-                ["0", "Card data stored"],
+                ["24/7", "Email support"],
               ].map(([value, label]) => (
                 <div key={label}>
                   <dt className="text-2xl font-black text-bone">{value}</dt>
@@ -93,6 +102,13 @@ export default function Home() {
           <div className="relative hidden min-h-[520px] lg:block">
             <div className="absolute inset-x-8 top-28 h-72 keyboard-perspective border border-white/12 bg-black/70 shadow-card">
               <div className="absolute inset-4 border border-shrine/60" />
+              <Image
+                src="/images/kagura-logo-mark.png"
+                alt=""
+                width={180}
+                height={180}
+                className="absolute left-8 top-8 h-28 w-28 object-contain opacity-55 mix-blend-screen"
+              />
               <div className="absolute left-8 top-8 h-8 w-36 border border-white/15 bg-white/5" />
               <div className="absolute bottom-10 right-10 h-16 w-16 border border-sakura/50 bg-black/50" />
             </div>
@@ -118,12 +134,32 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="border-b border-white/10 bg-black">
+        <div className="mx-auto grid max-w-7xl gap-6 px-4 py-8 sm:px-6 md:grid-cols-4 lg:px-8">
+          {[
+            ["01", "Control and speed surfaces"],
+            ["02", "Keyboard-first desk sizing"],
+            ["03", "Sakura and shrine visual language"],
+            ["04", "Official support inbox"],
+          ].map(([index, label]) => (
+            <div key={label} className="flex items-center gap-4 border-l border-white/10 pl-4">
+              <span className="text-xs font-black uppercase tracking-[0.18em] text-sakura">
+                {index}
+              </span>
+              <span className="text-sm font-black uppercase tracking-[0.16em] text-bone">
+                {label}
+              </span>
+            </div>
+          ))}
+        </div>
+      </section>
+
       <section id="series" className="border-b border-white/10 bg-ink py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Shop The System"
             title="Build the desk like a loadout."
-            body="Inspired by keyboard independent stores: clear series, clear product roles, and fast paths into the collection."
+            body="Clear series, clear product roles, and fast paths into the surface that matches your aim style."
           />
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {categories.map((category, index) => (
@@ -151,7 +187,7 @@ export default function Home() {
             <SectionHeading
               eyebrow="Launch Collection"
               title="Three products, one visual world."
-              body="Product cards are now built like a real external gear store: clear specs, product scenes, and Shopify checkout placeholders."
+              body="Each launch product has a distinct surface role, size target, and setup purpose."
             />
             <Link
               href="/shop"
@@ -170,17 +206,22 @@ export default function Home() {
 
       <section className="border-y border-white/10 bg-edge-light py-20">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
-          <SectionHeading
-            eyebrow="Setup Builder"
-            title="A shrine-clean desk for serious play."
-            body="The brand direction is darker and more product-led now: keyboard-space first, mouse movement second, visual ritual throughout."
-          />
+          <div>
+            <BrandLogo />
+            <div className="mt-8">
+              <SectionHeading
+                eyebrow="Setup Builder"
+                title="A shrine-clean desk for serious play."
+                body="Keyboard-space first, mouse movement second, visual ritual throughout."
+              />
+            </div>
+          </div>
           <div className="grid gap-3 sm:grid-cols-2">
             {setupModes.map((mode) => (
               <div key={mode} className="border border-white/10 bg-black/45 p-6">
                 <p className="text-xl font-black text-bone">{mode}</p>
                 <p className="mt-3 text-sm leading-6 text-steel">
-                  Designed to make the site feel like a real gear catalog, not a placeholder storefront.
+                  Built for a cleaner desk, faster decisions, and a consistent surface language.
                 </p>
               </div>
             ))}

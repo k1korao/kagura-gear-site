@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { Product } from "@/lib/products";
 
 const accentClasses = {
@@ -30,6 +31,13 @@ export function ProductVisual({ product }: { product: Product }) {
       <div className="absolute inset-0 bg-woven-grid bg-[length:28px_28px] opacity-[0.08]" />
       <div className={`absolute -left-20 top-10 h-28 w-72 rotate-[-22deg] blur-3xl ${accent.beam} opacity-35`} />
       <div className="absolute right-[-15%] top-[-22%] h-52 w-52 border border-white/10 bg-white/[0.03]" />
+      <Image
+        src="/images/kagura-logo-mark.png"
+        alt=""
+        width={140}
+        height={140}
+        className="absolute left-5 top-5 h-20 w-20 object-contain opacity-55 mix-blend-screen"
+      />
 
       <div className="absolute left-1/2 top-[58%] h-[52%] w-[84%] -translate-x-1/2 -translate-y-1/2 -skew-x-6 border border-white/12 bg-black/60 shadow-card">
         <div className={`absolute inset-3 border ${accent.print} opacity-45`} />

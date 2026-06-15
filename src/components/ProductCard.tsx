@@ -5,7 +5,7 @@ import { ShopifyBuyButtonSlot } from "@/components/ShopifyBuyButtonSlot";
 
 export function ProductCard({ product }: { product: Product }) {
   return (
-    <article className="group border border-white/10 bg-smoke shadow-card transition duration-300 hover:-translate-y-1 hover:border-sakura/50">
+    <article className="group border border-white/10 bg-smoke shadow-card transition duration-300 hover:-translate-y-1 hover:border-sakura/50 hover:bg-[#13161d]">
       <Link href={`/products/${product.slug}`} className="block" aria-label={`View ${product.name}`}>
         <ProductVisual product={product} />
       </Link>
@@ -21,16 +21,17 @@ export function ProductCard({ product }: { product: Product }) {
         </div>
         <p className="text-sm font-semibold text-bone/80">{product.tagline}</p>
         <p className="min-h-16 text-sm leading-6 text-steel">{product.shortDescription}</p>
-        <div className="grid grid-cols-3 gap-2 text-center text-[0.65rem] font-black uppercase tracking-[0.12em] text-steel">
-          <span className="border border-white/10 bg-black/24 px-2 py-2">
-            {product.speed}
-          </span>
-          <span className="border border-white/10 bg-black/24 px-2 py-2">
-            {product.control}
-          </span>
-          <span className="border border-white/10 bg-black/24 px-2 py-2">
-            4mm
-          </span>
+        <div className="grid grid-cols-3 gap-px overflow-hidden border border-white/10 bg-white/10 text-center text-[0.62rem] font-black uppercase tracking-[0.12em] text-steel">
+          {[
+            ["Speed", product.speed],
+            ["Control", product.control],
+            ["Base", "4mm"],
+          ].map(([label, value]) => (
+            <span key={label} className="bg-black/45 px-2 py-3">
+              <span className="block text-[0.54rem] text-sakura/80">{label}</span>
+              <span className="mt-1 block text-bone/80">{value}</span>
+            </span>
+          ))}
         </div>
         <ShopifyBuyButtonSlot productName={product.name} compact />
         <Link
