@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties } from "react";
 import { BrandLogo } from "@/components/BrandLogo";
+import { NewsletterForm } from "@/components/NewsletterForm";
 import { ProductCard } from "@/components/ProductCard";
 import { SectionHeading } from "@/components/SectionHeading";
 import { categories, products } from "@/lib/products";
@@ -328,23 +329,7 @@ export default function Home() {
             title="Enter the next drop."
             body="Get launch notes, restock alerts, and desk setup releases before they go public."
           />
-          <form className="flex flex-col gap-3 self-end sm:flex-row">
-            <label className="sr-only" htmlFor="newsletter-email">
-              Email address
-            </label>
-            <input
-              id="newsletter-email"
-              type="email"
-              placeholder="you@example.com"
-              className="min-h-14 flex-1 border border-white/15 bg-smoke px-4 text-bone outline-none transition placeholder:text-steel focus:border-sakura"
-            />
-            <button
-              type="submit"
-              className="premium-button min-h-14 border border-sakura bg-sakura px-6 text-sm font-black uppercase tracking-[0.18em] text-ink transition hover:border-bone hover:bg-bone"
-            >
-              Sign Up
-            </button>
-          </form>
+          <NewsletterForm />
         </div>
       </section>
     </main>
