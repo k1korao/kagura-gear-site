@@ -19,11 +19,11 @@ export function BrandLogo({ compact = false, className = "" }: BrandLogoProps) {
         }`}
       >
         <Image
-          src="/images/kagura-logo-mark.png"
+          src={compact ? "/images/kagura-logo-icon.png" : "/images/kagura-logo-mark.png"}
           alt=""
           fill
           sizes={compact ? "44px" : "56px"}
-          className="object-contain p-1.5 transition duration-300 group-hover:scale-105"
+          className="object-contain p-1 transition duration-300 drop-shadow-[0_0_12px_rgba(246,165,189,0.28)] group-hover:scale-105"
         />
       </span>
       <span className="flex flex-col leading-none">
