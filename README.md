@@ -100,11 +100,20 @@ and add these Vercel environment variables:
 RESEND_API_KEY=your-resend-api-key
 CONTACT_FROM_EMAIL=Kagura Gear <support@kaguragear.com>
 CONTACT_TO_EMAIL=support@kaguragear.com
+NEWSLETTER_FROM_EMAIL=Kagura Gear <support@kaguragear.com>
+NEWSLETTER_NOTIFY_EMAIL=support@kaguragear.com
 ```
 
 Do not add real secrets to GitHub. Add them only in Vercel Project Settings >
 Environment Variables. If the provider is not connected yet, the form shows a
 safe direct-email fallback instead of pretending the message was sent.
+
+The newsletter form posts to `/api/newsletter`. After a customer signs up and
+confirms consent, the site sends an automatic welcome email with recommended
+launch products and notifies the support inbox. For long-term marketing lists,
+scheduled campaigns, and unsubscribe management, connect Shopify Email, Klaviyo,
+Mailchimp, or another email marketing platform instead of using the website as a
+customer database.
 
 ## Vercel Deployment
 
