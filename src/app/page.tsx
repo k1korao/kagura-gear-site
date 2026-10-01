@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { NewsletterForm } from "@/components/NewsletterForm";
+import { HeroCarousel } from "@/components/HeroCarousel";
 import { SurfaceCard } from "@/components/StoreCatalog";
 import { products } from "@/lib/products";
 import { pageMetadata } from "@/lib/metadata";
@@ -18,7 +19,7 @@ export default function Home() {
           <div className="store-actions"><Link className="store-button" href="/collections/keycaps">Explore keycaps <span aria-hidden="true">↗</span></Link><Link className="store-text-link" href="/collections/deskmats">Discover deskmats <span aria-hidden="true">→</span></Link></div>
           <div className="store-hero-note"><span>01 / THE EVERYDAY COLLECTION</span><span>Made for your space.</span></div>
         </div>
-        <div className="store-hero-image"><Image src="/images/kagura-studio-concept.webp" alt="Kagura Gear design concept: ivory, rose and burgundy keycaps on a mechanical keyboard" fill priority sizes="(max-width: 800px) 100vw, 58vw" className="object-cover" /><span className="store-image-caption">COLOR, WITH CHARACTER. <span>DESIGN CONCEPT</span></span></div>
+        <HeroCarousel />
       </section>
       <section className="store-category-strip" aria-label="Shop by category">
         <Link href="/collections/keycaps"><span className="store-category-number">01</span><span>Keycaps<small>A fresh point of view.</small></span><span aria-hidden="true">↗</span></Link>
