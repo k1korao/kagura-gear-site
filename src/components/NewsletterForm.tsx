@@ -8,7 +8,7 @@ type NewsletterState = {
   mailtoHref?: string;
 };
 
-export function NewsletterForm() {
+export function NewsletterForm({ light = false }: { light?: boolean }) {
   const [state, setState] = useState<NewsletterState>({
     status: "idle",
     message: "",
@@ -64,7 +64,7 @@ export function NewsletterForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-3 self-end">
+    <form onSubmit={handleSubmit} className={`flex flex-col gap-3 self-end ${light ? "store-newsletter" : ""}`}>
       <div className="hidden">
         <label htmlFor="newsletter-company">Company</label>
         <input id="newsletter-company" name="company" tabIndex={-1} autoComplete="off" />

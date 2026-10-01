@@ -1,60 +1,31 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 import { BrandLogo } from "@/components/BrandLogo";
 
-const navItems = [
-  { href: "/", label: "Home" },
-  { href: "/shop", label: "Shop" },
-  { href: "/shop#series", label: "Series" },
-  { href: "/about", label: "About" },
-  { href: "/faq", label: "FAQ" },
-  { href: "/contact", label: "Contact" },
-];
+const storeLinks = [{ href: "/collections/keycaps", label: "Keycaps" }, { href: "/collections/deskmats", label: "Deskmats" }, { href: "/collections/accessories", label: "Accessories" }, { href: "/shrine", label: "Kagura Shrine", premium: true }];
+const shrineLinks = [{ href: "/shrine", label: "Shrine" }, { href: "/shrine#collections", label: "Collections" }, { href: "/shrine#craft", label: "Our world" }, { href: "/contact", label: "Contact" }];
 
 export function Navbar() {
-  return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-ink/88 backdrop-blur-xl">
-      <div className="shrine-ticker border-b border-white/10 bg-[linear-gradient(90deg,#f6a5bd,#f2c0a7,#d6b56d,#f6a5bd)] px-4 py-2 text-center text-[0.7rem] font-black uppercase tracking-[0.2em] text-ink">
-        Launch collection preview / Shopify checkout slots ready / support@kaguragear.com
-      </div>
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-5 px-4 py-3 sm:px-6 lg:px-8">
-        <BrandLogo compact />
-
-        <nav className="hidden items-center gap-1 md:flex" aria-label="Primary navigation">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="relative px-4 py-2 text-sm font-semibold text-steel transition after:absolute after:inset-x-4 after:bottom-1 after:h-px after:origin-left after:scale-x-0 after:bg-sakura after:transition hover:bg-white/5 hover:text-bone hover:after:scale-x-100"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-
-        <Link
-          href="/shop"
-          className="premium-button hidden border border-sakura/40 bg-sakura px-4 py-2 text-sm font-black uppercase tracking-[0.12em] text-ink transition hover:border-bone hover:bg-bone lg:inline-flex"
-        >
-          Shop Drop
-        </Link>
-
-        <details className="group relative md:hidden">
-          <summary className="list-none border border-white/15 px-3 py-2 text-sm font-bold text-bone marker:hidden">
-            Menu
-          </summary>
-          <nav className="absolute right-0 mt-3 grid min-w-44 gap-1 border border-white/10 bg-coal p-2 shadow-card">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="px-3 py-2 text-sm font-semibold text-steel transition hover:bg-white/5 hover:text-bone"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-        </details>
-      </div>
-    </header>
-  );
+  const pathname = usePathname();
+  const premium = pathname.startsWith("/shrine");
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const searchInput = useRef<HTMLInputElement>(null);
+  const searchTrigger = useRef<HTMLButtonElement>(null);
+  useEffect(() => { if (searchOpen) searchInput.current?.focus(); }, [searchOpen]);
+  function closeSearch() { setSearchOpen(false); searchTrigger.current?.focus(); }
+  function closeMenus() { setMenuOpen(false); setSearchOpen(false); }
+  return <header className={premium ? "shrine-header" : "store-header"}>
+    <div className={premium ? "shrine-ticker shrine-announcement" : "store-announcement"}><span>{premium ? "KAGURA SHRINE · THE PREMIUM WORLD OF KAGURA GEAR" : "A LITTLE MORE YOU. A LOT MORE CHARACTER."}</span><Link href={premium ? "/" : "/shrine"} onClick={closeMenus}>{premium ? "Back to Kagura Gear" : "Discover Kagura Shrine"} <span aria-hidden="true">↗</span></Link></div>
+    <div className="store-nav-inner">
+      {premium ? <div className="shrine-nav-brand"><BrandLogo compact /><span>SHRINE / PREMIUM COLLECTION</span></div> : <Link className="store-wordmark" href="/" aria-label="Kagura Gear home" onClick={closeMenus}>kagura<span className="store-wordmark-dot">.</span><small>GEAR</small></Link>}
+      <nav className="store-desktop-nav" aria-label="Primary navigation">{(premium ? shrineLinks : storeLinks).map((item) => <Link key={item.href} href={item.href} className={`${pathname === item.href ? "is-current" : ""} ${"premium" in item && item.premium ? "nav-premium" : ""}`} aria-current={pathname === item.href ? "page" : undefined} onClick={closeMenus}>{item.label}{"premium" in item && item.premium ? <span aria-hidden="true"> ✦</span> : null}</Link>)}</nav>
+      <div className="store-nav-tools"><Link href="/faq" className="store-nav-help" onClick={closeMenus}>Help</Link><button type="button" ref={searchTrigger} onClick={() => { setSearchOpen(!searchOpen); setMenuOpen(false); }} aria-label={searchOpen ? "Close search" : "Search collections"} aria-expanded={searchOpen} aria-controls="store-header-search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" /><path d="m15.5 15.5 5 5" /></svg></button><button type="button" className="store-menu-toggle" onClick={() => { setMenuOpen(!menuOpen); setSearchOpen(false); }} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen} aria-controls="store-mobile-navigation">{menuOpen ? "Close" : "Menu"}</button></div>
+    </div>
+    {menuOpen ? <nav id="store-mobile-navigation" className="store-mobile-nav" aria-label="Mobile navigation">{(premium ? shrineLinks : storeLinks).map((item) => <Link key={item.href} href={item.href} onClick={closeMenus}>{item.label}<span aria-hidden="true">↗</span></Link>)}<Link href="/shop" onClick={closeMenus}>All collections <span aria-hidden="true">↗</span></Link><Link href="/contact" onClick={closeMenus}>Contact us</Link></nav> : null}
+    {searchOpen ? <form id="store-header-search" className="store-header-search" action="/shop" onKeyDown={(event) => { if (event.key === "Escape") closeSearch(); }}><label htmlFor="store-global-search">What are you looking for?</label><div><input ref={searchInput} id="store-global-search" name="q" type="search" placeholder="Search the collection…" /><button type="submit">Search <span aria-hidden="true">→</span></button><button type="button" onClick={closeSearch} aria-label="Close search">×</button></div></form> : null}
+  </header>;
 }

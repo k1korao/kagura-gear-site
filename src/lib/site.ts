@@ -9,13 +9,17 @@ export const siteConfig = {
   url: siteUrl,
   supportEmail: "support@kaguragear.com",
   description:
-    "Premium Japanese-inspired gaming mousepads, desk mats, keyboard accessories, and setup gear for FPS players, mechanical keyboard users, and desk setup fans.",
+    "Make your desk your own with Kagura Gear keycaps, deskmats, and keyboard accessories. Discover Kagura Shrine, our premium Japanese-inspired collection.",
   ogImage: "/images/kagura-logo-card.jpg",
 };
 
 export const coreRoutes = [
   "",
   "/shop",
+  "/shrine",
+  "/collections/keycaps",
+  "/collections/deskmats",
+  "/collections/accessories",
   "/about",
   "/faq",
   "/contact",

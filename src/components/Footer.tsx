@@ -1,71 +1,13 @@
+"use client";
+
 import Link from "next/link";
-import { BrandLogo } from "@/components/BrandLogo";
+import { usePathname } from "next/navigation";
 import { siteConfig, supportMailto } from "@/lib/site";
 
-const policies = [
-  { href: "/shipping-policy", label: "Shipping" },
-  { href: "/return-policy", label: "Returns" },
-  { href: "/privacy-policy", label: "Privacy" },
-  { href: "/terms-of-service", label: "Terms" },
-];
-
-const socials = ["Instagram", "TikTok", "X", "YouTube"];
-
 export function Footer() {
-  return (
-    <footer className="border-t border-white/10 bg-black">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-[1.35fr_0.75fr_0.75fr] lg:px-8">
-        <div>
-          <BrandLogo className="mb-4" />
-          <p className="max-w-md text-sm leading-6 text-steel">
-            Japanese-inspired gaming surfaces for FPS players, desk setup builders,
-            and mechanical keyboard enthusiasts.
-          </p>
-          <a
-            href={supportMailto()}
-            className="mt-5 inline-flex text-sm font-black uppercase tracking-[0.16em] text-sakura transition hover:text-bone"
-          >
-            {siteConfig.supportEmail}
-          </a>
-        </div>
-
-        <div>
-          <h2 className="mb-4 text-xs font-black uppercase tracking-[0.24em] text-bone">
-            Social
-          </h2>
-          <div className="grid gap-2">
-            {socials.map((social) => (
-              <a
-                key={social}
-                href="#"
-                className="text-sm font-semibold text-steel transition hover:text-sakura"
-              >
-                {social}
-              </a>
-            ))}
-          </div>
-        </div>
-
-        <div>
-          <h2 className="mb-4 text-xs font-black uppercase tracking-[0.24em] text-bone">
-            Policies
-          </h2>
-          <div className="grid gap-2">
-            {policies.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="text-sm font-semibold text-steel transition hover:text-sakura"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </div>
-      <div className="border-t border-white/10 px-4 py-5 text-center text-xs uppercase tracking-[0.2em] text-steel">
-        Copyright 2026 Kagura Gear. Checkout powered by Shopify.
-      </div>
-    </footer>
-  );
+  const premium = usePathname().startsWith("/shrine");
+  return <footer className={`store-footer ${premium ? "store-footer-premium" : ""}`}>
+    <div className="store-footer-grid"><div><Link className="store-wordmark" href="/" aria-label="Kagura Gear home">kagura<span className="store-wordmark-dot">.</span><small>GEAR</small></Link><p>Make your desk your own.<br />Keycaps, deskmats, and a little more character.</p><a href={supportMailto()}>{siteConfig.supportEmail}</a></div><div><h2>EXPLORE</h2><Link href="/collections/keycaps">Keycaps</Link><Link href="/collections/deskmats">Deskmats</Link><Link href="/collections/accessories">Accessories</Link><Link href="/shrine">Kagura Shrine ↗</Link></div><div><h2>HERE TO HELP</h2><Link href="/about">Our story</Link><Link href="/faq">FAQ</Link><Link href="/contact">Contact us</Link><Link href="/shipping-policy">Shipping</Link><Link href="/return-policy">Returns</Link></div><div className="store-footer-premium-note"><span className="store-eyebrow">THE PREMIUM WORLD</span><h2>Kagura Shrine.</h2><p>Japanese artistry.<br />A more considered setup.</p><Link className="store-text-link" href="/shrine">Enter the Shrine <span aria-hidden="true">↗</span></Link></div></div>
+    <div className="store-footer-bottom"><span>© {new Date().getFullYear()} Kagura Gear. All rights reserved.</span><div><Link href="/privacy-policy">Privacy policy</Link><Link href="/terms-of-service">Terms of service</Link></div><span>PRECISION MEETS PERSONALITY.</span></div>
+  </footer>;
 }

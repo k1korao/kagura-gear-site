@@ -1,6 +1,6 @@
 # Kagura Gear
 
-Premium ecommerce website for Kagura Gear, a dark Japanese-inspired gaming gear brand.
+Kagura Gear storefront with a light everyday collection and a dark Japanese-inspired premium subbrand, Kagura Shrine.
 
 Slogan: **Precision Meets Ritual**
 
@@ -36,8 +36,10 @@ npm run lint
 
 ## Pages
 
-- Home
-- Shop
+- Home: new Kagura Gear storefront at `/`
+- Shop: searchable collection preview at `/shop`
+- Collection pages: `/collections/keycaps`, `/collections/deskmats`, `/collections/accessories`
+- Premium subbrand: the original cinematic design at `/shrine`
 - Product detail template
 - About
 - FAQ
@@ -173,3 +175,24 @@ git push -u origin main
 ```
 
 Replace `YOUR_USERNAME` and the repository URL with your actual GitHub repo.
+
+## Storefront and premium subbrand
+
+The main storefront takes inspiration from category-led keyboard retail layouts.
+Kagura Shrine is a working subbrand name for premium keycaps and deskmats.
+The original dark homepage artwork, sakura animation and keyboard visual have
+been retained on `/shrine`, with copy and collections adapted for the premium line.
+
+The existing three surface designs, prices and product URLs are preserved.
+No new sellable keycap or accessory products have been invented: those collections
+are marked as in development, with a link to launch updates. The keyboard image
+is a generated design concept rather than a photograph of stocked inventory.
+
+The navigation search submits to `/shop?q=...`. The collection search and
+category filters work without Shopify credentials. Checkout remains the existing
+Shopify integration placeholder and still needs real Buy Button configuration.
+
+To publish, push the changes to the branch used by the existing Vercel project.
+Vercel should rebuild the Next.js project with the normal build command. No domain
+or DNS changes are needed. Check `/`, `/shrine`, the three collection routes,
+`/shop`, and the product pages after deployment.
