@@ -76,13 +76,11 @@
 .store-carousel-shrine .store-carousel-copy .store-eyebrow, .store-carousel-shrine .store-carousel-copy h2 em { color: #efb9c7; }
 .store-carousel-cta { display: inline-flex; gap: 28px; align-items: center; padding-bottom: 7px; border-bottom: 1px solid currentColor; font-size: 12px; font-weight: 600; }
 .store-carousel-controls { position: absolute; z-index: 2; bottom: 22px; left: 30px; right: 30px; display: flex; justify-content: space-between; align-items: center; gap: 20px; color: var(--carousel-ink); transition: color 180ms; }
-.store-carousel-pagination, .store-carousel-arrows { display: flex; align-items: center; gap: 8px; }
+.store-carousel-pagination { display: flex; align-items: center; gap: 8px; }
 .store-carousel-pagination button { width: 32px; height: 44px; display: grid; place-items: center; }
 .store-carousel-pagination button span { width: 22px; height: 3px; background: currentColor; opacity: .3; transition: opacity 180ms; }
 .store-carousel-pagination button[aria-pressed="true"] span { opacity: 1; }
 .store-carousel-count { margin-left: 10px; font-size: 9px; letter-spacing: .12em; }
-.store-carousel-arrows button { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; border: 1px solid currentColor; background: #faf8f540; font-size: 20px; }
-.is-shrine .store-carousel-arrows button { background: #08060970; }
 .store-carousel-controls button:hover { background: #faf8f540; }
 .store-carousel-controls button:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
 .store-category-strip { max-width: 1600px; margin: auto; padding: 36px 5%; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-bottom: 1px solid #30232816; }

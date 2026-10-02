@@ -95,13 +95,17 @@ export function HeroCarousel() {
   }
 
   return (
-    <section ref={carousel} className={`store-hero-image store-hero-carousel${active === 1 ? " is-shrine" : ""}`} aria-label="Featured collections" aria-roledescription="carousel" tabIndex={0}
+    <section ref={carousel} className={`store-hero-image store-hero-carousel${active === 1 ? " is-shrine" : ""}`} aria-label="Featured collections" aria-describedby="store-carousel-instructions" aria-roledescription="carousel" tabIndex={0}
       onPointerEnter={(event) => { if (event.pointerType !== "touch") setHovered(true); }}
       onPointerLeave={() => setHovered(false)}
       onPointerDownCapture={() => setFocused(false)}
       onFocusCapture={(event) => { if (event.target.matches(":focus-visible")) setFocused(true); }}
       onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false); }}
       onKeyDown={(event) => {
+        if (event.key === " " && event.target === event.currentTarget) {
+          event.preventDefault();
+          setPlayback(enabled ? "pause" : "play");
+        }
         if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
           event.preventDefault();
           show(active + (event.key === "ArrowRight" ? 1 : -1));
@@ -127,8 +131,8 @@ export function HeroCarousel() {
       </div>
       <div className="store-carousel-controls">
         <div className="store-carousel-pagination" aria-label="Choose a collection">{cards.map((card, index) => <button key={card.name} type="button" aria-label={`Show ${card.name}`} aria-pressed={active === index} onClick={() => show(index)}><span /></button>)}<span className="store-carousel-count" aria-hidden="true">0{active + 1} / 0{cards.length}</span></div>
-        <div className="store-carousel-arrows"><button type="button" aria-label={enabled ? "Pause slideshow" : "Play slideshow"} onClick={() => setPlayback(enabled ? "pause" : "play")}><svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true">{enabled ? <><rect x="3" y="2" width="3" height="10" /><rect x="8" y="2" width="3" height="10" /></> : <path d="M3 1.5 12 7 3 12.5Z" />}</svg></button><button type="button" aria-label="Previous collection" onClick={() => show(active - 1)}><span aria-hidden="true">←</span></button><button type="button" aria-label="Next collection" onClick={() => show(active + 1)}><span aria-hidden="true">→</span></button></div>
       </div>
+      <span className="sr-only" id="store-carousel-instructions">Use left and right arrow keys to switch collections, or space to pause or play the slideshow.</span>
       <span className="sr-only" role="status" aria-live={rotating ? "off" : "polite"}>{active + 1} of {cards.length}: {cards[active].name}</span>
     </section>
   );
