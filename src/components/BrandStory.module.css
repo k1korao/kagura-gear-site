@@ -5,6 +5,7 @@
 @media(max-width:380px){.heroCopy h2{font-size:21px}.heroCollage{height:375px}.chapterCopy h2{font-size:28px}.chapterVisual{min-height:250px}.creatorsHeading h2{font-size:23px}.creatorPoster{min-height:420px}.introBottom>p{max-width:135px}.collectorLabel>strong{font-size:21px}}
 @media(prefers-reduced-motion:reduce){.heroWraith{transform:rotate(9deg)}.heroReyna{transform:rotate(-10deg)}.heroKeys{transform:rotate(5deg)}.heroCollage figure{will-change:auto}.story{height:auto}.pinned{height:auto;position:relative;top:0;min-height:0}.chapters{display:grid}.chapter{position:relative;opacity:1;visibility:visible;transform:none;min-height:650px;padding-top:40px;padding-bottom:35px}.chapterVisual{min-height:480px}.progress{display:none}.root *{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 
-.collageSeal > svg{width:42px;height:42px;flex:none}
+.collageSeal > svg{width:50px;height:50px;flex:none}
+@media(max-width:760px){.collageSeal > svg{width:40px;height:40px}}
 
 @media(max-height:740px){.story{height:auto}.pinned{height:auto;position:relative;top:0;min-height:0}.chapters{display:grid}.chapter{position:relative;opacity:1;visibility:visible;transform:none;min-height:650px;padding-top:40px;padding-bottom:35px;scroll-margin-top:85px}.chapterVisual{min-height:420px}.progress{display:none}}

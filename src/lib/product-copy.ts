@@ -12,6 +12,7 @@ export const coverEditions = [
 
 const en = {
   categories: { glass: "Glass mousepads", keycaps: "Keycaps", metal: "Metal customs" },
+  editionNames: ["Starplayer.", "Void FM.", "The Chemist.", "Golden Hour.", "Redline.", "Afterburn.", "Night Signal."],
   collections: [
     { name: "Core glass", caption: "THE ESSENTIALS", description: "A quiet surface. A clear point of view. Our essential glass mousepad direction, designed around the way you play." },
     { name: "Artist editions", caption: "A CANVAS FOR COLLABORATION", description: "A space for future artist and IP collaborations. This original studio study explores what could come next; collaborations are still to be announced." },
@@ -58,7 +59,7 @@ const en = {
     },
   },
   details: {
-    tabs: { specs: "Specs", story: "Story", faq: "FAQ" }, category: "Category", collection: "Collection", dimensions: "Design dimensions", thickness: "Thickness", surface: "Surface & base", status: "Status", tbc: "To be confirmed", future: "Future plan",
+    tabs: { specs: "Specs", story: "Story", faq: "FAQ" }, category: "Category", collection: "Collection", edition: "Edition", dimensions: "Design dimensions", thickness: "Thickness", surface: "Surface & base", status: "Status", tbc: "To be confirmed", future: "Future plan",
     direction: "Direction", preview: "Preview", geometric: "Geometric keycap form study", materialsFinish: "Materials & finish", compatibility: "Compatibility", palette: "Palette study", colors: "Crimson / Violet / Charcoal", materialsProcess: "Materials & process", profileKit: "Profile & kit",
     notes: "KAGURA / Product notes", close: "Close", closeLabel: "Close product details", designDimensions: "490 × 420 mm design", designConcept: "Design concept", specsTbc: "Specifications to be confirmed", conceptDeveloping: "Concept / In development", layoutTbc: "Layout and profile to be confirmed", information: "information",
     metalLead: "An early look at what comes next.", lead: "The details are in development.", specNote: "Final specifications, pricing, and release timing will be shared as development progresses.", signoff: "KAGURA / Objects for your everyday.",
@@ -87,6 +88,7 @@ const en = {
 
 const zh: typeof en = {
   categories: { glass: "玻璃鼠标垫", keycaps: "键帽", metal: "金属客制化" },
+  editionNames: ["明星玩家", "虚空电台", "化学家", "鎏金时刻", "红线", "余焰", "夜间信号"],
   collections: [
     { name: "Core 基础系列", caption: "回归纯粹", description: "让桌面安静下来，让注意力回到游戏。Core 从简洁的形态出发，探索玻璃鼠标垫最纯粹的样子。" },
     { name: "Artist 画师系列", caption: "为创作留一块空间", description: "为未来的画师与 IP 合作预留的系列。眼前这幅原创抽象作品，是我们对色彩与构图的一次尝试；具体合作尚未公布。" },
@@ -95,9 +97,9 @@ const zh: typeof en = {
   experience: {
     explore: "探索", allCollections: "全部系列", glassCollections: "玻璃鼠标垫系列", coverSeries: "01 / 封面系列", futureObjects: "01 / 未来企划",
     viewer: "玻璃鼠标垫三维桌面。点击旁边的鼠标垫，或使用键盘左右方向键切换系列。", conceptVisualization: "概念效果图",
-    keyTitle: "Starplayer / 键帽", keyKicker: "键帽系列", metalKicker: "探索金属的另一种表达", keyConcept: "键帽概念", futureCollection: "未来企划", developing: "开发中",
+    keyTitle: "明星玩家 / 键帽", keyKicker: "键帽系列", metalKicker: "探索金属的另一种表达", keyConcept: "键帽概念", futureCollection: "未来企划", developing: "开发中",
     format: "设计尺寸", series: "系列", palette: "概念配色", colors: "绯红 / 紫罗兰", coverNumber: "封面 / 01", formStudy: "造型研究 — 001",
-    keyDescription: "以蕾娜为主角，让红与紫的专辑封面画面铺展在每颗键帽之间。与 Starplayer 玻璃垫呼应的键帽设计概念。",
+    keyDescription: "以蕾娜为主角，让红与紫的专辑封面画面铺展在每颗键帽之间。与「明星玩家」玻璃垫呼应的键帽设计概念。",
     metalDescription: "从雕塑感的形态与细节出发，探索未来的定制金属物件。首个系列仍在构思中。",
     chooseArt: "选择封面作品", more: "了解详情", release: "订阅发售动态", artistNote: "原创概念预览。画师合作信息将另行公布。", conceptNote: "设计概念预览，最终产品信息待公布。",
     viewingAngle: "查看角度", deskView: "桌面视角", topView: "俯视角度", designStudy: "KAGURA / 设计研究", previous: "上一个玻璃垫系列", next: "下一个玻璃垫系列", of: "/",
@@ -122,7 +124,7 @@ const zh: typeof en = {
       caption: "Covers / 封面视觉研究", question: "Cover 系列每一款有什么区别？", answer: "每款以一幅独立作品为核心，灵感来自音乐与专辑视觉。目前展示的是概念设计，尚未公布任何官方联名。",
     },
     keycaps: {
-      title: "键帽", index: "02 / 键帽", tagline: "蕾娜、红色光线，以及另一种唱片封面。", asideTitle: "让每一次触碰，都有自己的表达。", description: "将角色画面重新编排在独立键帽上，与 Starplayer 玻璃垫形成视觉呼应。",
+      title: "键帽", index: "02 / 键帽", tagline: "蕾娜、红色光线，以及另一种唱片封面。", asideTitle: "让每一次触碰，都有自己的表达。", description: "将角色画面重新编排在独立键帽上，与「明星玩家」玻璃垫形成视觉呼应。",
       storyTitle: "一幅画面，延伸到每一颗键。", story: "Cover 系列将唱片封面的氛围带到键盘上。蕾娜画面贯穿独立键帽的顶面，搭配炭黑色功能键。这是独立角色二创概念，不代表官方联名。材质、印刷工艺、键帽高度与适配范围尚待确认。",
       caption: "键帽 / 图案印刷概念", question: "这套键帽适配哪些键盘？", answer: "适配配列、键帽高度与套装内容尚未公布。当前图片用于展示设计方向，并非最终套装。",
     },
@@ -133,7 +135,7 @@ const zh: typeof en = {
     },
   },
   details: {
-    tabs: { specs: "规格", story: "设计理念", faq: "常见问题" }, category: "品类", collection: "系列", dimensions: "设计尺寸", thickness: "厚度", surface: "表面与底部结构", status: "进度", tbc: "待确认", future: "未来企划",
+    tabs: { specs: "规格", story: "设计理念", faq: "常见问题" }, category: "品类", collection: "系列", edition: "款式", dimensions: "设计尺寸", thickness: "厚度", surface: "表面与底部结构", status: "进度", tbc: "待确认", future: "未来企划",
     direction: "产品方向", preview: "预览内容", geometric: "几何键帽造型研究", materialsFinish: "材质与表面处理", compatibility: "适配范围", palette: "概念配色", colors: "绯红 / 紫罗兰 / 炭黑", materialsProcess: "材质与工艺", profileKit: "键帽高度与套装",
     notes: "KAGURA / 产品手记", close: "关闭", closeLabel: "关闭产品详情", designDimensions: "设计尺寸 490 × 420 mm", designConcept: "设计概念", specsTbc: "最终规格待确认", conceptDeveloping: "概念设计 / 开发中", layoutTbc: "配列与键帽高度待确认", information: "详情",
     metalLead: "提前看看，我们正在构思什么。", lead: "产品细节，正在逐步打磨。", specNote: "最终规格、价格与发售时间，将随开发进度陆续公布。", signoff: "KAGURA / 为日常，添一点自己的表达。",
@@ -145,10 +147,10 @@ const zh: typeof en = {
     { caption: "蕾娜 / 角色二创概念 001", alt: "紫色光线中的蕾娜角色二创，背景为鲜红色专辑封面构图" },
     { caption: "恶灵 / 角色二创概念 002", alt: "以冷蓝色科幻专辑封面构图呈现的恶灵角色二创" },
     { caption: "侵蚀 / 电影感二创概念 003", alt: "工业仓库中的侵蚀，周围有橄榄绿色桶与暖色电影感逆光" },
-    { caption: "希尔 / 角色二创概念 004", alt: "Golden Hour：以希尔为灵感的铜橙、金色与海军蓝专辑封面概念" },
-    { caption: "红狼 / 角色二创概念 005", alt: "Redline：以红狼为灵感的红色专辑封面概念" },
-    { caption: "威龙 / 角色二创概念 006", alt: "Afterburn：以威龙为灵感的电影感专辑封面概念" },
-    { caption: "麦晓雯（骇爪）/ 角色二创概念 007", alt: "Night Signal：以麦晓雯（骇爪）为灵感的夜色专辑封面概念" },
+    { caption: "希尔 / 角色二创概念 004", alt: "鎏金时刻：以希尔为灵感的铜橙、金色与海军蓝专辑封面概念" },
+    { caption: "红狼 / 角色二创概念 005", alt: "红线：以红狼为灵感的红色专辑封面概念" },
+    { caption: "威龙 / 角色二创概念 006", alt: "余焰：以威龙为灵感的电影感专辑封面概念" },
+    { caption: "麦晓雯（骇爪）/ 角色二创概念 007", alt: "夜间信号：以麦晓雯（骇爪）为灵感的夜色专辑封面概念" },
   ],
   sound: {
     unavailable: "音乐尚未接入，查看说明", startingLabel: "音乐正在加载，点击关闭", onLabel: "音乐已开启，点击关闭", offLabel: "音乐已关闭，点击开启", on: "音乐 开", off: "音乐 关", settings: "音量与曲目信息", heading: "给桌面一点声音", close: "关闭音乐设置", trackPending: "属于这个系列的背景音乐", volume: "音量", percent: "%", error: "暂时无法播放，请重试。", retry: "重新播放", starting: "正在加载音乐…", playing: "音乐播放中，关闭面板后也会继续播放。", stopped: "音乐已关闭，想听的时候再打开。", noSource: "背景音乐正在挑选中，当前尚未接入音源。",
@@ -162,6 +164,7 @@ const zh: typeof en = {
 
 const ja: typeof en = {
   categories: { glass: "ガラスマウスパッド", keycaps: "キーキャップ", metal: "メタルカスタム" },
+  editionNames: ["スタープレイヤー", "虚空ラジオ", "ケミスト", "ゴールデンアワー", "レッドライン", "残り火", "夜のシグナル"],
   collections: [
     { name: "Core シリーズ", caption: "シンプルを、突き詰める", description: "デスクには余白を、プレイには集中を。Core は、ガラスマウスパッドのシンプルなかたちを探るシリーズです。" },
     { name: "Artist シリーズ", caption: "表現が広がる、一枚のキャンバス", description: "これからのアーティストや IP とのコラボレーションに向けたシリーズ。現在のビジュアルは、色と構図の可能性を探るオリジナルのコンセプトです。具体的なコラボレーションは未発表です。" },
@@ -170,9 +173,9 @@ const ja: typeof en = {
   experience: {
     explore: "コレクションを見る：", allCollections: "すべてのコレクション", glassCollections: "ガラスマウスパッドのシリーズ", coverSeries: "01 / COVER シリーズ", futureObjects: "01 / これからのプロダクト",
     viewer: "ガラスマウスパッドの 3D プレビュー。隣のパッドをクリックするか、左右の矢印キーでシリーズを切り替えられます。", conceptVisualization: "のコンセプトビジュアル",
-    keyTitle: "Starplayer / キーキャップ", keyKicker: "キーキャップコレクション", metalKicker: "金属で探る、新しい表現", keyConcept: "キーキャップのコンセプト", futureCollection: "今後の企画", developing: "開発中",
+    keyTitle: "スタープレイヤー / キーキャップ", keyKicker: "キーキャップコレクション", metalKicker: "金属で探る、新しい表現", keyConcept: "キーキャップのコンセプト", futureCollection: "今後の企画", developing: "開発中",
     format: "デザイン寸法", series: "シリーズ", palette: "カラースタディ", colors: "クリムゾン / バイオレット", coverNumber: "Cover / 01", formStudy: "フォルムスタディ — 001",
-    keyDescription: "レイナを、レコードジャケットのように。赤と紫のアートワークが、一つひとつのキーに広がります。Starplayer のガラスエディションと響き合うキーキャップのコンセプトです。",
+    keyDescription: "レイナを、レコードジャケットのように。赤と紫のアートワークが、一つひとつのキーに広がります。「スタープレイヤー」のガラスエディションと響き合うキーキャップのコンセプトです。",
     metalDescription: "彫刻のようなかたちと、細部の仕上げから考えるメタルプロダクト。最初のコレクションは、まだ構想の段階です。",
     chooseArt: "カバーアートを選ぶ", more: "詳しく見る", release: "発売情報を受け取る", artistNote: "オリジナルのコンセプトです。アーティストとのコラボレーションは今後発表予定。", conceptNote: "デザインのプレビューです。製品の最終仕様は後日お知らせします。",
     viewingAngle: "表示アングル", deskView: "デスクビュー", topView: "真上から見る", designStudy: "KAGURA / デザインスタディ", previous: "前のガラスシリーズへ", next: "次のガラスシリーズへ", of: "/",
@@ -197,7 +200,7 @@ const ja: typeof en = {
       caption: "Covers / アートワークスタディ", question: "Cover の各エディションは何が違いますか？", answer: "それぞれ一つのアートワークを軸に、異なる個性を持たせています。音楽やアルバムのビジュアルから着想を得たコンセプトで、公式コラボレーションの発表ではありません。",
     },
     keycaps: {
-      title: "キーキャップ", index: "02 / キーキャップ", tagline: "レイナと赤い光。もう一つのレコードジャケット。", asideTitle: "指先から、自分らしく。", description: "キャラクターのアートワークを、キーの一つひとつに再構成。Starplayer のガラスエディションとつながるビジュアルです。",
+      title: "キーキャップ", index: "02 / キーキャップ", tagline: "レイナと赤い光。もう一つのレコードジャケット。", asideTitle: "指先から、自分らしく。", description: "キャラクターのアートワークを、キーの一つひとつに再構成。「スタープレイヤー」のガラスエディションとつながるビジュアルです。",
       storyTitle: "一枚のアートを、すべてのキーへ。", story: "Cover シリーズのレコードジャケットのような空気感を、キーボードにも。レイナのアートワークを各キーのトップに配置し、チャコールの修飾キーで囲んでいます。自主制作の二次創作コンセプトで、公式コラボレーションではありません。素材、印刷方式、プロファイル、対応レイアウトは未定です。",
       caption: "キーキャップ / 印刷デザインのコンセプト", question: "どのキーボードに対応しますか？", answer: "対応レイアウト、キーキャップのプロファイル、セット内容は未発表です。画像はデザインの方向性を示すもので、最終的なセット構成ではありません。",
     },
@@ -208,7 +211,7 @@ const ja: typeof en = {
     },
   },
   details: {
-    tabs: { specs: "仕様", story: "デザインについて", faq: "よくある質問" }, category: "カテゴリー", collection: "シリーズ", dimensions: "デザイン寸法", thickness: "厚さ", surface: "表面・ベース構造", status: "開発状況", tbc: "未定", future: "今後の企画",
+    tabs: { specs: "仕様", story: "デザインについて", faq: "よくある質問" }, category: "カテゴリー", collection: "シリーズ", edition: "エディション", dimensions: "デザイン寸法", thickness: "厚さ", surface: "表面・ベース構造", status: "開発状況", tbc: "未定", future: "今後の企画",
     direction: "製品の方向性", preview: "プレビュー内容", geometric: "幾何学的なキーキャップの造形", materialsFinish: "素材・表面仕上げ", compatibility: "互換性", palette: "カラースタディ", colors: "クリムゾン / バイオレット / チャコール", materialsProcess: "素材・製法", profileKit: "プロファイル・セット内容",
     notes: "KAGURA / プロダクトノート", close: "閉じる", closeLabel: "製品の詳細を閉じる", designDimensions: "デザイン寸法 490 × 420 mm", designConcept: "デザインコンセプト", specsTbc: "最終仕様は未定", conceptDeveloping: "コンセプト / 開発中", layoutTbc: "レイアウト・プロファイルは未定", information: "の詳細",
     metalLead: "これからのプロダクトを、少しだけ。", lead: "細かな仕様は、開発を進めています。", specNote: "最終仕様、価格、発売時期は、開発の進捗に合わせてお知らせします。", signoff: "KAGURA / 日々の道具に、自分らしさを。",
@@ -220,10 +223,10 @@ const ja: typeof en = {
     { caption: "レイナ / 二次創作コンセプト 001", alt: "鮮やかな赤いレコードジャケット風の背景に、紫の光を浴びたレイナを描いたファンアート" },
     { caption: "レイス / 二次創作コンセプト 002", alt: "冷たい青を基調に、SF のレコードジャケット風に構成したレイスのファンアート" },
     { caption: "コースティック / シネマティックコンセプト 003", alt: "オリーブグリーンのドラム缶が並ぶ倉庫で、暖かな逆光に照らされたコースティック" },
-    { caption: "シア / 二次創作コンセプト 004", alt: "Golden Hour：銅色とゴールドを背景に、つばの広い帽子に手を添えるシアのポートレート" },
-    { caption: "D-WOLF / 二次創作コンセプト 005", alt: "Redline：D-Wolf に着想を得た、赤を基調とするレコードジャケット風のコンセプト" },
-    { caption: "VYRON / 二次創作コンセプト 006", alt: "Afterburn：Vyron に着想を得た、映画のようなレコードジャケット風のコンセプト" },
-    { caption: "HACKCLAW / 二次創作コンセプト 007", alt: "Night Signal：Hackclaw に着想を得た、夜の空気を描くレコードジャケット風のコンセプト" },
+    { caption: "シア / 二次創作コンセプト 004", alt: "ゴールデンアワー：銅色とゴールドを背景に、つばの広い帽子に手を添えるシアのポートレート" },
+    { caption: "D-WOLF / 二次創作コンセプト 005", alt: "レッドライン：D-Wolf に着想を得た、赤を基調とするレコードジャケット風のコンセプト" },
+    { caption: "VYRON / 二次創作コンセプト 006", alt: "残り火：Vyron に着想を得た、映画のようなレコードジャケット風のコンセプト" },
+    { caption: "HACKCLAW / 二次創作コンセプト 007", alt: "夜のシグナル：Hackclaw に着想を得た、夜の空気を描くレコードジャケット風のコンセプト" },
   ],
   sound: {
     unavailable: "音源はまだ設定されていません。詳細を見る", startingLabel: "音楽を読み込み中。音楽をオフにする", onLabel: "音楽はオンです。オフにする", offLabel: "音楽はオフです。オンにする", on: "サウンド ON", off: "サウンド OFF", settings: "音量と楽曲情報", heading: "音楽と一緒に", close: "音楽設定を閉じる", trackPending: "コレクションに合う一曲を", volume: "音量", percent: "パーセント", error: "再生できませんでした。もう一度お試しください。", retry: "もう一度再生", starting: "音楽を読み込み中…", playing: "再生中です。パネルを閉じても音楽は続きます。", stopped: "音楽はオフです。お好きなときに再生してください。", noSource: "BGM を選曲中です。現在、音源はまだ設定されていません。",

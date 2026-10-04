@@ -15,3 +15,6 @@
 
 .root:lang(zh) .productInfo h1,.root:lang(ja) .productInfo h1{font-size:clamp(25px,2.1vw,34px);text-wrap:balance}
 @media(max-width:760px){.root:lang(zh) .productInfo h1,.root:lang(ja) .productInfo h1{font-size:32px}}
+
+.editionPicker button{font-size:10px}
+@media(max-width:760px){.editionPicker button{font-size:12px;min-height:36px}}

@@ -31,10 +31,12 @@ export function ShrineDetails({ open, onClose, kind, collection = "core", editio
   const isCovers = isGlass && collection === "covers";
   const isMetal = kind === "metal";
   const concept = copy.concepts[isGlass ? collection : kind];
-  const title = concept.title;
+  const editionName = copy.editionNames[edition] ?? copy.editionNames[0];
+  const title = isCovers ? editionName : concept.title;
   const specifications = isGlass ? [
     [text.category, copy.categories.glass],
-    [text.collection, title],
+    [text.collection, concept.title],
+    ...(isCovers ? [[text.edition, editionName]] : []),
     [text.dimensions, "490 × 420 mm"],
     [text.thickness, text.tbc],
     [text.surface, text.tbc],
@@ -142,7 +144,7 @@ export function ShrineDetails({ open, onClose, kind, collection = "core", editio
                 <div className={`${styles.glassPad} ${collection === "core" ? styles.corePad : collection === "artist" ? styles.artistPad : ""}`} aria-hidden="true">
                   {isCovers ? <AlbumArtwork edition={edition} /> : collection === "artist" ? <><span className={styles.artistOrbit} /><span className={styles.artistPlane} /><span className={styles.padMark}>KAGURA / ARTIST</span></> : <><span className={styles.coreSheen} /><span className={styles.padMark}>KAGURA / CORE</span></>}
                 </div>
-                <figcaption>{concept.caption}<span>{isCovers ? text.designDimensions : text.designConcept}</span></figcaption>
+                <figcaption>{isCovers ? editionName : concept.caption}<span>{isCovers ? text.designDimensions : text.designConcept}</span></figcaption>
               </figure>
             ) : isMetal ? (
               <figure className={`${styles.visual} ${styles.metalVisual}`}>

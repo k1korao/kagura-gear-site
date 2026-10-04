@@ -30,6 +30,10 @@ Chinese, English and Japanese have individually authored copy dictionaries. The 
 
 Legacy demo cloth-pad product and collection URLs redirect into current collection pages. Their unconfirmed prices and Shopify placeholder instructions are no longer part of the visitor journey. Shipping and returns pages reflect the current prelaunch status.
 
-## CUT K symbol
+## Refracted Orbit symbol
 
-`public/brand/kagura-symbol.svg` and `KaguraSymbol.tsx` contain an original, monochrome geometric K built from three cut planes. This is an original vector implementation, not a traced WALLHACK symbol. Desktop navigation combines the symbol with the existing custom KAGURA wordmark. Mobile navigation uses the symbol alone. Browser and touch icons use the same identity. No trademark clearance is implied.
+`public/brand/kagura-symbol.svg` and `KaguraSymbol.tsx` contain an original, non-letter emblem. Two angular orbit bands interlock around a hollow, four-point core. Opposing inset facets and deliberate negative-space cuts create a layered silhouette; no K or other letter is used as its structure. This replaces the first Cut K proposal following the owner's design feedback. The SVG uses an instance-specific mask ID so repeated symbols render independently.
+
+Desktop navigation combines the emblem with the existing custom KAGURA wordmark. Mobile navigation uses the emblem alone. The hero stamp, footer, browser and touch icons share the same identity. It is not traced from WALLHACK or another peripheral brand. No trademark clearance is implied.
+
+Cover edition display names are separately authored in Chinese, English and Japanese and are shared by selectors, card labels, accessibility labels and detail panels. English lettering inside the artwork remains part of the artwork; the stable `art` identifiers and chosen cover survive a locale change.
