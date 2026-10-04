@@ -2,10 +2,14 @@
 
 import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { useLocale } from "@/components/LocaleProvider";
+import { productCopy } from "@/lib/product-copy";
 import styles from "./CollectionSound.module.css";
 import music from "../../public/audio/music.json";
 
 export function CollectionSound() {
+  const locale = useLocale();
+  const text = productCopy[locale].sound;
   const audioRef = useRef<HTMLAudioElement>(null);
   const controlRef = useRef<HTMLDivElement>(null);
   const settingsRef = useRef<HTMLButtonElement>(null);
@@ -18,7 +22,7 @@ export function CollectionSound() {
   const [pending, setPending] = useState(false);
   const [volume, setVolume] = useState(music.defaultVolume);
   const [popoverOpen, setPopoverOpen] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState(false);
   const [position, setPosition] = useState({ left: 12, top: 80, width: 248 });
   const id = useId();
 
@@ -83,7 +87,7 @@ export function CollectionSound() {
     desiredPlayback.current = shouldPlay;
     const currentRequest = ++requestId.current;
     setEnabled(shouldPlay);
-    setError("");
+    setError(false);
 
     if (!shouldPlay) {
       audio.pause();
@@ -105,7 +109,7 @@ export function CollectionSound() {
       audio.pause();
       setEnabled(false);
       setPending(false);
-      setError("Audio couldn’t start. Try again.");
+      setError(true);
       setPopoverOpen(true);
     });
   }
@@ -124,19 +128,19 @@ export function CollectionSound() {
         type="button"
         className={`${styles.toggle} ${enabled ? styles.enabled : ""}`}
         aria-pressed={enabled}
-        aria-label={pending ? "Sound on, starting. Turn sound off" : enabled ? "Sound on. Turn sound off" : "Sound off. Turn sound on"}
+        aria-label={!music.src ? text.unavailable : pending ? text.startingLabel : enabled ? text.onLabel : text.offLabel}
         onClick={togglePlayback}
       >
         <svg className={enabled && !pending ? styles.wavePlaying : styles.wave} viewBox="0 0 20 20" width="17" height="17" aria-hidden="true">
           <path d="M3 8v4M7 4v12M11 6v8M15 3v14M19 8v4" />
         </svg>
-        <span>SOUND {enabled ? "ON" : "OFF"}</span>
+        <span>{enabled ? text.on : text.off}</span>
       </button>
       <button
         ref={settingsRef}
         type="button"
         className={styles.settings}
-        aria-label="Music volume and track information"
+        aria-label={text.settings}
         aria-haspopup="dialog"
         aria-expanded={popoverOpen}
         aria-controls={`${id}-panel`}
@@ -154,13 +158,13 @@ export function CollectionSound() {
           style={position}
         >
           <div className={styles.panelHeading}>
-            <h2 id={`${id}-heading`}>LISTEN ALONG</h2>
-            <button type="button" className={styles.close} aria-label="Close music settings" onClick={() => { setPopoverOpen(false); settingsRef.current?.focus({ preventScroll: true }); }}>×</button>
+            <h2 id={`${id}-heading`}>{text.heading}</h2>
+            <button type="button" className={styles.close} aria-label={text.close} onClick={() => { setPopoverOpen(false); settingsRef.current?.focus({ preventScroll: true }); }}>×</button>
           </div>
-          <p className={styles.track}>{music.title}</p>
-          <div className={styles.volumeLabel}><label htmlFor={`${id}-volume`}>Volume</label><output htmlFor={`${id}-volume`}>{Math.round(volume * 100)}%</output></div>
-          <input ref={sliderRef} id={`${id}-volume`} className={styles.slider} type="range" min="0" max="100" step="1" value={Math.round(volume * 100)} aria-valuetext={`${Math.round(volume * 100)} percent`} onChange={(event) => changeVolume(event.target.value)} />
-          {error ? <div className={styles.error}><p role="status">{error}</p><button type="button" onClick={togglePlayback}>Retry audio <span aria-hidden="true">↗</span></button></div> : <p className={styles.note}>{pending ? "Starting audio…" : enabled ? "Playing. Close this panel to keep listening." : music.src ? "Sound is off. Play when you feel like it." : "Our background track is being selected. Sound is off."}</p>}
+          <p className={styles.track}>{music.src ? music.title : text.trackPending}</p>
+          <div className={styles.volumeLabel}><label htmlFor={`${id}-volume`}>{text.volume}</label><output htmlFor={`${id}-volume`}>{Math.round(volume * 100)}%</output></div>
+          <input ref={sliderRef} id={`${id}-volume`} className={styles.slider} type="range" min="0" max="100" step="1" value={Math.round(volume * 100)} aria-valuetext={`${Math.round(volume * 100)} ${text.percent}`} onChange={(event) => changeVolume(event.target.value)} />
+          {error ? <div className={styles.error}><p role="status">{text.error}</p><button type="button" onClick={togglePlayback}>{text.retry} <span aria-hidden="true">↗</span></button></div> : <p className={styles.note}>{pending ? text.starting : enabled ? text.playing : music.src ? text.stopped : text.noSource}</p>}
         </div>, document.body,
       ) : null}
     </div>

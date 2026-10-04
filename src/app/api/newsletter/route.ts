@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
-import { products } from "@/lib/products";
+import { getLocale } from "@/lib/locale-server";
+import { htmlLanguages, type Locale } from "@/lib/locale";
+import { newsletterEmailCopy } from "@/lib/newsletter-copy";
 import { absoluteUrl, siteConfig, supportMailto } from "@/lib/site";
 
 export const runtime = "nodejs";
@@ -33,83 +35,15 @@ function escapeHtml(value: string) {
     .replaceAll("'", "&#039;");
 }
 
-function buildProductLinks() {
-  return products
-    .map((product) => {
-      const url = absoluteUrl(`/products/${product.slug}`);
-
-      return {
-        ...product,
-        url,
-      };
-    })
-    .slice(0, 3);
+function buildCustomerText(email: string, locale: Locale) {
+  const copy = newsletterEmailCopy[locale];
+  return [copy.heading, "", copy.body, "", copy.glass, absoluteUrl("/explore/glass"), copy.keycaps, absoluteUrl("/explore/keycaps"), copy.metal, absoluteUrl("/explore/metal"), "", copy.unsubscribe, email, siteConfig.supportEmail].join("\n");
 }
 
-function buildCustomerText(email: string) {
-  const lines = [
-    "Welcome to Kagura Gear.",
-    "",
-    "Thanks for joining the drop list. Here are three recommended launch products:",
-    "",
-    ...buildProductLinks().flatMap((product) => [
-      `${product.name} - ${product.price}`,
-      product.shortDescription,
-      product.url,
-      "",
-    ]),
-    "Checkout will be handled by Shopify once live products are connected. Kagura Gear will never ask you to enter card details directly on this custom site.",
-    "",
-    `You signed up with ${email}. To unsubscribe, reply to this email with UNSUBSCRIBE.`,
-    `${siteConfig.name} / ${siteConfig.supportEmail}`,
-  ];
-
-  return lines.join("\n");
-}
-
-function buildCustomerHtml(email: string) {
-  const productCards = buildProductLinks()
-    .map(
-      (product) => `
-        <tr>
-          <td style="padding:18px 0;border-top:1px solid #2b2d34;">
-            <p style="margin:0 0 6px;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#f6a5bd;">${escapeHtml(product.series)}</p>
-            <h2 style="margin:0 0 8px;font-size:22px;line-height:1.2;color:#f7f3ed;">${escapeHtml(product.name)} <span style="color:#8e98a8;">${escapeHtml(product.price)}</span></h2>
-            <p style="margin:0 0 14px;color:#b8c0cc;line-height:1.6;">${escapeHtml(product.shortDescription)}</p>
-            <a href="${product.url}" style="display:inline-block;border:1px solid #f6a5bd;background:#f6a5bd;color:#050507;padding:12px 16px;text-decoration:none;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;font-size:12px;">View Product</a>
-          </td>
-        </tr>
-      `,
-    )
-    .join("");
-
-  return `
-    <div style="margin:0;background:#050507;padding:32px 16px;font-family:Arial,Helvetica,sans-serif;color:#f7f3ed;">
-      <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:640px;margin:0 auto;border:1px solid #252832;background:#101217;">
-        <tr>
-          <td style="padding:28px 28px 8px;">
-            <p style="margin:0 0 12px;font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:#f6a5bd;">Precision Meets Ritual</p>
-            <h1 style="margin:0;font-size:34px;line-height:1.05;color:#f7f3ed;">Welcome to Kagura Gear.</h1>
-            <p style="margin:18px 0 0;color:#b8c0cc;line-height:1.7;">Thanks for joining the drop list. Here are three recommended launch products for FPS players, keyboard users, and desk setup fans.</p>
-          </td>
-        </tr>
-        <tr>
-          <td style="padding:4px 28px 20px;">
-            <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
-              ${productCards}
-            </table>
-          </td>
-        </tr>
-        <tr>
-          <td style="padding:20px 28px 28px;border-top:1px solid #252832;color:#8e98a8;font-size:12px;line-height:1.7;">
-            <p style="margin:0 0 8px;">Checkout will be handled by Shopify once live products are connected. Kagura Gear will never ask you to enter card details directly on this custom site.</p>
-            <p style="margin:0;">You signed up with ${escapeHtml(email)}. To unsubscribe, reply to this email with <strong style="color:#f7f3ed;">UNSUBSCRIBE</strong>.</p>
-            <p style="margin:12px 0 0;">${escapeHtml(siteConfig.name)} / ${escapeHtml(siteConfig.supportEmail)}</p>
-          </td>
-        </tr>
-      </table>
-    </div>
-  `;
+function buildCustomerHtml(email: string, locale: Locale) {
+  const copy = newsletterEmailCopy[locale];
+  const links = [["glass", copy.glass], ["keycaps", copy.keycaps], ["metal", copy.metal]];
+  return `<div lang="${htmlLanguages[locale]}" style="background:#f7f7f5;color:#20242a;padding:36px;font-family:Arial,sans-serif;line-height:1.8;max-width:620px;margin:auto"><p>KAGURA</p><h1 style="font-size:30px;line-height:1.4">${escapeHtml(copy.heading)}</h1><p>${escapeHtml(copy.body)}</p>${links.map(([path, name]) => `<p><a style="color:#20242a" href="${absoluteUrl(`/explore/${path}`)}">${escapeHtml(name)} ↗</a></p>`).join("")}<hr style="border:0;border-top:1px solid #d5d8db;margin:32px 0"/><p style="font-size:12px">${escapeHtml(copy.unsubscribe)}<br/>${escapeHtml(email)}<br/>${escapeHtml(siteConfig.supportEmail)}</p></div>`;
 }
 
 async function sendEmail({
@@ -158,6 +92,8 @@ export async function POST(request: Request) {
     return NextResponse.json({ message: "Invalid request." }, { status: 400 });
   }
 
+  const locale = await getLocale();
+  const copy = newsletterEmailCopy[locale];
   const email = normalize(body.email, 120).toLowerCase();
   const company = normalize(body.company, 120);
   const consent = body.consent === true;
@@ -189,20 +125,20 @@ export async function POST(request: Request) {
       {
         message:
           "The automatic email sender is not connected yet. Please email support directly for launch updates.",
-        mailtoHref: supportMailto("Kagura Gear newsletter signup", `Please add ${email} to the drop list.`),
+        mailtoHref: supportMailto(copy.fallback, `${copy.request}${email}`),
       },
       { status: 503 },
     );
   }
 
-  const customerText = buildCustomerText(email);
-  const customerHtml = buildCustomerHtml(email);
+  const customerText = buildCustomerText(email, locale);
+  const customerHtml = buildCustomerHtml(email, locale);
   const customerResponse = await sendEmail({
     apiKey,
     fromEmail,
     to: email,
     replyTo: siteConfig.supportEmail,
-    subject: "Welcome to Kagura Gear - recommended launch gear",
+    subject: copy.subject,
     text: customerText,
     html: customerHtml,
   });
@@ -210,27 +146,31 @@ export async function POST(request: Request) {
   if (!customerResponse.ok) {
     return NextResponse.json(
       {
-        message: "The recommendation email could not be sent. Please try again later.",
+        message: "The welcome email could not be sent. Please try again later.",
       },
       { status: 502 },
     );
   }
 
-  await sendEmail({
+  const notificationResponse = await sendEmail({
     apiKey,
     fromEmail,
     to: notifyEmail,
     replyTo: email,
     subject: "New Kagura Gear newsletter signup",
-    text: [`New newsletter signup: ${email}`, "", "A recommendation email was sent automatically."].join("\n"),
+    text: [`New newsletter signup: ${email}`, "", `A welcome email was sent. Preferred language: ${locale}.`].join("\n"),
     html: `
       <h2>New Kagura Gear newsletter signup</h2>
       <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-      <p>A recommendation email was sent automatically.</p>
+      <p>A welcome email was sent. Preferred language: ${locale}.</p>
     `,
   });
 
+  if (!notificationResponse.ok) {
+    return NextResponse.json({ message: "Signup could not be completed." }, { status: 502 });
+  }
+
   return NextResponse.json({
-    message: "Recommendation email sent. Check your inbox for the Kagura Gear launch picks.",
+    message: "Welcome email sent. Check your inbox.",
   });
 }

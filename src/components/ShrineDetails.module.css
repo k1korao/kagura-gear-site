@@ -96,6 +96,10 @@
 .asideFooter > span:first-child { color: #1c304e; font-size: 17px; font-weight: 700; letter-spacing: -.06em; }
 .asideFooter > span:last-child { border-left: 1px solid #c2d1e5; padding-left: 16px; color: #5b6c85; font-size: 9px; line-height: 1.8; }
 
+.dialog:lang(zh) :is(.intro h2, .aside h3, .panelLead),
+.dialog:lang(ja) :is(.intro h2, .aside h3, .panelLead) { letter-spacing: -.015em; line-height: 1.35; }
+.dialog:lang(ja) :is(.eyebrow, .index, .storySignoff) { letter-spacing: .04em; }
+
 @keyframes dialogReveal { from { opacity: 0; } to { opacity: 1; } }
 @keyframes contentRise { from { opacity: 0; translate: 0 17px; } to { opacity: 1; translate: 0 0; } }
 @keyframes panelSlide { from { opacity: 0; translate: 35px 0; } to { opacity: 1; translate: 0 0; } }
@@ -130,6 +134,8 @@
   .keysVisual figcaption { flex-direction: column; gap: 1px; }
   .tabList { justify-content: space-between; gap: 10px; margin-top: 20px; }
   .tab { min-width: 80px; gap: 14px; }
+  .dialog:lang(ja) .tab { min-width: 0; gap: 5px; font-size: 11px; }
+  .dialog:lang(ja) .tabList { gap: 8px; }
   .panel { padding-top: 24px; }
   .panel > .panelLead { font-family: var(--font-display), Arial, sans-serif; font-size: 21px; }
   .specs > div { grid-template-columns: 92px minmax(0, 1fr); }

@@ -1,6 +1,8 @@
 import CollectionPage from "./shrine/page";
 import { pageMetadata } from "@/lib/metadata";
+import { getLocale } from "@/lib/locale-server";
+import { homeCopy } from "@/lib/home-copy";
 
-export const metadata = pageMetadata({ title: "KAGURA — Made for Your Next Obsession", description: "Independent objects. Individual expression. Glass mousepads, artist editions, keycaps and future metal customs. Discover the KAGURA perspective.", path: "/" });
+export async function generateMetadata() { const copy = homeCopy[await getLocale()]; return pageMetadata({ title: copy.title, description: copy.description, path: "/" }); }
 
 export default CollectionPage;

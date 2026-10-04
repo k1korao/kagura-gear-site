@@ -1,58 +1,31 @@
-import { SectionHeading } from "@/components/SectionHeading";
+import Link from "next/link";
+import styles from "@/components/SupportPages.module.css";
+import { getLocale } from "@/lib/locale-server";
 import { pageMetadata } from "@/lib/metadata";
+import { supportCopy } from "@/lib/support-copy";
 
-export const metadata = pageMetadata({
-  title: "FAQ",
-  description: "Frequently asked questions about Kagura Gear.",
-  path: "/faq",
-});
+export async function generateMetadata() {
+  const copy = supportCopy[await getLocale()].faq;
+  return pageMetadata({ title: copy.metaTitle, description: copy.metaDescription, path: "/faq" });
+}
 
-const faqs = [
-  {
-    question: "How will checkout work?",
-    answer:
-      "Checkout should be handled by Shopify Checkout through Shopify Buy Button embeds. This website does not collect credit card data.",
-  },
-  {
-    question: "Are these products final?",
-    answer:
-      "The first three products are launch placeholders. Replace product descriptions, images, pricing, and Shopify embeds once your Shopify catalog is ready.",
-  },
-  {
-    question: "Can the site use my Shopify products automatically?",
-    answer:
-      "Yes. A future version can use Shopify Storefront API for dynamic products, cart behavior, and Shopify Checkout redirects.",
-  },
-  {
-    question: "Where should policy details be edited?",
-    answer:
-      "Shipping, return, privacy, and terms pages are included. Update them to match your actual Shopify settings and legal requirements before launch.",
-  },
-];
-
-export default function FaqPage() {
-  return (
-    <main className="bg-ink">
-      <section className="border-b border-white/10 bg-edge-light">
-        <div className="mx-auto max-w-4xl px-4 py-20 sm:px-6 lg:px-8">
-          <SectionHeading
-            eyebrow="FAQ"
-            title="Launch questions, answered cleanly."
-            body="A starter FAQ for customers and for your Shopify launch workflow."
-          />
-        </div>
-      </section>
-
-      <section className="mx-auto grid max-w-4xl gap-4 px-4 py-16 sm:px-6 lg:px-8">
-        {faqs.map((faq) => (
-          <details key={faq.question} data-reveal className="border border-white/10 bg-smoke p-6 transition hover:border-sakura/35">
-            <summary className="cursor-pointer text-lg font-black text-bone">
-              {faq.question}
-            </summary>
-            <p className="mt-4 leading-7 text-steel">{faq.answer}</p>
-          </details>
-        ))}
-      </section>
-    </main>
-  );
+export default async function FaqPage() {
+  const copy = supportCopy[await getLocale()].faq;
+  return <main className={styles.page}>
+    <section className={styles.hero} aria-labelledby="faq-title">
+      <p className={styles.eyebrow}>{copy.label}</p>
+      <h1 id="faq-title">{copy.title}</h1>
+      <p className={styles.intro}>{copy.intro}</p>
+    </section>
+    <section className={styles.faqItems} aria-labelledby="faq-title">
+      {copy.items.map((item, index) => <details className={styles.faqItem} key={item.question}>
+        <summary><span className={styles.faqNumber} aria-hidden="true">{String(index + 1).padStart(2, "0")}</span><span>{item.question}</span><span className={styles.faqPlus} aria-hidden="true">+</span></summary>
+        <p>{item.answer}</p>
+      </details>)}
+    </section>
+    <section className={styles.contactCard}>
+      <div><h2>{copy.contactTitle}</h2><p>{copy.contactCopy}</p></div>
+      <Link className={styles.contactAction} href="/contact">{copy.contactAction}<span aria-hidden="true">↗</span></Link>
+    </section>
+  </main>;
 }

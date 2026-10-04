@@ -1,181 +1,95 @@
 "use client";
 
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
+import { useLocale } from "@/components/LocaleProvider";
 import { siteConfig, supportMailto } from "@/lib/site";
+import { supportCopy } from "@/lib/support-copy";
+import styles from "./SupportPages.module.css";
 
+type ContactDraft = { name: string; email: string; topic: string; message: string; company: string };
 type FormState = {
   status: "idle" | "sending" | "sent" | "error";
-  message: string;
-  mailtoHref?: string;
+  notice: keyof (typeof supportCopy)["en"]["contactForm"]["notices"];
+  draft?: ContactDraft;
 };
 
-const inputClass =
-  "min-h-12 border border-white/15 bg-black/35 px-4 text-bone outline-none transition placeholder:text-steel/50 focus:border-sakura focus:shadow-[0_0_28px_rgba(246,165,189,0.12)]";
-const labelClass = "text-sm font-black uppercase tracking-[0.18em] text-bone";
-
 export function ContactForm() {
-  const [state, setState] = useState<FormState>({
-    status: "idle",
-    message: "",
-  });
+  const locale = useLocale();
+  const copy = supportCopy[locale].contactForm;
+  const pending = useRef(false);
+  const [state, setState] = useState<FormState>({ status: "idle", notice: "idle" });
 
-  const defaultMailto = useMemo(
-    () =>
-      supportMailto(
-        "Kagura Gear support request",
-        "Hi Kagura Gear,\n\nI need help with:\n\n",
-      ),
-    [],
-  );
+  function mailtoFor(draft: ContactDraft) {
+    const topic = copy.topics.find(item => item.value === draft.topic)?.label || draft.topic;
+    return supportMailto(copy.mailSubject.replace("{topic}", topic), [
+      copy.mailHeading, "", `${copy.name}: ${draft.name}`, `${copy.email}: ${draft.email}`,
+      `${copy.topic}: ${topic}`, "", draft.message,
+    ].join("\n"));
+  }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-
+    if (pending.current) return;
     const form = event.currentTarget;
     const formData = new FormData(form);
-
-    setState({
-      status: "sending",
-      message: "Sending your message...",
-    });
-
-    const payload = {
-      name: String(formData.get("name") || ""),
-      email: String(formData.get("email") || ""),
+    const draft: ContactDraft = {
+      name: String(formData.get("name") || "").trim(),
+      email: String(formData.get("email") || "").trim(),
       topic: String(formData.get("topic") || ""),
-      message: String(formData.get("message") || ""),
+      message: String(formData.get("message") || "").trim(),
       company: String(formData.get("company") || ""),
     };
-
+    const invalidField = !draft.name ? "name" : !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(draft.email) ? "email" : !draft.message ? "message" : null;
+    if (invalidField) {
+      setState({ status: "error", notice: "invalid" });
+      form.querySelector<HTMLElement>(`[name="${invalidField}"]`)?.focus();
+      return;
+    }
+    pending.current = true;
+    setState({ status: "sending", notice: "sending" });
     try {
       const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
+        method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...draft, locale }),
       });
-      const result = (await response.json()) as {
-        message?: string;
-        mailtoHref?: string;
-      };
-
+      await response.json();
       if (!response.ok) {
-        const fallbackHref = result.mailtoHref || defaultMailto;
-
-        setState({
-          status: "error",
-          message:
-            result.message ||
-            `Your email app should open with this message addressed to ${siteConfig.supportEmail}. Send it there so we can reply.`,
-          mailtoHref: fallbackHref,
-        });
-
-        if (response.status === 502 || response.status === 503) {
-          window.location.href = fallbackHref;
-        }
-
+        const notice = response.status === 400 ? "invalid" : response.status === 429 ? "limited" : response.status === 503 ? "unavailable" : response.status === 502 ? "failed" : "uncertain";
+        setState({ status: "error", notice, draft: response.status === 400 ? undefined : draft });
         return;
       }
-
       form.reset();
-      setState({
-        status: "sent",
-        message: result.message || `Message sent. We will reply from ${siteConfig.supportEmail}.`,
-      });
+      setState({ status: "sent", notice: "sent" });
     } catch {
-      setState({
-        status: "error",
-        message: `Your email app should open with this message addressed to ${siteConfig.supportEmail}. Send it there so we can reply.`,
-        mailtoHref: defaultMailto,
-      });
-      window.location.href = defaultMailto;
+      setState({ status: "error", notice: "uncertain", draft });
+    } finally {
+      pending.current = false;
     }
   }
 
-  return (
-    <form onSubmit={handleSubmit} data-reveal className="grid gap-4 border border-white/10 bg-smoke p-7">
-      <div className="grid gap-2">
-        <label className={labelClass} htmlFor="name">
-          Name
-        </label>
-        <input
-          id="name"
-          name="name"
-          autoComplete="name"
-          required
-          className={inputClass}
-          placeholder="Your name"
-        />
-      </div>
-      <div className="grid gap-2">
-        <label className={labelClass} htmlFor="email">
-          Email
-        </label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          autoComplete="email"
-          required
-          className={inputClass}
-          placeholder="you@example.com"
-        />
-      </div>
-      <div className="grid gap-2">
-        <label className={labelClass} htmlFor="topic">
-          Topic
-        </label>
-        <select id="topic" name="topic" className={inputClass} defaultValue="Product question">
-          <option>Product question</option>
-          <option>Order support</option>
-          <option>Wholesale</option>
-          <option>Collaboration</option>
-          <option>Other</option>
-        </select>
-      </div>
-      <div className="hidden">
-        <label htmlFor="company">Company</label>
-        <input id="company" name="company" tabIndex={-1} autoComplete="off" />
-      </div>
-      <div className="grid gap-2">
-        <label className={labelClass} htmlFor="message">
-          Message
-        </label>
-        <textarea
-          id="message"
-          name="message"
-          rows={6}
-          required
-          className="border border-white/15 bg-black/35 p-4 text-bone outline-none transition placeholder:text-steel/50 focus:border-sakura focus:shadow-[0_0_28px_rgba(246,165,189,0.12)]"
-          placeholder="Tell us what you need help with."
-        />
-      </div>
-      <button
-        type="submit"
-        disabled={state.status === "sending"}
-        className="premium-button border border-sakura bg-sakura px-5 py-4 text-sm font-black uppercase tracking-[0.18em] text-ink transition hover:border-bone hover:bg-bone disabled:cursor-not-allowed disabled:border-white/15 disabled:bg-white/15 disabled:text-steel"
-      >
-        {state.status === "sending" ? "Sending..." : "Send Message"}
-      </button>
-      <div className="border border-white/10 bg-black/25 p-4 text-sm leading-6 text-steel">
-        {state.message ? (
-          <p>{state.message}</p>
-        ) : (
-          <p>
-            We reply from {siteConfig.supportEmail}. If the secure website sender is not
-            connected yet, this form will open your email app with the message ready to send.
-          </p>
-        )}
-        {state.mailtoHref ? (
-          <a
-            href={state.mailtoHref}
-            className="mt-3 inline-flex font-black uppercase tracking-[0.16em] text-sakura transition hover:text-bone"
-          >
-            Open email app
-          </a>
-        ) : null}
-      </div>
-    </form>
-  );
+  return <form onSubmit={handleSubmit} onChange={() => { if (!pending.current && state.status !== "idle") setState({ status: "idle", notice: "idle" }); }} noValidate className={styles.form} aria-busy={state.status === "sending"}>
+    <div className={styles.field}>
+      <label className={styles.label} htmlFor="contact-name">{copy.name}</label>
+      <input id="contact-name" name="name" autoComplete="name" required maxLength={80} className={styles.input} placeholder={copy.namePlaceholder} disabled={state.status === "sending"} aria-describedby="contact-notice" />
+    </div>
+    <div className={styles.field}>
+      <label className={styles.label} htmlFor="contact-email">{copy.email}</label>
+      <input id="contact-email" name="email" type="email" autoComplete="email" required maxLength={120} className={styles.input} placeholder="you@example.com" disabled={state.status === "sending"} aria-describedby="contact-notice" />
+    </div>
+    <div className={styles.field}>
+      <label className={styles.label} htmlFor="contact-topic">{copy.topic}</label>
+      <select id="contact-topic" name="topic" className={styles.input} defaultValue="Product question" disabled={state.status === "sending"}>
+        {copy.topics.map(topic => <option key={topic.value} value={topic.value}>{topic.label}</option>)}
+      </select>
+    </div>
+    <div className={styles.trap} aria-hidden="true"><label htmlFor="contact-company">{copy.company}</label><input id="contact-company" name="company" tabIndex={-1} autoComplete="off" /></div>
+    <div className={styles.field}>
+      <label className={styles.label} htmlFor="contact-message">{copy.message}</label>
+      <textarea id="contact-message" name="message" rows={6} required maxLength={4000} className={styles.textarea} placeholder={copy.messagePlaceholder} disabled={state.status === "sending"} aria-describedby="contact-notice" />
+    </div>
+    <button type="submit" disabled={state.status === "sending"} className={styles.submit}>{state.status === "sending" ? copy.sending : copy.submit}</button>
+    <div id="contact-notice" className={styles.notice} data-status={state.status} aria-live="polite" aria-atomic="true">
+      <p>{copy.notices[state.notice].replace("{email}", siteConfig.supportEmail)}</p>
+      {state.draft ? <a href={mailtoFor(state.draft)} className={styles.fallback}>{copy.emailAction}</a> : null}
+    </div>
+  </form>;
 }

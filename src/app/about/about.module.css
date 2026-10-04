@@ -1,0 +1,74 @@
+.page { --about-ink:#181d27; --about-muted:#657083; --about-line:#d8dde5; background:#f8f8f5; color:var(--about-ink); font-family:"PingFang SC","Microsoft YaHei",Arial,sans-serif; overflow:clip; }
+.page[data-locale="en"] { font-family:Arial,sans-serif; }
+.page[data-locale="ja"] { font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif; }
+.page[data-locale="en"] :is(h1,h2,h3) { font-family:var(--font-display); }
+.page[data-locale="ja"] .hero h1 { font-size:clamp(24px,2.7vw,43px); }
+.page[data-locale="ja"] .imageMark { font-size:clamp(24px,3.2vw,43px); }
+.page[data-locale="ja"] .objectCard h3 { font-size:22px; }
+.page :is(a,button):focus-visible { outline:2px solid #344bb7; outline-offset:6px; }
+.hero,.story,.beliefs,.creatorStory,.objects,.invitation { width:min(1440px,90%); margin-inline:auto; }
+.hero { display:grid; grid-template-columns:1.1fr 1fr; gap:7%; align-items:center; padding-block:70px 74px; }
+.heroCopy,.storyBody { min-width:0; }
+.eyebrow { margin:0 0 25px; font-family:var(--font-display); font-size:10px; font-weight:500; line-height:1.7; letter-spacing:.12em; color:#657183; }
+.hero h1 { margin:0; font-size:clamp(28px,3.35vw,54px); line-height:1.55; font-weight:550; letter-spacing:-.045em; }
+.heroEnglish { margin:26px 0 23px; font-family:var(--font-display); font-size:clamp(44px,6.6vw,105px); font-weight:650; line-height:.99; letter-spacing:-.055em; }
+.heroEnglish span { color:#737f96; }
+.intro { max-width:460px; font-size:13px; line-height:2; color:var(--about-muted); }
+.textLink { display:flex; align-items:center; justify-content:space-between; width:fit-content; gap:36px; min-height:48px; margin-top:22px; border-bottom:1px solid #7a869b; font-size:12px; }
+.textLink span { font-size:20px; font-weight:300; }
+.textLink:hover { color:#344bb7; border-color:#344bb7; }
+.heroVisual { margin:0; }
+.heroImage { position:relative; aspect-ratio:4/4.7; overflow:hidden; background:#b6c2d1; }
+.heroImage img { object-fit:cover; object-position:center; }
+.heroImage::after { content:""; position:absolute; inset:55% 0 0; background:linear-gradient(transparent,#0712259e); pointer-events:none; }
+.imageMark { position:absolute; z-index:1; left:7%; bottom:7%; font-family:var(--font-display); font-size:clamp(34px,4.4vw,62px); font-weight:500; line-height:1; letter-spacing:-.045em; color:white; }
+.heroVisual figcaption { display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px; padding-top:13px; font-size:9px; color:#778091; }
+.heroVisual figcaption span:first-child { font-family:var(--font-display); letter-spacing:.08em; }
+.story { border-top:1px solid var(--about-line); display:grid; grid-template-columns:1fr 2fr; gap:7%; padding-block:60px 86px; scroll-margin-top:100px; }
+.chapterLabel { display:flex; flex-direction:column; gap:13px; padding-top:7px; font-size:11px; color:#657183; }
+.chapterLabel span:first-child { font-family:var(--font-display); font-size:10px; letter-spacing:.09em; }
+.story h2,.sectionHeading h2,.creatorCopy h2 { margin:0 0 27px; font-size:clamp(26px,3vw,43px); font-weight:500; line-height:1.6; letter-spacing:-.04em; }
+.prose { display:grid; grid-template-columns:1fr 1fr; gap:35px; }
+.prose p,.belief p,.creatorCopy>p:not(.eyebrow),.sectionHeading>p:last-child { color:var(--about-muted); font-size:13px; line-height:2.1; margin:0; }
+.beliefs { padding-bottom:80px; }
+.sectionHeading { display:grid; grid-template-columns:1fr 2fr; column-gap:7%; margin-bottom:35px; }
+.sectionHeading .eyebrow { padding-top:9px; }
+.sectionHeading h2 { margin:0; }
+.sectionHeading>p:last-child:not(.eyebrow) { grid-column:2; max-width:490px; margin-top:20px; }
+.beliefGrid { display:grid; grid-template-columns:repeat(3,1fr); border-block:1px solid var(--about-line); }
+.belief { padding:32px 30px 38px; border-left:1px solid var(--about-line); }
+.belief:first-child { border-left:0; padding-left:0; }
+.belief:last-child { padding-right:0; }
+.beliefIndex { display:flex; align-items:center; justify-content:space-between; gap:20px; margin-bottom:34px; color:#718099; font-family:var(--font-display); }
+.beliefIndex span:first-child { font-size:43px; font-weight:350; letter-spacing:-.04em; }
+.beliefIndex span:last-child { font-size:9px; letter-spacing:.09em; }
+.belief h3 { margin:0 0 15px; font-size:18px; font-weight:550; line-height:1.7; letter-spacing:-.03em; }
+.belief p { font-size:12px; }
+.creatorStory { display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:9%; padding-bottom:85px; }
+.creatorVisual { margin:0; }
+.creatorVisual>div { position:relative; aspect-ratio:1; overflow:hidden; background:#b84942; }
+.creatorVisual img { object-fit:cover; }
+.creatorVisual figcaption { margin-top:14px; color:#7d8797; font-size:9px; letter-spacing:.03em; }
+.creatorCopy h2 { font-size:clamp(29px,3.6vw,51px); }
+.creatorCopy>p:not(.eyebrow) { margin:0 0 17px; }
+.status { display:inline-flex; align-items:center; gap:9px; margin-top:12px; color:#606f88; font-size:10px; }
+.status::before { content:""; width:5px; height:5px; border-radius:50%; background:#647baa; }
+.creatorCopy .textLink { margin-top:16px; }
+.objects { padding-block:56px 78px; border-top:1px solid var(--about-line); }
+.objectGrid { display:grid; grid-template-columns:repeat(3,1fr); gap:15px; }
+.objectCard { display:flex; flex-direction:column; min-height:250px; padding:28px 26px 20px; background:#edf0f3; border:1px solid #e1e6eb; transition:background 180ms ease, border-color 180ms ease; }
+.objectCard:hover { background:#e3e9f1; border-color:#b6c3d6; }
+.objectNumber { font-family:var(--font-display); font-size:9px; letter-spacing:.08em; color:#6d7a8e; }
+.objectCard h3 { margin:26px 0 9px; font-size:25px; font-weight:500; letter-spacing:-.04em; }
+.objectCard p { margin:0 0 24px; color:var(--about-muted); font-size:12px; line-height:1.8; }
+.objectLink { margin-top:auto; display:flex; justify-content:space-between; align-items:center; gap:20px; font-size:11px; }
+.objectLink span { font-size:20px; color:#6b7990; }
+.invitation { padding-block:67px 87px; border-top:1px solid var(--about-line); text-align:center; }
+.invitation h2 { margin:0 0 24px; font-size:clamp(29px,3.8vw,57px); font-weight:500; line-height:1.6; letter-spacing:-.05em; }
+.invitation>p:not(.eyebrow) { color:var(--about-muted); font-size:13px; line-height:2; }
+.button { display:inline-flex; align-items:center; justify-content:space-between; gap:45px; margin-top:25px; padding:16px 21px; background:#1c2330; border:1px solid #1c2330; color:#fff; font-size:12px; min-height:49px; transition:background 180ms ease; }
+.button:hover { background:#34465f; }
+@media(min-width:1600px) { .hero { padding-block:90px; } }
+@media(max-width:1000px) { .hero { gap:5%; } .heroEnglish { font-size:6.3vw; } .story,.sectionHeading { grid-template-columns:.8fr 2fr; gap:5%; } .creatorStory { gap:6%; } .belief { padding-inline:20px; } .belief h3 { font-size:16px; } .objectCard { padding-inline:20px; } }
+@media(max-width:760px) { .hero,.story,.beliefs,.creatorStory,.objects,.invitation { width:88%; } .hero { grid-template-columns:1fr; gap:37px; padding-block:39px 41px; } .eyebrow { font-size:9px; margin-bottom:21px; } .hero h1 { font-size:32px; line-height:1.6; } .heroEnglish { margin-block:23px; font-size:clamp(50px,12.5vw,86px); } .intro { font-size:12px; } .heroImage { aspect-ratio:1.05; } .imageMark { font-size:45px; } .heroVisual figcaption { font-size:8px; } .story { grid-template-columns:1fr; padding-block:31px 50px; gap:26px; } .chapterLabel { flex-direction:row; justify-content:space-between; gap:15px; } .story h2,.sectionHeading h2 { font-size:27px; margin-bottom:21px; } .prose { grid-template-columns:1fr; gap:17px; } .prose p,.creatorCopy>p:not(.eyebrow) { font-size:12px; } .sectionHeading { grid-template-columns:1fr; gap:0; margin-bottom:24px; } .sectionHeading>p:last-child:not(.eyebrow) { grid-column:1; font-size:12px; margin-top:0; } .beliefs { padding-bottom:42px; } .beliefGrid { grid-template-columns:1fr; } .belief,.belief:first-child,.belief:last-child { border-left:0; border-top:1px solid var(--about-line); padding:23px 0 26px; } .belief:first-child { border-top:0; } .beliefIndex { margin-bottom:15px; } .beliefIndex span:first-child { font-size:33px; } .belief h3 { font-size:19px; margin-bottom:10px; } .creatorStory { grid-template-columns:1fr; gap:32px; padding-bottom:45px; } .creatorVisual>div { aspect-ratio:1.15; } .creatorCopy h2 { font-size:31px; } .objects { padding-block:36px 43px; } .objectGrid { grid-template-columns:1fr; gap:12px; } .objectCard { min-height:200px; padding:23px; } .objectCard h3 { margin-top:20px; } .objectCard p { margin-bottom:20px; } .invitation { padding-block:40px 54px; } .invitation h2 { font-size:28px; } .invitation>p:not(.eyebrow) { font-size:12px; } }
+@media(prefers-reduced-motion:reduce) { .objectCard,.button { transition:none; } }

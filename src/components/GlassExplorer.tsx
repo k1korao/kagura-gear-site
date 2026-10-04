@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment.js";
 import styles from "./GlassExplorer.module.css";
+import { coverEditions } from "@/lib/product-copy";
 
 type GlassExplorerProps = {
   active: number;
@@ -17,7 +18,7 @@ type SceneControls = { update: () => void };
 const WIDTH = 4.9;
 const DEPTH = 4.2;
 const SPACING = 5.85;
-const EDITIONS = ["reyna", "wraith", "chemist"] as const;
+const EDITIONS = coverEditions.map(item => item.id);
 const clampIndex = (index: number, count = 3) => Math.max(0, Math.min(count - 1, Math.round(index)));
 
 function outline(width: number, height: number, radius: number) {
@@ -95,13 +96,32 @@ function printCanvas(kind: "core" | "artist" | "cover", image?: HTMLImageElement
     ctx.font = "14px monospace";
     ctx.fillText("FORM STUDY — 001", w - 255, h - 63);
   } else {
-    ctx.fillStyle = ["#aeb8c4", "#abb3b9", "#83a783"][edition] || "#aeb8c4";
+    ctx.fillStyle = coverEditions[edition]?.color || "#aeb8c4";
     ctx.fillRect(0, 0, w, h);
     if (image) {
       const scale = Math.max(w / image.naturalWidth, h / image.naturalHeight);
       const iw = image.naturalWidth * scale;
       const ih = image.naturalHeight * scale;
       ctx.drawImage(image, (w - iw) / 2, (h - ih) / 2, iw, ih);
+      const cover = coverEditions[edition] ?? coverEditions[0];
+      const shade = ctx.createLinearGradient(0, 0, 0, h * 0.28);
+      shade.addColorStop(0, "rgba(8,12,18,.24)");
+      shade.addColorStop(1, "rgba(8,12,18,0)");
+      ctx.fillStyle = shade;
+      ctx.fillRect(0, 0, w, h * 0.28);
+      ctx.fillStyle = [0, 2, 3].includes(edition) ? "#fbe04c" : "#f3f5ff";
+      let typeSize = cover.id === "wraith" ? 182 : 155;
+      ctx.font = `900 ${typeSize}px Arial, sans-serif`;
+      while (ctx.measureText(cover.title).width > w * 0.89 && typeSize > 80) {
+        typeSize -= 2;
+        ctx.font = `900 ${typeSize}px Arial, sans-serif`;
+      }
+      ctx.textBaseline = "top";
+      ctx.fillText(cover.title, w * 0.05, h * 0.045);
+      ctx.font = "700 16px monospace";
+      ctx.fillStyle = "#f3f5ff";
+      ctx.fillText(`KAGURA / COVER STUDY — ${String(edition + 1).padStart(3, "0")}`, w * 0.05, h * 0.94);
+      ctx.textBaseline = "alphabetic";
     }
   }
   return canvas;
@@ -285,7 +305,7 @@ export function GlassExplorer({ active, edition, topView, onSelect }: GlassExplo
     let drag: { id: number; x: number; y: number; touch: boolean; moved: boolean; captured: boolean } | null = null;
 
     function changeCover() {
-      const next = clampIndex(propsRef.current.edition);
+      const next = clampIndex(propsRef.current.edition, EDITIONS.length);
       if (loadedEdition === next) return;
       loadedEdition = next;
       const request = ++coverRequest;
@@ -515,7 +535,7 @@ export function GlassExplorer({ active, edition, topView, onSelect }: GlassExplo
   useEffect(() => { controlsRef.current?.update(); }, [active, edition, topView]);
 
   const fallbackStyle = clampIndex(active) === 2
-    ? { backgroundImage: `url(/images/album-concept-${EDITIONS[clampIndex(edition)]}.webp)` }
+    ? { backgroundImage: `url(/images/album-concept-${EDITIONS[clampIndex(edition, EDITIONS.length)]}.webp)` }
     : undefined;
 
   return (

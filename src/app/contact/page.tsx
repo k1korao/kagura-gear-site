@@ -1,54 +1,32 @@
 import { ContactForm } from "@/components/ContactForm";
-import { SectionHeading } from "@/components/SectionHeading";
+import styles from "@/components/SupportPages.module.css";
+import { getLocale } from "@/lib/locale-server";
 import { pageMetadata } from "@/lib/metadata";
 import { siteConfig, supportMailto } from "@/lib/site";
+import { supportCopy } from "@/lib/support-copy";
 
-export const metadata = pageMetadata({
-  title: "Contact",
-  description: "Contact Kagura Gear support for product, order, wholesale, and setup questions.",
-  path: "/contact",
-});
+export async function generateMetadata() {
+  const copy = supportCopy[await getLocale()].contact;
+  return pageMetadata({ title: copy.metaTitle, description: copy.metaDescription, path: "/contact" });
+}
 
-export default function ContactPage() {
-  return (
-    <main className="bg-ink">
-      <section className="border-b border-white/10 bg-edge-light">
-        <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-          <SectionHeading
-            eyebrow="Contact"
-            title="Need support or want to talk setup?"
-            body="Send product questions, wholesale requests, and order support messages to the Kagura Gear support inbox."
-          />
-        </div>
-      </section>
-
-      <section className="mx-auto grid max-w-7xl gap-8 px-4 py-16 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:px-8">
-        <aside data-tilt data-reveal className="overflow-hidden border border-white/10 bg-smoke p-7">
-          <h2 className="text-2xl font-black text-bone">Support</h2>
-          <p className="mt-4 leading-7 text-steel">
-            Customers can contact Kagura Gear directly. Replies come from the same
-            official support inbox, so the conversation stays clean.
-          </p>
-          <a
-            href={supportMailto()}
-            className="premium-button mt-6 inline-flex border border-sakura px-5 py-3 text-sm font-black uppercase tracking-[0.18em] text-sakura transition hover:bg-sakura hover:text-ink"
-          >
-            {siteConfig.supportEmail}
-          </a>
-          <div className="mt-8 grid gap-3 border-t border-white/10 pt-6 text-sm leading-6 text-steel">
-            <p>
-              <span className="font-black text-bone">Product questions:</span> sizing,
-              surfaces, drops, and desk setup advice.
-            </p>
-            <p>
-              <span className="font-black text-bone">Order support:</span> Shopify order
-              questions once checkout is connected.
-            </p>
-          </div>
-        </aside>
-
-        <ContactForm />
-      </section>
-    </main>
-  );
+export default async function ContactPage() {
+  const copy = supportCopy[await getLocale()].contact;
+  return <main className={styles.page}>
+    <section className={styles.hero} aria-labelledby="contact-title">
+      <p className={styles.eyebrow}>{copy.label}</p>
+      <h1 id="contact-title">{copy.title}</h1>
+      <p className={styles.intro}>{copy.intro}</p>
+    </section>
+    <section className={styles.contactGrid}>
+      <aside className={styles.inbox}>
+        <h2>{copy.inboxTitle}</h2>
+        <p>{copy.inboxCopy}</p>
+        <a className={styles.emailLink} href={supportMailto(copy.mailSubject, copy.mailBody)}>{siteConfig.supportEmail}</a>
+        {copy.topics.map(topic => <div className={styles.topic} key={topic.title}><h3>{topic.title}</h3><p>{topic.copy}</p></div>)}
+        <p className={styles.status}>{copy.status}</p>
+      </aside>
+      <div className={styles.formPanel}><h2 className={styles.formHeading}>{copy.formTitle}</h2><ContactForm /></div>
+    </section>
+  </main>;
 }

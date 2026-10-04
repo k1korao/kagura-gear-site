@@ -1,11 +1,9 @@
-import { products } from "@/lib/products";
-
 export const siteHost = "kaguragear.com";
 export const siteUrl = `https://${siteHost}`;
 
 export const siteConfig = {
   name: "Kagura Gear",
-  slogan: "Precision Meets Personality",
+  slogan: "Collect Your World",
   url: siteUrl,
   supportEmail: "support@kaguragear.com",
   description:
@@ -15,14 +13,10 @@ export const siteConfig = {
 
 export const coreRoutes = [
   "",
-  "/shop",
   "/shrine",
   "/explore/glass",
   "/explore/keycaps",
   "/explore/metal",
-  "/collections/keycaps",
-  "/collections/deskmats",
-  "/collections/accessories",
   "/about",
   "/faq",
   "/contact",
@@ -32,7 +26,7 @@ export const coreRoutes = [
   "/terms-of-service",
 ];
 
-export const productRoutes = products.map((product) => `/products/${product.slug}`);
+export const productRoutes: string[] = [];
 
 export function absoluteUrl(path = "") {
   if (!path) {

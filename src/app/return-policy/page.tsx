@@ -1,13 +1,6 @@
 import { PolicyPage } from "@/components/PolicyPage";
 import { pageMetadata } from "@/lib/metadata";
-import { returnPolicy } from "@/lib/policies";
-
-export const metadata = pageMetadata({
-  title: "Return Policy",
-  description: "Kagura Gear return policy, product condition notes, and return request guidance.",
-  path: "/return-policy",
-});
-
-export default function ReturnPolicyPage() {
-  return <PolicyPage content={returnPolicy} />;
-}
+import { policies } from "@/lib/policies";
+import { getLocale } from "@/lib/locale-server";
+export async function generateMetadata() { const content = policies[await getLocale()].returns; return pageMetadata({ title: content.title, description: content.intro, path: "/return-policy" }); }
+export default async function ReturnPage() { return <PolicyPage content={policies[await getLocale()].returns} />; }

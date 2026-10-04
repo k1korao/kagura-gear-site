@@ -1,8 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import { useLocale } from "@/components/LocaleProvider";
+import { navigationCopy } from "@/lib/navigation-copy";
 import { siteConfig, supportMailto } from "@/lib/site";
-import { KaguraWordmark } from "./KaguraWordmark";
+import { KaguraIdentity } from "./KaguraIdentity";
 import styles from "./Navbar.module.css";
 
 function selectCategory(category: "glass" | "keycaps" | "metal", collection?: "core" | "artist" | "covers") {
@@ -10,42 +12,43 @@ function selectCategory(category: "glass" | "keycaps" | "metal", collection?: "c
 }
 
 export function Footer() {
+  const copy = navigationCopy[useLocale()];
   return (
     <footer className={styles.footer}>
       <div className={styles.footerGrid}>
         <div className={styles.footerBrand}>
-          <Link href="/" aria-label="Kagura home"><KaguraWordmark /></Link>
-          <p>Make your desk your own.<br />Glass mousepads. Keycaps. Metal customs.</p>
-          <a href={supportMailto()}>{siteConfig.supportEmail}</a>
+          <Link href="/" aria-label={copy.home}><KaguraIdentity /></Link>
+          <p>{copy.brand[0]}<br />{copy.brand[1]}</p>
+          <a href={supportMailto(copy.supportSubject)}>{siteConfig.supportEmail}</a>
         </div>
         <div className={styles.footerGroup}>
-          <h2>EXPLORE</h2>
-          <Link href="/explore/glass" onClick={() => selectCategory("glass")}>Glass mousepads</Link>
-          <Link className={styles.footerSubLink} href="/explore/glass#core" onClick={() => selectCategory("glass", "core")}>Core</Link>
-          <Link className={styles.footerSubLink} href="/explore/glass#artist" onClick={() => selectCategory("glass", "artist")}>Artist</Link>
-          <Link className={styles.footerSubLink} href="/explore/glass#covers" onClick={() => selectCategory("glass", "covers")}>Covers / album editions</Link>
-          <Link href="/explore/keycaps" onClick={() => selectCategory("keycaps")}>Keycaps</Link>
-          <Link href="/explore/metal" onClick={() => selectCategory("metal")}>Metal customs</Link>
+          <h2>{copy.explore}</h2>
+          <Link href="/explore/glass" onClick={() => selectCategory("glass")}>{copy.glass}</Link>
+          <Link className={styles.footerSubLink} href="/explore/glass#core" onClick={() => selectCategory("glass", "core")}>{copy.collections[0].label}</Link>
+          <Link className={styles.footerSubLink} href="/explore/glass#artist" onClick={() => selectCategory("glass", "artist")}>{copy.collections[1].label}</Link>
+          <Link className={styles.footerSubLink} href="/explore/glass#covers" onClick={() => selectCategory("glass", "covers")}>{copy.collections[2].label}</Link>
+          <Link href="/explore/keycaps" onClick={() => selectCategory("keycaps")}>{copy.keycaps}</Link>
+          <Link href="/explore/metal" onClick={() => selectCategory("metal")}>{copy.metal}</Link>
         </div>
         <div className={styles.footerGroup}>
-          <h2>INFORMATION</h2>
-          <Link href="/about">About KAGURA</Link>
-          <Link href="/faq">FAQ</Link>
-          <Link href="/contact">Contact</Link>
-          <Link href="/shipping-policy">Shipping</Link>
-          <Link href="/return-policy">Returns</Link>
+          <h2>{copy.information}</h2>
+          <Link href="/about">{copy.about}</Link>
+          <Link href="/faq">{copy.faq}</Link>
+          <Link href="/contact">{copy.contact}</Link>
+          <Link href="/shipping-policy">{copy.shipping}</Link>
+          <Link href="/return-policy">{copy.returns}</Link>
         </div>
         <div className={styles.footerNote}>
-          <span>IN DEVELOPMENT</span>
-          <h2>The next chapter<br />of your setup.</h2>
-          <p>Follow new designs, product details, and upcoming releases.</p>
-          <Link href="/#newsletter">Get release updates <span aria-hidden="true">↗</span></Link>
+          <span>{copy.status}</span>
+          <h2>{copy.invitation[0]}<br />{copy.invitation[1]}</h2>
+          <p>{copy.invitationBody}</p>
+          <Link href="/#newsletter">{copy.updatesAction} <span aria-hidden="true">↗</span></Link>
         </div>
       </div>
       <div className={styles.footerBottom}>
-        <span>© {new Date().getFullYear()} Kagura Gear. All rights reserved.</span>
-        <div><Link href="/privacy-policy">Privacy policy</Link><Link href="/terms-of-service">Terms of service</Link></div>
-        <span>PRECISION / CHARACTER / EXPRESSION</span>
+        <span>© {new Date().getFullYear()} Kagura Gear. {copy.copyright}</span>
+        <div><Link href="/privacy-policy">{copy.privacy}</Link><Link href="/terms-of-service">{copy.terms}</Link></div>
+        <span>{copy.principles}</span>
       </div>
     </footer>
   );

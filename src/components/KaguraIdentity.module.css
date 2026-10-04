@@ -1,0 +1,1 @@
+.identity{display:inline-flex;align-items:center;gap:14px;color:inherit}.symbol{display:block;width:39px;height:39px;flex:none}.word{display:block}.word svg{width:123px;height:auto}@media(max-width:760px){.compact .word{display:none}.compact .symbol{width:42px;height:42px}.identity{gap:12px}}

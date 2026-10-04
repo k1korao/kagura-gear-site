@@ -5,6 +5,8 @@ import Image from "next/image";
 import { useEffect, useId, useRef, useState, type KeyboardEvent } from "react";
 import styles from "./ShrineDetails.module.css";
 import { AlbumArtwork } from "./AlbumArtwork";
+import { useLocale } from "@/components/LocaleProvider";
+import { productCopy } from "@/lib/product-copy";
 
 type Tab = "specs" | "story" | "faq";
 type ShrineDetailsProps = {
@@ -15,46 +17,11 @@ type ShrineDetailsProps = {
   edition?: number;
 };
 
-const tabs: { id: Tab; label: string }[] = [
-  { id: "specs", label: "Specs" },
-  { id: "story", label: "Story" },
-  { id: "faq", label: "FAQ" },
-];
-
-const concepts = {
-  core: {
-    title: "Core glass", index: "01 / GLASS — CORE", tagline: "A clear starting point. Quiet by design.",
-    asideTitle: "Focus on the essentials.", description: "A restrained direction for the KAGURA glass mousepad. Form, proportion, and a clear visual identity.",
-    storyTitle: "Room for what matters.", story: "Core explores the simplest expression of a glass mousepad: a quiet surface and an intentional presence on the desk. The shape shown is a design study; construction and final specifications remain in development.",
-    caption: "Core / form study", question: "What defines the Core direction?", answer: "Core explores a restrained visual design. The charcoal finish shown is a concept; final finish and construction are still to be confirmed.",
-  },
-  artist: {
-    title: "Artist editions", index: "01 / GLASS — ARTIST", tagline: "A different perspective, made part of your desk.",
-    asideTitle: "Make room for expression.", description: "Original visual studies exploring color, composition, and the surface of a glass mousepad.",
-    storyTitle: "The surface as a canvas.", story: "Artist editions explores expressive artwork as part of an everyday object. The blue composition shown is an original abstract study. Final editions, participating artists, and product specifications have not been announced.",
-    caption: "Artist / abstract study", question: "Is this an announced artist collaboration?", answer: "This is an original abstract design study for the Artist direction. No specific artist collaboration or final edition has been announced.",
-  },
-  covers: {
-    title: "Cover series", index: "01 / GLASS — COVERS", tagline: "One artwork. One edition. A new way to set the tone.",
-    asideTitle: "Set your own tone.", description: "Album-inspired visual editions for your desk. One artwork at a time.",
-    storyTitle: "A surface with its own sound.", story: "Each Cover series mousepad is conceived as its own edition: one artwork, one visual identity. Music and album design guide the atmosphere, while final artwork and production specifications are still in development.",
-    caption: "Covers / artwork study", question: "What does a Cover edition mean?", answer: "One artwork defines each edition. The direction draws on music and album visuals; the artwork shown here is a concept study, not an announced official collaboration.",
-  },
-  keycaps: {
-    title: "Keycaps", index: "02 / KEYCAPS", tagline: "Reyna. Red light. A different kind of record.",
-    asideTitle: "A new point of contact.", description: "Character art, reimagined across individual keycaps. A visual companion to the Starplayer glass edition.",
-    storyTitle: "One artwork. Across every key.", story: "The Cover series brings the atmosphere of a record sleeve to your keyboard. Reyna artwork is composed across individual keycap tops, framed by charcoal modifiers. This is an independent character remix concept, with no official collaboration implied. Materials, printing methods, profiles, and compatibility are still to be confirmed.",
-    caption: "Keycaps / printed artwork study", question: "Which keyboards will the keycaps fit?", answer: "Layout compatibility, keycap profile, and kit contents have not been announced. The image illustrates a design direction rather than a final kit.",
-  },
-  metal: {
-    title: "Metal customs", index: "03 / METAL CUSTOMS", tagline: "An exploration of geometry, weight, and detail.",
-    asideTitle: "A future in the details.", description: "Custom metal objects are a future direction for KAGURA. This keycap form is an early geometric study.",
-    storyTitle: "A small object. A strong presence.", story: "Metal customs is a future product direction exploring sculptural shapes and individual details for the desk. The keycap shape shown is a concept. Material grades, finishes, manufacturing processes, compatibility, and timing have not been confirmed.",
-    caption: "Metal / geometric study", question: "Is this metal keycap available?", answer: "Metal customs is a future plan. This geometric keycap is a form study; specifications, availability, and pricing have not been announced.",
-  },
-};
-
 export function ShrineDetails({ open, onClose, kind, collection = "core", edition = 0 }: ShrineDetailsProps) {
+  const locale = useLocale();
+  const copy = productCopy[locale];
+  const text = copy.details;
+  const tabs = (["specs", "story", "faq"] as const).map(id => ({ id, label: text.tabs[id] }));
   const dialogRef = useRef<HTMLDialogElement>(null);
   const tabRefs = useRef<Partial<Record<Tab, HTMLButtonElement | null>>>({});
   const backdropPointerDown = useRef(false);
@@ -63,27 +30,27 @@ export function ShrineDetails({ open, onClose, kind, collection = "core", editio
   const isGlass = kind === "glass";
   const isCovers = isGlass && collection === "covers";
   const isMetal = kind === "metal";
-  const concept = concepts[isGlass ? collection : kind];
+  const concept = copy.concepts[isGlass ? collection : kind];
   const title = concept.title;
   const specifications = isGlass ? [
-    ["Category", "Glass mousepad"],
-    ["Collection", title],
-    ["Design dimensions", "490 × 420 mm"],
-    ["Thickness", "To be confirmed"],
-    ["Surface & base", "To be confirmed"],
-    ["Status", "In development"],
+    [text.category, copy.categories.glass],
+    [text.collection, title],
+    [text.dimensions, "490 × 420 mm"],
+    [text.thickness, text.tbc],
+    [text.surface, text.tbc],
+    [text.status, copy.experience.developing],
   ] : isMetal ? [
-    ["Direction", "Metal customs"],
-    ["Preview", "Geometric keycap form study"],
-    ["Materials & finish", "To be confirmed"],
-    ["Compatibility", "To be confirmed"],
-    ["Status", "Future plan"],
+    [text.direction, copy.categories.metal],
+    [text.preview, text.geometric],
+    [text.materialsFinish, text.tbc],
+    [text.compatibility, text.tbc],
+    [text.status, text.future],
   ] : [
-    ["Palette study", "Crimson / Violet / Charcoal"],
-    ["Materials & process", "To be confirmed"],
-    ["Profile & kit", "To be confirmed"],
-    ["Compatibility", "To be confirmed"],
-    ["Status", "In development"],
+    [text.palette, text.colors],
+    [text.materialsProcess, text.tbc],
+    [text.profileKit, text.tbc],
+    [text.compatibility, text.tbc],
+    [text.status, copy.experience.developing],
   ];
 
   useEffect(() => {
@@ -155,9 +122,9 @@ export function ShrineDetails({ open, onClose, kind, collection = "core", editio
     >
       <div className={styles.shell}>
         <header className={styles.header}>
-          <span className={styles.eyebrow}>KAGURA / Product notes</span>
-          <button type="button" className={styles.close} onClick={onClose} autoFocus aria-label="Close product details">
-            <span className={styles.closeText}>Close</span>
+          <span className={styles.eyebrow}>{text.notes}</span>
+          <button type="button" className={styles.close} onClick={onClose} autoFocus aria-label={text.closeLabel}>
+            <span className={styles.closeText}>{text.close}</span>
             <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6" /></svg>
           </button>
         </header>
@@ -175,23 +142,23 @@ export function ShrineDetails({ open, onClose, kind, collection = "core", editio
                 <div className={`${styles.glassPad} ${collection === "core" ? styles.corePad : collection === "artist" ? styles.artistPad : ""}`} aria-hidden="true">
                   {isCovers ? <AlbumArtwork edition={edition} /> : collection === "artist" ? <><span className={styles.artistOrbit} /><span className={styles.artistPlane} /><span className={styles.padMark}>KAGURA / ARTIST</span></> : <><span className={styles.coreSheen} /><span className={styles.padMark}>KAGURA / CORE</span></>}
                 </div>
-                <figcaption>{concept.caption}<span>{isCovers ? "490 × 420 mm design" : "Design concept"}</span></figcaption>
+                <figcaption>{concept.caption}<span>{isCovers ? text.designDimensions : text.designConcept}</span></figcaption>
               </figure>
             ) : isMetal ? (
               <figure className={`${styles.visual} ${styles.metalVisual}`}>
                 <div className={styles.metalObject} aria-hidden="true"><div className={styles.metalFace}><span>K</span><i /></div></div>
-                <span className={styles.conceptBadge}>Future plan</span>
-                <figcaption>{concept.caption}<span>Specifications to be confirmed</span></figcaption>
+                <span className={styles.conceptBadge}>{text.future}</span>
+                <figcaption>{concept.caption}<span>{text.specsTbc}</span></figcaption>
               </figure>
             ) : (
               <figure className={`${styles.visual} ${styles.keysVisual}`}>
-                <Image src="/images/kagura-keycaps-cover.webp" alt="KAGURA Reyna artwork concept printed across individual red and violet keycaps" fill sizes="(max-width: 760px) 100vw, 60vw" className={styles.keycapsImage} />
-                <span className={styles.conceptBadge}>Concept / In development</span>
-                <figcaption>{concept.caption}<span>Layout and profile to be confirmed</span></figcaption>
+                <Image src="/images/kagura-keycaps-cover.webp" alt={copy.experience.keyAlt} fill sizes="(max-width: 760px) 100vw, 60vw" className={styles.keycapsImage} />
+                <span className={styles.conceptBadge}>{text.conceptDeveloping}</span>
+                <figcaption>{concept.caption}<span>{text.layoutTbc}</span></figcaption>
               </figure>
             )}
 
-            <div className={styles.tabList} role="tablist" aria-label={`${title} information`}>
+            <div className={styles.tabList} role="tablist" aria-label={`${title} ${text.information}`}>
               {tabs.map((tab) => (
                 <button
                   key={tab.id}
@@ -219,9 +186,9 @@ export function ShrineDetails({ open, onClose, kind, collection = "core", editio
               tabIndex={0}
               className={styles.panel}
             >
-              <p className={styles.panelLead}>{isMetal ? "An early look at what comes next." : "The details are in development."}</p>
+              <p className={styles.panelLead}>{isMetal ? text.metalLead : text.lead}</p>
               <dl className={styles.specs}>{specifications.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
-              <p className={styles.specNote}>Final specifications, pricing, and release timing will be shared as development progresses.</p>
+              <p className={styles.specNote}>{text.specNote}</p>
             </section>
 
             <section
@@ -234,7 +201,7 @@ export function ShrineDetails({ open, onClose, kind, collection = "core", editio
             >
               <p className={styles.panelLead}>{concept.storyTitle}</p>
               <p>{concept.story}</p>
-              <p className={styles.storySignoff}>KAGURA / Objects for your everyday.</p>
+              <p className={styles.storySignoff}>{text.signoff}</p>
             </section>
 
             <section
@@ -246,20 +213,20 @@ export function ShrineDetails({ open, onClose, kind, collection = "core", editio
               className={`${styles.panel} ${styles.faq}`}
             >
               <details open><summary>{concept.question}</summary><p>{concept.answer}</p></details>
-              <details><summary>What are the confirmed specifications?</summary><p>{isGlass ? "The design dimensions are 490 × 420 mm. Glass thickness, surface finish, and base construction are still to be confirmed." : "The current preview communicates a design direction. Final materials, dimensions, construction, and compatibility have not been announced."}</p></details>
-              <details><summary>How can I hear about the release?</summary><p>{isMetal ? "Metal customs is a future plan." : "This product direction is in development."} Pricing and release timing have not been announced. Visit the <Link href="/#newsletter" onClick={onClose}>release newsletter</Link> for future updates.</p></details>
+              <details><summary>{text.confirmedQuestion}</summary><p>{isGlass ? text.glassAnswer : text.otherAnswer}</p></details>
+              <details><summary>{text.releaseQuestion}</summary><p>{isMetal ? text.releaseMetal : text.releaseDeveloping}{text.releaseBefore}<Link href="/#newsletter" onClick={onClose}>{text.newsletter}</Link>{text.releaseAfter}</p></details>
             </section>
           </div>
 
-          <aside className={styles.aside} aria-label="Product overview">
+          <aside className={styles.aside} aria-label={text.overview}>
             <span className={styles.eyebrow}>KAGURA / {title}</span>
             <h3>{concept.asideTitle}</h3>
             <p className={styles.asideDescription}>{concept.description}</p>
-            {isCovers ? <div className={styles.summaryRow}><span>Design dimensions</span><strong>490 × 420 mm</strong></div> : null}
-            <div className={styles.status}><span aria-hidden="true" />{isMetal ? "Future plan" : "In development"}</div>
-            <p className={styles.releaseNote}>Specs to be confirmed. Release details to come.</p>
-            <Link href="/#newsletter" onClick={onClose} className={styles.primaryLink}>Get release updates<span aria-hidden="true">↗</span></Link>
-            <div className={styles.asideFooter}><span>KAGURA</span><span>Your desk.<br />Your own expression.</span></div>
+            {isCovers ? <div className={styles.summaryRow}><span>{text.dimensions}</span><strong>490 × 420 mm</strong></div> : null}
+            <div className={styles.status}><span aria-hidden="true" />{isMetal ? text.future : copy.experience.developing}</div>
+            <p className={styles.releaseNote}>{text.releaseNote}</p>
+            <Link href="/#newsletter" onClick={onClose} className={styles.primaryLink}>{copy.experience.release}<span aria-hidden="true">↗</span></Link>
+            <div className={styles.asideFooter}><span>KAGURA</span><span>{text.footer1}<br />{text.footer2}</span></div>
           </aside>
         </div>
       </div>

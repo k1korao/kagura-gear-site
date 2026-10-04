@@ -681,3 +681,6 @@ body:has(.kagura-collection-page) { background:#f8f8f6; color:#17191d; }
 body:has(.kagura-collection-page) .scroll-progress { background:#52617e; }
 body:has(.kagura-collection-page) ::selection { background:#d3dcfa; color:#192438; }
 @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+
+.album-art-dwolf .album-art-title,.album-art-vyron .album-art-title,.album-art-hackclaw .album-art-title{color:#f3f5ff;font-size:11.8cqw;text-shadow:0 1px 10px #10152035}
+.album-art-seer .album-art-title{font-size:11.8cqw}

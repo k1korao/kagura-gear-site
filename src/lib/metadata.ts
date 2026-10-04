@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { absoluteUrl, siteConfig } from "@/lib/site";
+import { getLocale } from "@/lib/locale-server";
 
 type PageMetadataInput = {
   title: string;
@@ -7,7 +8,8 @@ type PageMetadataInput = {
   path: string;
 };
 
-export function pageMetadata({ title, description, path }: PageMetadataInput): Metadata {
+export async function pageMetadata({ title, description, path }: PageMetadataInput): Promise<Metadata> {
+  const locale = await getLocale();
   const url = absoluteUrl(path);
 
   return {
@@ -17,6 +19,7 @@ export function pageMetadata({ title, description, path }: PageMetadataInput): M
       canonical: url,
     },
     openGraph: {
+      locale: { zh: "zh_CN", en: "en_US", ja: "ja_JP" }[locale],
       title: `${title} | ${siteConfig.name}`,
       description,
       url,
@@ -24,9 +27,9 @@ export function pageMetadata({ title, description, path }: PageMetadataInput): M
       images: [
         {
           url: siteConfig.ogImage,
-          width: 1200,
-          height: 675,
-          alt: "Kagura Gear premium gaming setup",
+          width: 1536,
+          height: 1024,
+          alt: { zh: "KAGURA 键帽设计概念", en: "KAGURA keycap design concept", ja: "KAGURA キーキャップのデザインコンセプト" }[locale],
         },
       ],
     },
