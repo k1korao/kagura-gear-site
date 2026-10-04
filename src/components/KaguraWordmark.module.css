@@ -1,0 +1,3 @@
+.wordmark { display: block; width: 154px; height: auto; flex-shrink: 0; fill: currentColor; }
+@media (max-width: 760px) { .wordmark { width: 128px; } }
+@media (max-width: 360px) { .wordmark { width: 113px; } }

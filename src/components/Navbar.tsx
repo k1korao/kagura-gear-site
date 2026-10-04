@@ -1,32 +1,81 @@
 "use client";
 
 import Link from "next/link";
-import { CollectionSound } from "./CollectionSound";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { CollectionSound } from "./CollectionSound";
+import { KaguraWordmark } from "./KaguraWordmark";
+import styles from "./Navbar.module.css";
 
-const storeLinks = [{ href: "/collections/keycaps", label: "Keycaps" }, { href: "/collections/deskmats", label: "Deskmats" }, { href: "/collections/accessories", label: "Accessories" }, { href: "/shrine", label: "New collection", premium: true }];
-const shrineLinks = [{ href: "/shrine#collections", label: "Glass mousepads" }, { href: "/shrine#keycaps", label: "Keycaps" }, { href: "/shrine#craft", label: "The idea" }, { href: "/contact", label: "Contact" }];
+type Category = "glass" | "keycaps" | "metal";
+type Collection = "core" | "artist" | "covers";
+const glassCollections: { id: Collection; label: string; note: string }[] = [
+  { id: "core", label: "Core", note: "The essentials" },
+  { id: "artist", label: "Artist", note: "A different perspective" },
+  { id: "covers", label: "Covers", note: "Album-inspired editions" },
+];
 
 export function Navbar() {
   const pathname = usePathname();
-  const premium = pathname === "/" || pathname.startsWith("/shrine");
+  const premium = pathname === "/" || pathname.startsWith("/shrine") || pathname.startsWith("/explore");
   const [menuOpen, setMenuOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
-  const searchInput = useRef<HTMLInputElement>(null);
-  const searchTrigger = useRef<HTMLButtonElement>(null);
-  useEffect(() => { if (searchOpen) searchInput.current?.focus(); }, [searchOpen]);
-  function closeSearch() { setSearchOpen(false); searchTrigger.current?.focus(); }
-  function closeMenus() { setMenuOpen(false); setSearchOpen(false); }
-  function followCollection(href: string) { closeMenus(); if (href.endsWith("#collections")) window.dispatchEvent(new Event("kagura:show-glass")); }
-  return <header className={premium ? "shrine-header" : "store-header"}>
-    <div className={premium ? "shrine-announcement" : "store-announcement"}><span>{premium ? "GLASS MOUSEPADS + KEYCAPS / A NEW COLLECTION" : "A LITTLE MORE YOU. A LOT MORE CHARACTER."}</span><Link href={premium ? "/shop" : "/"} onClick={closeMenus}>{premium ? "Browse the store" : "Discover the new collection"} <span aria-hidden="true">↗</span></Link></div>
-    <div className="store-nav-inner">
-      {premium ? <Link className="store-wordmark" href="/shrine" aria-label="Kagura collection home" onClick={closeMenus}>kagura<span className="store-wordmark-dot">.</span><small>GEAR</small></Link> : <Link className="store-wordmark" href="/" aria-label="Kagura Gear home" onClick={closeMenus}>kagura<span className="store-wordmark-dot">.</span><small>GEAR</small></Link>}
-      <nav className="store-desktop-nav" aria-label="Primary navigation">{(premium ? shrineLinks : storeLinks).map((item) => <Link key={item.href} href={item.href} className={`${pathname === item.href ? "is-current" : ""} ${"premium" in item && item.premium ? "nav-premium" : ""}`} aria-current={pathname === item.href ? "page" : undefined} onClick={() => followCollection(item.href)}>{item.label}{"premium" in item && item.premium ? <span aria-hidden="true"> ✦</span> : null}</Link>)}</nav>
-      <div className="store-nav-tools">{premium && <CollectionSound />}<Link href="/faq" className="store-nav-help" onClick={closeMenus}>Help</Link><button type="button" ref={searchTrigger} onClick={() => { setSearchOpen(!searchOpen); setMenuOpen(false); }} aria-label={searchOpen ? "Close search" : "Search collections"} aria-expanded={searchOpen} aria-controls="store-header-search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" /><path d="m15.5 15.5 5 5" /></svg></button><button type="button" className="store-menu-toggle" onClick={() => { setMenuOpen(!menuOpen); setSearchOpen(false); }} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen} aria-controls="store-mobile-navigation">{menuOpen ? "Close" : "Menu"}</button></div>
-    </div>
-    {menuOpen ? <nav id="store-mobile-navigation" className="store-mobile-nav" aria-label="Mobile navigation">{(premium ? shrineLinks : storeLinks).map((item) => <Link key={item.href} href={item.href} onClick={() => followCollection(item.href)}>{item.label}<span aria-hidden="true">↗</span></Link>)}<Link href="/shop" onClick={closeMenus}>All collections <span aria-hidden="true">↗</span></Link><Link href="/contact" onClick={closeMenus}>Contact us</Link></nav> : null}
-    {searchOpen ? <form id="store-header-search" className="store-header-search" action="/shop" onKeyDown={(event) => { if (event.key === "Escape") closeSearch(); }}><label htmlFor="store-global-search">What are you looking for?</label><div><input ref={searchInput} id="store-global-search" name="q" type="search" placeholder="Search the collection…" /><button type="submit">Search <span aria-hidden="true">→</span></button><button type="button" onClick={closeSearch} aria-label="Close search">×</button></div></form> : null}
-  </header>;
+  const [glassOpen, setGlassOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+  const menuTrigger = useRef<HTMLButtonElement>(null);
+  const glassTrigger = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!menuOpen && !glassOpen) return;
+    function dismissOutside(event: PointerEvent) {
+      if (event.target instanceof Node && !headerRef.current?.contains(event.target)) {
+        setMenuOpen(false);
+        setGlassOpen(false);
+      }
+    }
+    document.addEventListener("pointerdown", dismissOutside);
+    return () => document.removeEventListener("pointerdown", dismissOutside);
+  }, [menuOpen, glassOpen]);
+
+  function closeMenus() { setMenuOpen(false); setGlassOpen(false); }
+  function followCategory(category: Category, collection?: Collection) {
+    closeMenus();
+    window.dispatchEvent(new CustomEvent("kagura:category", { detail: { category, ...(collection ? { collection } : {}) } }));
+  }
+
+  return (
+    <header ref={headerRef} className={styles.header} onKeyDown={(event) => {
+      if (event.key !== "Escape") return;
+      if (menuOpen) { event.preventDefault(); closeMenus(); menuTrigger.current?.focus(); }
+      else if (glassOpen) { event.preventDefault(); setGlassOpen(false); glassTrigger.current?.focus(); }
+    }}>
+      <div className={styles.bar}>
+        <Link href="/" className={styles.brand} aria-label="Kagura home" onClick={closeMenus}><KaguraWordmark /></Link>
+        <nav className={styles.desktopNav} aria-label="Primary navigation">
+          <div className={styles.glassNav} onMouseEnter={() => { if (!menuOpen) setGlassOpen(true); }} onMouseLeave={() => { if (!menuOpen) setGlassOpen(false); }} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setGlassOpen(false); }}>
+            <div className={styles.glassLink}>
+              <Link href="/explore/glass" aria-current={pathname === "/explore/glass" ? "page" : undefined} onClick={() => followCategory("glass")}>Glass mousepads</Link>
+              <button ref={glassTrigger} type="button" className={styles.submenuToggle} aria-label="Glass mousepad collections" aria-expanded={glassOpen && !menuOpen} aria-controls="glass-navigation" onClick={() => { setMenuOpen(false); setGlassOpen((value) => !value); }}><svg viewBox="0 0 12 12" width="10" height="10" aria-hidden="true"><path d="m2 4 4 4 4-4" /></svg></button>
+            </div>
+            {glassOpen && !menuOpen ? <div id="glass-navigation" className={styles.glassDropdown}><span className={styles.dropdownLabel}>GLASS / THREE DIRECTIONS</span>{glassCollections.map((collection) => <Link key={collection.id} href={`/explore/glass#${collection.id}`} onClick={() => followCategory("glass", collection.id)}><span>{collection.label}<small>{collection.note}</small></span><span aria-hidden="true">↗</span></Link>)}</div> : null}
+          </div>
+          <Link href="/explore/keycaps" aria-current={pathname === "/explore/keycaps" ? "page" : undefined} onClick={() => followCategory("keycaps")}>Keycaps</Link>
+          <Link href="/explore/metal" aria-current={pathname === "/explore/metal" ? "page" : undefined} onClick={() => followCategory("metal")}>Metal customs</Link>
+        </nav>
+        <div className={styles.tools}>
+          {premium ? <CollectionSound /> : null}
+          <button ref={menuTrigger} type="button" className={`${styles.menuToggle} ${menuOpen ? styles.menuActive : ""}`} aria-expanded={menuOpen} aria-controls="site-navigation-menu" aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"} onClick={() => { setMenuOpen((value) => !value); setGlassOpen(false); }}><span>{menuOpen ? "Close" : "Menu"}</span><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">{menuOpen ? <path d="m4 4 12 12M4 16 16 4" /> : <path d="M2 6h16M2 13h16" />}</svg></button>
+        </div>
+      </div>
+      {menuOpen ? <nav id="site-navigation-menu" className={styles.menuPanel} aria-label="Expanded navigation">
+        <div className={styles.menuProducts}>
+          <span className={styles.menuLabel}>EXPLORE THE OBJECTS</span>
+          <div className={styles.mobileGlassRow}><Link href="/explore/glass" onClick={() => followCategory("glass")}>Glass mousepads</Link><button type="button" aria-label={glassOpen ? "Hide glass collections" : "Show glass collections"} aria-expanded={glassOpen} aria-controls="menu-glass-collections" onClick={() => setGlassOpen((value) => !value)}>{glassOpen ? "−" : "+"}</button></div>
+          {glassOpen ? <div id="menu-glass-collections" className={styles.menuSubnav}>{glassCollections.map((collection) => <Link key={collection.id} href={`/explore/glass#${collection.id}`} onClick={() => followCategory("glass", collection.id)}>{collection.label}<span aria-hidden="true">↗</span></Link>)}</div> : null}
+          <Link className={styles.menuCategory} href="/explore/keycaps" onClick={() => followCategory("keycaps")}>Keycaps<span aria-hidden="true">↗</span></Link>
+          <Link className={styles.menuCategory} href="/explore/metal" onClick={() => followCategory("metal")}>Metal customs<span aria-hidden="true">↗</span></Link>
+        </div>
+        <div className={styles.menuMore}><span className={styles.menuLabel}>KAGURA</span><Link href="/" onClick={closeMenus}>The story</Link><Link href="/about" onClick={closeMenus}>About us</Link><Link href="/contact" onClick={closeMenus}>Contact</Link><Link href="/faq" onClick={closeMenus}>FAQ</Link><Link href="/#newsletter" onClick={closeMenus}>Release updates <span aria-hidden="true">↗</span></Link></div>
+      </nav> : null}
+    </header>
+  );
 }

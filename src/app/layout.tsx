@@ -37,9 +37,9 @@ export const metadata: Metadata = {
     images: [
       {
         url: siteConfig.ogImage,
-        width: 1200,
-        height: 675,
-        alt: "Kagura Gear Japanese-inspired gaming desk setup",
+        width: 1536,
+        height: 1024,
+        alt: "KAGURA independent keycap design study",
       },
     ],
   },

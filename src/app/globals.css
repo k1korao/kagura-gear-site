@@ -1,3 +1,5 @@
+@font-face { font-family: "Oxanium"; src: url("/fonts/Oxanium-Variable.ttf") format("truetype"); font-weight: 200 800; font-style: normal; font-display: swap; }
+:root { --font-display: "Oxanium", Arial, sans-serif; }
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -671,3 +673,11 @@ summary::-webkit-details-marker {
 }
 
 @media(max-width:760px) { .shrine-header .store-wordmark { font-size: 27px; } .shrine-header .store-wordmark small { display: none; } .shrine-header .store-nav-tools { gap: 8px; } .shrine-header .store-nav-tools > .store-nav-help { display: none; } }
+
+.kagura-newsletter h2 { font-family: var(--font-display); font-weight: 400; font-size: clamp(40px,5vw,68px); }
+
+html:has(.kagura-collection-page) { color-scheme:light; }
+body:has(.kagura-collection-page) { background:#f8f8f6; color:#17191d; }
+body:has(.kagura-collection-page) .scroll-progress { background:#52617e; }
+body:has(.kagura-collection-page) ::selection { background:#d3dcfa; color:#192438; }
+@media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }

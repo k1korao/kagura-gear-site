@@ -1,0 +1,75 @@
+.stage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.canvas {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  touch-action: pan-y pinch-zoom;
+  transition: opacity 450ms ease;
+}
+
+.ready .canvas { opacity: 1; }
+.ready .fallback { opacity: 0; }
+
+.fallback {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  perspective: 1100px;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 350ms ease;
+}
+
+.fallbackPad {
+  position: relative;
+  z-index: 1;
+  width: min(64vw, 840px);
+  max-width: 88%;
+  aspect-ratio: 49 / 42;
+  border-radius: 16px;
+  border: 1px solid #c4cfd3;
+  background: linear-gradient(145deg, #383e42, #181e22);
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 4px 0 #292e31, 0 5px 0 #c3ced3, 12px 30px 30px -25px #343d466b;
+  transform: translate(-5%, -7%) rotateX(47deg) rotateZ(-20deg);
+  transition: transform 650ms cubic-bezier(.2,.7,.25,1), background-color 350ms;
+}
+
+.fallbackPad span {
+  position: absolute;
+  inset: auto 5% 5%;
+  display: flex;
+  justify-content: space-between;
+  color: #f3f5f5;
+  font: 500 12px/1 sans-serif;
+  letter-spacing: .09em;
+}
+
+.fallbackPad small { font: 9px/1 monospace; opacity: .75; }
+.artist { background-image: repeating-linear-gradient(135deg, transparent 0 70px, #d4e3ed63 71px 74px, transparent 75px 112px), linear-gradient(145deg, #cfdae0, #52738c 60%, #243e56); }
+.fallbackTop .fallbackPad { transform: translate(-5%, -2%) rotateX(0deg) rotateZ(0deg); }
+.fallbackShadow { position: absolute; top: 59%; width: 48%; height: 12%; background: #48505b1b; border-radius: 50%; filter: blur(25px); }
+
+@media (max-width: 749px) {
+  .fallbackPad { width: 91%; max-width: 91%; transform: translate(0, -5%) rotateX(43deg) rotateZ(-17deg); border-radius: 11px; }
+  .fallbackTop .fallbackPad { transform: translate(0, -2%); }
+  .fallbackPad span { font-size: 9px; }
+  .fallbackPad small { font-size: 7px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .canvas, .fallback, .fallbackPad { transition: none; }
+}

@@ -5,18 +5,21 @@ export const siteUrl = `https://${siteHost}`;
 
 export const siteConfig = {
   name: "Kagura Gear",
-  slogan: "Precision Meets Ritual",
+  slogan: "Precision Meets Personality",
   url: siteUrl,
   supportEmail: "support@kaguragear.com",
   description:
-    "Music, gaming, your desk. Explore Kagura Gear glass mousepads, album-inspired artwork concepts, and our upcoming keycap collection.",
-  ogImage: "/images/kagura-logo-card.jpg",
+    "Discover Kagura Gear: independent glass mousepads, artist editions, keycaps and future metal custom objects. Precision meets personality.",
+  ogImage: "/images/kagura-keycaps-cover.webp",
 };
 
 export const coreRoutes = [
   "",
   "/shop",
   "/shrine",
+  "/explore/glass",
+  "/explore/keycaps",
+  "/explore/metal",
   "/collections/keycaps",
   "/collections/deskmats",
   "/collections/accessories",
