@@ -9,7 +9,7 @@ export const siteConfig = {
   url: siteUrl,
   supportEmail: "support@kaguragear.com",
   description:
-    "Make your desk your own with Kagura Gear keycaps, deskmats, and keyboard accessories. Discover Kagura Shrine, our premium Japanese-inspired collection.",
+    "Music, gaming, your desk. Explore Kagura Gear glass mousepads, album-inspired artwork concepts, and our upcoming keycap collection.",
   ogImage: "/images/kagura-logo-card.jpg",
 };
 

@@ -91,7 +91,6 @@ export function SiteEffects() {
   return (
     <>
       <div className="scroll-progress" aria-hidden="true" />
-      {pathname.startsWith("/shrine") ? <div className="cursor-spotlight" aria-hidden="true" /> : null}
     </>
   );
 }

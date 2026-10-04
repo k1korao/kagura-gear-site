@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Kagura Gear storefront. The original cinematic world lives at /shrine. */
+/* Kagura Gear storefront and the new collection at /shrine. */
 .storefront, .store-header, .store-footer {
   --store-paper: #faf8f5;
   --store-ink: #302328;
@@ -194,17 +194,41 @@
 .store-empty { padding: 55px 0; }
 .store-empty h2 { font-size: 25px; margin-bottom: 15px; }
 .store-empty p { font-size: 14px; color: #89777c; margin-bottom: 25px; }
-.shrine-header { background: #080609f5; color: #f7f3ed; border-color: #ffffff20; backdrop-filter: blur(16px); }
-.shrine-announcement { background: #e8b499; color: #211014; }
-.shrine-header .store-nav-inner { max-width: 1280px; }
-.shrine-nav-brand > span { display: block; padding-left: 58px; font-size: 8px; letter-spacing: .18em; color: #bf929d; margin-top: 7px; }
-.shrine-header .store-desktop-nav a:hover, .shrine-header .store-desktop-nav .is-current { color: #efb9c7; border-color: #efb9c7; }
-.shrine-header .store-mobile-nav { background: #171116; border-color: #ffffff20; }
-.shrine-header .store-mobile-nav a { border-color: #ffffff20; }
-.shrine-header .store-header-search { background: #171116; }
-.store-footer-premium { background: #080609; color: #f7f3ed; --store-ink: #f7f3ed; color-scheme: dark; border-color: #ffffff20; }
-.store-footer-premium .store-footer-grid > div > a:not(.store-wordmark), .store-footer-premium .store-footer-grid > div > p { color: #b6a3ab; }
-.store-footer-premium .store-footer-premium-note, .store-footer-premium .store-footer-bottom { border-color: #ffffff20; }
+/* White collection shell; retained route for existing links. */
+.shrine-header { background: #fffffff2; color: #202322; border-color: #20232215; backdrop-filter: blur(18px); color-scheme: light; }
+.shrine-announcement { min-height: 27px; padding-block: 7px; background: #eeefeb; color: #646763; font-size: 8px; letter-spacing: .1em; }
+.shrine-header .store-nav-inner { max-width: 1800px; min-height: 72px; padding-block: 18px; }
+.shrine-header .store-wordmark-dot, .store-footer-premium .store-wordmark-dot { color: #3048d7; }
+.shrine-header .store-desktop-nav a { font-size: 12px; }
+.shrine-header .store-desktop-nav a:hover, .shrine-header .store-desktop-nav .is-current { color: #3048d7; border-color: #3048d7; }
+.shrine-header :focus-visible { outline: 2px solid #3048d7; outline-offset: 5px; }
+.shrine-header .store-mobile-nav { background: #fff; border-color: #20232215; }
+.shrine-header .store-mobile-nav a { border-color: #20232215; }
+.shrine-header .store-header-search { background: #fff; }
+.store-footer-premium { background: #fff; color: #202322; --store-ink: #202322; color-scheme: light; border-color: #20232220; }
+.store-footer-premium .store-footer-grid > div > a:not(.store-wordmark), .store-footer-premium .store-footer-grid > div > p { color: #646763; }
+.store-footer-premium .store-footer-premium-note, .store-footer-premium .store-footer-bottom { border-color: #20232220; }
+.store-footer-premium .store-eyebrow { color: #646763; }
+.kagura-collection-page { background: #f8f8f5; color: #202322; color-scheme: light; }
+.kagura-newsletter { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 10%; padding: 100px 7%; background: #eceef5; scroll-margin-top: 115px; }
+.kagura-label { font-size: 9px; font-weight: 700; letter-spacing: .14em; }
+.kagura-newsletter h2 { margin-top: 20px; font-size: clamp(42px,5vw,72px); line-height: 1.08; letter-spacing: -.055em; font-weight: 500; }
+.kagura-newsletter h2 em { font-family: Georgia,serif; font-weight: 400; }
+.kagura-newsletter > div > p:last-child { max-width: 350px; margin-top: 22px; font-size: 13px; line-height: 1.8; color: #646763; }
+.kagura-newsletter .store-newsletter input[type="email"] { min-width: 0; background: #fff; color: #202322; border-color: #20232235; }
+.kagura-newsletter .store-newsletter input:focus-visible { outline: 2px solid #3048d7; outline-offset: 2px; box-shadow: none; }
+.kagura-newsletter .store-newsletter button { background: #202322; border-color: #202322; }
+.kagura-newsletter .store-newsletter button:hover { background: #3048d7; }
+.kagura-newsletter .store-newsletter label, .kagura-newsletter .store-newsletter [aria-live] { color: #5d615d; }
+.kagura-newsletter .store-newsletter a { color: #3048d7; }
+.kagura-newsletter .store-newsletter input[type="checkbox"] { accent-color: #3048d7; }
+.album-art-image { position: relative; width: 100%; height: 100%; overflow: hidden; background: #ca262f; container-type: inline-size; }
+.album-art-image > img { object-fit: cover; object-position: center 38%; }
+.album-art-title { position: absolute; top: 3%; left: 5%; right: 3%; color: #fbe04c; font-size: 13cqw; font-weight: 950; line-height: 1; letter-spacing: -.08em; white-space: nowrap; }
+.album-art-chemist .album-art-title { color: #ebd566; font-size: 11.9cqw; text-shadow: 0 2px 12px #101800d0; }
+.album-art-wraith .album-art-title { color: #eff6ff; font-size: 16cqw; }
+.album-art-caption { position: absolute; bottom: 4%; left: 5%; font-size: 1.6cqw; font-family: monospace; font-weight: 700; letter-spacing: .16em; color: #fff6c5; }
+@media(max-width:760px) { .kagura-newsletter { grid-template-columns: 1fr; gap: 36px; padding: 60px 6%; } .shrine-header .store-nav-inner { min-height: 64px; padding-block: 16px; } .shrine-announcement > span { font-size: 7px; } .shrine-announcement > a { display: none; } }
 #collections, #craft { scroll-margin-top: 145px; }
 @media (min-width: 1600px) { .store-hero-copy { padding-left: max(80px, calc((100vw - 1440px) / 2)); } .store-hero { min-height: 700px; } .store-hero-image { min-height: 700px; } }
 @media (max-width: 1050px) {
@@ -645,3 +669,5 @@ summary::-webkit-details-marker {
     transform: none;
   }
 }
+
+@media(max-width:760px) { .shrine-header .store-wordmark { font-size: 27px; } .shrine-header .store-wordmark small { display: none; } .shrine-header .store-nav-tools { gap: 8px; } .shrine-header .store-nav-tools > .store-nav-help { display: none; } }
