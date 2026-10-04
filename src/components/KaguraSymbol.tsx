@@ -1,17 +1,8 @@
-import { useId } from "react";
-
-/** Original non-letter emblem: two cut orbits, an open core and opposing facets. */
+/** Two suspended folds leave an open interval; tonal faces suggest depth. */
 export function KaguraSymbol({ className = "" }: { className?: string }) {
-  const cutId = useId();
-  return <svg className={className} viewBox="0 0 128 128" aria-hidden="true" focusable="false" fill="currentColor">
-    <defs><mask id={cutId} maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
-      <rect width="128" height="128" fill="white" />
-      <path d="m65 34 12 18 22 12-22 12-12 18-13-18-23-12 23-12Z" fill="black" stroke="black" strokeWidth="7" />
-      <path d="m82 33 17 7 8 11-12 7-9-13-14-7Z" fill="black" stroke="black" strokeWidth="6" />
-      <path d="m46 95-17-7-8-11 12-7 9 13 14 7Z" fill="black" stroke="black" strokeWidth="6" />
-    </mask></defs>
-    <g mask={`url(#${cutId})`}><path d="M5 59 24 24 65 7 105 16 123 40 98 31 66 24 39 37 28 57 45 63 29 78Z" /><path d="m123 69-19 35-41 17-40-9L5 88l25 9 32 7 27-13 11-20-17-6 16-15Z" /></g>
-    <path fillRule="evenodd" d="m65 34 12 18 22 12-22 12-12 18-13-18-23-12 23-12Zm0 18L52 64l13 12 12-12Z" />
-    <path d="m82 33 17 7 8 11-12 7-9-13-14-7Z" /><path d="m46 95-17-7-8-11 12-7 9 13 14 7Z" />
+  return <svg className={className} viewBox="8 4 112 112" aria-hidden="true" focusable="false" fill="currentColor">
+    <path d="M18 52 64 22 108 39 89 52 66 43 38 61 38 90 18 82Z" />
+    <path d="M66 76 90 60 110 68 66 97Z" opacity=".55" />
+    <path d="M48 69v21l18 7v-21Z" opacity=".83" />
   </svg>;
 }

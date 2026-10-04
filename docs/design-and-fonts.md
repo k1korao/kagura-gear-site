@@ -30,10 +30,10 @@ Chinese, English and Japanese have individually authored copy dictionaries. The 
 
 Legacy demo cloth-pad product and collection URLs redirect into current collection pages. Their unconfirmed prices and Shopify placeholder instructions are no longer part of the visitor journey. Shipping and returns pages reflect the current prelaunch status.
 
-## Refracted Orbit symbol
+## Open Interval symbol
 
-`public/brand/kagura-symbol.svg` and `KaguraSymbol.tsx` contain an original, non-letter emblem. Two angular orbit bands interlock around a hollow, four-point core. Opposing inset facets and deliberate negative-space cuts create a layered silhouette; no K or other letter is used as its structure. This replaces the first Cut K proposal following the owner's design feedback. The SVG uses an instance-specific mask ID so repeated symbols render independently.
+`public/brand/kagura-symbol.svg` and `KaguraSymbol.tsx` contain an original, non-letter spatial emblem. Two suspended folds leave a central opening, suggesting a frame, an entrance or a display plane without assigning a single literal meaning. Two tonal faces create restrained 2.5D depth. Its silhouette also works in a single ink. This replaces the Refracted Orbit proposal following the owner's request for a simpler symbol and more interpretive space.
 
-Desktop navigation combines the emblem with the existing custom KAGURA wordmark. Mobile navigation uses the emblem alone. The hero stamp, footer, browser and touch icons share the same identity. It is not traced from WALLHACK or another peripheral brand. No trademark clearance is implied.
+The component inherits currentColor and uses face opacity, so the same geometry works on light and dark backgrounds. It needs no masks, filters, gradients or unique IDs. Desktop navigation combines the emblem with the existing custom KAGURA wordmark. Mobile navigation uses the emblem alone. The hero stamp, footer, browser and touch icons share the same identity. It is not traced from WALLHACK or another peripheral brand. No trademark clearance is implied.
 
 Cover edition display names are separately authored in Chinese, English and Japanese and are shared by selectors, card labels, accessibility labels and detail panels. English lettering inside the artwork remains part of the artwork; the stable `art` identifiers and chosen cover survive a locale change.
