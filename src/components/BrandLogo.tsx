@@ -11,7 +11,7 @@ export function BrandLogo({ compact = false, className = "" }: BrandLogoProps) {
     <Link
       href="/"
       className={`group inline-flex items-center ${compact ? "gap-3" : "gap-4"} ${className}`}
-      aria-label="Kagura Gear home"
+      aria-label="KIKORA home"
     >
       <span
         className={`relative grid shrink-0 place-items-center overflow-hidden border border-sakura/30 bg-black/45 shadow-glow ${
@@ -29,7 +29,7 @@ export function BrandLogo({ compact = false, className = "" }: BrandLogoProps) {
       <span className="flex flex-col leading-none">
         <Image
           src="/images/kagura-logo-full.png"
-          alt="Kagura Gear"
+          alt="KIKORA"
           width={compact ? 148 : 220}
           height={compact ? 54 : 80}
           priority={compact}

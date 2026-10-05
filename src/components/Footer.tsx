@@ -46,7 +46,7 @@ export function Footer() {
         </div>
       </div>
       <div className={styles.footerBottom}>
-        <span>© {new Date().getFullYear()} Kagura Gear. {copy.copyright}</span>
+        <span>© {new Date().getFullYear()} KIKORA. {copy.copyright}</span>
         <div><Link href="/privacy-policy">{copy.privacy}</Link><Link href="/terms-of-service">{copy.terms}</Link></div>
         <span>{copy.principles}</span>
       </div>

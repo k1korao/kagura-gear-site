@@ -20,16 +20,16 @@ export type Product = {
 export const products: Product[] = [
   {
     slug: "kagura-control-pad",
-    name: "Kagura Control Pad",
+    name: "KIKORA Control Pad",
     category: "Control Pads",
-    series: "Kagura Series",
+    series: "KIKORA Series",
     tagline: "Control surface for tactical FPS aim.",
     price: "$39.00",
     // Replace this placeholder description when your final Shopify product copy is ready.
     shortDescription:
       "A steady, locked-in cloth surface tuned for micro-corrections and tactical FPS control.",
     description:
-      "Built for players who value calm precision over flash. The Kagura Control Pad pairs a textured woven surface with a dense rubber base for controlled starts, predictable stops, and consistent aim under pressure.",
+      "Built for players who value calm precision over flash. The KIKORA Control Pad pairs a textured woven surface with a dense rubber base for controlled starts, predictable stops, and consistent aim under pressure.",
     size: "490 x 420 x 4 mm",
     surface: "Fine-control woven cloth",
     base: "High-grip natural rubber",

@@ -5,8 +5,8 @@ import Link from "next/link";
 import { useEffect, useRef, useState, type PointerEvent } from "react";
 
 const cards = [
-  { name: "The Everyday Collection", href: "/collections/keycaps", image: "/images/kagura-studio-concept.webp", alt: "Kagura Gear design concept: ivory, rose and burgundy keycaps on a mechanical keyboard" },
-  { name: "Kagura Shrine", href: "/shrine", image: "/images/kagura-hero.png", alt: "Dark Japanese-inspired Kagura Shrine desk setup" },
+  { name: "The Everyday Collection", href: "/collections/keycaps", image: "/images/kagura-studio-concept.webp", alt: "KIKORA design concept: ivory, rose and burgundy keycaps on a mechanical keyboard" },
+  { name: "KIKORA Shrine", href: "/shrine", image: "/images/kagura-hero.png", alt: "Dark Japanese-inspired KIKORA Shrine desk setup" },
 ];
 
 export function HeroCarousel() {
@@ -121,9 +121,9 @@ export function HeroCarousel() {
         <div className={`store-carousel-track${drag ? " is-dragging" : ""}`} style={{ transform: `translateX(calc(-${active * 100}% + ${drag}px))` }}>
           {cards.map((card, index) => (
             <div key={card.name} className={`store-carousel-card${index === 1 ? " store-carousel-shrine" : ""}`} role="group" aria-roledescription="slide" aria-label={`${index + 1} of ${cards.length}: ${card.name}`} aria-hidden={index !== active} inert={index !== active}>
-              <Link href={card.href} className="store-carousel-card-link" aria-label={index === 1 ? "Explore Kagura Shrine" : "Explore the Everyday Collection"} draggable={false}>
+              <Link href={card.href} className="store-carousel-card-link" aria-label={index === 1 ? "Explore KIKORA Shrine" : "Explore the Everyday Collection"} draggable={false}>
                 <Image src={card.image} alt={card.alt} fill priority={index === 0} loading="eager" sizes="(max-width: 800px) 100vw, 58vw" className="object-cover" draggable={false} />
-                {index === 0 ? <><span className="store-carousel-tag">DESIGN CONCEPT</span><div className="store-carousel-copy"><span className="store-eyebrow">THE EVERYDAY COLLECTION</span><h2>Color, with <em>character.</em></h2><span className="store-carousel-cta">Explore keycaps <span aria-hidden="true">↗</span></span></div></> : <><div className="store-carousel-shade" /><span className="store-carousel-tag">THE PREMIUM COLLECTION</span><div className="store-carousel-copy"><span className="store-eyebrow">PRECISION MEETS RITUAL</span><h2>Kagura <em>Shrine.</em></h2><p>Premium keycaps &amp; deskmats.</p><span className="store-carousel-cta">Enter the Shrine <span aria-hidden="true">↗</span></span></div></>}
+                {index === 0 ? <><span className="store-carousel-tag">DESIGN CONCEPT</span><div className="store-carousel-copy"><span className="store-eyebrow">THE EVERYDAY COLLECTION</span><h2>Color, with <em>character.</em></h2><span className="store-carousel-cta">Explore keycaps <span aria-hidden="true">↗</span></span></div></> : <><div className="store-carousel-shade" /><span className="store-carousel-tag">THE PREMIUM COLLECTION</span><div className="store-carousel-copy"><span className="store-eyebrow">PRECISION MEETS RITUAL</span><h2>KIKORA <em>Shrine.</em></h2><p>Premium keycaps &amp; deskmats.</p><span className="store-carousel-cta">Enter the Shrine <span aria-hidden="true">↗</span></span></div></>}
               </Link>
             </div>
           ))}

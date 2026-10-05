@@ -26,14 +26,14 @@ const en = {
     keyDescription: "Reyna, remixed. Red and violet album-cover energy flows across a field of individual keys. A companion concept to the Starplayer glass edition.",
     metalDescription: "Exploring sculptural forms and precise details for future custom metal objects. The first collection is on the drawing board.",
     chooseArt: "Choose cover artwork", more: "see more", release: "Get release updates", artistNote: "Studio concept. Artist collaborations to be announced.", conceptNote: "Design preview. Final product details to be announced.",
-    viewingAngle: "Viewing angle", deskView: "DESK VIEW", topView: "TOP VIEW", designStudy: "KAGURA / DESIGN STUDY", previous: "Previous glass collection", next: "Next glass collection", of: "of",
+    viewingAngle: "Viewing angle", deskView: "DESK VIEW", topView: "TOP VIEW", designStudy: "KIKORA / DESIGN STUDY", previous: "Previous glass collection", next: "Next glass collection", of: "of",
     help: "CLICK A PAD TO EXPLORE", unavailable: "CONCEPT / NOT YET AVAILABLE", withinGlass: "WITHIN THE GLASS COLLECTION", coverTitle: "One cover. One edition.", coverSubtitle: "Character and album-inspired artwork studies.",
     coverNote: "Independent concept artwork. No official game or recording-artist collaboration is implied.",
-    keyAlt: "KAGURA Reyna keycap concept: red and violet character artwork flowing across individual keycaps on a silver-gray keyboard",
+    keyAlt: "KIKORA Reyna keycap concept: red and violet character artwork flowing across individual keycaps on a silver-gray keyboard",
   },
   concepts: {
     core: {
-      title: "Core glass", index: "01 / GLASS — CORE", tagline: "A clear starting point. Quiet by design.", asideTitle: "Focus on the essentials.", description: "A restrained direction for the KAGURA glass mousepad. Form, proportion, and a clear visual identity.",
+      title: "Core glass", index: "01 / GLASS — CORE", tagline: "A clear starting point. Quiet by design.", asideTitle: "Focus on the essentials.", description: "A restrained direction for the KIKORA glass mousepad. Form, proportion, and a clear visual identity.",
       storyTitle: "Room for what matters.", story: "Core explores the simplest expression of a glass mousepad: a quiet surface and an intentional presence on the desk. The shape shown is a design study; construction and final specifications remain in development.",
       caption: "Core / form study", question: "What defines the Core direction?", answer: "Core explores a restrained visual design. The charcoal finish shown is a concept; final finish and construction are still to be confirmed.",
     },
@@ -53,7 +53,7 @@ const en = {
       caption: "Keycaps / printed artwork study", question: "Which keyboards will the keycaps fit?", answer: "Layout compatibility, keycap profile, and kit contents have not been announced. The image illustrates a design direction rather than a final kit.",
     },
     metal: {
-      title: "Metal customs", index: "03 / METAL CUSTOMS", tagline: "An exploration of geometry, weight, and detail.", asideTitle: "A future in the details.", description: "Custom metal objects are a future direction for KAGURA. This keycap form is an early geometric study.",
+      title: "Metal customs", index: "03 / METAL CUSTOMS", tagline: "An exploration of geometry, weight, and detail.", asideTitle: "A future in the details.", description: "Custom metal objects are a future direction for KIKORA. This keycap form is an early geometric study.",
       storyTitle: "A small object. A strong presence.", story: "Metal customs is a future product direction exploring sculptural shapes and individual details for the desk. The keycap shape shown is a concept. Material grades, finishes, manufacturing processes, compatibility, and timing have not been confirmed.",
       caption: "Metal / geometric study", question: "Is this metal keycap available?", answer: "Metal customs is a future plan. This geometric keycap is a form study; specifications, availability, and pricing have not been announced.",
     },
@@ -61,8 +61,8 @@ const en = {
   details: {
     tabs: { specs: "Specs", story: "Story", faq: "FAQ" }, category: "Category", collection: "Collection", edition: "Edition", dimensions: "Design dimensions", thickness: "Thickness", surface: "Surface & base", status: "Status", tbc: "To be confirmed", future: "Future plan",
     direction: "Direction", preview: "Preview", geometric: "Geometric keycap form study", materialsFinish: "Materials & finish", compatibility: "Compatibility", palette: "Palette study", colors: "Crimson / Violet / Charcoal", materialsProcess: "Materials & process", profileKit: "Profile & kit",
-    notes: "KAGURA / Product notes", close: "Close", closeLabel: "Close product details", designDimensions: "490 × 420 mm design", designConcept: "Design concept", specsTbc: "Specifications to be confirmed", conceptDeveloping: "Concept / In development", layoutTbc: "Layout and profile to be confirmed", information: "information",
-    metalLead: "An early look at what comes next.", lead: "The details are in development.", specNote: "Final specifications, pricing, and release timing will be shared as development progresses.", signoff: "KAGURA / Objects for your everyday.",
+    notes: "KIKORA / Product notes", close: "Close", closeLabel: "Close product details", designDimensions: "490 × 420 mm design", designConcept: "Design concept", specsTbc: "Specifications to be confirmed", conceptDeveloping: "Concept / In development", layoutTbc: "Layout and profile to be confirmed", information: "information",
+    metalLead: "An early look at what comes next.", lead: "The details are in development.", specNote: "Final specifications, pricing, and release timing will be shared as development progresses.", signoff: "KIKORA / Objects for your everyday.",
     confirmedQuestion: "What are the confirmed specifications?", glassAnswer: "The design dimensions are 490 × 420 mm. Glass thickness, surface finish, and base construction are still to be confirmed.", otherAnswer: "The current preview communicates a design direction. Final materials, dimensions, construction, and compatibility have not been announced.",
     releaseQuestion: "How can I hear about the release?", releaseMetal: "Metal customs is a future plan.", releaseDeveloping: "This product direction is in development.", releaseBefore: " Pricing and release timing have not been announced. Visit the ", newsletter: "release newsletter", releaseAfter: " for future updates.",
     overview: "Product overview", releaseNote: "Specs to be confirmed. Release details to come.", footer1: "Your desk.", footer2: "Your own expression.",
@@ -80,9 +80,9 @@ const en = {
     unavailable: "Music is not connected yet. View track information", startingLabel: "Sound on, starting. Turn sound off", onLabel: "Sound on. Turn sound off", offLabel: "Sound off. Turn sound on", on: "SOUND ON", off: "SOUND OFF", settings: "Music volume and track information", heading: "LISTEN ALONG", close: "Close music settings", trackPending: "A soundtrack for the collection", volume: "Volume", percent: "percent", error: "Audio couldn’t start. Try again.", retry: "Retry audio", starting: "Starting audio…", playing: "Playing. Close this panel to keep listening.", stopped: "Sound is off. Play when you feel like it.", noSource: "Our background track is being selected. No audio is connected yet.",
   },
   metadata: {
-    glass: "Explore KAGURA glass mousepads: Core, Artist, and Cover series. Independent design studies in a planned 490 × 420 mm format.",
-    keycaps: "Explore KAGURA keycap concepts. Character art and album-inspired compositions, reimagined across the keyboard.",
-    metal: "Explore KAGURA’s future direction for custom metal objects. Early studies in geometry, form, and detail.",
+    glass: "Explore KIKORA glass mousepads: Core, Artist, and Cover series. Independent design studies in a planned 490 × 420 mm format.",
+    keycaps: "Explore KIKORA keycap concepts. Character art and album-inspired compositions, reimagined across the keyboard.",
+    metal: "Explore KIKORA’s future direction for custom metal objects. Early studies in geometry, form, and detail.",
   },
 };
 
@@ -102,14 +102,14 @@ const zh: typeof en = {
     keyDescription: "以蕾娜为主角，让红与紫的专辑封面画面铺展在每颗键帽之间。与「明星玩家」玻璃垫呼应的键帽设计概念。",
     metalDescription: "从雕塑感的形态与细节出发，探索未来的定制金属物件。首个系列仍在构思中。",
     chooseArt: "选择封面作品", more: "了解详情", release: "订阅发售动态", artistNote: "原创概念预览。画师合作信息将另行公布。", conceptNote: "设计概念预览，最终产品信息待公布。",
-    viewingAngle: "查看角度", deskView: "桌面视角", topView: "俯视角度", designStudy: "KAGURA / 设计研究", previous: "上一个玻璃垫系列", next: "下一个玻璃垫系列", of: "/",
+    viewingAngle: "查看角度", deskView: "桌面视角", topView: "俯视角度", designStudy: "KIKORA / 设计研究", previous: "上一个玻璃垫系列", next: "下一个玻璃垫系列", of: "/",
     help: "点击鼠标垫，探索系列", unavailable: "概念预览 / 尚未发售", withinGlass: "玻璃鼠标垫 · 封面系列", coverTitle: "一幅封面，一款作品。", coverSubtitle: "从角色与专辑视觉中，寻找新的表达。",
     coverNote: "独立二创概念设计，不代表与游戏方或音乐人的官方联名。",
-    keyAlt: "KAGURA 蕾娜键帽概念：红紫色角色画面连续铺展在银灰色键盘的独立键帽上",
+    keyAlt: "KIKORA 蕾娜键帽概念：红紫色角色画面连续铺展在银灰色键盘的独立键帽上",
   },
   concepts: {
     core: {
-      title: "Core 基础系列", index: "01 / 玻璃鼠标垫 — CORE", tagline: "从简洁出发，为专注留白。", asideTitle: "把注意力留给真正重要的事。", description: "简洁的形态、恰好的比例、清晰的视觉。KAGURA 对基础玻璃鼠标垫的设计探索。",
+      title: "Core 基础系列", index: "01 / 玻璃鼠标垫 — CORE", tagline: "从简洁出发，为专注留白。", asideTitle: "把注意力留给真正重要的事。", description: "简洁的形态、恰好的比例、清晰的视觉。KIKORA 对基础玻璃鼠标垫的设计探索。",
       storyTitle: "桌面上的一块留白。", story: "Core 探索玻璃鼠标垫最简洁的表达：安静的表面，有分寸的存在感。当前展示为造型概念，产品结构与最终规格仍在开发中。",
       caption: "Core / 造型研究", question: "Core 系列的设计方向是什么？", answer: "Core 以克制、简洁的视觉为出发点。目前展示的炭黑表面是概念效果，最终表面处理与结构尚待确认。",
     },
@@ -129,7 +129,7 @@ const zh: typeof en = {
       caption: "键帽 / 图案印刷概念", question: "这套键帽适配哪些键盘？", answer: "适配配列、键帽高度与套装内容尚未公布。当前图片用于展示设计方向，并非最终套装。",
     },
     metal: {
-      title: "金属客制化", index: "03 / 金属客制化", tagline: "探索几何形态、重量与细节。", asideTitle: "从细节，想象未来。", description: "定制金属物件是 KAGURA 的未来方向。当前键帽造型为早期几何形态研究。",
+      title: "金属客制化", index: "03 / 金属客制化", tagline: "探索几何形态、重量与细节。", asideTitle: "从细节，想象未来。", description: "定制金属物件是 KIKORA 的未来方向。当前键帽造型为早期几何形态研究。",
       storyTitle: "小物件，也有鲜明的存在感。", story: "金属客制化是未来产品企划，尝试以雕塑感的形态和细节丰富桌面。当前展示的键帽为概念造型，材料牌号、表面处理、制造工艺、适配范围与上市时间均未确定。",
       caption: "金属 / 几何造型研究", question: "这颗金属键帽可以购买了吗？", answer: "金属客制化仍属未来企划。当前几何键帽仅为造型研究，规格、发售安排与价格尚未公布。",
     },
@@ -137,8 +137,8 @@ const zh: typeof en = {
   details: {
     tabs: { specs: "规格", story: "设计理念", faq: "常见问题" }, category: "品类", collection: "系列", edition: "款式", dimensions: "设计尺寸", thickness: "厚度", surface: "表面与底部结构", status: "进度", tbc: "待确认", future: "未来企划",
     direction: "产品方向", preview: "预览内容", geometric: "几何键帽造型研究", materialsFinish: "材质与表面处理", compatibility: "适配范围", palette: "概念配色", colors: "绯红 / 紫罗兰 / 炭黑", materialsProcess: "材质与工艺", profileKit: "键帽高度与套装",
-    notes: "KAGURA / 产品手记", close: "关闭", closeLabel: "关闭产品详情", designDimensions: "设计尺寸 490 × 420 mm", designConcept: "设计概念", specsTbc: "最终规格待确认", conceptDeveloping: "概念设计 / 开发中", layoutTbc: "配列与键帽高度待确认", information: "详情",
-    metalLead: "提前看看，我们正在构思什么。", lead: "产品细节，正在逐步打磨。", specNote: "最终规格、价格与发售时间，将随开发进度陆续公布。", signoff: "KAGURA / 为日常，添一点自己的表达。",
+    notes: "KIKORA / 产品手记", close: "关闭", closeLabel: "关闭产品详情", designDimensions: "设计尺寸 490 × 420 mm", designConcept: "设计概念", specsTbc: "最终规格待确认", conceptDeveloping: "概念设计 / 开发中", layoutTbc: "配列与键帽高度待确认", information: "详情",
+    metalLead: "提前看看，我们正在构思什么。", lead: "产品细节，正在逐步打磨。", specNote: "最终规格、价格与发售时间，将随开发进度陆续公布。", signoff: "KIKORA / 为日常，添一点自己的表达。",
     confirmedQuestion: "目前有哪些已确定的规格？", glassAnswer: "设计尺寸为 490 × 420 mm。玻璃厚度、表面处理与底部结构尚待确认。", otherAnswer: "当前预览用于呈现设计方向。最终材质、尺寸、结构与适配范围尚未公布。",
     releaseQuestion: "如何获得发售消息？", releaseMetal: "金属客制化仍属未来企划。", releaseDeveloping: "该产品方向正在开发中。", releaseBefore: "价格与发售时间尚未公布。可前往", newsletter: "发售动态订阅", releaseAfter: "，关注后续消息。",
     overview: "产品概览", releaseNote: "最终规格待确认，发售信息将另行公布。", footer1: "你的桌面，", footer2: "你的表达。",
@@ -156,9 +156,9 @@ const zh: typeof en = {
     unavailable: "音乐尚未接入，查看说明", startingLabel: "音乐正在加载，点击关闭", onLabel: "音乐已开启，点击关闭", offLabel: "音乐已关闭，点击开启", on: "音乐 开", off: "音乐 关", settings: "音量与曲目信息", heading: "给桌面一点声音", close: "关闭音乐设置", trackPending: "属于这个系列的背景音乐", volume: "音量", percent: "%", error: "暂时无法播放，请重试。", retry: "重新播放", starting: "正在加载音乐…", playing: "音乐播放中，关闭面板后也会继续播放。", stopped: "音乐已关闭，想听的时候再打开。", noSource: "背景音乐正在挑选中，当前尚未接入音源。",
   },
   metadata: {
-    glass: "探索 KAGURA 玻璃鼠标垫：Core 基础、Artist 艺术与 Cover 专辑封面系列。以 490 × 420 mm 为设计尺寸的独立概念设计。",
-    keycaps: "探索 KAGURA 键帽概念。以角色与专辑封面为灵感，让完整画面延伸到每一颗键。",
-    metal: "探索 KAGURA 金属客制化的未来企划，从几何形态、造型与细节开始。",
+    glass: "探索 KIKORA 玻璃鼠标垫：Core 基础、Artist 艺术与 Cover 专辑封面系列。以 490 × 420 mm 为设计尺寸的独立概念设计。",
+    keycaps: "探索 KIKORA 键帽概念。以角色与专辑封面为灵感，让完整画面延伸到每一颗键。",
+    metal: "探索 KIKORA 金属客制化的未来企划，从几何形态、造型与细节开始。",
   },
 };
 
@@ -178,14 +178,14 @@ const ja: typeof en = {
     keyDescription: "レイナを、レコードジャケットのように。赤と紫のアートワークが、一つひとつのキーに広がります。「スタープレイヤー」のガラスエディションと響き合うキーキャップのコンセプトです。",
     metalDescription: "彫刻のようなかたちと、細部の仕上げから考えるメタルプロダクト。最初のコレクションは、まだ構想の段階です。",
     chooseArt: "カバーアートを選ぶ", more: "詳しく見る", release: "発売情報を受け取る", artistNote: "オリジナルのコンセプトです。アーティストとのコラボレーションは今後発表予定。", conceptNote: "デザインのプレビューです。製品の最終仕様は後日お知らせします。",
-    viewingAngle: "表示アングル", deskView: "デスクビュー", topView: "真上から見る", designStudy: "KAGURA / デザインスタディ", previous: "前のガラスシリーズへ", next: "次のガラスシリーズへ", of: "/",
+    viewingAngle: "表示アングル", deskView: "デスクビュー", topView: "真上から見る", designStudy: "KIKORA / デザインスタディ", previous: "前のガラスシリーズへ", next: "次のガラスシリーズへ", of: "/",
     help: "パッドをクリックして切り替え", unavailable: "コンセプト / 発売前", withinGlass: "ガラスマウスパッド · COVER シリーズ", coverTitle: "一枚のアートから、一つのエディションへ。", coverSubtitle: "キャラクターとレコードジャケットに着想を得たアートワーク。",
     coverNote: "自主制作の二次創作コンセプトです。ゲームや音楽アーティストとの公式コラボレーションではありません。",
-    keyAlt: "シルバーグレーのキーボードに、赤と紫のレイナのアートワークがキーをまたいで広がる KAGURA キーキャップのコンセプト",
+    keyAlt: "シルバーグレーのキーボードに、赤と紫のレイナのアートワークがキーをまたいで広がる KIKORA キーキャップのコンセプト",
   },
   concepts: {
     core: {
-      title: "Core シリーズ", index: "01 / ガラスマウスパッド — CORE", tagline: "シンプルなかたちから、静かな存在感を。", asideTitle: "大切なことに、集中できるように。", description: "かたち、バランス、そして一目で伝わる個性。KAGURA が考える、シンプルなガラスマウスパッドです。",
+      title: "Core シリーズ", index: "01 / ガラスマウスパッド — CORE", tagline: "シンプルなかたちから、静かな存在感を。", asideTitle: "大切なことに、集中できるように。", description: "かたち、バランス、そして一目で伝わる個性。KIKORA が考える、シンプルなガラスマウスパッドです。",
       storyTitle: "デスクに、余白を。", story: "Core が目指すのは、ガラスマウスパッドの最もシンプルな表現。落ち着いた表面と、デスクに自然になじむ佇まいを探っています。表示しているのはデザインスタディで、構造と最終仕様は開発中です。",
       caption: "Core / フォルムスタディ", question: "Core はどのようなシリーズですか？", answer: "余計な要素を抑えた、シンプルなビジュアルを探るシリーズです。表示しているチャコールの表面はコンセプトで、最終的な仕上げと構造は未定です。",
     },
@@ -205,7 +205,7 @@ const ja: typeof en = {
       caption: "キーキャップ / 印刷デザインのコンセプト", question: "どのキーボードに対応しますか？", answer: "対応レイアウト、キーキャップのプロファイル、セット内容は未発表です。画像はデザインの方向性を示すもので、最終的なセット構成ではありません。",
     },
     metal: {
-      title: "メタルカスタム", index: "03 / メタルカスタム", tagline: "かたち、重み、そして細部の探求。", asideTitle: "細部から、これからを考える。", description: "金属のカスタムプロダクトは、KAGURA の今後の企画です。このキーキャップは、幾何学的なかたちを探る初期スタディです。",
+      title: "メタルカスタム", index: "03 / メタルカスタム", tagline: "かたち、重み、そして細部の探求。", asideTitle: "細部から、これからを考える。", description: "金属のカスタムプロダクトは、KIKORA の今後の企画です。このキーキャップは、幾何学的なかたちを探る初期スタディです。",
       storyTitle: "小さなかたちに、確かな存在感を。", story: "メタルカスタムは、彫刻的なかたちと細かな表現からデスクの道具を考える今後の企画です。表示しているキーキャップはコンセプトモデル。素材の種類、表面仕上げ、製造方法、互換性、発売時期は未定です。",
       caption: "メタル / フォルムスタディ", question: "この金属キーキャップは購入できますか？", answer: "メタルカスタムは今後の企画です。このキーキャップはかたちを検討するためのスタディで、仕様、発売時期、価格はまだ発表していません。",
     },
@@ -213,8 +213,8 @@ const ja: typeof en = {
   details: {
     tabs: { specs: "仕様", story: "デザインについて", faq: "よくある質問" }, category: "カテゴリー", collection: "シリーズ", edition: "エディション", dimensions: "デザイン寸法", thickness: "厚さ", surface: "表面・ベース構造", status: "開発状況", tbc: "未定", future: "今後の企画",
     direction: "製品の方向性", preview: "プレビュー内容", geometric: "幾何学的なキーキャップの造形", materialsFinish: "素材・表面仕上げ", compatibility: "互換性", palette: "カラースタディ", colors: "クリムゾン / バイオレット / チャコール", materialsProcess: "素材・製法", profileKit: "プロファイル・セット内容",
-    notes: "KAGURA / プロダクトノート", close: "閉じる", closeLabel: "製品の詳細を閉じる", designDimensions: "デザイン寸法 490 × 420 mm", designConcept: "デザインコンセプト", specsTbc: "最終仕様は未定", conceptDeveloping: "コンセプト / 開発中", layoutTbc: "レイアウト・プロファイルは未定", information: "の詳細",
-    metalLead: "これからのプロダクトを、少しだけ。", lead: "細かな仕様は、開発を進めています。", specNote: "最終仕様、価格、発売時期は、開発の進捗に合わせてお知らせします。", signoff: "KAGURA / 日々の道具に、自分らしさを。",
+    notes: "KIKORA / プロダクトノート", close: "閉じる", closeLabel: "製品の詳細を閉じる", designDimensions: "デザイン寸法 490 × 420 mm", designConcept: "デザインコンセプト", specsTbc: "最終仕様は未定", conceptDeveloping: "コンセプト / 開発中", layoutTbc: "レイアウト・プロファイルは未定", information: "の詳細",
+    metalLead: "これからのプロダクトを、少しだけ。", lead: "細かな仕様は、開発を進めています。", specNote: "最終仕様、価格、発売時期は、開発の進捗に合わせてお知らせします。", signoff: "KIKORA / 日々の道具に、自分らしさを。",
     confirmedQuestion: "現時点で決まっている仕様は？", glassAnswer: "デザイン寸法は 490 × 420 mm です。ガラスの厚さ、表面仕上げ、ベースの構造は未定です。", otherAnswer: "現在のプレビューはデザインの方向性を示しています。最終的な素材、寸法、構造、互換性はまだ発表していません。",
     releaseQuestion: "発売情報はどこで確認できますか？", releaseMetal: "メタルカスタムは今後の企画です。", releaseDeveloping: "現在、開発を進めている製品です。", releaseBefore: "価格と発売時期は未発表です。最新情報は", newsletter: "メールニュースへの登録", releaseAfter: "からお受け取りいただけます。",
     overview: "製品の概要", releaseNote: "最終仕様は未定です。発売情報は後日お知らせします。", footer1: "いつものデスクに、", footer2: "自分らしさを。",
@@ -232,9 +232,9 @@ const ja: typeof en = {
     unavailable: "音源はまだ設定されていません。詳細を見る", startingLabel: "音楽を読み込み中。音楽をオフにする", onLabel: "音楽はオンです。オフにする", offLabel: "音楽はオフです。オンにする", on: "サウンド ON", off: "サウンド OFF", settings: "音量と楽曲情報", heading: "音楽と一緒に", close: "音楽設定を閉じる", trackPending: "コレクションに合う一曲を", volume: "音量", percent: "パーセント", error: "再生できませんでした。もう一度お試しください。", retry: "もう一度再生", starting: "音楽を読み込み中…", playing: "再生中です。パネルを閉じても音楽は続きます。", stopped: "音楽はオフです。お好きなときに再生してください。", noSource: "BGM を選曲中です。現在、音源はまだ設定されていません。",
   },
   metadata: {
-    glass: "KAGURA のガラスマウスパッドを探る。Core、Artist、Cover の各シリーズで展開する、490 × 420 mm を想定したオリジナルのデザインコンセプト。",
-    keycaps: "KAGURA のキーキャップコンセプト。キャラクターアートとレコードジャケットの表現を、一つひとつのキーへ。",
-    metal: "KAGURA のメタルカスタム。幾何学的なかたちと細部から、これからのデスクプロダクトを考える初期スタディ。",
+    glass: "KIKORA のガラスマウスパッドを探る。Core、Artist、Cover の各シリーズで展開する、490 × 420 mm を想定したオリジナルのデザインコンセプト。",
+    keycaps: "KIKORA のキーキャップコンセプト。キャラクターアートとレコードジャケットの表現を、一つひとつのキーへ。",
+    metal: "KIKORA のメタルカスタム。幾何学的なかたちと細部から、これからのデスクプロダクトを考える初期スタディ。",
   },
 };
 

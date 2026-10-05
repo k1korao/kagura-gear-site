@@ -36,7 +36,7 @@ function escapeHtml(value: string) {
 
 function buildMailtoHref(name: string, email: string, topic: string, message: string) {
   return supportMailto(
-    `Kagura Gear contact: ${topic || "Support"}`,
+    `KIKORA contact: ${topic || "Support"}`,
     [`Name: ${name}`, `Email: ${email}`, `Topic: ${topic || "Support"}`, "", message].join("\n"),
   );
 }
@@ -87,7 +87,7 @@ export async function POST(request: Request) {
     );
   }
 
-  const subject = `Kagura Gear contact: ${topic || "Support"}`;
+  const subject = `KIKORA contact: ${topic || "Support"}`;
   const text = [
     `Name: ${name}`,
     `Email: ${email}`,
@@ -96,7 +96,7 @@ export async function POST(request: Request) {
     message,
   ].join("\n");
   const html = `
-    <h2>New Kagura Gear contact request</h2>
+    <h2>New KIKORA contact request</h2>
     <p><strong>Name:</strong> ${escapeHtml(name)}</p>
     <p><strong>Email:</strong> ${escapeHtml(email)}</p>
     <p><strong>Topic:</strong> ${escapeHtml(topic || "Support")}</p>
@@ -132,6 +132,6 @@ export async function POST(request: Request) {
   }
 
   return NextResponse.json({
-    message: `Message sent. Kagura Gear will reply from ${siteConfig.supportEmail}.`,
+    message: `Message sent. KIKORA will reply from ${siteConfig.supportEmail}.`,
   });
 }

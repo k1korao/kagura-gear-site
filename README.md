@@ -90,7 +90,7 @@ Future headless Shopify placeholders are listed in `.env.example`.
 The production support inbox is:
 
 ```txt
-support@kaguragear.com
+support@kikoragear.com
 ```
 
 The website includes direct `mailto:` links so customers can email Kagura Gear
@@ -100,11 +100,16 @@ and add these Vercel environment variables:
 
 ```txt
 RESEND_API_KEY=your-resend-api-key
-CONTACT_FROM_EMAIL=Kagura Gear <support@kaguragear.com>
-CONTACT_TO_EMAIL=support@kaguragear.com
-NEWSLETTER_FROM_EMAIL=Kagura Gear <support@kaguragear.com>
-NEWSLETTER_NOTIFY_EMAIL=support@kaguragear.com
+NEXT_PUBLIC_SUPPORT_EMAIL=support@kikoragear.com
+CONTACT_FROM_EMAIL=KIKORA <support@kaguragear.com>
+CONTACT_TO_EMAIL=support@kikoragear.com
+NEWSLETTER_FROM_EMAIL=KIKORA <support@kaguragear.com>
+NEWSLETTER_NOTIFY_EMAIL=support@kikoragear.com
 ```
+
+The sender addresses retain the previously verified Resend domain until
+`kikoragear.com` is verified for sending. Customer contact and notification
+addresses use `support@kikoragear.com`.
 
 Do not add real secrets to GitHub. Add them only in Vercel Project Settings >
 Environment Variables. If the provider is not connected yet, the form shows a

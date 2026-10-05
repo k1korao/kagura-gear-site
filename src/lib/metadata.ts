@@ -29,7 +29,7 @@ export async function pageMetadata({ title, description, path }: PageMetadataInp
           url: siteConfig.ogImage,
           width: 1536,
           height: 1024,
-          alt: { zh: "KAGURA 键帽设计概念", en: "KAGURA keycap design concept", ja: "KAGURA キーキャップのデザインコンセプト" }[locale],
+          alt: { zh: "KIKORA 键帽设计概念", en: "KIKORA keycap design concept", ja: "KIKORA キーキャップのデザインコンセプト" }[locale],
         },
       ],
     },

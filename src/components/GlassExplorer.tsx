@@ -64,7 +64,7 @@ function printCanvas(kind: "core" | "artist" | "cover", image?: HTMLImageElement
     }
     ctx.fillStyle = "#e8edf0";
     ctx.font = "500 21px Arial, sans-serif";
-    ctx.fillText("KAGURA", 54, h - 63);
+    ctx.fillText("KIKORA", 54, h - 63);
     ctx.font = "14px monospace";
     ctx.fillStyle = "#a5adb3";
     ctx.fillText("GG—01 / 490 × 420", w - 278, h - 63);
@@ -92,7 +92,7 @@ function printCanvas(kind: "core" | "artist" | "cover", image?: HTMLImageElement
     ctx.fillRect(0, 0, w, h);
     ctx.fillStyle = "#f3f6f7";
     ctx.font = "500 21px Arial, sans-serif";
-    ctx.fillText("KAGURA / STUDIO", 54, h - 63);
+    ctx.fillText("KIKORA / STUDIO", 54, h - 63);
     ctx.font = "14px monospace";
     ctx.fillText("FORM STUDY — 001", w - 255, h - 63);
   } else {
@@ -120,7 +120,7 @@ function printCanvas(kind: "core" | "artist" | "cover", image?: HTMLImageElement
       ctx.fillText(cover.title, w * 0.05, h * 0.045);
       ctx.font = "700 16px monospace";
       ctx.fillStyle = "#f3f5ff";
-      ctx.fillText(`KAGURA / COVER STUDY — ${String(edition + 1).padStart(3, "0")}`, w * 0.05, h * 0.94);
+      ctx.fillText(`KIKORA / COVER STUDY — ${String(edition + 1).padStart(3, "0")}`, w * 0.05, h * 0.94);
       ctx.textBaseline = "alphabetic";
     }
   }
@@ -542,7 +542,7 @@ export function GlassExplorer({ active, edition, topView, onSelect }: GlassExplo
     <div ref={hostRef} className={`${styles.stage} ${ready ? styles.ready : ""}`} aria-hidden="true">
       <div className={`${styles.fallback} ${topView ? styles.fallbackTop : ""}`}>
         <div className={`${styles.fallbackPad} ${active === 1 ? styles.artist : ""}`} style={fallbackStyle}>
-          {active !== 2 && <span>KAGURA <small>{active === 1 ? "STUDIO / 001" : "GG—01"}</small></span>}
+          {active !== 2 && <span>KIKORA <small>{active === 1 ? "STUDIO / 001" : "GG—01"}</small></span>}
         </div>
         <div className={styles.fallbackShadow} />
       </div>

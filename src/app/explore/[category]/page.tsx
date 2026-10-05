@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
   if (!categories.includes(category as ProductCategory)) return {};
   const locale = await getLocale();
   const copy = productCopy[locale];
-  return pageMetadata({ title: `${copy.categories[category as ProductCategory]} — KAGURA`, description: copy.metadata[category as ProductCategory], path: `/explore/${category}` });
+  return pageMetadata({ title: `${copy.categories[category as ProductCategory]} — KIKORA`, description: copy.metadata[category as ProductCategory], path: `/explore/${category}` });
 }
 export default async function ExplorePage({ params }: { params: Promise<{ category: string }> }) {
   const { category } = await params;

@@ -1,13 +1,13 @@
-export const siteHost = "kaguragear.com";
-export const siteUrl = `https://${siteHost}`;
+export const siteUrl = new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://kikoragear.com").origin;
+export const siteHost = new URL(siteUrl).host;
 
 export const siteConfig = {
-  name: "Kagura Gear",
+  name: "KIKORA",
   slogan: "Collect Your World",
   url: siteUrl,
-  supportEmail: "support@kaguragear.com",
+  supportEmail: process.env.NEXT_PUBLIC_SUPPORT_EMAIL || "support@kikoragear.com",
   description:
-    "Discover Kagura Gear: independent glass mousepads, artist editions, keycaps and future metal custom objects. Precision meets personality.",
+    "Discover KIKORA: independent glass mousepads, artist editions, keycaps and future metal custom objects. Precision meets personality.",
   ogImage: "/images/kagura-keycaps-cover.webp",
 };
 
@@ -36,7 +36,7 @@ export function absoluteUrl(path = "") {
   return `${siteUrl}${path.startsWith("/") ? path : `/${path}`}`;
 }
 
-export function supportMailto(subject = "Kagura Gear support request", body = "") {
+export function supportMailto(subject = "KIKORA support request", body = "") {
   const params = new URLSearchParams({
     subject,
     body,

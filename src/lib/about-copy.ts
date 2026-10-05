@@ -1,11 +1,11 @@
 export const aboutCopy = {
   zh: {
-    lang: "zh-CN", title: "品牌故事", description: "KAGURA 希望连接独立画师、个人 IP 与动漫游戏玩家，让创作者的世界成为可以带进日常的艺术收藏。",
-    eyebrow: "KAGURA / 值得收藏的世界", heroTitle: ["让创作者的世界，", "成为你的收藏。"],
+    lang: "zh-CN", title: "品牌故事", description: "KIKORA 希望连接独立画师、个人 IP 与动漫游戏玩家，让创作者的世界成为可以带进日常的艺术收藏。",
+    eyebrow: "KIKORA / 值得收藏的世界", heroTitle: ["让创作者的世界，", "成为你的收藏。"],
     intro: ["我们想做一座连接创作者与玩家的桥。", "让个人 IP 的想象力走出画面，成为有形、可触及，值得长久留在身边的作品。"], enter: "进入我们的故事",
     wraithAlt: "恶灵主题的蓝色视觉研究，呈现角色与音乐封面语言的结合", visualMark: ["一个世界，", "正在成形。"], visualStudy: "视觉研究 / 001", visualNote: "概念研究 · 非已发布联名",
     beginning: "01 / 故事的起点", sharedPassion: "共同的热爱", storyTitle: ["总有一个世界，", "你不想在退出游戏后离开。"],
-    story: ["也许是陪你打过无数场对局的角色，是一张循环播放的专辑，是一位画师笔下第一次让你停住的画。我们喜欢它们，不只是因为好看，而是因为它们说出了属于我们的某一部分。", "KAGURA 从这种共同的感受出发。我们希望把动漫、游戏、音乐与当代潮流中的创作能量，转化为玩家日常里的艺术收藏。桌面不只摆放设备，也可以收藏你的审美、记忆与态度。"],
+    story: ["也许是陪你打过无数场对局的角色，是一张循环播放的专辑，是一位画师笔下第一次让你停住的画。我们喜欢它们，不只是因为好看，而是因为它们说出了属于我们的某一部分。", "KIKORA 从这种共同的感受出发。我们希望把动漫、游戏、音乐与当代潮流中的创作能量，转化为玩家日常里的艺术收藏。桌面不只摆放设备，也可以收藏你的审美、记忆与态度。"],
     beliefLabel: "02 / 我们相信", beliefTitle: ["一件作品，", "三个不可替代的部分。"],
     beliefs: [
       { number: "01", label: "创作者", title: "作品的主角，是创作者。", body: "我们想认识的，不只是一个画风，而是画风背后的那个人。独立角色、个人叙事、还没有被看见的世界，都可以成为一件作品的起点。" },
@@ -25,12 +25,12 @@ export const aboutCopy = {
     invitationLabel: "我们的故事，仍在继续。", invitationTitle: ["世界很大。", "把与你共鸣的，留在身边。"], invitationBody: ["共创系列与限定作品正在筹备。", "下一位创作者、下一件作品，我们一起等待。"], invitationAction: "关注新作品",
   },
   en: {
-    lang: "en", title: "Our world", description: "KAGURA brings independent art, original characters and gaming culture into objects made to be part of everyday life. Discover our vision for artist-led collections.",
-    eyebrow: "KAGURA / A WORLD WORTH COLLECTING", heroTitle: ["An artist’s world.", "A place in yours."],
+    lang: "en", title: "Our world", description: "KIKORA brings independent art, original characters and gaming culture into objects made to be part of everyday life. Discover our vision for artist-led collections.",
+    eyebrow: "KIKORA / A WORLD WORTH COLLECTING", heroTitle: ["An artist’s world.", "A place in yours."],
     intro: ["We’re building a meeting place for artists and players.", "A place where original worlds move beyond the screen and become objects you can hold, live with and keep."], enter: "Explore our story",
     wraithAlt: "Blue Wraith-inspired concept study combining character art with the visual language of album covers", visualMark: ["WORLD", "IN PROGRESS."], visualStudy: "VISUAL STUDY / 001", visualNote: "Concept study · Not a released collaboration",
     beginning: "01 / THE BEGINNING", sharedPassion: "A shared connection", storyTitle: ["Some worlds stay with you", "long after you log off."],
-    story: ["A character you’ve played for countless hours. An album that never leaves your rotation. An illustration that makes you stop scrolling. The work we love does more than look good. It reflects a part of who we are.", "That connection is where KAGURA begins. We want to bring the creative energy of anime, games, music and street culture into art you can live with. Your desk can hold more than equipment. It can hold a little of your history, your taste and your world."],
+    story: ["A character you’ve played for countless hours. An album that never leaves your rotation. An illustration that makes you stop scrolling. The work we love does more than look good. It reflects a part of who we are.", "That connection is where KIKORA begins. We want to bring the creative energy of anime, games, music and street culture into art you can live with. Your desk can hold more than equipment. It can hold a little of your history, your taste and your world."],
     beliefLabel: "02 / WHAT WE BELIEVE", beliefTitle: ["Three things", "every piece should carry."],
     beliefs: [
       { number: "01", label: "THE CREATOR", title: "The artist comes first.", body: "We want to know the person behind the style. An original character, a personal story or a world still waiting to be seen can be the beginning of a collection." },
@@ -40,7 +40,7 @@ export const aboutCopy = {
     reynaAlt: "Red and blue Reyna-inspired concept study exploring character art and album-cover composition", creatorVisualNote: "CONCEPT STUDY / Not a released collaboration",
     creatorLabel: "03 / MANY CREATORS. MANY WORLDS.", creatorTitle: ["The next chapter", "needs more voices."],
     creatorBody: ["We hope to work with independent illustrators and original-IP creators from cities across China. The ambition is to give each artist’s voice room to lead, so collectors can discover a world that feels like their own.", "There is no single style everyone has to follow. A world can be stark, vivid, strange or quietly intimate. What matters is that it belongs to the person creating it."],
-    creatorStatus: "Artist collaboration program · In development", creatorAction: "Tell us about your work", mailSubject: "Artist collaboration / KAGURA",
+    creatorStatus: "Artist collaboration program · In development", creatorAction: "Tell us about your work", mailSubject: "Artist collaboration / KIKORA",
     objectsLabel: "04 / ART TAKES FORM", objectsTitle: ["One world.", "More ways to keep it."], objectsBody: "We’re exploring three kinds of objects, bringing the image, the feel and the way you use them into the work itself.",
     objects: [
       { href: "/explore/glass", label: "01 / GLASS MOUSEPADS", title: "Glass mousepads", body: "A full canvas at the center of your desk.", action: "Explore the direction" },
@@ -50,12 +50,12 @@ export const aboutCopy = {
     invitationLabel: "THE STORY IS STILL BEING WRITTEN.", invitationTitle: ["Find your world.", "Keep a piece of it close."], invitationBody: ["Artist collaborations and limited-edition collections are in development.", "Follow the next idea, the next artist and the next piece as they take shape."], invitationAction: "Follow new editions",
   },
   ja: {
-    lang: "ja", title: "KAGURA の世界", description: "作家が描く世界と、ゲームやアニメを愛する人の日常をつなぐ。KAGURA は、オリジナル IP と独自の表現から生まれるアートコレクションを構想しています。",
-    eyebrow: "KAGURA / 好きな世界を、手元に", heroTitle: ["クリエイターの世界を、", "あなたのコレクションに。"],
+    lang: "ja", title: "KIKORA の世界", description: "作家が描く世界と、ゲームやアニメを愛する人の日常をつなぐ。KIKORA は、オリジナル IP と独自の表現から生まれるアートコレクションを構想しています。",
+    eyebrow: "KIKORA / 好きな世界を、手元に", heroTitle: ["クリエイターの世界を、", "あなたのコレクションに。"],
     intro: ["作家の想像力と、プレイヤーの毎日が出会う場所へ。", "画面の中にあった世界を、触れられるかたちに。いつまでもそばに置きたくなる作品を目指しています。"], enter: "私たちの物語を読む",
     wraithAlt: "レイスを題材に、キャラクターアートとアルバムジャケットの表現を組み合わせた青いビジュアル研究", visualMark: ["新しい世界が、", "かたちになる。"], visualStudy: "ビジュアル研究 / 001", visualNote: "コンセプト研究・発売済みコラボ作品ではありません",
     beginning: "01 / 物語のはじまり", sharedPassion: "同じ「好き」から", storyTitle: ["ゲームを閉じたあとも、", "離れたくない世界がある。"],
-    story: ["何度も一緒に戦ったキャラクター。繰り返し聴いてきたアルバム。思わず手を止めて見入った一枚の絵。ただ美しいだけではない、自分のどこかと響き合うものに、私たちは惹かれます。", "KAGURA の出発点は、その気持ちです。アニメ、ゲーム、音楽、ストリートカルチャーから生まれる表現を、毎日に置けるアートへ。デスクは機材を並べる場所であると同時に、好みや記憶、自分らしさを集める場所にもなれると考えています。"],
+    story: ["何度も一緒に戦ったキャラクター。繰り返し聴いてきたアルバム。思わず手を止めて見入った一枚の絵。ただ美しいだけではない、自分のどこかと響き合うものに、私たちは惹かれます。", "KIKORA の出発点は、その気持ちです。アニメ、ゲーム、音楽、ストリートカルチャーから生まれる表現を、毎日に置けるアートへ。デスクは機材を並べる場所であると同時に、好みや記憶、自分らしさを集める場所にもなれると考えています。"],
     beliefLabel: "02 / 大切にしたいこと", beliefTitle: ["ひとつの作品に、", "欠かせない3つのこと。"],
     beliefs: [
       { number: "01", label: "作家", title: "表現の中心に、作家がいる。", body: "知りたいのは絵柄だけでなく、それを描く人のこと。オリジナルのキャラクター、個人的な物語、まだ知られていない世界。その一つひとつが、作品の出発点になります。" },
@@ -65,7 +65,7 @@ export const aboutCopy = {
     reynaAlt: "レイナを題材に、キャラクターとアルバムジャケットの構図を探る赤と青のビジュアル研究", creatorVisualNote: "コンセプト研究 / 発売済みコラボ作品ではありません",
     creatorLabel: "03 / 作家の数だけ、世界がある", creatorTitle: ["次の物語は、", "さまざまな作家と。"],
     creatorBody: ["中国各地で活動するイラストレーターや、オリジナル IP を育てるクリエイターとの共創を目指しています。それぞれの個性をコレクションの中心に置き、集める人が自分に響く世界と出会えるように。", "ひとつの作風に揃える必要はありません。鋭く、鮮やかで、少し不思議な世界。あるいは、静かで繊細な世界。私たちが出会いたいのは、その人にしか描けない表現です。"],
-    creatorStatus: "作家との共創プロジェクト・準備中", creatorAction: "あなたの作品について聞かせてください", mailSubject: "作家コラボレーションのご相談 / KAGURA",
+    creatorStatus: "作家との共創プロジェクト・準備中", creatorAction: "あなたの作品について聞かせてください", mailSubject: "作家コラボレーションのご相談 / KIKORA",
     objectsLabel: "04 / アートを、触れられるかたちに", objectsTitle: ["ひとつの世界を、", "いろいろなかたちで集める。"], objectsBody: "いま構想しているのは、3つのプロダクト。絵の魅力も、触れた感覚も、使う時間も、作品の一部にしたいと考えています。",
     objects: [
       { href: "/explore/glass", label: "01 / ガラスマウスパッド", title: "ガラスマウスパッド", body: "一枚の絵を、デスクの中心に。", action: "コンセプトを見る" },

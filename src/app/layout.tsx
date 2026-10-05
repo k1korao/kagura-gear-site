@@ -10,7 +10,7 @@ import { LocaleProvider } from "@/components/LocaleProvider";
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
-  const description = { zh: "KAGURA 面向动漫、游戏与潮流玩家，探索独立画师、个人 IP 与限定艺术作品。让创作者的世界，成为你的收藏。", en: "KAGURA brings independent art and original characters into collectible objects for people who live and love games, anime and design.", ja: "作家の世界を、あなたのコレクションに。KAGURAは、アニメ・ゲーム・ストリートカルチャーを愛する人に向けた、オリジナルIPとアートピースの可能性を探るブランドです。" }[locale];
+  const description = { zh: "KIKORA 面向动漫、游戏与潮流玩家，探索独立画师、个人 IP 与限定艺术作品。让创作者的世界，成为你的收藏。", en: "KIKORA brings independent art and original characters into collectible objects for people who live and love games, anime and design.", ja: "作家の世界を、あなたのコレクションに。KIKORAは、アニメ・ゲーム・ストリートカルチャーを愛する人に向けた、オリジナルIPとアートピースの可能性を探るブランドです。" }[locale];
   return {
   metadataBase: new URL(siteConfig.url),
   title: {
@@ -46,7 +46,7 @@ export async function generateMetadata(): Promise<Metadata> {
         url: siteConfig.ogImage,
         width: 1536,
         height: 1024,
-        alt: "KAGURA independent keycap design study",
+        alt: "KIKORA independent keycap design study",
       },
     ],
   },

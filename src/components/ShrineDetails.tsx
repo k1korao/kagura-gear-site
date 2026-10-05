@@ -142,7 +142,7 @@ export function ShrineDetails({ open, onClose, kind, collection = "core", editio
             {isGlass ? (
               <figure className={styles.visual}>
                 <div className={`${styles.glassPad} ${collection === "core" ? styles.corePad : collection === "artist" ? styles.artistPad : ""}`} aria-hidden="true">
-                  {isCovers ? <AlbumArtwork edition={edition} /> : collection === "artist" ? <><span className={styles.artistOrbit} /><span className={styles.artistPlane} /><span className={styles.padMark}>KAGURA / ARTIST</span></> : <><span className={styles.coreSheen} /><span className={styles.padMark}>KAGURA / CORE</span></>}
+                  {isCovers ? <AlbumArtwork edition={edition} /> : collection === "artist" ? <><span className={styles.artistOrbit} /><span className={styles.artistPlane} /><span className={styles.padMark}>KIKORA / ARTIST</span></> : <><span className={styles.coreSheen} /><span className={styles.padMark}>KIKORA / CORE</span></>}
                 </div>
                 <figcaption>{isCovers ? editionName : concept.caption}<span>{isCovers ? text.designDimensions : text.designConcept}</span></figcaption>
               </figure>
@@ -221,14 +221,14 @@ export function ShrineDetails({ open, onClose, kind, collection = "core", editio
           </div>
 
           <aside className={styles.aside} aria-label={text.overview}>
-            <span className={styles.eyebrow}>KAGURA / {title}</span>
+            <span className={styles.eyebrow}>KIKORA / {title}</span>
             <h3>{concept.asideTitle}</h3>
             <p className={styles.asideDescription}>{concept.description}</p>
             {isCovers ? <div className={styles.summaryRow}><span>{text.dimensions}</span><strong>490 × 420 mm</strong></div> : null}
             <div className={styles.status}><span aria-hidden="true" />{isMetal ? text.future : copy.experience.developing}</div>
             <p className={styles.releaseNote}>{text.releaseNote}</p>
             <Link href="/#newsletter" onClick={onClose} className={styles.primaryLink}>{copy.experience.release}<span aria-hidden="true">↗</span></Link>
-            <div className={styles.asideFooter}><span>KAGURA</span><span>{text.footer1}<br />{text.footer2}</span></div>
+            <div className={styles.asideFooter}><span>KIKORA</span><span>{text.footer1}<br />{text.footer2}</span></div>
           </aside>
         </div>
       </div>

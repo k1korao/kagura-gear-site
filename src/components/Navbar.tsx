@@ -76,7 +76,7 @@ export function Navbar() {
           <Link className={styles.menuCategory} href="/explore/keycaps" onClick={() => followCategory("keycaps")}>{copy.keycaps}<span aria-hidden="true">↗</span></Link>
           <Link className={styles.menuCategory} href="/explore/metal" onClick={() => followCategory("metal")}>{copy.metal}<span aria-hidden="true">↗</span></Link>
         </div>
-        <div className={styles.menuMore}><span className={styles.menuLabel}>KAGURA</span><Link href="/" onClick={closeMenus}>{copy.story}</Link><Link href="/about" onClick={closeMenus}>{copy.about}</Link><Link href="/contact" onClick={closeMenus}>{copy.contact}</Link><Link href="/faq" onClick={closeMenus}>{copy.faq}</Link><Link href="/#newsletter" onClick={closeMenus}>{copy.updates} <span aria-hidden="true">↗</span></Link></div>
+        <div className={styles.menuMore}><span className={styles.menuLabel}>KIKORA</span><Link href="/" onClick={closeMenus}>{copy.story}</Link><Link href="/about" onClick={closeMenus}>{copy.about}</Link><Link href="/contact" onClick={closeMenus}>{copy.contact}</Link><Link href="/faq" onClick={closeMenus}>{copy.faq}</Link><Link href="/#newsletter" onClick={closeMenus}>{copy.updates} <span aria-hidden="true">↗</span></Link></div>
       </nav> : null}
     </header>
   );

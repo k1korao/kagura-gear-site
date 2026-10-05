@@ -1,6 +1,6 @@
 export const navigationCopy = {
   zh: {
-    home: "KAGURA 首页", primary: "主导航", expanded: "全部导航", glass: "玻璃鼠标垫", keycaps: "键帽", metal: "金属客制化",
+    home: "KIKORA 首页", primary: "主导航", expanded: "全部导航", glass: "玻璃鼠标垫", keycaps: "键帽", metal: "金属客制化",
     glassCollections: "玻璃鼠标垫系列", glassDirections: "玻璃鼠标垫 / 三种创作方向",
     collections: [
       { id: "core", label: "基础系列", note: "回归材质与手感" },
@@ -10,12 +10,12 @@ export const navigationCopy = {
     openMenu: "打开导航菜单", closeMenu: "关闭导航菜单", menu: "菜单", close: "关闭", exploreObjects: "探索作品",
     hideGlass: "收起玻璃鼠标垫系列", showGlass: "展开玻璃鼠标垫系列", story: "我们的世界", about: "品牌故事", contact: "联系我们", faq: "常见问题", updates: "作品动态",
     brand: ["让创作者的世界，成为你的收藏。", "独立艺术 / 个人 IP / 日常收藏"],
-    explore: "作品方向", information: "了解 KAGURA", shipping: "配送说明", returns: "退换说明", status: "系列筹备中",
-    invitation: ["你的世界，", "值得被收藏。"], invitationBody: "关注 KAGURA 正在酝酿的创作者故事与新系列。", updatesAction: "关注新作品",
-    copyright: "保留所有权利。", privacy: "隐私政策", terms: "服务条款", principles: "艺术 / 自我表达 / 收藏", supportSubject: "品牌与售后咨询 / KAGURA",
+    explore: "作品方向", information: "了解 KIKORA", shipping: "配送说明", returns: "退换说明", status: "系列筹备中",
+    invitation: ["你的世界，", "值得被收藏。"], invitationBody: "关注 KIKORA 正在酝酿的创作者故事与新系列。", updatesAction: "关注新作品",
+    copyright: "保留所有权利。", privacy: "隐私政策", terms: "服务条款", principles: "艺术 / 自我表达 / 收藏", supportSubject: "品牌与售后咨询 / KIKORA",
   },
   en: {
-    home: "KAGURA home", primary: "Primary navigation", expanded: "Full navigation", glass: "Glass mousepads", keycaps: "Keycaps", metal: "Metal customs",
+    home: "KIKORA home", primary: "Primary navigation", expanded: "Full navigation", glass: "Glass mousepads", keycaps: "Keycaps", metal: "Metal customs",
     glassCollections: "Glass mousepad collections", glassDirections: "GLASS / THREE DIRECTIONS",
     collections: [
       { id: "core", label: "Core", note: "Material. Surface. Feel." },
@@ -23,14 +23,14 @@ export const navigationCopy = {
       { id: "covers", label: "Cover series", note: "Where music meets gaming" },
     ],
     openMenu: "Open navigation menu", closeMenu: "Close navigation menu", menu: "Menu", close: "Close", exploreObjects: "EXPLORE THE OBJECTS",
-    hideGlass: "Hide glass collections", showGlass: "Show glass collections", story: "Our world", about: "About KAGURA", contact: "Contact", faq: "FAQ", updates: "Edition updates",
+    hideGlass: "Hide glass collections", showGlass: "Show glass collections", story: "Our world", about: "About KIKORA", contact: "Contact", faq: "FAQ", updates: "Edition updates",
     brand: ["Collect your world.", "Independent art. Original IP. Objects to keep."],
     explore: "EXPLORE", information: "INFORMATION", shipping: "Shipping", returns: "Returns", status: "IN DEVELOPMENT",
-    invitation: ["Your world.", "Worth collecting."], invitationBody: "Meet the ideas, artists and future editions taking shape at KAGURA.", updatesAction: "Follow new editions",
-    copyright: "All rights reserved.", privacy: "Privacy policy", terms: "Terms of service", principles: "ART / IDENTITY / COLLECTION", supportSubject: "KAGURA support request",
+    invitation: ["Your world.", "Worth collecting."], invitationBody: "Meet the ideas, artists and future editions taking shape at KIKORA.", updatesAction: "Follow new editions",
+    copyright: "All rights reserved.", privacy: "Privacy policy", terms: "Terms of service", principles: "ART / IDENTITY / COLLECTION", supportSubject: "KIKORA support request",
   },
   ja: {
-    home: "KAGURA ホーム", primary: "メインナビゲーション", expanded: "すべてのメニュー", glass: "ガラスマウスパッド", keycaps: "キーキャップ", metal: "メタルカスタム",
+    home: "KIKORA ホーム", primary: "メインナビゲーション", expanded: "すべてのメニュー", glass: "ガラスマウスパッド", keycaps: "キーキャップ", metal: "メタルカスタム",
     glassCollections: "ガラスマウスパッドのシリーズ", glassDirections: "ガラスから広がる、3つの表現",
     collections: [
       { id: "core", label: "Core シリーズ", note: "素材と使い心地に向き合う" },
@@ -38,10 +38,10 @@ export const navigationCopy = {
       { id: "covers", label: "Cover シリーズ", note: "レコードジャケットからの着想" },
     ],
     openMenu: "メニューを開く", closeMenu: "メニューを閉じる", menu: "メニュー", close: "閉じる", exploreObjects: "作品を探す",
-    hideGlass: "ガラスのシリーズを閉じる", showGlass: "ガラスのシリーズを開く", story: "私たちの世界", about: "KAGURA について", contact: "お問い合わせ", faq: "よくあるご質問", updates: "新作のお知らせ",
+    hideGlass: "ガラスのシリーズを閉じる", showGlass: "ガラスのシリーズを開く", story: "私たちの世界", about: "KIKORA について", contact: "お問い合わせ", faq: "よくあるご質問", updates: "新作のお知らせ",
     brand: ["クリエイターの世界を、あなたのコレクションに。", "アート / オリジナル IP / 日常に置く作品"],
     explore: "作品カテゴリー", information: "ご案内", shipping: "配送について", returns: "返品・交換について", status: "コレクション準備中",
-    invitation: ["あなたの世界を、", "手元に。"], invitationBody: "KAGURA で生まれる新しい着想、作家の物語、これからのコレクションをお届けします。", updatesAction: "新作の情報を受け取る",
-    copyright: "無断転載を禁じます。", privacy: "プライバシーポリシー", terms: "利用規約", principles: "アート / 個性 / コレクション", supportSubject: "KAGURA お問い合わせ",
+    invitation: ["あなたの世界を、", "手元に。"], invitationBody: "KIKORA で生まれる新しい着想、作家の物語、これからのコレクションをお届けします。", updatesAction: "新作の情報を受け取る",
+    copyright: "無断転載を禁じます。", privacy: "プライバシーポリシー", terms: "利用規約", principles: "アート / 個性 / コレクション", supportSubject: "KIKORA お問い合わせ",
   },
 } as const;

@@ -43,7 +43,7 @@ function buildCustomerText(email: string, locale: Locale) {
 function buildCustomerHtml(email: string, locale: Locale) {
   const copy = newsletterEmailCopy[locale];
   const links = [["glass", copy.glass], ["keycaps", copy.keycaps], ["metal", copy.metal]];
-  return `<div lang="${htmlLanguages[locale]}" style="background:#f7f7f5;color:#20242a;padding:36px;font-family:Arial,sans-serif;line-height:1.8;max-width:620px;margin:auto"><p>KAGURA</p><h1 style="font-size:30px;line-height:1.4">${escapeHtml(copy.heading)}</h1><p>${escapeHtml(copy.body)}</p>${links.map(([path, name]) => `<p><a style="color:#20242a" href="${absoluteUrl(`/explore/${path}`)}">${escapeHtml(name)} ↗</a></p>`).join("")}<hr style="border:0;border-top:1px solid #d5d8db;margin:32px 0"/><p style="font-size:12px">${escapeHtml(copy.unsubscribe)}<br/>${escapeHtml(email)}<br/>${escapeHtml(siteConfig.supportEmail)}</p></div>`;
+  return `<div lang="${htmlLanguages[locale]}" style="background:#f7f7f5;color:#20242a;padding:36px;font-family:Arial,sans-serif;line-height:1.8;max-width:620px;margin:auto"><p>KIKORA</p><h1 style="font-size:30px;line-height:1.4">${escapeHtml(copy.heading)}</h1><p>${escapeHtml(copy.body)}</p>${links.map(([path, name]) => `<p><a style="color:#20242a" href="${absoluteUrl(`/explore/${path}`)}">${escapeHtml(name)} ↗</a></p>`).join("")}<hr style="border:0;border-top:1px solid #d5d8db;margin:32px 0"/><p style="font-size:12px">${escapeHtml(copy.unsubscribe)}<br/>${escapeHtml(email)}<br/>${escapeHtml(siteConfig.supportEmail)}</p></div>`;
 }
 
 async function sendEmail({
@@ -110,7 +110,7 @@ export async function POST(request: Request) {
 
   if (!consent) {
     return NextResponse.json(
-      { message: "Please confirm that you want to receive Kagura Gear emails." },
+      { message: "Please confirm that you want to receive KIKORA emails." },
       { status: 400 },
     );
   }
@@ -157,10 +157,10 @@ export async function POST(request: Request) {
     fromEmail,
     to: notifyEmail,
     replyTo: email,
-    subject: "New Kagura Gear newsletter signup",
+    subject: "New KIKORA newsletter signup",
     text: [`New newsletter signup: ${email}`, "", `A welcome email was sent. Preferred language: ${locale}.`].join("\n"),
     html: `
-      <h2>New Kagura Gear newsletter signup</h2>
+      <h2>New KIKORA newsletter signup</h2>
       <p><strong>Email:</strong> ${escapeHtml(email)}</p>
       <p>A welcome email was sent. Preferred language: ${locale}.</p>
     `,
