@@ -1,0 +1,183 @@
+{%- liquid
+  assign active_locale = locale | default: settings.default_language | default: 'zh'
+  if active_locale == 'auto'
+    assign active_locale = request.locale.iso_code | slice: 0, 2
+  endif
+  unless active_locale == 'en' or active_locale == 'ja'
+    assign active_locale = 'zh'
+  endunless
+-%}
+{%- assign active_route = route -%}
+{%- if request.page_type == 'page' -%}{%- assign active_route = page.handle | prepend: '/pages/' -%}{%- endif -%}
+{%- case active_route -%}
+{%- when '/' -%}
+<div id="kikora-root" data-route="/" data-locale="{{ active_locale }}">
+{%- case active_locale -%}
+{%- when 'zh' -%}
+{% render 'kikora-render-home-zh-1' %}
+{%- when 'en' -%}
+{% render 'kikora-render-home-en-1' %}
+{%- when 'ja' -%}
+{% render 'kikora-render-home-ja-1' %}
+{%- endcase -%}
+</div>
+<script>window.KIKORA_PAGE={route:"/",locale:{{ active_locale | json }},prerendered:true};</script>
+{%- when '/pages/glass', '/explore/glass' -%}
+<div id="kikora-root" data-route="/explore/glass" data-locale="{{ active_locale }}">
+{%- case active_locale -%}
+{%- when 'zh' -%}
+{% render 'kikora-render-glass-zh-1' %}
+{%- when 'en' -%}
+{% render 'kikora-render-glass-en-1' %}
+{%- when 'ja' -%}
+{% render 'kikora-render-glass-ja-1' %}
+{%- endcase -%}
+</div>
+<script>window.KIKORA_PAGE={route:"/explore/glass",locale:{{ active_locale | json }},prerendered:true};</script>
+{%- when '/pages/glass-core', '/explore/glass/core' -%}
+<div id="kikora-root" data-route="/explore/glass/core" data-locale="{{ active_locale }}">
+{%- case active_locale -%}
+{%- when 'zh' -%}
+{% render 'kikora-render-glass-core-zh-1' %}
+{%- when 'en' -%}
+{% render 'kikora-render-glass-core-en-1' %}
+{%- when 'ja' -%}
+{% render 'kikora-render-glass-core-ja-1' %}
+{%- endcase -%}
+</div>
+<script>window.KIKORA_PAGE={route:"/explore/glass/core",locale:{{ active_locale | json }},prerendered:true};</script>
+{%- when '/pages/glass-artist', '/explore/glass/artist' -%}
+<div id="kikora-root" data-route="/explore/glass/artist" data-locale="{{ active_locale }}">
+{%- case active_locale -%}
+{%- when 'zh' -%}
+{% render 'kikora-render-glass-artist-zh-1' %}
+{%- when 'en' -%}
+{% render 'kikora-render-glass-artist-en-1' %}
+{%- when 'ja' -%}
+{% render 'kikora-render-glass-artist-ja-1' %}
+{%- endcase -%}
+</div>
+<script>window.KIKORA_PAGE={route:"/explore/glass/artist",locale:{{ active_locale | json }},prerendered:true};</script>
+{%- when '/pages/glass-covers', '/explore/glass/covers' -%}
+<div id="kikora-root" data-route="/explore/glass/covers" data-locale="{{ active_locale }}">
+{%- case active_locale -%}
+{%- when 'zh' -%}
+{% render 'kikora-render-glass-covers-zh-1' %}
+{%- when 'en' -%}
+{% render 'kikora-render-glass-covers-en-1' %}
+{%- when 'ja' -%}
+{% render 'kikora-render-glass-covers-ja-1' %}
+{%- endcase -%}
+</div>
+<script>window.KIKORA_PAGE={route:"/explore/glass/covers",locale:{{ active_locale | json }},prerendered:true};</script>
+{%- when '/pages/keycaps', '/explore/keycaps' -%}
+<div id="kikora-root" data-route="/explore/keycaps" data-locale="{{ active_locale }}">
+{%- case active_locale -%}
+{%- when 'zh' -%}
+{% render 'kikora-render-keycaps-zh-1' %}
+{%- when 'en' -%}
+{% render 'kikora-render-keycaps-en-1' %}
+{%- when 'ja' -%}
+{% render 'kikora-render-keycaps-ja-1' %}
+{%- endcase -%}
+</div>
+<script>window.KIKORA_PAGE={route:"/explore/keycaps",locale:{{ active_locale | json }},prerendered:true};</script>
+{%- when '/pages/metal', '/explore/metal' -%}
+<div id="kikora-root" data-route="/explore/metal" data-locale="{{ active_locale }}">
+{%- case active_locale -%}
+{%- when 'zh' -%}
+{% render 'kikora-render-metal-zh-1' %}
+{%- when 'en' -%}
+{% render 'kikora-render-metal-en-1' %}
+{%- when 'ja' -%}
+{% render 'kikora-render-metal-ja-1' %}
+{%- endcase -%}
+</div>
+<script>window.KIKORA_PAGE={route:"/explore/metal",locale:{{ active_locale | json }},prerendered:true};</script>
+{%- when '/pages/about', '/about' -%}
+<div id="kikora-root" data-route="/about" data-locale="{{ active_locale }}">
+{%- case active_locale -%}
+{%- when 'zh' -%}
+{% render 'kikora-render-about-zh-1' %}
+{%- when 'en' -%}
+{% render 'kikora-render-about-en-1' %}
+{%- when 'ja' -%}
+{% render 'kikora-render-about-ja-1' %}
+{%- endcase -%}
+</div>
+<script>window.KIKORA_PAGE={route:"/about",locale:{{ active_locale | json }},prerendered:true};</script>
+{%- when '/pages/faq', '/faq' -%}
+<div id="kikora-root" data-route="/faq" data-locale="{{ active_locale }}">
+{%- case active_locale -%}
+{%- when 'zh' -%}
+{% render 'kikora-render-faq-zh-1' %}
+{%- when 'en' -%}
+{% render 'kikora-render-faq-en-1' %}
+{%- when 'ja' -%}
+{% render 'kikora-render-faq-ja-1' %}
+{%- endcase -%}
+</div>
+<script>window.KIKORA_PAGE={route:"/faq",locale:{{ active_locale | json }},prerendered:true};</script>
+{%- when '/pages/contact', '/contact' -%}
+<div id="kikora-root" data-route="/contact" data-locale="{{ active_locale }}">
+{%- case active_locale -%}
+{%- when 'zh' -%}
+{% render 'kikora-render-contact-zh-1' %}
+{%- when 'en' -%}
+{% render 'kikora-render-contact-en-1' %}
+{%- when 'ja' -%}
+{% render 'kikora-render-contact-ja-1' %}
+{%- endcase -%}
+</div>
+<script>window.KIKORA_PAGE={route:"/contact",locale:{{ active_locale | json }},prerendered:true};</script>
+{%- when '/pages/shipping-policy', '/shipping-policy' -%}
+<div id="kikora-root" data-route="/shipping-policy" data-locale="{{ active_locale }}">
+{%- case active_locale -%}
+{%- when 'zh' -%}
+{% render 'kikora-render-shipping-policy-zh-1' %}
+{%- when 'en' -%}
+{% render 'kikora-render-shipping-policy-en-1' %}
+{%- when 'ja' -%}
+{% render 'kikora-render-shipping-policy-ja-1' %}
+{%- endcase -%}
+</div>
+<script>window.KIKORA_PAGE={route:"/shipping-policy",locale:{{ active_locale | json }},prerendered:true};</script>
+{%- when '/pages/return-policy', '/return-policy' -%}
+<div id="kikora-root" data-route="/return-policy" data-locale="{{ active_locale }}">
+{%- case active_locale -%}
+{%- when 'zh' -%}
+{% render 'kikora-render-return-policy-zh-1' %}
+{%- when 'en' -%}
+{% render 'kikora-render-return-policy-en-1' %}
+{%- when 'ja' -%}
+{% render 'kikora-render-return-policy-ja-1' %}
+{%- endcase -%}
+</div>
+<script>window.KIKORA_PAGE={route:"/return-policy",locale:{{ active_locale | json }},prerendered:true};</script>
+{%- when '/pages/privacy-policy', '/privacy-policy' -%}
+<div id="kikora-root" data-route="/privacy-policy" data-locale="{{ active_locale }}">
+{%- case active_locale -%}
+{%- when 'zh' -%}
+{% render 'kikora-render-privacy-policy-zh-1' %}
+{%- when 'en' -%}
+{% render 'kikora-render-privacy-policy-en-1' %}
+{%- when 'ja' -%}
+{% render 'kikora-render-privacy-policy-ja-1' %}
+{%- endcase -%}
+</div>
+<script>window.KIKORA_PAGE={route:"/privacy-policy",locale:{{ active_locale | json }},prerendered:true};</script>
+{%- when '/pages/terms-of-service', '/terms-of-service' -%}
+<div id="kikora-root" data-route="/terms-of-service" data-locale="{{ active_locale }}">
+{%- case active_locale -%}
+{%- when 'zh' -%}
+{% render 'kikora-render-terms-of-service-zh-1' %}
+{%- when 'en' -%}
+{% render 'kikora-render-terms-of-service-en-1' %}
+{%- when 'ja' -%}
+{% render 'kikora-render-terms-of-service-ja-1' %}
+{%- endcase -%}
+</div>
+<script>window.KIKORA_PAGE={route:"/terms-of-service",locale:{{ active_locale | json }},prerendered:true};</script>
+{%- else -%}
+<main class="kikora-native">{% render 'kikora-native-header' %}<h1>{{ page.title | escape }}</h1><div class="kikora-native-content">{{ page.content }}</div>{% render 'kikora-native-footer' %}</main>
+{%- endcase -%}

@@ -1,0 +1,125 @@
+{%- liquid
+  assign active_locale = locale | default: settings.default_language | default: 'zh'
+  if active_locale == 'auto'
+    assign active_locale = request.locale.iso_code | slice: 0, 2
+  endif
+  unless active_locale == 'en' or active_locale == 'ja'
+    assign active_locale = 'zh'
+  endunless
+-%}
+{%- liquid
+  assign active_route = request.path
+  if request.page_type == 'index'
+    assign active_route = '/'
+  elsif request.page_type == 'page'
+    assign active_route = page.handle | prepend: '/pages/'
+  endif
+  assign kikora_title = page_title | default: 'KIKORA — Collect Your World'
+  assign kikora_description = page_description
+  assign kikora_image = 'kikora-brand-kikora-search-cover.webp' | asset_url
+-%}
+{%- if kikora_description == blank -%}{%- case active_locale -%}
+{%- when 'zh' -%}{%- assign kikora_description = 'KIKORA（Kikora Gear）以游戏、动漫与独立艺术为灵感，探索玻璃鼠标垫、键帽及未来的金属客制化。浏览基础、画师与专辑封面系列的设计概念，了解品牌故事与共创计划。' -%}
+{%- when 'en' -%}{%- assign kikora_description = 'Meet KIKORA (Kikora Gear): glass mousepads, keycaps and future metal customs inspired by games, anime and independent art. Explore the Core, Artist and Cover design studies, and the story behind the brand.' -%}
+{%- when 'ja' -%}{%- assign kikora_description = 'ゲームやアニメ、独立した作家の表現から生まれるKIKORA。ガラスマウスパッドとキーキャップのデザイン、今後のメタルカスタム構想、ブランドの物語をご紹介します。' -%}
+{%- endcase -%}{%- endif -%}
+{%- case active_route -%}
+{%- when '/' -%}{%- case active_locale -%}
+{%- when 'zh' -%}{%- assign kikora_title = 'KIKORA (Kikora Gear) | 玻璃鼠标垫、键帽与艺术收藏' -%}
+{%- when 'en' -%}{%- assign kikora_title = 'KIKORA (Kikora Gear) | Glass Mousepads, Keycaps & Artist Editions' -%}
+{%- when 'ja' -%}{%- assign kikora_title = 'KIKORA (Kikora Gear) | ガラスマウスパッド・キーキャップとアート' -%}
+{%- endcase -%}
+{%- when '/pages/glass' -%}{%- case active_locale -%}
+{%- when 'zh' -%}{%- assign kikora_title = '玻璃鼠标垫 | KIKORA' -%}
+{%- when 'en' -%}{%- assign kikora_title = 'Glass mousepads | KIKORA' -%}
+{%- when 'ja' -%}{%- assign kikora_title = 'ガラスマウスパッド | KIKORA' -%}
+{%- endcase -%}
+{%- when '/pages/glass-core' -%}{%- case active_locale -%}
+{%- when 'zh' -%}{%- assign kikora_title = 'Core 基础系列 | KIKORA' -%}
+{%- when 'en' -%}{%- assign kikora_title = 'Core glass | KIKORA' -%}
+{%- when 'ja' -%}{%- assign kikora_title = 'Core シリーズ | KIKORA' -%}
+{%- endcase -%}
+{%- when '/pages/glass-artist' -%}{%- case active_locale -%}
+{%- when 'zh' -%}{%- assign kikora_title = 'Artist 画师系列 | KIKORA' -%}
+{%- when 'en' -%}{%- assign kikora_title = 'Artist editions | KIKORA' -%}
+{%- when 'ja' -%}{%- assign kikora_title = 'Artist シリーズ | KIKORA' -%}
+{%- endcase -%}
+{%- when '/pages/glass-covers' -%}{%- case active_locale -%}
+{%- when 'zh' -%}{%- assign kikora_title = 'Cover 专辑封面系列 | KIKORA' -%}
+{%- when 'en' -%}{%- assign kikora_title = 'Cover series | KIKORA' -%}
+{%- when 'ja' -%}{%- assign kikora_title = 'Cover シリーズ | KIKORA' -%}
+{%- endcase -%}
+{%- when '/pages/keycaps' -%}{%- case active_locale -%}
+{%- when 'zh' -%}{%- assign kikora_title = '键帽 | KIKORA' -%}
+{%- when 'en' -%}{%- assign kikora_title = 'Keycaps | KIKORA' -%}
+{%- when 'ja' -%}{%- assign kikora_title = 'キーキャップ | KIKORA' -%}
+{%- endcase -%}
+{%- when '/pages/metal' -%}{%- case active_locale -%}
+{%- when 'zh' -%}{%- assign kikora_title = '金属客制化 | KIKORA' -%}
+{%- when 'en' -%}{%- assign kikora_title = 'Metal customs | KIKORA' -%}
+{%- when 'ja' -%}{%- assign kikora_title = 'メタルカスタム | KIKORA' -%}
+{%- endcase -%}
+{%- when '/pages/about' -%}{%- case active_locale -%}
+{%- when 'zh' -%}{%- assign kikora_title = '品牌故事 | KIKORA' -%}
+{%- when 'en' -%}{%- assign kikora_title = 'Our world | KIKORA' -%}
+{%- when 'ja' -%}{%- assign kikora_title = 'KIKORA の世界 | KIKORA' -%}
+{%- endcase -%}
+{%- when '/pages/faq' -%}{%- case active_locale -%}
+{%- when 'zh' -%}{%- assign kikora_title = '常见问题 | KIKORA' -%}
+{%- when 'en' -%}{%- assign kikora_title = 'Frequently asked questions | KIKORA' -%}
+{%- when 'ja' -%}{%- assign kikora_title = 'よくあるご質問 | KIKORA' -%}
+{%- endcase -%}
+{%- when '/pages/contact' -%}{%- case active_locale -%}
+{%- when 'zh' -%}{%- assign kikora_title = '联系 KIKORA | KIKORA' -%}
+{%- when 'en' -%}{%- assign kikora_title = 'Contact KIKORA | KIKORA' -%}
+{%- when 'ja' -%}{%- assign kikora_title = 'KIKORA へのお問い合わせ | KIKORA' -%}
+{%- endcase -%}
+{%- when '/pages/shipping-policy' -%}{%- case active_locale -%}
+{%- when 'zh' -%}{%- assign kikora_title = '配送说明 | KIKORA' -%}
+{%- when 'en' -%}{%- assign kikora_title = 'Shipping information | KIKORA' -%}
+{%- when 'ja' -%}{%- assign kikora_title = '配送について | KIKORA' -%}
+{%- endcase -%}
+{%- when '/pages/return-policy' -%}{%- case active_locale -%}
+{%- when 'zh' -%}{%- assign kikora_title = '售后说明 | KIKORA' -%}
+{%- when 'en' -%}{%- assign kikora_title = 'Returns information | KIKORA' -%}
+{%- when 'ja' -%}{%- assign kikora_title = '返品・交換について | KIKORA' -%}
+{%- endcase -%}
+{%- when '/pages/privacy-policy' -%}{%- case active_locale -%}
+{%- when 'zh' -%}{%- assign kikora_title = '隐私与信息使用 | KIKORA' -%}
+{%- when 'en' -%}{%- assign kikora_title = 'Privacy & information | KIKORA' -%}
+{%- when 'ja' -%}{%- assign kikora_title = 'プライバシーについて | KIKORA' -%}
+{%- endcase -%}
+{%- when '/pages/terms-of-service' -%}{%- case active_locale -%}
+{%- when 'zh' -%}{%- assign kikora_title = '网站使用说明 | KIKORA' -%}
+{%- when 'en' -%}{%- assign kikora_title = 'Using this site | KIKORA' -%}
+{%- when 'ja' -%}{%- assign kikora_title = 'サイトのご利用について | KIKORA' -%}
+{%- endcase -%}
+{%- endcase -%}
+{%- liquid
+  assign kikora_logo = 'kikora-brand-kikora-symbol.png' | asset_url
+  assign image_start = kikora_image | slice: 0, 2
+  assign logo_start = kikora_logo | slice: 0, 2
+  if image_start == '//'
+    assign kikora_image = kikora_image | prepend: 'https:'
+  endif
+  if logo_start == '//'
+    assign kikora_logo = kikora_logo | prepend: 'https:'
+  endif
+-%}
+<title>{{ kikora_title | escape }}</title>
+<meta name="description" content="{{ kikora_description | escape }}">
+<link rel="canonical" href="{{ canonical_url }}">
+{%- if request.page_type == '404' or request.page_type == 'cart' or request.page_type == 'search' or request.page_type == 'password' -%}<meta name="robots" content="noindex,follow">{%- else -%}<meta name="robots" content="index,follow,max-image-preview:large">{%- endif -%}
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="KIKORA">
+<meta property="og:title" content="{{ kikora_title | escape }}">
+<meta property="og:description" content="{{ kikora_description | escape }}">
+<meta property="og:url" content="{{ canonical_url }}">
+<meta property="og:image" content="{{ kikora_image }}">
+<meta property="og:image:width" content="1536">
+<meta property="og:image:height" content="1024">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ kikora_title | escape }}">
+<meta name="twitter:description" content="{{ kikora_description | escape }}">
+<meta name="twitter:image" content="{{ kikora_image }}">
+<script type="application/ld+json">{ "@context":"https://schema.org", "@graph":[{ "@type":"Organization", "@id":{{ shop.url | append: '/#organization' | json }}, "name":"KIKORA", "alternateName":"Kikora Gear", "url":{{ shop.url | json }}, "logo":{{ kikora_logo | json }}, "email":"support@kikoragear.com" },{ "@type":"WebSite", "@id":{{ shop.url | append: '/#website' | json }}, "name":"KIKORA", "alternateName":["Kikora Gear","kikoragear.com"], "url":{{ shop.url | json }}, "inLanguage":["zh-CN","en","ja"] },{ "@type":"WebPage", "url":{{ canonical_url | json }}, "name":{{ kikora_title | json }}, "description":{{ kikora_description | json }}, "isPartOf":{"@id":{{ shop.url | append: '/#website' | json }}} }] }</script>

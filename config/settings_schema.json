@@ -1,0 +1,4 @@
+[
+  {"name":"theme_info","theme_name":"KIKORA Studio","theme_version":"1.0.0","theme_author":"KIKORA","theme_documentation_url":"https://kikoragear.com/pages/about","theme_support_url":"https://kikoragear.com/pages/contact"},
+  {"name":"KIKORA","settings":[{"type":"select","id":"default_language","label":"Initial site language","default":"zh","options":[{"value":"zh","label":"中文"},{"value":"en","label":"English"},{"value":"ja","label":"日本語"},{"value":"auto","label":"Shopify storefront language"}]}]}
+]

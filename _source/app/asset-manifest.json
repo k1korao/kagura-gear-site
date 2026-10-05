@@ -1,0 +1,118 @@
+{
+  "/apple-touch-icon.png": {
+    "file": "kikora-apple-touch-icon.png",
+    "token": "__KIKORA_ASSET_0__"
+  },
+  "/audio/music.json": {
+    "file": "kikora-audio-music.json",
+    "token": "__KIKORA_ASSET_2__"
+  },
+  "/brand/kagura-symbol.svg": {
+    "file": "kikora-brand-kagura-symbol.svg",
+    "token": "__KIKORA_ASSET_4__"
+  },
+  "/brand/kikora-apple-touch-icon.png": {
+    "file": "kikora-brand-kikora-apple-touch-icon.png",
+    "token": "__KIKORA_ASSET_5__"
+  },
+  "/brand/kikora-search-cover.webp": {
+    "file": "kikora-brand-kikora-search-cover.webp",
+    "token": "__KIKORA_ASSET_6__"
+  },
+  "/brand/kikora-symbol.png": {
+    "file": "kikora-brand-kikora-symbol.png",
+    "token": "__KIKORA_ASSET_7__"
+  },
+  "/brand/kikora-symbol.svg": {
+    "file": "kikora-brand-kikora-symbol.svg",
+    "token": "__KIKORA_ASSET_8__"
+  },
+  "/brand/kikora.ico": {
+    "file": "kikora-brand-kikora.ico",
+    "token": "__KIKORA_ASSET_9__"
+  },
+  "/favicon.ico": {
+    "file": "kikora-favicon.ico",
+    "token": "__KIKORA_ASSET_10__"
+  },
+  "/favicon.svg": {
+    "file": "kikora-favicon.svg",
+    "token": "__KIKORA_ASSET_11__"
+  },
+  "/fonts/Oxanium-OFL.txt": {
+    "file": "kikora-fonts-Oxanium-OFL.txt",
+    "token": "__KIKORA_ASSET_13__"
+  },
+  "/fonts/Oxanium-Variable.ttf": {
+    "file": "kikora-fonts-Oxanium-Variable.ttf",
+    "token": "__KIKORA_ASSET_14__"
+  },
+  "/icon-192.png": {
+    "file": "kikora-icon-192.png",
+    "token": "__KIKORA_ASSET_15__"
+  },
+  "/icon-512.png": {
+    "file": "kikora-icon-512.png",
+    "token": "__KIKORA_ASSET_16__"
+  },
+  "/images/album-concept-chemist.webp": {
+    "file": "kikora-images-album-concept-chemist.webp",
+    "token": "__KIKORA_ASSET_18__"
+  },
+  "/images/album-concept-dwolf.webp": {
+    "file": "kikora-images-album-concept-dwolf.webp",
+    "token": "__KIKORA_ASSET_19__"
+  },
+  "/images/album-concept-hackclaw.webp": {
+    "file": "kikora-images-album-concept-hackclaw.webp",
+    "token": "__KIKORA_ASSET_20__"
+  },
+  "/images/album-concept-reyna.webp": {
+    "file": "kikora-images-album-concept-reyna.webp",
+    "token": "__KIKORA_ASSET_21__"
+  },
+  "/images/album-concept-seer.webp": {
+    "file": "kikora-images-album-concept-seer.webp",
+    "token": "__KIKORA_ASSET_22__"
+  },
+  "/images/album-concept-vyron.webp": {
+    "file": "kikora-images-album-concept-vyron.webp",
+    "token": "__KIKORA_ASSET_23__"
+  },
+  "/images/album-concept-wraith.webp": {
+    "file": "kikora-images-album-concept-wraith.webp",
+    "token": "__KIKORA_ASSET_24__"
+  },
+  "/images/kagura-favicon.png": {
+    "file": "kikora-images-kagura-favicon.png",
+    "token": "__KIKORA_ASSET_25__"
+  },
+  "/images/kagura-hero.png": {
+    "file": "kikora-images-kagura-hero.png",
+    "token": "__KIKORA_ASSET_26__"
+  },
+  "/images/kagura-keycaps-cover.webp": {
+    "file": "kikora-images-kagura-keycaps-cover.webp",
+    "token": "__KIKORA_ASSET_27__"
+  },
+  "/images/kagura-logo-card.jpg": {
+    "file": "kikora-images-kagura-logo-card.jpg",
+    "token": "__KIKORA_ASSET_28__"
+  },
+  "/images/kagura-logo-full.png": {
+    "file": "kikora-images-kagura-logo-full.png",
+    "token": "__KIKORA_ASSET_29__"
+  },
+  "/images/kagura-logo-icon.png": {
+    "file": "kikora-images-kagura-logo-icon.png",
+    "token": "__KIKORA_ASSET_30__"
+  },
+  "/images/kagura-logo-mark.png": {
+    "file": "kikora-images-kagura-logo-mark.png",
+    "token": "__KIKORA_ASSET_31__"
+  },
+  "/images/kagura-studio-concept.webp": {
+    "file": "kikora-images-kagura-studio-concept.webp",
+    "token": "__KIKORA_ASSET_32__"
+  }
+}

@@ -1,0 +1,36 @@
+{%- liquid
+  assign kikora_locale = settings.default_language | default: 'zh'
+  if kikora_locale == 'auto'
+    assign kikora_locale = request.locale.iso_code | slice: 0, 2
+  endif
+  unless kikora_locale == 'en' or kikora_locale == 'ja'
+    assign kikora_locale = 'zh'
+  endunless
+  assign kikora_html_language = kikora_locale
+  if kikora_locale == 'zh'
+    assign kikora_html_language = 'zh-CN'
+  endif
+-%}
+<!doctype html>
+<html lang="{{ kikora_html_language }}" translate="no">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f7f5">
+    <meta name="google" content="notranslate">
+    {% render 'kikora-seo', locale: kikora_locale %}
+    <link rel="icon" href="{{ 'kikora-brand-kikora.ico' | asset_url }}" sizes="256x256">
+    <link rel="icon" href="{{ 'kikora-brand-kikora-symbol.svg' | asset_url }}" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="{{ 'kikora-brand-kikora-apple-touch-icon.png' | asset_url }}">
+    {{ 'kikora-app.css' | asset_url | stylesheet_tag }}
+    <style>
+      .kikora-native{max-width:1080px;margin:auto;padding:36px 24px 100px;min-height:75vh;color:#20242a;font-family:Arial,sans-serif;line-height:1.8}.kikora-native-header{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:16px 0 50px;border-bottom:1px solid #ddd}.kikora-native-header img{width:44px;height:44px;object-fit:contain}.kikora-native-header a{color:inherit;text-decoration:none}.kikora-native h1{font-size:clamp(30px,5vw,64px);line-height:1.12;margin:60px 0 32px}.kikora-native-content a{color:inherit;text-decoration:underline}.kikora-native-content img{max-width:100%;height:auto}.kikora-native-footer{margin-top:60px;padding-top:24px;border-top:1px solid #ddd;font-size:14px}.kikora-native-action{display:inline-block;margin-top:24px;padding:12px 20px;background:#20242a;color:white!important;text-decoration:none!important}.kikora-native button,.kikora-native input{font:inherit}.kikora-native input{padding:12px;max-width:100%;border:1px solid #a9adb2}.kikora-native button{padding:12px 20px;border:0;background:#20242a;color:white;cursor:pointer}
+    </style>
+    {{ content_for_header }}
+    {% render 'kikora-assets' %}
+    <script src="{{ 'kikora-app.js' | asset_url }}" defer></script>
+  </head>
+  <body>
+    {{ content_for_layout }}
+  </body>
+</html>
