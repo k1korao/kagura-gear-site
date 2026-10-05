@@ -57,7 +57,7 @@ export function Navbar() {
               <Link href="/explore/glass" aria-current={pathname === "/explore/glass" ? "page" : undefined} onClick={() => followCategory("glass")}>{copy.glass}</Link>
               <button ref={glassTrigger} type="button" className={styles.submenuToggle} aria-label={copy.glassCollections} aria-expanded={glassOpen && !menuOpen} aria-controls="glass-navigation" onClick={() => { setMenuOpen(false); setGlassOpen((value) => !value); }}><svg viewBox="0 0 12 12" width="10" height="10" aria-hidden="true"><path d="m2 4 4 4 4-4" /></svg></button>
             </div>
-            {glassOpen && !menuOpen ? <div id="glass-navigation" className={styles.glassDropdown}><span className={styles.dropdownLabel}>{copy.glassDirections}</span>{glassCollections.map((collection) => <Link key={collection.id} href={`/explore/glass#${collection.id}`} onClick={() => followCategory("glass", collection.id)}><span>{collection.label}<small>{collection.note}</small></span><span aria-hidden="true">↗</span></Link>)}</div> : null}
+            {glassOpen && !menuOpen ? <div id="glass-navigation" className={styles.glassDropdown}><span className={styles.dropdownLabel}>{copy.glassDirections}</span>{glassCollections.map((collection) => <Link key={collection.id} href={`/explore/glass/${collection.id}`} onClick={() => followCategory("glass", collection.id)}><span>{collection.label}<small>{collection.note}</small></span><span aria-hidden="true">↗</span></Link>)}</div> : null}
           </div>
           <Link href="/explore/keycaps" aria-current={pathname === "/explore/keycaps" ? "page" : undefined} onClick={() => followCategory("keycaps")}>{copy.keycaps}</Link>
           <Link href="/explore/metal" aria-current={pathname === "/explore/metal" ? "page" : undefined} onClick={() => followCategory("metal")}>{copy.metal}</Link>
@@ -72,7 +72,7 @@ export function Navbar() {
         <div className={styles.menuProducts}>
           <span className={styles.menuLabel}>{copy.exploreObjects}</span>
           <div className={styles.mobileGlassRow}><Link href="/explore/glass" onClick={() => followCategory("glass")}>{copy.glass}</Link><button type="button" aria-label={glassOpen ? copy.hideGlass : copy.showGlass} aria-expanded={glassOpen} aria-controls="menu-glass-collections" onClick={() => setGlassOpen((value) => !value)}>{glassOpen ? "−" : "+"}</button></div>
-          {glassOpen ? <div id="menu-glass-collections" className={styles.menuSubnav}>{glassCollections.map((collection) => <Link key={collection.id} href={`/explore/glass#${collection.id}`} onClick={() => followCategory("glass", collection.id)}>{collection.label}<span aria-hidden="true">↗</span></Link>)}</div> : null}
+          {glassOpen ? <div id="menu-glass-collections" className={styles.menuSubnav}>{glassCollections.map((collection) => <Link key={collection.id} href={`/explore/glass/${collection.id}`} onClick={() => followCategory("glass", collection.id)}>{collection.label}<span aria-hidden="true">↗</span></Link>)}</div> : null}
           <Link className={styles.menuCategory} href="/explore/keycaps" onClick={() => followCategory("keycaps")}>{copy.keycaps}<span aria-hidden="true">↗</span></Link>
           <Link className={styles.menuCategory} href="/explore/metal" onClick={() => followCategory("metal")}>{copy.metal}<span aria-hidden="true">↗</span></Link>
         </div>

@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { GlassCollectionsHub } from "@/components/GlassCollectionsHub";
 import { ShrineExperience, type ProductCategory } from "@/components/ShrineExperience";
 import { pageMetadata } from "@/lib/metadata";
 import { getLocale } from "@/lib/locale-server";
@@ -22,5 +23,8 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
 export default async function ExplorePage({ params }: { params: Promise<{ category: string }> }) {
   const { category } = await params;
   if (!categories.includes(category as ProductCategory)) notFound();
-  return <main className="kagura-collection-page"><ShrineExperience key={category} category={category as ProductCategory} /></main>;
+  if (category === "glass") {
+    return <main className="kagura-collection-page"><GlassCollectionsHub /></main>;
+  }
+  return <main className="kagura-collection-page"><ShrineExperience key={category} category={category as "keycaps" | "metal"} /></main>;
 }

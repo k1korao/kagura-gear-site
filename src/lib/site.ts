@@ -14,6 +14,9 @@ export const siteConfig = {
 export const coreRoutes = [
   "",
   "/explore/glass",
+  "/explore/glass/core",
+  "/explore/glass/artist",
+  "/explore/glass/covers",
   "/explore/keycaps",
   "/explore/metal",
   "/about",

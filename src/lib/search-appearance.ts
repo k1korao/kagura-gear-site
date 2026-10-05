@@ -29,6 +29,10 @@ export function homeStructuredData(locale: Locale) {
   const imageId = `${homeUrl}#primary-image`;
   const links = [
     { name: navigation.glass, path: "/explore/glass" },
+    ...navigation.collections.map((collection) => ({
+      name: collection.label,
+      path: `/explore/glass/${collection.id}`,
+    })),
     { name: navigation.keycaps, path: "/explore/keycaps" },
     { name: navigation.metal, path: "/explore/metal" },
     { name: navigation.about, path: "/about" },
