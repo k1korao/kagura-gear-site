@@ -55,9 +55,17 @@
 .dragging { cursor: grabbing; }
 .stageCoordinates { position: absolute; inset: 2% 4%; display: grid; grid-template-columns: 1fr 1fr; align-content: space-between; font: 10px monospace; color: #9eaaaf; pointer-events: none; }
 .stageCoordinates span:nth-child(even) { text-align: right; }
-.pad { width: min(64%, 690px); aspect-ratio: 49 / 42; border: 1px solid #a9b7bf; border-radius: 14px; background: #11191e; box-shadow: 0 1px 0 #899ba6, 0 3px 0 #182127, 0 5px 0 #1a242a, 0 6px 0 #667783, 0 8px 0 #222c32, 16px 25px 35px #23303a20; transform: translateY(-4%) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)) rotateZ(var(--tilt-z)); transform-style: preserve-3d; transition: transform 550ms cubic-bezier(.2,.65,.2,1); }
+.pad { width: min(64%, 690px); aspect-ratio: 49 / 42; border: 1px solid #a9b7bf; border-radius: 14px; background: #11191e; box-shadow: 0 1px 0 #899ba6, 0 3px 0 #182127, 0 5px 0 #1a242a, 0 6px 0 #667783, 0 8px 0 #222c32, 16px 25px 35px #23303a20; transform: translateY(-4%) rotateX(var(--tilt-x)) rotateY(calc(var(--tilt-y) + var(--face-turn, 0deg))) rotateZ(var(--tilt-z)); transform-style: preserve-3d; transition: transform 550ms cubic-bezier(.2,.65,.2,1); }
 .dragging .pad { transition: none; }
-.padSurface { position: absolute; inset: 0; border-radius: inherit; overflow: hidden; }
+.padSurface { position: absolute; inset: 0; border-radius: inherit; overflow: hidden; backface-visibility: hidden; -webkit-backface-visibility: hidden; transform: translateZ(1px); }
+.padBack { position: absolute; inset: 0; border-radius: inherit; overflow: hidden; backface-visibility: hidden; -webkit-backface-visibility: hidden; transform: rotateY(180deg) translateZ(1px); background: linear-gradient(145deg, #b7c3c8, #657983 12%, #a9b9bf 54%, #536976); box-shadow: inset 0 0 0 1px #d2dce0b3; }
+.baseMat { position: absolute; inset: 1.8%; border-radius: max(5px, .6vw); border: 1px solid #161f23; background: radial-gradient(ellipse at 24% 8%, #5360686b, transparent 68%), radial-gradient(circle at 1px 1px, #d7e0e216 .65px, transparent .9px), linear-gradient(140deg, #303a3e, #1c252a 60%, #222d32); background-size: auto, 4px 4px, auto; box-shadow: inset 0 1px 1px #e1e8eb33, inset 0 -2px 2px #040b1073, 0 1px 2px #07111670; }
+.faceControls { display: flex; align-items: center; justify-content: space-between; gap: 25px; padding: 16px 28px; border-top: 1px solid #dce4e5; background: #f5f7f5; }
+.faceControls > div { display: flex; flex-shrink: 0; gap: 5px; }
+.faceControls button { min-height: 44px; padding: 10px 16px; color: #6d7e89; border: 1px solid transparent; font-size: 10px; }
+.faceControls button[aria-pressed="true"] { border-color: #b7c5ce; color: #2c4352; background: #e9eef0; }
+.faceControls button:hover { color: #263e4e; }
+.faceControls p { max-width: 450px; font-size: 10px; line-height: 1.8; color: #72818b; }
 .brand, .padCaption { position: absolute; z-index: 1; bottom: 5%; font: 500 clamp(8px, 1vw, 12px)/1 var(--font-display), sans-serif; letter-spacing: .06em; color: #e1e7e9; }
 .brand { left: 5%; }
 .padCaption { right: 5%; font: 8px monospace; color: #a3b0b7; }
@@ -87,6 +95,7 @@
   .gallery { padding: 26px 0 40px; }.story { display: block; }.exhibitCaption { margin-top: 22px; }.swatches { display: flex; }.exhibitCaption h2 { font-size: 25px; }.conceptNote { margin-top: 17px; }.storyIntro { padding: 20px 0; }.chapter { padding: 34px 0 42px; }.chapterNumber { font-size: 43px; margin-bottom: 25px; }.chapter h2 { font-size: 29px; margin: 17px 0 18px; }.body { font-size: 12px; }.rule { margin-top: 30px; }.chapter + .chapter { border-top: 1px solid #dbe2e5; padding-bottom: 0; }.dimension { margin-top: 27px; }.invitation { display: block; padding: 37px 0; }.invitation h2 { font-size: 27px; margin-top: 23px; }.invitation p { font-size: 12px; margin-top: 17px; }.invitation a { font-size: 11px; gap: 25px; }.next { grid-template-columns: 1fr; gap: 27px; padding: 26px 0 40px; }.next > a { font-size: 19px; padding-bottom: 18px; border-bottom: 1px solid #dbe3e6; }.next a > span { bottom: 20px; }.next small { margin-bottom: 8px; }
 }
 @media (max-width: 650px) {
+  .faceControls { flex-direction: column; align-items: stretch; gap: 11px; padding: 13px 17px; }.faceControls > div { width: 100%; }.faceControls button { flex: 1; padding-inline: 9px; font-size: 10px; }.faceControls p { font-size: 9px; }.baseMat { border-radius: 6px; }
   .stage { height: 340px; perspective: 850px; }.stageTop,.stageBottom { padding: 17px; font-size: 8px; }.stageBottom p { max-width: 245px; line-height: 1.8; }.pad { width: 78%; border-radius: 9px; }.padCaption { font-size: 6px; }.brand { font-size: 8px; }.surfaceLabel { display: none; }.shadow { width: 70%; bottom: 19%; }.controls { padding: 20px 0; gap: 18px; }.presets { width: 100%; gap: 6px; }.presets button { flex: 1; gap: 10px; padding: 12px 10px; justify-content: center; }.sliders { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; }.sliders label { width: 100%; }.reset { grid-column: 1/-1; margin-left: 0; justify-self: end; min-height: 35px; }
 }
 @media (prefers-reduced-motion: reduce) { .page *, .page *::before, .page *::after { transition: none !important; scroll-behavior: auto !important; } }

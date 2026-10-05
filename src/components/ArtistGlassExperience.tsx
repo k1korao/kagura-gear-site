@@ -8,6 +8,7 @@ import styles from "./ArtistGlassExperience.module.css";
 
 const translations = {
   zh: {
+    side: "选择正面或底部", front: "图案正面", underside: "背面 · 底胶", baseAlt: "玻璃鼠标垫背面的深灰色底垫结构示意", baseNote: "底部为结构示意，定制底胶的纹路、材质与最终结构尚未确定。",
     drag: "拖动查看形态 · 方向键也可以调整", view: "选择观察视角", views: ["整体", "表面", "边缘"], viewer: "Artist 玻璃鼠标垫概念模型", keyboard: "左右方向键旋转，上下方向键调整倾斜；Home 键复位。", tilt: "倾斜角度", turn: "左右旋转", reset: "复位视角",
     back: "玻璃鼠标垫 / 全部系列", label: "02 / 画师系列", title: "让一个世界，留在桌面。", intro: "从画师的视角出发，让独特的表达拥有可以触碰的形态。",
     gallery: "Artist 概念展厅", study: "构图研究 — 001", studio: "KIKORA / 原创抽象研究",
@@ -17,6 +18,7 @@ const translations = {
     dimension: "设计尺寸", specNote: "厚度、表面工艺与底部结构仍在开发中。", invitation: "下一幅作品，也许来自你的世界。", invitationText: "面向独立画师与个人 IP 创作者。欢迎带着作品集，和我们聊聊属于你的表达。", contact: "与我们聊聊共创", next: "继续探索", core: "Core 基础系列", covers: "Cover 专辑封面系列",
   },
   en: {
+    side: "Choose a side", front: "Artwork side", underside: "Underside · Base", baseAlt: "A dark grey base concept on the underside of the glass mousepad", baseNote: "Underside concept only. The custom base pattern, material and final construction are still to be confirmed.",
     drag: "Drag to explore · Arrow keys work too", view: "Choose a view", views: ["Overview", "Surface", "Edge"], viewer: "Artist glass mousepad concept model", keyboard: "Use left and right arrows to turn, up and down to tilt, and Home to reset.", tilt: "Tilt", turn: "Rotation", reset: "Reset view",
     back: "Glass mousepads / All collections", label: "02 / ARTIST EDITIONS", title: "An artist’s world. A place on your desk.", intro: "A point of view becomes an object. A world you connect with becomes part of your everyday.",
     gallery: "Artist concept gallery", study: "COMPOSITION STUDY — 001", studio: "KIKORA / ORIGINAL ABSTRACT STUDY",
@@ -26,6 +28,7 @@ const translations = {
     dimension: "Design dimensions", specNote: "Thickness, surface finish and base construction are in development.", invitation: "Your world could be next.", invitationText: "Independent artist or original IP creator? Share your portfolio and tell us what you would love to make.", contact: "Start a collaboration conversation", next: "Keep exploring", core: "Core glass", covers: "Cover series",
   },
   ja: {
+    side: "表裏を切り替える", front: "絵柄のある表面", underside: "裏面・ベース", baseAlt: "ガラスマウスパッドの裏面にあるダークグレーのベースの構造イメージ", baseNote: "裏面は構造のイメージです。専用ベースの模様・素材・最終的な構造は検討中です。",
     drag: "ドラッグで角度を変更 · 矢印キーでも操作できます", view: "見る角度を選ぶ", views: ["全体", "表面", "エッジ"], viewer: "Artist ガラスマウスパッドのコンセプトモデル", keyboard: "左右キーで回転、上下キーで傾きを調整。Home キーで元の角度に戻ります。", tilt: "傾き", turn: "回転", reset: "角度をリセット",
     back: "ガラスマウスパッド / すべてのシリーズ", label: "02 / ARTIST シリーズ", title: "誰かの世界が、自分のデスクに。", intro: "描き手ならではの視点を、手に取れるかたちへ。好きな世界と過ごす、もうひとつの方法。",
     gallery: "Artist コンセプトギャラリー", study: "構成のスタディ — 001", studio: "KIKORA / オリジナルの抽象表現",
@@ -66,6 +69,7 @@ export function ArtistGlassExperience() {
   const text = translations[locale];
   const copy = productCopy[locale];
   const [view, setView] = useState(0);
+  const [face, setFace] = useState<"front" | "back">("front");
   const [angle, setAngle] = useState(presets[0]);
   const [dragging, setDragging] = useState(false);
   const pointer = useRef<{ id: number; x: number; y: number; angle: typeof angle } | null>(null);
@@ -109,20 +113,28 @@ export function ArtistGlassExperience() {
         <div className={styles.stageTop}><span>{text.study}</span><span>490 × 420</span></div>
         <div
           className={`${styles.stage} ${dragging ? styles.dragging : ""}`}
-          style={{ "--tilt-x": `${angle.x}deg`, "--tilt-y": `${angle.y}deg`, "--tilt-z": `${angle.z}deg` } as CSSProperties}
-          role="group" tabIndex={0} aria-label={text.viewer} aria-describedby={`${id}-instructions`}
+          style={{ "--tilt-x": `${angle.x}deg`, "--tilt-y": `${angle.y}deg`, "--tilt-z": `${angle.z}deg`, "--face-turn": face === "back" ? "180deg" : "0deg" } as CSSProperties}
+          role="group" tabIndex={0} aria-label={`${text.viewer} — ${face === "front" ? text.front : text.underside}`} aria-describedby={`${id}-instructions ${id}-base-note`}
           onKeyDown={handleKey} onPointerDown={startDrag} onPointerMove={moveDrag}
           onPointerUp={endDrag} onPointerCancel={endDrag} onLostPointerCapture={endDrag}
         >
           <div className={styles.stageCoordinates} aria-hidden="true"><span>01</span><span>+</span><span>+</span><span>+</span></div>
           <div className={styles.shadow} aria-hidden="true" />
           <div className={styles.pad}>
-            <div className={styles.padSurface}><StudioComposition label={text.artAlt} /><span className={styles.reflection} aria-hidden="true" /></div>
+            <div className={styles.padSurface} aria-hidden={face !== "front"}><StudioComposition label={text.artAlt} /><span className={styles.reflection} aria-hidden="true" /></div>
+            <div className={styles.padBack} role="img" aria-label={text.baseAlt} aria-hidden={face !== "back"}><span className={styles.baseMat} /></div>
           </div>
           <div className={styles.surfaceLabel} aria-hidden="true"><span />ARTIST — 001</div>
         </div>
         <div className={styles.stageBottom}><p>{text.drag}</p><span aria-hidden="true">↔</span></div>
         <p id={`${id}-instructions`} className={styles.srOnly}>{text.keyboard}</p>
+        <div className={styles.faceControls}>
+          <div role="group" aria-label={text.side}>
+            <button type="button" aria-pressed={face === "front"} onClick={() => setFace("front")}>{text.front}</button>
+            <button type="button" aria-pressed={face === "back"} onClick={() => setFace("back")}>{text.underside}</button>
+          </div>
+          <p id={`${id}-base-note`}>{text.baseNote}</p>
+        </div>
       </section>
 
       <div className={styles.controls}>
