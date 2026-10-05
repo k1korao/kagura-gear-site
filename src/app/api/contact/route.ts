@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { mailCors, mailPreflight } from "@/lib/cors";
 import { siteConfig, supportMailto } from "@/lib/site";
 
 export const runtime = "nodejs";
@@ -41,13 +41,32 @@ function buildMailtoHref(name: string, email: string, topic: string, message: st
   );
 }
 
+export function OPTIONS(request: Request) {
+  return mailPreflight(request);
+}
+
 export async function POST(request: Request) {
+  const cors = mailCors(request);
+  if (!cors.allowed) return cors.reject();
+
+  try {
+    return await handlePost(request, cors.json);
+  } catch {
+    return cors.json({ message: "The request could not be completed. Please try again later." }, { status: 502 });
+  }
+}
+
+async function handlePost(request: Request, json: ReturnType<typeof mailCors>["json"]) {
   let body: ContactBody;
 
   try {
     body = (await request.json()) as ContactBody;
   } catch {
-    return NextResponse.json({ message: "Invalid request." }, { status: 400 });
+    return json({ message: "Invalid request." }, { status: 400 });
+  }
+
+  if (!body || typeof body !== "object" || Array.isArray(body)) {
+    return json({ message: "Invalid request." }, { status: 400 });
   }
 
   const name = normalize(body.name, 80);
@@ -57,13 +76,13 @@ export async function POST(request: Request) {
   const company = normalize(body.company, 120);
 
   if (company) {
-    return NextResponse.json({ message: "Message accepted." });
+    return json({ message: "Message accepted." });
   }
 
   const mailtoHref = buildMailtoHref(name, email, topic, message);
 
   if (!name || !email || !message || !isValidEmail(email)) {
-    return NextResponse.json(
+    return json(
       {
         message: "Please enter your name, a valid email, and a message.",
         mailtoHref,
@@ -77,7 +96,7 @@ export async function POST(request: Request) {
   const fromEmail = process.env.CONTACT_FROM_EMAIL;
 
   if (!apiKey || !fromEmail) {
-    return NextResponse.json(
+    return json(
       {
         message:
           `The secure website sender is not connected yet. Your email app should open with this message addressed to ${siteConfig.supportEmail}. Send it there so we can reply.`,
@@ -121,7 +140,7 @@ export async function POST(request: Request) {
   });
 
   if (!response.ok) {
-    return NextResponse.json(
+    return json(
       {
         message:
           `The message could not be sent from the website. Your email app should open with this message addressed to ${siteConfig.supportEmail}.`,
@@ -131,7 +150,7 @@ export async function POST(request: Request) {
     );
   }
 
-  return NextResponse.json({
+  return json({
     message: `Message sent. KIKORA will reply from ${siteConfig.supportEmail}.`,
   });
 }

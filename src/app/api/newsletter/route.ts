@@ -1,6 +1,6 @@
-import { NextResponse } from "next/server";
+import { mailCors, mailPreflight } from "@/lib/cors";
 import { getLocale } from "@/lib/locale-server";
-import { htmlLanguages, type Locale } from "@/lib/locale";
+import { htmlLanguages, isLocale, type Locale } from "@/lib/locale";
 import { newsletterEmailCopy } from "@/lib/newsletter-copy";
 import { absoluteUrl, siteConfig, supportMailto } from "@/lib/site";
 
@@ -9,6 +9,7 @@ export const runtime = "nodejs";
 const resendEndpoint = "https://api.resend.com/emails";
 
 type NewsletterBody = {
+  locale?: unknown;
   email?: unknown;
   consent?: unknown;
   company?: unknown;
@@ -83,33 +84,52 @@ async function sendEmail({
   });
 }
 
+export function OPTIONS(request: Request) {
+  return mailPreflight(request);
+}
+
 export async function POST(request: Request) {
+  const cors = mailCors(request);
+  if (!cors.allowed) return cors.reject();
+
+  try {
+    return await handlePost(request, cors.json);
+  } catch {
+    return cors.json({ message: "The request could not be completed. Please try again later." }, { status: 502 });
+  }
+}
+
+async function handlePost(request: Request, json: ReturnType<typeof mailCors>["json"]) {
   let body: NewsletterBody;
 
   try {
     body = (await request.json()) as NewsletterBody;
   } catch {
-    return NextResponse.json({ message: "Invalid request." }, { status: 400 });
+    return json({ message: "Invalid request." }, { status: 400 });
   }
 
-  const locale = await getLocale();
+  if (!body || typeof body !== "object" || Array.isArray(body)) {
+    return json({ message: "Invalid request." }, { status: 400 });
+  }
+
+  const locale = isLocale(body.locale) ? body.locale : await getLocale();
   const copy = newsletterEmailCopy[locale];
   const email = normalize(body.email, 120).toLowerCase();
   const company = normalize(body.company, 120);
   const consent = body.consent === true;
 
   if (company) {
-    return NextResponse.json({
+    return json({
       message: "Signup accepted.",
     });
   }
 
   if (!email || !isValidEmail(email)) {
-    return NextResponse.json({ message: "Please enter a valid email address." }, { status: 400 });
+    return json({ message: "Please enter a valid email address." }, { status: 400 });
   }
 
   if (!consent) {
-    return NextResponse.json(
+    return json(
       { message: "Please confirm that you want to receive KIKORA emails." },
       { status: 400 },
     );
@@ -121,7 +141,7 @@ export async function POST(request: Request) {
     process.env.NEWSLETTER_NOTIFY_EMAIL || process.env.CONTACT_TO_EMAIL || siteConfig.supportEmail;
 
   if (!apiKey || !fromEmail) {
-    return NextResponse.json(
+    return json(
       {
         message:
           "The automatic email sender is not connected yet. Please email support directly for launch updates.",
@@ -144,7 +164,7 @@ export async function POST(request: Request) {
   });
 
   if (!customerResponse.ok) {
-    return NextResponse.json(
+    return json(
       {
         message: "The welcome email could not be sent. Please try again later.",
       },
@@ -167,10 +187,10 @@ export async function POST(request: Request) {
   });
 
   if (!notificationResponse.ok) {
-    return NextResponse.json({ message: "Signup could not be completed." }, { status: 502 });
+    return json({ message: "Signup could not be completed." }, { status: 502 });
   }
 
-  return NextResponse.json({
+  return json({
     message: "Welcome email sent. Check your inbox.",
   });
 }
