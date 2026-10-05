@@ -13,7 +13,7 @@ export async function pageMetadata({ title, description, path }: PageMetadataInp
   const url = absoluteUrl(path);
 
   return {
-    title,
+    title: path === "/" ? { absolute: `KIKORA (Kikora Gear) | ${title}` } : title,
     description,
     alternates: {
       canonical: url,
