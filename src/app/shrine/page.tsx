@@ -3,8 +3,9 @@ import { BrandStory } from "@/components/BrandStory";
 import { pageMetadata } from "@/lib/metadata";
 import { getLocale } from "@/lib/locale-server";
 import { homeCopy } from "@/lib/home-copy";
+import { searchAppearanceCopy } from "@/lib/search-appearance";
 
-export async function generateMetadata() { const copy = homeCopy[await getLocale()]; return pageMetadata({ title: copy.title, description: copy.description, path: "/shrine" }); }
+export async function generateMetadata() { const copy = searchAppearanceCopy[await getLocale()]; return pageMetadata({ title: copy.title, description: copy.description, path: "/" }); }
 
 export default async function CollectionPage() {
   const copy = homeCopy[await getLocale()];

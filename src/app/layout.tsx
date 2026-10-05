@@ -7,10 +7,11 @@ import { absoluteUrl, siteConfig } from "@/lib/site";
 import { getLocale } from "@/lib/locale-server";
 import { htmlLanguages } from "@/lib/locale";
 import { LocaleProvider } from "@/components/LocaleProvider";
+import { searchAppearanceCopy } from "@/lib/search-appearance";
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
-  const description = { zh: "KIKORA 面向动漫、游戏与潮流玩家，探索独立画师、个人 IP 与限定艺术作品。让创作者的世界，成为你的收藏。", en: "KIKORA brings independent art and original characters into collectible objects for people who live and love games, anime and design.", ja: "作家の世界を、あなたのコレクションに。KIKORAは、アニメ・ゲーム・ストリートカルチャーを愛する人に向けた、オリジナルIPとアートピースの可能性を探るブランドです。" }[locale];
+  const { description, imageAlt } = searchAppearanceCopy[locale];
   return {
   metadataBase: new URL(siteConfig.url),
   title: {
@@ -22,17 +23,22 @@ export async function generateMetadata(): Promise<Metadata> {
   other: { google: "notranslate" },
   creator: siteConfig.name,
   publisher: siteConfig.name,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+  },
   alternates: {
     canonical: absoluteUrl(),
   },
   icons: {
     icon: [
-      { url: "/favicon.ico?v=6", sizes: "any" },
-      { url: "/favicon.svg?v=6", type: "image/svg+xml" },
-      { url: "/images/kagura-favicon.png?v=6", type: "image/png", sizes: "512x512" },
+      { url: "/brand/kikora.ico", type: "image/x-icon", sizes: "256x256" },
+      { url: "/brand/kikora-symbol.svg", type: "image/svg+xml" },
+      { url: "/brand/kikora-symbol.png", type: "image/png", sizes: "512x512" },
     ],
-    shortcut: "/favicon.ico?v=6",
-    apple: [{ url: "/apple-touch-icon.png?v=6", sizes: "180x180", type: "image/png" }],
+    shortcut: "/brand/kikora.ico",
+    apple: [{ url: "/brand/kikora-apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
   openGraph: {
     type: "website",
@@ -46,7 +52,7 @@ export async function generateMetadata(): Promise<Metadata> {
         url: siteConfig.ogImage,
         width: 1536,
         height: 1024,
-        alt: "KIKORA independent keycap design study",
+        alt: imageAlt,
       },
     ],
   },
