@@ -86,82 +86,6 @@ const en = {
   },
 };
 
-const zh: typeof en = {
-  categories: { glass: "玻璃鼠标垫", keycaps: "键帽", metal: "金属客制化" },
-  editionNames: ["明星玩家", "虚空电台", "化学家", "鎏金时刻", "红线", "余焰", "夜间信号"],
-  collections: [
-    { name: "Core 基础系列", caption: "回归纯粹", description: "让桌面安静下来，让注意力回到游戏。Core 从简洁的形态出发，探索玻璃鼠标垫最纯粹的样子。" },
-    { name: "Artist 画师系列", caption: "为创作留一块空间", description: "为未来的画师与 IP 合作预留的系列。眼前这幅原创抽象作品，是我们对色彩与构图的一次尝试；具体合作尚未公布。" },
-    { name: "Cover 专辑封面系列", caption: "把音乐的视觉，放上桌面", description: "让游戏角色走进唱片封面的世界。每幅作品独立成款，以角色与专辑视觉为灵感，探索属于桌面的另一种表达。" },
-  ],
-  experience: {
-    explore: "探索", allCollections: "全部系列", glassCollections: "玻璃鼠标垫系列", coverSeries: "01 / 封面系列", futureObjects: "01 / 未来企划",
-    viewer: "玻璃鼠标垫三维桌面。点击旁边的鼠标垫，或使用键盘左右方向键切换系列。", conceptVisualization: "概念效果图",
-    keyTitle: "明星玩家 / 键帽", keyKicker: "键帽系列", metalKicker: "探索金属的另一种表达", keyConcept: "键帽概念", futureCollection: "未来企划", developing: "开发中",
-    format: "设计尺寸", series: "系列", palette: "概念配色", colors: "绯红 / 紫罗兰", coverNumber: "封面 / 01", formStudy: "造型研究 — 001",
-    keyDescription: "以蕾娜为主角，让红与紫的专辑封面画面铺展在每颗键帽之间。与「明星玩家」玻璃垫呼应的键帽设计概念。",
-    metalDescription: "从雕塑感的形态与细节出发，探索未来的定制金属物件。首个系列仍在构思中。",
-    chooseArt: "选择封面作品", more: "了解详情", release: "订阅发售动态", artistNote: "原创概念预览。画师合作信息将另行公布。", conceptNote: "设计概念预览，最终产品信息待公布。",
-    viewingAngle: "查看角度", deskView: "桌面视角", topView: "俯视角度", designStudy: "KIKORA / 设计研究", previous: "上一个玻璃垫系列", next: "下一个玻璃垫系列", of: "/",
-    help: "点击鼠标垫，探索系列", unavailable: "概念预览 / 尚未发售", withinGlass: "玻璃鼠标垫 · 封面系列", coverTitle: "一幅封面，一款作品。", coverSubtitle: "从角色与专辑视觉中，寻找新的表达。",
-    coverNote: "独立二创概念设计，不代表与游戏方或音乐人的官方联名。",
-    keyAlt: "KIKORA 蕾娜键帽概念：红紫色角色画面连续铺展在银灰色键盘的独立键帽上",
-  },
-  concepts: {
-    core: {
-      title: "Core 基础系列", index: "01 / 玻璃鼠标垫 — CORE", tagline: "从简洁出发，为专注留白。", asideTitle: "把注意力留给真正重要的事。", description: "简洁的形态、恰好的比例、清晰的视觉。KIKORA 对基础玻璃鼠标垫的设计探索。",
-      storyTitle: "桌面上的一块留白。", story: "Core 探索玻璃鼠标垫最简洁的表达：安静的表面，有分寸的存在感。当前展示为造型概念，产品结构与最终规格仍在开发中。",
-      caption: "Core / 造型研究", question: "Core 系列的设计方向是什么？", answer: "Core 以克制、简洁的视觉为出发点。目前展示的炭黑表面是概念效果，最终表面处理与结构尚待确认。",
-    },
-    artist: {
-      title: "Artist 画师系列", index: "01 / 玻璃鼠标垫 — ARTIST", tagline: "让另一种视角，成为桌面的一部分。", asideTitle: "为表达留出空间。", description: "以玻璃鼠标垫为画布，探索色彩、构图与原创视觉。",
-      storyTitle: "让表面成为画布。", story: "Artist 系列尝试将艺术表达带入日常物件。画面中的蓝色构图为原创抽象设计研究，最终款式、合作画师与产品规格尚未公布。",
-      caption: "Artist / 抽象视觉研究", question: "这是已经公布的画师联名吗？", answer: "目前展示的是 Artist 方向的原创抽象概念设计。具体画师合作及最终款式尚未公布。",
-    },
-    covers: {
-      title: "Cover 专辑封面系列", index: "01 / 玻璃鼠标垫 — COVERS", tagline: "一幅作品，一款设计，为桌面定下自己的基调。", asideTitle: "桌面的氛围，由你来定。", description: "从唱片封面汲取灵感，让每一幅作品成为独立的桌面表达。",
-      storyTitle: "让画面，有自己的声音。", story: "Cover 系列以一幅作品对应一款设计：每一款都有独立的画面与视觉个性。音乐和专辑设计构成灵感来源，最终图案与生产规格仍在开发中。",
-      caption: "Covers / 封面视觉研究", question: "Cover 系列每一款有什么区别？", answer: "每款以一幅独立作品为核心，灵感来自音乐与专辑视觉。目前展示的是概念设计，尚未公布任何官方联名。",
-    },
-    keycaps: {
-      title: "键帽", index: "02 / 键帽", tagline: "蕾娜、红色光线，以及另一种唱片封面。", asideTitle: "让每一次触碰，都有自己的表达。", description: "将角色画面重新编排在独立键帽上，与「明星玩家」玻璃垫形成视觉呼应。",
-      storyTitle: "一幅画面，延伸到每一颗键。", story: "Cover 系列将唱片封面的氛围带到键盘上。蕾娜画面贯穿独立键帽的顶面，搭配炭黑色功能键。这是独立角色二创概念，不代表官方联名。材质、印刷工艺、键帽高度与适配范围尚待确认。",
-      caption: "键帽 / 图案印刷概念", question: "这套键帽适配哪些键盘？", answer: "适配配列、键帽高度与套装内容尚未公布。当前图片用于展示设计方向，并非最终套装。",
-    },
-    metal: {
-      title: "金属客制化", index: "03 / 金属客制化", tagline: "探索几何形态、重量与细节。", asideTitle: "从细节，想象未来。", description: "定制金属物件是 KIKORA 的未来方向。当前键帽造型为早期几何形态研究。",
-      storyTitle: "小物件，也有鲜明的存在感。", story: "金属客制化是未来产品企划，尝试以雕塑感的形态和细节丰富桌面。当前展示的键帽为概念造型，材料牌号、表面处理、制造工艺、适配范围与上市时间均未确定。",
-      caption: "金属 / 几何造型研究", question: "这颗金属键帽可以购买了吗？", answer: "金属客制化仍属未来企划。当前几何键帽仅为造型研究，规格、发售安排与价格尚未公布。",
-    },
-  },
-  details: {
-    tabs: { specs: "规格", story: "设计理念", faq: "常见问题" }, category: "品类", collection: "系列", edition: "款式", dimensions: "设计尺寸", thickness: "厚度", surface: "表面与底部结构", status: "进度", tbc: "待确认", future: "未来企划",
-    direction: "产品方向", preview: "预览内容", geometric: "几何键帽造型研究", materialsFinish: "材质与表面处理", compatibility: "适配范围", palette: "概念配色", colors: "绯红 / 紫罗兰 / 炭黑", materialsProcess: "材质与工艺", profileKit: "键帽高度与套装",
-    notes: "KIKORA / 产品手记", close: "关闭", closeLabel: "关闭产品详情", designDimensions: "设计尺寸 490 × 420 mm", designConcept: "设计概念", specsTbc: "最终规格待确认", conceptDeveloping: "概念设计 / 开发中", layoutTbc: "配列与键帽高度待确认", information: "详情",
-    metalLead: "提前看看，我们正在构思什么。", lead: "产品细节，正在逐步打磨。", specNote: "最终规格、价格与发售时间，将随开发进度陆续公布。", signoff: "KIKORA / 为日常，添一点自己的表达。",
-    confirmedQuestion: "目前有哪些已确定的规格？", glassAnswer: "设计尺寸为 490 × 420 mm。玻璃厚度、表面处理与底部结构尚待确认。", otherAnswer: "当前预览用于呈现设计方向。最终材质、尺寸、结构与适配范围尚未公布。",
-    releaseQuestion: "如何获得发售消息？", releaseMetal: "金属客制化仍属未来企划。", releaseDeveloping: "该产品方向正在开发中。", releaseBefore: "价格与发售时间尚未公布。可前往", newsletter: "发售动态订阅", releaseAfter: "，关注后续消息。",
-    overview: "产品概览", releaseNote: "最终规格待确认，发售信息将另行公布。", footer1: "你的桌面，", footer2: "你的表达。",
-  },
-  artwork: [
-    { caption: "蕾娜 / 角色二创概念 001", alt: "紫色光线中的蕾娜角色二创，背景为鲜红色专辑封面构图" },
-    { caption: "恶灵 / 角色二创概念 002", alt: "以冷蓝色科幻专辑封面构图呈现的恶灵角色二创" },
-    { caption: "侵蚀 / 电影感二创概念 003", alt: "工业仓库中的侵蚀，周围有橄榄绿色桶与暖色电影感逆光" },
-    { caption: "希尔 / 角色二创概念 004", alt: "鎏金时刻：以希尔为灵感的铜橙、金色与海军蓝专辑封面概念" },
-    { caption: "红狼 / 角色二创概念 005", alt: "红线：以红狼为灵感的红色专辑封面概念" },
-    { caption: "威龙 / 角色二创概念 006", alt: "余焰：以威龙为灵感的电影感专辑封面概念" },
-    { caption: "麦晓雯（骇爪）/ 角色二创概念 007", alt: "夜间信号：以麦晓雯（骇爪）为灵感的夜色专辑封面概念" },
-  ],
-  sound: {
-    unavailable: "音乐尚未接入，查看说明", startingLabel: "音乐正在加载，点击关闭", onLabel: "音乐已开启，点击关闭", offLabel: "音乐已关闭，点击开启", on: "音乐 开", off: "音乐 关", settings: "音量与曲目信息", heading: "给桌面一点声音", close: "关闭音乐设置", trackPending: "属于这个系列的背景音乐", volume: "音量", percent: "%", error: "暂时无法播放，请重试。", retry: "重新播放", starting: "正在加载音乐…", playing: "音乐播放中，关闭面板后也会继续播放。", stopped: "音乐已关闭，想听的时候再打开。", noSource: "背景音乐正在挑选中，当前尚未接入音源。",
-  },
-  metadata: {
-    glass: "探索 KIKORA 玻璃鼠标垫：Core 基础、Artist 艺术与 Cover 专辑封面系列。以 490 × 420 mm 为设计尺寸的独立概念设计。",
-    keycaps: "探索 KIKORA 键帽概念。以角色与专辑封面为灵感，让完整画面延伸到每一颗键。",
-    metal: "探索 KIKORA 金属客制化的未来企划，从几何形态、造型与细节开始。",
-  },
-};
-
 const ja: typeof en = {
   categories: { glass: "ガラスマウスパッド", keycaps: "キーキャップ", metal: "メタルカスタム" },
   editionNames: ["スタープレイヤー", "虚空ラジオ", "ケミスト", "ゴールデンアワー", "レッドライン", "残り火", "夜のシグナル"],
@@ -238,4 +162,4 @@ const ja: typeof en = {
   },
 };
 
-export const productCopy: Record<Locale, typeof en> = { zh, en, ja };
+export const productCopy: Record<Locale, typeof en> = { en, ja };

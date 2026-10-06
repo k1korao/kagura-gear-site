@@ -4,26 +4,6 @@ import { siteConfig } from "./site";
 export type PolicyPageContent = { title: string; eyebrow: string; intro: string; sections: { heading: string; body: string }[] };
 type PolicyKey = "shipping" | "returns" | "privacy" | "terms";
 export const policies: Record<Locale, Record<PolicyKey, PolicyPageContent>> = {
-  zh: {
-    shipping: { title: "配送说明", eyebrow: "发售前信息", intro: "KIKORA 目前展示的是开发中的系列与设计概念，尚未开放商品下单。", sections: [
-      { heading: "配送安排尚未公布", body: "可配送地区、运费、发货周期以及预售安排，将在具体作品正式发售前说明。目前页面中的设计展示不代表现货或发货承诺。" },
-      { heading: "关于未来发售", body: "请以对应作品发售时的商品页和订单信息为准。如对打样、合作或未来发售有疑问，可通过联系页面与我们沟通。" },
-    ] },
-    returns: { title: "售后说明", eyebrow: "发售前信息", intro: "网站当前未开放购买。我们会在作品正式发售前公布适用的退换货条件与处理方式。", sections: [
-      { heading: "以正式发售规则为准", body: "目前的概念展示不构成退换货期限或特殊定制条件的承诺。具体规则会与对应作品的发售信息一并提供。" },
-      { heading: "联系我们", body: `如需咨询未来的收藏作品、设计方案或合作事宜，请通过联系页面留言，或发送邮件至 ${siteConfig.supportEmail}。` },
-    ] },
-    privacy: { title: "隐私与信息使用", eyebrow: "当前网站说明", intro: "这份说明介绍当前展示网站的联系表单、订阅与语言偏好功能。", sections: [
-      { heading: "你主动提交的信息", body: "联系表单会处理你填写的姓名、邮箱、主题与留言，以便回复咨询。订阅表单使用你提供的邮箱发送确认和你同意接收的品牌动态；可回复邮件要求取消订阅。" },
-      { heading: "邮件与语言偏好", body: "当邮件服务可用时，网站通过 Resend 处理邮件发送；如果发送失败，我们会提供直接发邮件的选项。网站使用名为 kagura-language 的 Cookie 保存你选择的语言，最长保留一年，可通过浏览器设置清除。" },
-      { heading: "咨询与删除请求", body: `网站当前不收集银行卡信息或处理商品付款。如需询问、更正或请求删除你提交的信息，请联系 ${siteConfig.supportEmail}。未来新增交易功能时，这份说明也会更新。` },
-    ] },
-    terms: { title: "网站使用说明", eyebrow: "关于当前展示内容", intro: "KIKORA 当前网站用于介绍品牌方向、展示设计概念与接收合作咨询。", sections: [
-      { heading: "概念与正式作品", body: "概念图、效果图与结构展示用于表达设计方向，不等同于最终商品。最终图案、材料、工艺、价格与限定规则以正式发售的信息为准。" },
-      { heading: "角色与合作说明", body: "游戏角色及音乐视觉相关概念属于设计探索。页面展示不代表相关游戏方、音乐人或画师已与 KIKORA 达成官方合作；相关名称与角色权利归各自权利人所有。" },
-      { heading: "合作与联系", body: `画师共创计划仍在筹备。有关个人 IP、创作署名、作品使用与合作条件，将与创作者单独商定。咨询请联系 ${siteConfig.supportEmail}。` },
-    ] },
-  },
   en: {
     shipping: { title: "Shipping information", eyebrow: "BEFORE THE FIRST RELEASE", intro: "KIKORA is currently sharing collections in development and design studies. Orders are not open yet.", sections: [
       { heading: "Delivery details will follow", body: "Destinations, shipping costs, dispatch times and any preorder arrangements will be published before each release. A concept shown here does not indicate available stock or a promised delivery date." },

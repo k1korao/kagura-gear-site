@@ -7,15 +7,6 @@ import { productCopy } from "@/lib/product-copy";
 import styles from "./CoreGlassExperience.module.css";
 
 const translations = {
-  zh: {
-    back: "玻璃鼠标垫 / 全部系列", label: "01 / 基础系列", title: "留白，也有分量。", intro: "一块安静的表面，把空间留给你。",
-    study: "形态研究", drag: "点击视角，或轻轻左右滑动", view: "选择观察视角", views: ["整体", "表面", "边缘"],
-    viewer: "Core 玻璃鼠标垫概念模型", keyboard: "左右滑动，或使用左右方向键切换整体、表面和边缘视角。Home 键回到整体。",
-    detailTitles: ["从整体，看比例。", "靠近一点，看留白。", "换个角度，看轮廓。"],
-    detailText: ["490 × 420 mm 的设计尺寸，让简洁的轮廓成为桌面的一部分。", "炭黑色的视觉概念，让标识和画面都保持克制。表面工艺仍在打样确认中。", "用光线勾勒边界，观察平面如何成为一件物件。最终厚度、倒角与底部结构尚未确定。"],
-    dimensions: "设计尺寸", finish: "视觉方向", charcoal: "炭黑 / 简洁", status: "产品进度", developing: "概念开发中", note: "当前为造型概念展示。颜色、厚度与表面效果不代表最终生产规格。",
-    next: "继续探索", artist: "走进画师系列", covers: "浏览专辑封面系列", release: "关注发售动态",
-  },
   en: {
     back: "Glass mousepads / All collections", label: "01 / CORE COLLECTION", title: "Quiet, with presence.", intro: "A considered surface. Space to make your own.",
     study: "FORM STUDY", drag: "Choose a view, or swipe gently", view: "Choose a view", views: ["Overview", "Surface", "Edge"],

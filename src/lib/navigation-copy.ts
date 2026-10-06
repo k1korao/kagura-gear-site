@@ -1,19 +1,4 @@
 export const navigationCopy = {
-  zh: {
-    home: "KIKORA 首页", primary: "主导航", expanded: "全部导航", glass: "玻璃鼠标垫", keycaps: "键帽", metal: "金属客制化",
-    glassCollections: "玻璃鼠标垫系列", glassDirections: "玻璃鼠标垫 / 三种创作方向",
-    collections: [
-      { id: "core", label: "基础系列", note: "回归材质与手感" },
-      { id: "artist", label: "画师系列", note: "个人 IP 与独立视角" },
-      { id: "covers", label: "专辑封面系列", note: "音乐与游戏的再创作" },
-    ],
-    openMenu: "打开导航菜单", closeMenu: "关闭导航菜单", menu: "菜单", close: "关闭", exploreObjects: "探索作品",
-    hideGlass: "收起玻璃鼠标垫系列", showGlass: "展开玻璃鼠标垫系列", story: "我们的世界", about: "品牌故事", contact: "联系我们", faq: "常见问题", updates: "作品动态",
-    brand: ["让创作者的世界，成为你的收藏。", "独立艺术 / 个人 IP / 日常收藏"],
-    explore: "作品方向", information: "了解 KIKORA", shipping: "配送说明", returns: "退换说明", status: "系列筹备中",
-    invitation: ["你的世界，", "值得被收藏。"], invitationBody: "关注 KIKORA 正在酝酿的创作者故事与新系列。", updatesAction: "关注新作品",
-    copyright: "保留所有权利。", privacy: "隐私政策", terms: "服务条款", principles: "艺术 / 自我表达 / 收藏", supportSubject: "品牌与售后咨询 / KIKORA",
-  },
   en: {
     home: "KIKORA home", primary: "Primary navigation", expanded: "Full navigation", glass: "Glass mousepads", keycaps: "Keycaps", metal: "Metal customs",
     glassCollections: "Glass mousepad collections", glassDirections: "GLASS / THREE DIRECTIONS",

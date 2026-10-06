@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { getLocale } from "@/lib/locale-server";
 const copy = {
-  zh: { title: "这一页还没有故事。", body: "链接可能已经更新，回到 KIKORA 的世界继续探索。", action: "返回首页" },
   en: { title: "No story here. Yet.", body: "This page may have moved. Head back to KIKORA and find your next chapter.", action: "Back to the story" },
   ja: { title: "お探しのページが見つかりません。", body: "ページが移動した可能性があります。KIKORAのホームから、もう一度ご覧ください。", action: "ホームへ戻る" },
 };

@@ -24,24 +24,6 @@ const en = {
   artwork: "Artwork",
   collectionEnd: "You’ve reached the end of the collection.",
 };
-const zh: typeof en = {
-  hubLabel: "玻璃鼠标垫 / 三种表达",
-  hubTitle: "找到属于你的那一面。",
-  hubDescription: "专注纯粹形态，收藏画师表达，或把音乐与角色带上桌面。三个系列，各自展开。",
-  enter: "进入系列",
-  directions: ["形态与专注", "画师与表达", "角色与唱片"],
-  interactions: ["近看形态", "走进画廊", "滑动浏览每一款"],
-  allGlass: "全部玻璃鼠标垫系列",
-  coverLabel: "COVER 专辑系列 / 一幅作品，一张鼠标垫",
-  coverIntro: "每幅图都是独立的一款。沿着桌面滑动，依次发现七张鼠标垫。",
-  viewer: "专辑系列玻璃鼠标垫。左右拖动，或使用左右方向键浏览；Home 和 End 键可到达第一款和最后一款。",
-  previous: "上一张鼠标垫",
-  next: "下一张鼠标垫",
-  help: "左右拖动浏览 / 七款独立鼠标垫",
-  edition: "独立款式",
-  artwork: "画面",
-  collectionEnd: "已经浏览到这个系列的最后一款。",
-};
 const ja: typeof en = {
   hubLabel: "ガラスマウスパッド / 3つの表現",
   hubTitle: "あなたらしい一枚を。",
@@ -60,4 +42,4 @@ const ja: typeof en = {
   artwork: "アートワーク",
   collectionEnd: "このシリーズの最後の一枚です。",
 };
-export const glassCollectionCopy: Record<Locale, typeof en> = { zh, en, ja };
+export const glassCollectionCopy: Record<Locale, typeof en> = { en, ja };

@@ -34,7 +34,7 @@ export async function pageMetadata({ title, description, path, image }: PageMeta
     },
     openGraph: {
       type: "website",
-      locale: { zh: "zh_CN", en: "en_US", ja: "ja_JP" }[locale],
+      locale: { en: "en_US", ja: "ja_JP" }[locale],
       title: fullTitle,
       description,
       url,

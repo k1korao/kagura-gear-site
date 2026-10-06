@@ -23,50 +23,6 @@ type SupportCopy = {
 };
 
 export const supportCopy: Record<Locale, SupportCopy> = {
-  zh: {
-    contact: {
-      metaTitle: "联系 KIKORA", metaDescription: "与 KIKORA 交流作品、画师共创与品牌合作。",
-      label: "LET’S TALK / 联系我们", title: "每个新世界，\n都从一次交流开始。", intro: "无论你想了解正在筹备的作品，还是带着自己的角色与创作而来，我们都期待听见你的想法。",
-      inboxTitle: "直接写信给我们", inboxCopy: "作品咨询、个人 IP 共创或品牌合作，都可以通过这个邮箱联系 KIKORA。",
-      topics: [{ title: "作品咨询", copy: "了解玻璃鼠标垫、键帽与金属客制化的设计方向和筹备进展。" }, { title: "画师与个人 IP 共创", copy: "欢迎附上作品集、原创角色或个人 IP 链接，以及你希望尝试的合作方向。" }, { title: "品牌与商业合作", copy: "如果有适合 KIKORA 的合作想法，告诉我们你的计划。" }],
-      status: "当前作品与首批画师共创计划正在筹备中。", formTitle: "聊聊你的想法", mailSubject: "联系 KIKORA", mailBody: "你好 KIKORA，\n\n我想聊聊：\n\n",
-    },
-    faq: {
-      metaTitle: "常见问题", metaDescription: "了解 KIKORA 的作品筹备、玻璃鼠标垫规格、画师共创与网站使用。",
-      label: "GOOD TO KNOW / 常见问题", title: "关于作品，\n也关于接下来的故事。", intro: "这里整理了当前可以确认的信息。正式发售前，我们会在对应作品页补充完整细节。",
-      items: [
-        { question: "现在可以购买这些作品吗？", answer: "目前展示的是视觉与产品概念研究，尚未正式开售。最终设计、售价、发售时间和购买方式，会在确认后公布。" },
-        { question: "KIKORA 会有哪些产品类别？", answer: "我们正在探索玻璃鼠标垫、键帽与金属客制化。玻璃鼠标垫分为基础、画师与封面系列；音乐专辑灵感是其中一个方向。各系列的具体作品以之后的正式发布为准。" },
-        { question: "玻璃鼠标垫的尺寸与工艺确定了吗？", answer: "当前概念玻璃垫以 490 × 420 mm 为目标尺寸。玻璃厚度、表面工艺、边缘处理、底材以及最终公差仍待打样确认，概念图不代表最终生产规格。" },
-        { question: "页面上的角色图是已经发布的画师联名吗？", answer: "这些图片目前用于表达视觉与产品设计方向，并非已发布的画师合作款。合作画师、授权范围与具体发行计划，将在确认后另行公布。" },
-        { question: "我是画师或个人 IP 创作者，怎样参与？", answer: "首批共创计划正在筹备中。欢迎通过联系页发送作品集、原创角色或个人 IP 链接，并介绍你希望合作的方向。具体共创方式、授权与发行安排会在沟通中确认。" },
-        { question: "限定作品会如何说明版数？", answer: "我们计划在限定作品正式发售前公开版数与再版规则。当前尚未公布发售版数，概念页上的作品编号不代表可购买的限量编号。" },
-        { question: "浏览网站一定要播放音乐吗？", answer: "音乐默认关闭，由你通过声音开关自主选择。开启后也可以暂停或调整音量；音源尚未就绪时，页面会给出提示。" },
-        { question: "网站支持哪些语言？会记住我的选择吗？", answer: "你可以在页面顶部切换中文、English 和日本語。网站会在当前浏览器保存语言偏好，之后访问沿用你的选择；清除相关浏览数据后需要重新选择。" },
-      ],
-      contactTitle: "还有想了解的？", contactCopy: "告诉我们你的问题，或带来一个新的合作想法。", contactAction: "联系 KIKORA",
-    },
-    contactForm: {
-      name: "称呼", namePlaceholder: "我们该怎么称呼你", email: "邮箱", topic: "想聊的方向", message: "留言", messagePlaceholder: "介绍你的问题、创作或合作想法。", company: "公司",
-      topics: [{ value: "Product question", label: "作品咨询" }, { value: "Collaboration", label: "画师 / 个人 IP 共创" }, { value: "Wholesale", label: "品牌与商业合作" }, { value: "Order support", label: "订单相关" }, { value: "Other", label: "其他" }],
-      submit: "发送留言", sending: "正在发送…", emailAction: "用邮件发送这条留言", mailSubject: "KIKORA 咨询：{topic}", mailHeading: "你好 KIKORA，",
-      notices: {
-        idle: "我们会通过 {email} 回复。若在线发送暂时不可用，你也可以通过邮箱发送同一条留言。",
-        sending: "正在发送你的留言…", sent: "留言已发送。我们会通过 {email} 回复。",
-        invalid: "请填写称呼、有效的邮箱地址和留言内容后再发送。",
-        unavailable: "暂时无法在线发送，留言尚未送达。请点击下方按钮，在邮件应用中发送这条留言。",
-        failed: "这次发送未成功。你可以重试，或使用下方邮件入口发送相同内容。",
-        uncertain: "暂时无法确认留言是否发送成功。你填写的内容已保留，可以重试或通过邮件联系。",
-        limited: "发送过于频繁，请稍后重试；也可以通过邮件联系我们。",
-      },
-    },
-    newsletter: {
-      email: "邮箱地址", company: "公司", submit: "接收新消息", sending: "正在提交…",
-      consent: "我愿意接收 KIKORA 作品动态与发售信息，可回复邮件并注明 UNSUBSCRIBE 退订。", emailAction: "通过邮件登记",
-      mailSubject: "订阅 KIKORA 作品与发售消息", mailBody: "你好 KIKORA，\n\n我希望使用 {email} 接收作品动态与发售信息，并同意接收相关邮件。\n我知道可以回复邮件并注明 UNSUBSCRIBE 退订。\n",
-      notices: { sending: "正在提交你的邮箱…", sent: "邮件已发送，请查看收件箱。", email: "请输入有效的邮箱地址。", consent: "请先勾选同意接收作品与发售邮件。", invalid: "请检查邮箱地址，并确认已同意接收邮件。", unavailable: "在线登记暂时不可用，你的订阅尚未完成。可以通过下方邮件入口登记。", failed: "这次登记未成功。请稍后重试，或通过邮件登记。", uncertain: "暂时无法确认登记结果。请查看收件箱，或通过邮件联系我们。", limited: "提交过于频繁，请稍后重试。" },
-    },
-  },
   en: {
     contact: {
       metaTitle: "Contact KIKORA", metaDescription: "Talk to KIKORA about upcoming objects, artist collaborations and brand partnerships.",
@@ -86,7 +42,7 @@ export const supportCopy: Record<Locale, SupportCopy> = {
         { question: "How can an artist or original IP creator get involved?", answer: "Our first collaboration programme is in development. Use the contact page to share your portfolio, original characters or creator-owned IP, and tell us what you’d like to explore. We’ll discuss the creative approach, licensing and release arrangements with each collaborator." },
         { question: "How will limited editions be described?", answer: "We plan to publish edition sizes and reissue policies before each limited release. No edition sizes have been announced yet. Numbers shown on concept pages identify design studies, not purchasable numbered editions." },
         { question: "Do I have to listen to music while browsing?", answer: "Sound is off by default. You choose whether to turn it on, pause it or adjust the volume. If a track isn’t available yet, the sound control will let you know." },
-        { question: "Which languages are available, and will my choice be remembered?", answer: "Use the language selector at the top of the page to choose 中文, English or 日本語. Your preference is saved in this browser for future visits. You may need to select it again after clearing the relevant browsing data." },
+        { question: "Which languages are available, and will my choice be remembered?", answer: "Use the language selector at the top of the page to choose English or 日本語. Your preference is saved in this browser for future visits. You may need to select it again after clearing the relevant browsing data." },
       ],
       contactTitle: "Something else on your mind?", contactCopy: "Ask a question, or bring us a new idea to explore together.", contactAction: "Contact KIKORA",
     },
@@ -126,7 +82,7 @@ export const supportCopy: Record<Locale, SupportCopy> = {
         { question: "作家やオリジナル IP のクリエイターは、どう参加できますか？", answer: "初回の共創企画は準備中です。お問い合わせページから、ポートフォリオやオリジナルキャラクターのリンク、取り組んでみたい内容をお送りください。制作の進め方、利用許諾、販売に関する取り決めは、個別に相談しながら決めていきます。" },
         { question: "限定作品のエディション数は公表されますか？", answer: "限定作品は、正式発売前にエディション数と再販方針を公開する予定です。現在、具体的な版数は発表していません。コンセプトページの番号はデザインスタディを示すもので、販売用の限定シリアル番号ではありません。" },
         { question: "サイトの音楽は必ず再生されますか？", answer: "音楽は初期状態ではオフです。サウンドボタンで再生や一時停止、音量調整を選べます。音源の準備ができていない場合は、その旨を表示します。" },
-        { question: "対応言語と、言語設定の保存について教えてください。", answer: "ページ上部から中文・English・日本語を選べます。選択した言語は現在のブラウザに保存され、次回のアクセス時にも引き継がれます。関連する閲覧データを削除した場合は、再度選択してください。" },
+        { question: "対応言語と、言語設定の保存について教えてください。", answer: "ページ上部からEnglish・日本語を選べます。選択した言語は現在のブラウザに保存され、次回のアクセス時にも引き継がれます。関連する閲覧データを削除した場合は、再度選択してください。" },
       ],
       contactTitle: "ほかに気になることはありますか？", contactCopy: "ご質問も、新しいコラボレーションのアイデアも、お気軽にお寄せください。", contactAction: "KIKORA に問い合わせる",
     },

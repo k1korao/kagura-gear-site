@@ -1,29 +1,4 @@
 export const aboutCopy = {
-  zh: {
-    lang: "zh-CN", title: "品牌故事", description: "KIKORA 希望连接独立画师、个人 IP 与动漫游戏玩家，让创作者的世界成为可以带进日常的艺术收藏。",
-    eyebrow: "KIKORA / 值得收藏的世界", heroTitle: ["让创作者的世界，", "成为你的收藏。"],
-    intro: ["我们想做一座连接创作者与玩家的桥。", "让个人 IP 的想象力走出画面，成为有形、可触及，值得长久留在身边的作品。"], enter: "进入我们的故事",
-    wraithAlt: "恶灵主题的蓝色视觉研究，呈现角色与音乐封面语言的结合", visualMark: ["一个世界，", "正在成形。"], visualStudy: "视觉研究 / 001", visualNote: "概念研究 · 非已发布联名",
-    beginning: "01 / 故事的起点", sharedPassion: "共同的热爱", storyTitle: ["总有一个世界，", "你不想在退出游戏后离开。"],
-    story: ["也许是陪你打过无数场对局的角色，是一张循环播放的专辑，是一位画师笔下第一次让你停住的画。我们喜欢它们，不只是因为好看，而是因为它们说出了属于我们的某一部分。", "KIKORA 从这种共同的感受出发。我们希望把动漫、游戏、音乐与当代潮流中的创作能量，转化为玩家日常里的艺术收藏。桌面不只摆放设备，也可以收藏你的审美、记忆与态度。"],
-    beliefLabel: "02 / 我们相信", beliefTitle: ["一件作品，", "三个不可替代的部分。"],
-    beliefs: [
-      { number: "01", label: "创作者", title: "作品的主角，是创作者。", body: "我们想认识的，不只是一个画风，而是画风背后的那个人。独立角色、个人叙事、还没有被看见的世界，都可以成为一件作品的起点。" },
-      { number: "02", label: "限定作品", title: "收藏的意义，不止于数量。", body: "我们希望限定作品有值得反复欣赏的设计，也有清楚的作者、主题与发行说明。限量是认真对待一件作品的方式；具体发行方案将随正式作品公布。" },
-      { number: "03", label: "玩家日常", title: "让热爱，留在日常里。", body: "收藏可以放进展柜，也可以就在手边。一次开机、一场对局、一个深夜，让熟悉的角色与创作陪你度过真实的时间。" },
-    ],
-    reynaAlt: "蕾娜主题红蓝视觉研究，探索游戏角色与专辑构图的关系", creatorVisualNote: "视觉研究 / 非已发布联名",
-    creatorLabel: "03 / 不同的创作者，不同的世界", creatorTitle: ["下一章，", "由不同的你来写。"],
-    creatorBody: ["我们希望与来自全国不同城市的独立画师和个人 IP 创作者相遇。让鲜明的个人表达成为系列的中心，让每一位收藏者，都能找到与自己产生共鸣的世界。", "这不需要所有人喜欢同一种风格。它可以冷冽、热烈、奇异，也可以细腻而安静。我们期待的，是属于创作者自己的语言。"],
-    creatorStatus: "画师共创计划 · 筹备中", creatorAction: "与我们聊聊你的创作", mailSubject: "画师共创合作 / Artist collaboration",
-    objectsLabel: "04 / 艺术，有了形状", objectsTitle: ["同一个世界，", "不止一种收藏方式。"], objectsBody: "我们正在探索三种载体。让画面、触感与日常使用，一起成为作品的一部分。",
-    objects: [
-      { href: "/explore/glass", label: "01 / 玻璃鼠标垫", title: "玻璃鼠标垫", body: "让一整幅画，成为桌面的视觉中心。", action: "探索作品方向" },
-      { href: "/explore/keycaps", label: "02 / 艺术键帽", title: "艺术键帽", body: "把角色、色彩与构图，带到每一次触碰。", action: "探索作品方向" },
-      { href: "/explore/metal", label: "03 / 金属客制化", title: "金属客制化", body: "探索更立体的表达，收藏形态的更多可能。", action: "查看筹备方向" },
-    ],
-    invitationLabel: "我们的故事，仍在继续。", invitationTitle: ["世界很大。", "把与你共鸣的，留在身边。"], invitationBody: ["共创系列与限定作品正在筹备。", "下一位创作者、下一件作品，我们一起等待。"], invitationAction: "关注新作品",
-  },
   en: {
     lang: "en", title: "Our world", description: "KIKORA brings independent art, original characters and gaming culture into objects made to be part of everyday life. Discover our vision for artist-led collections.",
     eyebrow: "KIKORA / A WORLD WORTH COLLECTING", heroTitle: ["An artist’s world.", "A place in yours."],

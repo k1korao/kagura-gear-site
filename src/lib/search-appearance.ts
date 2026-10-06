@@ -3,11 +3,6 @@ import { navigationCopy } from "@/lib/navigation-copy";
 import { absoluteUrl, siteConfig } from "@/lib/site";
 
 export const searchAppearanceCopy = {
-  zh: {
-    title: "玻璃鼠标垫、键帽与艺术收藏",
-    description: "KIKORA（Kikora Gear）以游戏、动漫与独立艺术为灵感，探索玻璃鼠标垫、键帽及未来的金属客制化。浏览基础、画师与专辑封面系列的设计概念，了解品牌故事与共创计划。",
-    imageAlt: "KIKORA 键帽设计概念",
-  },
   en: {
     title: "Glass Mousepads, Keycaps & Artist Editions",
     description: "Meet KIKORA (Kikora Gear): glass mousepads, keycaps and future metal customs inspired by games, anime and independent art. Explore design studies for Core, Artist and Cover collections, and discover the story behind the brand.",

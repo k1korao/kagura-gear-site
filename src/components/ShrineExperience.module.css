@@ -5,7 +5,7 @@
 @media(max-width:760px){.stage{height:auto;min-height:0;max-height:none;padding-top:0}.filters{position:relative;left:auto;top:auto;padding:20px 6% 0;gap:0}.back{font-size:7px;margin-bottom:17px}.filterLabel{font-size:7px}.collectionTabs{flex-direction:row;gap:22px;border-left:0;border-bottom:1px solid #d9dddf;padding:0;margin-top:9px;width:100%}.collectionTabs button{min-height:40px;font-size:10px;gap:5px}.collectionTabs button span{display:none}.collectionTabs button[aria-pressed=true]{transform:none;border-bottom:1px solid #334049}.singleSeries{font-size:8px}.viewer{position:relative;inset:auto;width:100%;height:360px}.productInfo{position:relative;right:auto;bottom:auto;width:auto;padding:0 6%;margin:0;background:none}.productInfo h1{font-size:41px;margin-top:8px;margin-bottom:18px}.productKicker{font-size:7px}.tags>span{font-size:8px}.specs{margin:21px 0;gap:45px}.specs dt{font-size:7px}.specs dd{font-size:17px}.description{font-size:12px;max-width:400px;margin:18px 0 8px}.primaryButton{min-height:51px;font-size:11px}.more{font-size:11px;min-height:44px}.conceptNote{font-size:8px}.stageBottom{position:relative;inset:auto;padding:21px 6%;grid-template-columns:1fr auto;gap:18px;margin-top:10px}.help{grid-column:1/-1;text-align:center;font-size:6px}.viewControl{gap:15px}.viewControl button{font-size:7px}.pagination{gap:13px;font-size:9px}.keysImage{inset:5% 0;width:100%;height:92%;}.stillViewer{height:340px}.metalScene{inset:8% 10% 9% 8%}.metalKey{width:46%}.metalKey i{font-size:80px}.metalScene>span{font-size:6px}.coverCollection{padding:55px 6%}.coverCollection h2{font-size:29px}.records{grid-template-columns:1fr;gap:22px;margin-top:30px}.recordArt{padding:12% 20%}.records button>span{font-size:19px}.coverNote{font-size:8px}}
 @media(prefers-reduced-motion:reduce){.root *{transition:none!important;animation:none!important}}
 
-.root:lang(zh) :is(.productInfo h1,.coverCollection h2),.root:lang(ja) :is(.productInfo h1,.coverCollection h2){letter-spacing:-.02em;line-height:1.25}
+.root:lang(ja) :is(.productInfo h1,.coverCollection h2){letter-spacing:-.02em;line-height:1.25}
 .root:lang(ja) .specs{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:18px}
 .root:lang(ja) .specs dd{white-space:normal;line-height:1.5}
 @media(max-width:760px){.root:lang(ja) .specs dd{font-size:14px}.root:lang(ja) .collectionTabs{gap:18px}}
@@ -13,8 +13,8 @@
 .recordLabel{display:grid;gap:7px;min-width:0}
 .recordLabel small{color:#858f98;font:11px/1.5 Arial,sans-serif;letter-spacing:.025em}
 
-.root:lang(zh) .productInfo h1,.root:lang(ja) .productInfo h1{font-size:clamp(25px,2.1vw,34px);text-wrap:balance}
-@media(max-width:760px){.root:lang(zh) .productInfo h1,.root:lang(ja) .productInfo h1{font-size:32px}}
+.root:lang(ja) .productInfo h1{font-size:clamp(25px,2.1vw,34px);text-wrap:balance}
+@media(max-width:760px){.root:lang(ja) .productInfo h1{font-size:32px}}
 
 .editionPicker button{font-size:10px}
 @media(max-width:760px){.editionPicker button{font-size:12px;min-height:36px}}

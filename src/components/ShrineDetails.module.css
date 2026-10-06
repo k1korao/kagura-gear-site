@@ -96,7 +96,6 @@
 .asideFooter > span:first-child { color: #1c304e; font-size: 17px; font-weight: 700; letter-spacing: -.06em; }
 .asideFooter > span:last-child { border-left: 1px solid #c2d1e5; padding-left: 16px; color: #5b6c85; font-size: 9px; line-height: 1.8; }
 
-.dialog:lang(zh) :is(.intro h2, .aside h3, .panelLead),
 .dialog:lang(ja) :is(.intro h2, .aside h3, .panelLead) { letter-spacing: -.015em; line-height: 1.35; }
 .dialog:lang(ja) :is(.eyebrow, .index, .storySignoff) { letter-spacing: .04em; }
 

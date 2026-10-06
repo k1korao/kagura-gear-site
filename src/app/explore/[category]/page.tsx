@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
   const locale = await getLocale();
   const copy = productCopy[locale];
   const image = category === "glass"
-    ? { url: "/images/album-concept-wraith.webp", width: 1254, height: 1254, alt: { zh: "KIKORA 虚空电台玻璃鼠标垫封面设计概念", en: "KIKORA Void FM glass mousepad cover artwork concept", ja: "KIKORA ガラスマウスパッド「虚空ラジオ」のカバーデザインコンセプト" }[locale] }
+    ? { url: "/images/album-concept-wraith.webp", width: 1254, height: 1254, alt: { en: "KIKORA Void FM glass mousepad cover artwork concept", ja: "KIKORA ガラスマウスパッド「虚空ラジオ」のカバーデザインコンセプト" }[locale] }
     : category === "metal"
       ? { url: "/brand/kikora-symbol.png", width: 512, height: 512, alt: "KIKORA" }
       : undefined;

@@ -29,58 +29,6 @@ type BrandCopy = {
 };
 
 export const brandCopy: Record<Locale, BrandCopy> = {
-  zh: {
-    lang: "zh-CN",
-    hero: {
-      topline: "艺术 · 个人 IP · 收藏作品", stamp: "KIKORA / 正在生长的世界",
-      eyebrow: "为动漫、游戏与潮流文化中的收藏者",
-      title: ["让创作者的世界，", "成为你的收藏。"],
-      description: ["从个人 IP 的想象，到可以触碰的限定作品。", "我们正在构想，一个由画师与玩家共同丰富的 KIKORA。"],
-      storyAction: "走进我们的世界", creatorAction: "画师共创计划",
-      collageAria: "KIKORA 艺术与收藏品设计研究", coordinates: "画作 → 物件 → 收藏",
-      wraithAlt: "恶灵角色视觉研究，冷蓝色人物与空间构图", reynaAlt: "蕾娜角色视觉研究，红色与紫蓝色的专辑风肖像",
-      keycapsAlt: "蕾娜连续印花键帽设计概念", visualStudy: "01 / 视觉研究", coverStudy: "02 / 封面研究",
-      keysCaption: "作品的另一种形态。", storyStart: "故事，从这里开始", disclaimer: "页面作品为视觉与产品概念研究，非已发布画师联名。",
-      bottomLine: "独立的世界 / 相通的热爱",
-    },
-    manifesto: {
-      label: "KIKORA 的起点", title: ["有些热爱，", "值得拥有", "真实的形状。"],
-      paragraphs: ["我们喜欢一个角色，常常是因为看见了自己；我们收藏一件作品，是想把那份共鸣留得更久。KIKORA 从这样的热爱出发。", "我们希望连接全国独立画师与个人 IP 创作者，以玻璃鼠标垫、键帽和金属客制化探索限定艺术作品。让创作有新的去处，也让玩家的收藏有更多自己的样子。"],
-    },
-    story: {
-      aria: "从创作到收藏的三个章节", strapline: "从画师的世界，走进你的世界。", navAria: "叙事章节", chapterAction: "查看第 {number} 章",
-      chapters: [
-        { number: "01", label: "ONE ARTIST. ONE WORLD.", title: ["一个画师，", "一个世界。"], copy: "鲜明的角色、独特的画风、持续生长的故事。我们期待与独立画师及个人 IP 创作者一起，让他们的世界拥有新的收藏形态。", note: "从个人表达出发 / CREATOR FIRST" },
-        { number: "02", label: "ART TAKES FORM.", title: ["把作品，做成", "值得收藏的实物。"], copy: "完整铺开的玻璃画面，排列成章的键帽，金属的轮廓与质感。我们希望与创作者一起，让每种材质成为作品的一次重新表达。", note: "从画面到物件 / ART INTO OBJECTS" },
-        { number: "03", label: "LIVE WITH YOUR COLLECTION.", title: ["让收藏，", "进入你的日常。"], copy: "为一个角色、一种画风、一份共鸣而收藏。把你认同的世界留在桌面，让每次游戏与创作，都有它的陪伴。", note: "因热爱而收藏 / MADE PERSONAL" },
-      ],
-      artistTitle: ["创作者的", "独特宇宙"], artistTopics: ["角色", "风格", "故事"], artistNote: "原点，是独一无二的表达。", artistCaption: "视觉研究 / 个人表达",
-      materialNames: ["玻璃", "键帽", "金属"], materialCaption: "同一个创作世界，不同的呈现方式。",
-      collectorLabel: "KIKORA / 收藏笔记", collectorTitle: ["为你", "热爱的", "世界。"], collectorCopy: ["为热爱留下位置。", "也为新的故事留下位置。"],
-      collectorTags: "艺术 × 游戏 × 日常", collectorCaption: "你的收藏，你的视角。", bottomLine: "想象。共创。收藏。", nextChapter: "下一个章节",
-    },
-    creators: {
-      label: "KIKORA 画师共创计划", title: ["下一件值得收藏的作品，", "也许来自", "你的世界。"], status: "首批画师共创计划 · 筹备中",
-      invitation: ["致独立创作者的", "一份邀请"], posterCopy: ["独立画师 / 原创角色 / 个人 IP", "从任何一座城市，带来属于你的世界。"], posterFoot: "共创，从你的表达开始。",
-      principles: [
-        { number: "01", label: "CREATOR FIRST", title: "让创作者被看见。", copy: "我们希望每次合作都保留清晰的画师署名，呈现个人 IP 的故事与表达。" },
-        { number: "02", label: "CREATED TOGETHER", title: "共同创作完整的系列。", copy: "从主题、构图到材质和实物呈现，与创作者一起打磨作品走出画布后的样子。" },
-        { number: "03", label: "LIMITED, WITH CLARITY", title: "让限量有清楚的依据。", copy: "限定作品计划在正式发售前公开版数与再版规则。当前展示为设计研究，尚未发售。" },
-      ],
-      cta: "聊聊你的作品", ctaNote: "开启一段共创对话", mailSubject: "KIKORA 画师共创合作", mailBody: "你好 KIKORA，\n\n我的称呼：\n作品集或个人 IP 链接：\n希望合作的方向：\n联系方式：\n",
-      disclaimer: "共创方式、授权范围与作品发行方案将在具体合作中确认。当前概念图用于表达设计方向，尚未公布合作画师名单。",
-    },
-    discover: {
-      label: "探索作品的不同形态", copy: ["同一份热爱，可以有不同的收藏形态。", "选择一个入口，走近正在成形的作品。"],
-      categories: [
-        { title: "玻璃鼠标垫", aria: "探索玻璃鼠标垫", alt: "恶灵玻璃鼠标垫设计研究", label: "01 / 为你的世界铺开画布", copy: "完整铺开一个世界。" },
-        { title: "键帽", aria: "探索键帽", alt: "蕾娜角色图案跨独立键帽印刷的设计概念", label: "02 / 指尖之上的艺术", copy: "让画面经过每一次敲击。", status: "设计研究中" },
-        { title: "金属客制化", aria: "探索金属客制化", alt: "", label: "03 / 让存在更有分量", copy: "让轮廓拥有重量。", status: "未来作品计划" },
-      ],
-      collections: ["基础系列", "画师系列", "专辑封面系列"],
-    },
-    closing: { label: "这个世界，才刚刚开始。", title: ["你的热爱，", "也是这个世界的一部分。"], link: "认识 KIKORA" },
-  },
   en: {
     lang: "en",
     hero: {

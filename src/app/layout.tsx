@@ -42,7 +42,7 @@ export async function generateMetadata(): Promise<Metadata> {
   },
   openGraph: {
     type: "website",
-    locale: {zh:"zh_CN",en:"en_US",ja:"ja_JP"}[locale],
+    locale: {en:"en_US",ja:"ja_JP"}[locale],
     title: `${siteConfig.name} | ${siteConfig.slogan}`,
     description,
     url: absoluteUrl(),

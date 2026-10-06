@@ -7,16 +7,6 @@ import { productCopy } from "@/lib/product-copy";
 import styles from "./ArtistGlassExperience.module.css";
 
 const translations = {
-  zh: {
-    side: "选择正面或底部", front: "图案正面", underside: "背面 · 底胶", baseAlt: "玻璃鼠标垫背面的深灰色底垫结构示意", baseNote: "底部为结构示意，定制底胶的纹路、材质与最终结构尚未确定。",
-    drag: "拖动查看形态 · 方向键也可以调整", view: "选择观察视角", views: ["整体", "表面", "边缘"], viewer: "Artist 玻璃鼠标垫概念模型", keyboard: "左右方向键旋转，上下方向键调整倾斜；Home 键复位。", tilt: "倾斜角度", turn: "左右旋转", reset: "复位视角",
-    back: "玻璃鼠标垫 / 全部系列", label: "02 / 画师系列", title: "让一个世界，留在桌面。", intro: "从画师的视角出发，让独特的表达拥有可以触碰的形态。",
-    gallery: "Artist 概念展厅", study: "构图研究 — 001", studio: "KIKORA / 原创抽象研究",
-    artAlt: "蓝灰色的抽象几何构图，层层方框向画面中心延伸", artworkTitle: "另一种空间。", artworkNote: "蓝灰、光线，与层叠的几何形态。", preview: "概念预览", concept: "当前为原创视觉研究，具体画师合作与最终款式尚未公布。",
-    scroll: "向下走进创作", firstLabel: "从表达出发", firstTitle: "每位创作者，\n都有自己的世界。", firstBody: "一个角色的神情，一种难以替代的画风，一段还在生长的故事。我们希望每件作品都能留下创作者的视角，让你认出，也让你产生共鸣。",
-    secondLabel: "让创作成为物件", secondTitle: "不只被看见，\n也被日常陪伴。", secondBody: "将构图放进一块玻璃，重新考虑边界、留白与观看距离。Artist 系列探索作品从画面走向桌面的可能，让收藏进入每天使用的空间。",
-    dimension: "设计尺寸", specNote: "厚度、表面工艺与底部结构仍在开发中。", invitation: "下一幅作品，也许来自你的世界。", invitationText: "面向独立画师与个人 IP 创作者。欢迎带着作品集，和我们聊聊属于你的表达。", contact: "与我们聊聊共创", next: "继续探索", core: "Core 基础系列", covers: "Cover 专辑封面系列",
-  },
   en: {
     side: "Choose a side", front: "Artwork side", underside: "Underside · Base", baseAlt: "A dark grey base concept on the underside of the glass mousepad", baseNote: "Underside concept only. The custom base pattern, material and final construction are still to be confirmed.",
     drag: "Drag to explore · Arrow keys work too", view: "Choose a view", views: ["Overview", "Surface", "Edge"], viewer: "Artist glass mousepad concept model", keyboard: "Use left and right arrows to turn, up and down to tilt, and Home to reset.", tilt: "Tilt", turn: "Rotation", reset: "Reset view",
