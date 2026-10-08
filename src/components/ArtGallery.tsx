@@ -2,47 +2,51 @@
 
 import { useRef, useState } from "react";
 import { useLocale } from "@/components/LocaleProvider";
-import { KEY_ARTS, KeyArt } from "./KeyArt";
+import { MonochromePadSurface } from "./MonochromePadSurface";
 import styles from "./ArtGallery.module.css";
+
+const PADS = [
+  { tone: "white", title: "WHITE" },
+  { tone: "black", title: "BLACK" },
+] as const;
 
 const COPY = {
   en: {
-    label: "ORIGINAL CHARACTERS / KIKORA WORLDS",
-    title: ["Worlds,", "in full perspective."],
-    copy: "Drag, scroll or use the arrow keys. Each concept is imagined as a limited glass mousepad — hover the front card to catch the holographic finish.",
-    prev: "Previous artwork", next: "Next artwork", format: "GLASS PAD / 490 × 420 MM", status: "Original KIKORA character concept — glass edition in development.",
+    label: "KIKORA / MONOCHROME CONCEPTS",
+    title: ["Simply glass.", "Simply KIKORA."],
+    copy: "White or black. A quiet glass surface, with only the KIKORA name. Drag, swipe or use the arrow keys to explore both concepts.",
+    prev: "Previous finish", next: "Next finish", format: "GLASS PAD / CONCEPT", status: "Glass mousepad concept — in development.",
+    pads: ["White glass mousepad concept", "Black glass mousepad concept"],
   },
   ja: {
-    label: "ORIGINAL CHARACTERS / KIKORA WORLDS",
-    title: ["世界を、", "奥行きのままに。"],
-    copy: "ドラッグ、スクロール、または矢印キーで切り替え。各コンセプトは限定ガラスマウスパッドとして構想中です。手前のカードにカーソルを重ねると、ホログラムの質感が見えます。",
-    prev: "前のアートワーク", next: "次のアートワーク", format: "GLASS PAD / 490 × 420 MM", status: "KIKORA オリジナルキャラクターのコンセプト。ガラスエディションは開発中です。",
+    label: "KIKORA / MONOCHROME CONCEPTS",
+    title: ["白と黒。", "KIKORAのかたち。"],
+    copy: "白、または黒。ガラスの上には、KIKORAの名前だけ。ドラッグ、スワイプ、または矢印キーで、2つのコンセプトをご覧いただけます。",
+    prev: "前のカラー", next: "次のカラー", format: "GLASS PAD / CONCEPT", status: "ガラスマウスパッドのコンセプト。開発中です。",
+    pads: ["白いガラスマウスパッドのコンセプト", "黒いガラスマウスパッドのコンセプト"],
   },
 } as const;
 
 export function ArtGallery() {
   const copy = COPY[useLocale()];
-  const [active, setActive] = useState(1);
-  const drag = useRef<{ x: number; moved: boolean } | null>(null);
+  const [active, setActive] = useState(0);
+  const drag = useRef<{ x: number; moved: boolean; index: number | null } | null>(null);
   const wheelLock = useRef(0);
-  const count = KEY_ARTS.length;
-  const go = (step: number) => setActive(value => (value + step + count) % count);
+  const go = (step: number) => setActive(value => (value + step + PADS.length) % PADS.length);
 
   function onTilt(event: React.PointerEvent<HTMLElement>) {
+    if (drag.current) return;
     const card = event.currentTarget;
     const bounds = card.getBoundingClientRect();
     const x = (event.clientX - bounds.left) / bounds.width;
     const y = (event.clientY - bounds.top) / bounds.height;
-    card.style.setProperty("--rx", `${((.5 - y) * 16).toFixed(2)}deg`);
-    card.style.setProperty("--ry", `${((x - .5) * 20).toFixed(2)}deg`);
-    card.style.setProperty("--gx", `${(x * 100).toFixed(1)}%`);
-    card.style.setProperty("--gy", `${(y * 100).toFixed(1)}%`);
+    card.style.setProperty("--rx", `${((.5 - y) * 10).toFixed(2)}deg`);
+    card.style.setProperty("--ry", `${((x - .5) * 12).toFixed(2)}deg`);
   }
 
   function resetTilt(event: React.PointerEvent<HTMLElement>) {
-    const card = event.currentTarget;
-    card.style.setProperty("--rx", "0deg");
-    card.style.setProperty("--ry", "0deg");
+    event.currentTarget.style.setProperty("--rx", "0deg");
+    event.currentTarget.style.setProperty("--ry", "0deg");
   }
 
   return <section className={styles.gallery} aria-labelledby="gallery-title">
@@ -57,44 +61,60 @@ export function ArtGallery() {
       role="group"
       aria-roledescription="carousel"
       aria-label={copy.label}
-      onKeyDown={event => { if (event.key === "ArrowRight") { event.preventDefault(); go(1); } if (event.key === "ArrowLeft") { event.preventDefault(); go(-1); } }}
-      onWheel={event => { if (Math.abs(event.deltaX) < 12 || Date.now() < wheelLock.current) return; wheelLock.current = Date.now() + 450; go(event.deltaX > 0 ? 1 : -1); }}
-      onPointerDown={event => { drag.current = { x: event.clientX, moved: false }; }}
-      onPointerMove={event => { const start = drag.current; if (!start || start.moved) return; const dx = event.clientX - start.x; if (Math.abs(dx) > 50) { start.moved = true; go(dx < 0 ? 1 : -1); } }}
-      onPointerUp={() => { window.setTimeout(() => { drag.current = null; }, 0); }}
-      onPointerLeave={() => { drag.current = null; }}
+      onKeyDown={event => {
+        if (event.key === "ArrowRight") { event.preventDefault(); go(1); }
+        if (event.key === "ArrowLeft") { event.preventDefault(); go(-1); }
+      }}
+      onWheel={event => {
+        if (Math.abs(event.deltaX) < 12 || Math.abs(event.deltaX) <= Math.abs(event.deltaY) || Date.now() < wheelLock.current) return;
+        wheelLock.current = Date.now() + 450;
+        go(event.deltaX > 0 ? 1 : -1);
+      }}
+      onPointerDown={event => {
+        if (!event.isPrimary || event.button !== 0) return;
+        const target = event.target instanceof Element ? event.target.closest("[data-pad-index]") : null;
+        const index = target?.getAttribute("data-pad-index");
+        drag.current = { x: event.clientX, moved: false, index: index == null ? null : Number(index) };
+        event.currentTarget.setPointerCapture(event.pointerId);
+      }}
+      onPointerMove={event => {
+        const start = drag.current;
+        if (!start || start.moved) return;
+        const dx = event.clientX - start.x;
+        if (Math.abs(dx) > 50) { start.moved = true; go(dx < 0 ? 1 : -1); }
+      }}
+      onPointerUp={event => {
+        const start = drag.current;
+        if (start && !start.moved && start.index !== null) setActive(start.index);
+        drag.current = null;
+        if (event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId);
+      }}
+      onPointerCancel={() => { drag.current = null; }}
+      onLostPointerCapture={() => { drag.current = null; }}
     >
       <div className={styles.floor} aria-hidden="true" />
-      {KEY_ARTS.map((art, index) => {
-        let offset = index - active;
-        if (offset > count / 2) offset -= count;
-        if (offset < -count / 2) offset += count;
-        const isActive = offset === 0;
-        return <article
-          key={art.id}
-          className={styles.card}
-          data-active={isActive}
-          style={{ "--offset": offset, "--abs": Math.abs(offset) } as React.CSSProperties}
-          aria-hidden={!isActive}
-          onClick={() => { if (!drag.current?.moved && !isActive) setActive(index); }}
-          onPointerMove={isActive ? onTilt : undefined}
-          onPointerLeave={isActive ? resetTilt : undefined}
-        >
-          <div className={styles.slab}>
-            <KeyArt art={art.id} className={styles.art} />
-            <span className={styles.holo} aria-hidden="true" />
-            <span className={styles.glare} aria-hidden="true" />
-          </div>
-          <div className={styles.caption}><span>{String(index + 1).padStart(2, "0")} / {art.title}</span><span>{copy.format}</span></div>
-        </article>;
-      })}
+      {PADS.map((pad, index) => <article
+        key={pad.tone}
+        className={styles.card}
+        data-active={index === active}
+        data-pad-index={index}
+        style={{ "--side": index === 0 ? -1 : 1 } as React.CSSProperties}
+        aria-label={copy.pads[index]}
+        onPointerMove={index === active ? onTilt : undefined}
+        onPointerLeave={resetTilt}
+      >
+        <div className={styles.slab}>
+          <MonochromePadSurface tone={pad.tone} />
+        </div>
+        <div className={styles.caption}><span>{pad.title}</span><span>{copy.format}</span></div>
+      </article>)}
     </div>
 
     <div className={styles.controls}>
       <button type="button" onClick={() => go(-1)} aria-label={copy.prev}>←</button>
-      <div className={styles.dots}>{KEY_ARTS.map((art, index) => <button key={art.id} type="button" aria-label={art.title} aria-current={index === active} onClick={() => setActive(index)} />)}</div>
+      <div className={styles.choices}>{PADS.map((pad, index) => <button key={pad.tone} type="button" aria-label={copy.pads[index]} aria-pressed={index === active} onClick={() => setActive(index)}><span className={styles.swatch} data-tone={pad.tone} aria-hidden="true" />{pad.title}</button>)}</div>
       <button type="button" onClick={() => go(1)} aria-label={copy.next}>→</button>
     </div>
-    <p className={styles.status} aria-live="polite"><b>{KEY_ARTS[active].title}</b> — {copy.status}</p>
+    <p className={styles.status} aria-live="polite"><b>{PADS[active].title}</b> — {copy.status}</p>
   </section>;
 }

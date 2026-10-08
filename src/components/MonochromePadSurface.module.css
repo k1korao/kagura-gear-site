@@ -1,0 +1,36 @@
+.surface {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  isolation: isolate;
+  color: #171719;
+  background: #f9f9f8;
+  background-image: linear-gradient(135deg, #fff 0%, #fbfbfa 52%, #ededeb 100%);
+  box-shadow: inset 0 0 0 1px #ffffffb3, inset 0 -2px 4px #0000000a;
+}
+
+.surface[data-tone="black"] {
+  color: #f6f6f5;
+  background: #111112;
+  background-image: linear-gradient(135deg, #232325 0%, #141416 46%, #0a0a0b 100%);
+  box-shadow: inset 0 1px 0 #ffffff40, inset 0 0 0 1px #ffffff14, inset 0 -2px 4px #00000080;
+}
+
+.surface::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(120deg, #ffffff0d 0%, #ffffff00 44%, #ffffff0a 49%, #ffffff00 55%);
+}
+
+.surface .mark {
+  position: absolute;
+  right: var(--pad-mark-right, 7%);
+  left: var(--pad-mark-left, auto);
+  bottom: 8%;
+  width: 18%;
+  height: auto;
+}
