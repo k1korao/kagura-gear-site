@@ -28,7 +28,7 @@ export const supportCopy: Record<Locale, SupportCopy> = {
       metaTitle: "Contact KIKORA", metaDescription: "Talk to KIKORA about upcoming objects, artist collaborations and brand partnerships.",
       label: "LET’S TALK", title: "A new world starts\nwith a conversation.", intro: "Curious about a work in progress? Have a character, an original world or a collaboration in mind? We’d like to hear about it.",
       inboxTitle: "Write to us directly", inboxCopy: "This is the place for product questions, creator-owned IP collaborations and brand enquiries.",
-      topics: [{ title: "Explore the objects", copy: "Ask about our glass mousepad, keycap and custom metal concepts, and where they’re headed." }, { title: "Artists & original worlds", copy: "Share a portfolio, original character or creator-owned IP, along with what you’d like to make together." }, { title: "Brands & partnerships", copy: "Have an idea that belongs in KIKORA’s world? Tell us what you have in mind." }],
+      topics: [{ title: "Explore the objects", copy: "Ask about our glass mousepad and metal keycap concepts, and where they’re headed." }, { title: "Artists & original worlds", copy: "Share a portfolio, original character or creator-owned IP, along with what you’d like to make together." }, { title: "Brands & partnerships", copy: "Have an idea that belongs in KIKORA’s world? Tell us what you have in mind." }],
       status: "Our first objects and artist collaboration programme are in development.", formTitle: "Tell us what you’re thinking", mailSubject: "Hello KIKORA", mailBody: "Hello KIKORA,\n\nI’d like to ask about:\n\n",
     },
     faq: {
@@ -36,7 +36,7 @@ export const supportCopy: Record<Locale, SupportCopy> = {
       label: "GOOD TO KNOW", title: "About the objects.\nAnd what comes next.", intro: "Here’s what we can confirm today. Full details will appear on each collection page before its release.",
       items: [
         { question: "Can I buy these pieces yet?", answer: "Not yet. The current images are visual and product design studies. Final designs, prices, release dates and purchase details will be announced once they are confirmed." },
-        { question: "What kinds of objects is KIKORA developing?", answer: "We’re exploring glass mousepads, keycaps and custom metal objects. Our glass mousepad directions include Core, Artist Editions and the Cover Series; album-inspired designs are one part of that wider collection. Individual releases will be announced separately." },
+        { question: "What kinds of objects is KIKORA developing?", answer: "We’re developing glass mousepads and metal keycaps. Our glass mousepad directions include Core, Artist Editions and the Cover Series; album-inspired designs are one part of that wider collection. Individual releases will be announced separately." },
         { question: "Are the glass mousepad specifications final?", answer: "The current glass mousepad concepts target a size of 490 × 420 mm. Glass thickness, surface treatment, edge finishing, backing and final tolerances still need to be confirmed through sampling. Concept images are not final production specifications." },
         { question: "Are the character images released artist collaborations?", answer: "The images currently illustrate our visual and product direction. They are not released artist collaboration products. Participating artists, licensing arrangements and release plans will be announced after they have been confirmed." },
         { question: "How can an artist or original IP creator get involved?", answer: "Our first collaboration programme is in development. Use the contact page to share your portfolio, original characters or creator-owned IP, and tell us what you’d like to explore. We’ll discuss the creative approach, licensing and release arrangements with each collaborator." },
@@ -68,7 +68,7 @@ export const supportCopy: Record<Locale, SupportCopy> = {
       metaTitle: "KIKORA へのお問い合わせ", metaDescription: "制作中の作品、作家とのコラボレーション、ブランドとの協業について KIKORA にお問い合わせください。",
       label: "LET’S TALK / お問い合わせ", title: "新しい世界は、\nひとつの会話から。", intro: "気になる作品について。あなたが描くキャラクターや世界について。これから一緒につくってみたいものについて。まずは、お話を聞かせてください。",
       inboxTitle: "メールでのお問い合わせ", inboxCopy: "作品に関するご質問、オリジナル IP との共創、ブランドとの協業は、こちらのメールアドレスへお寄せください。",
-      topics: [{ title: "作品について", copy: "ガラスマウスパッド、キーキャップ、メタルカスタムの構想や制作状況について。" }, { title: "作家・オリジナル IP との共創", copy: "ポートフォリオやオリジナルキャラクターのリンクとともに、取り組んでみたい企画をお知らせください。" }, { title: "ブランド・事業者の方へ", copy: "KIKORA と一緒に実現したいアイデアがあれば、ぜひご相談ください。" }],
+      topics: [{ title: "作品について", copy: "ガラスマウスパッドとメタルキーキャップの構想や制作状況について。" }, { title: "作家・オリジナル IP との共創", copy: "ポートフォリオやオリジナルキャラクターのリンクとともに、取り組んでみたい企画をお知らせください。" }, { title: "ブランド・事業者の方へ", copy: "KIKORA と一緒に実現したいアイデアがあれば、ぜひご相談ください。" }],
       status: "初回コレクションと作家との共創企画は、現在準備中です。", formTitle: "あなたのアイデアを聞かせてください", mailSubject: "KIKORA へのお問い合わせ", mailBody: "KIKORA ご担当者様\n\nお問い合わせ内容：\n\n",
     },
     faq: {
@@ -76,7 +76,7 @@ export const supportCopy: Record<Locale, SupportCopy> = {
       label: "GOOD TO KNOW / よくあるご質問", title: "作品のこと。\nこれからのこと。", intro: "現時点でお伝えできる情報をまとめました。詳細は、正式発売までに各作品のページでご案内します。",
       items: [
         { question: "掲載されている作品は購入できますか？", answer: "現在の掲載内容は、ビジュアルと製品のデザインスタディです。まだ販売していません。最終デザイン、価格、発売日、購入方法は、決定後にご案内します。" },
-        { question: "どのようなカテゴリーを展開する予定ですか？", answer: "ガラスマウスパッド、キーキャップ、メタルカスタムを構想しています。ガラスマウスパッドにはコア、アーティストエディション、カバーシリーズがあり、アルバムから着想を得たデザインはそのひとつです。具体的な作品は今後の発表をお待ちください。" },
+        { question: "どのようなカテゴリーを展開する予定ですか？", answer: "ガラスマウスパッドとメタルキーキャップを開発しています。ガラスマウスパッドにはコア、アーティストエディション、カバーシリーズがあり、アルバムから着想を得たデザインはそのひとつです。具体的な作品は今後の発表をお待ちください。" },
         { question: "ガラスマウスパッドのサイズや加工方法は決まっていますか？", answer: "現在のコンセプトは、490 × 420 mm を目標サイズとしています。ガラスの厚さ、表面加工、エッジの仕上げ、底面素材、最終的な寸法公差は、試作を通じて確認する予定です。コンセプト画像は最終的な製品仕様を示すものではありません。" },
         { question: "掲載画像は、すでに発表された作家コラボレーションですか？", answer: "現在の画像は、ビジュアルと製品デザインの方向性を示すものです。発売済みの作家コラボレーションではありません。参加作家、利用許諾の範囲、作品の販売計画は、決定後にあらためて発表します。" },
         { question: "作家やオリジナル IP のクリエイターは、どう参加できますか？", answer: "初回の共創企画は準備中です。お問い合わせページから、ポートフォリオやオリジナルキャラクターのリンク、取り組んでみたい内容をお送りください。制作の進め方、利用許諾、販売に関する取り決めは、個別に相談しながら決めていきます。" },

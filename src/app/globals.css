@@ -212,18 +212,19 @@
 .store-footer-premium .store-footer-premium-note, .store-footer-premium .store-footer-bottom { border-color: #20232220; }
 .store-footer-premium .store-eyebrow { color: #646763; }
 .kagura-collection-page { background: #f8f8f5; color: #202322; color-scheme: light; }
-.kagura-newsletter { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 10%; padding: 100px 7%; background: #eceef5; scroll-margin-top: 115px; }
+.kagura-newsletter { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 10%; padding: 110px 7%; background: #ecebe6; color: #0b0b0d; scroll-margin-top: 115px; }
 .kagura-label { font-size: 9px; font-weight: 700; letter-spacing: .14em; }
 .kagura-newsletter h2 { margin-top: 20px; font-size: clamp(42px,5vw,72px); line-height: 1.08; letter-spacing: -.055em; font-weight: 500; }
 .kagura-newsletter h2 em { font-family: Georgia,serif; font-weight: 400; }
-.kagura-newsletter > div > p:last-child { max-width: 350px; margin-top: 22px; font-size: 13px; line-height: 1.8; color: #646763; }
-.kagura-newsletter .store-newsletter input[type="email"] { min-width: 0; background: #fff; color: #202322; border-color: #20232235; }
-.kagura-newsletter .store-newsletter input:focus-visible { outline: 2px solid #3048d7; outline-offset: 2px; box-shadow: none; }
-.kagura-newsletter .store-newsletter button { background: #202322; border-color: #202322; }
-.kagura-newsletter .store-newsletter button:hover { background: #3048d7; }
-.kagura-newsletter .store-newsletter label, .kagura-newsletter .store-newsletter [aria-live] { color: #5d615d; }
-.kagura-newsletter .store-newsletter a { color: #3048d7; }
-.kagura-newsletter .store-newsletter input[type="checkbox"] { accent-color: #3048d7; }
+.kagura-newsletter > div > p:last-child { max-width: 380px; margin-top: 22px; font-size: 15px; line-height: 1.8; color: #5d5d63; }
+.kagura-newsletter .kagura-label { color: #d92c16; }
+.kagura-newsletter .store-newsletter input[type="email"] { min-width: 0; background: #fff; color: #0b0b0d; border-color: #0b0b0d30; }
+.kagura-newsletter .store-newsletter input:focus-visible { outline: 2px solid #ff3b24; outline-offset: 2px; box-shadow: none; }
+.kagura-newsletter .store-newsletter button { background: #0b0b0d; border-color: #0b0b0d; color: #fff; }
+.kagura-newsletter .store-newsletter button:hover { background: #ff3b24; border-color: #ff3b24; color: #0b0b0d; }
+.kagura-newsletter .store-newsletter label, .kagura-newsletter .store-newsletter [aria-live] { color: #5d5d63; }
+.kagura-newsletter .store-newsletter a { color: #d92c16; }
+.kagura-newsletter .store-newsletter input[type="checkbox"] { accent-color: #ff3b24; }
 .album-art-image { position: relative; width: 100%; height: 100%; overflow: hidden; background: #ca262f; container-type: inline-size; }
 .album-art-image > img { object-fit: cover; object-position: center 38%; }
 .album-art-title { position: absolute; top: 3%; left: 5%; right: 3%; color: #fbe04c; font-size: 13cqw; font-weight: 950; line-height: 1; letter-spacing: -.08em; white-space: nowrap; }
@@ -674,12 +675,13 @@ summary::-webkit-details-marker {
 
 @media(max-width:760px) { .shrine-header .store-wordmark { font-size: 27px; } .shrine-header .store-wordmark small { display: none; } .shrine-header .store-nav-tools { gap: 8px; } .shrine-header .store-nav-tools > .store-nav-help { display: none; } }
 
-.kagura-newsletter h2 { font-family: var(--font-display); font-weight: 400; font-size: clamp(40px,5vw,68px); }
+.kagura-newsletter h2 { font-family: var(--font-display); font-weight: 600; font-size: clamp(40px,5vw,76px); letter-spacing: -.045em; }
+.kagura-newsletter .kagura-label { font-size: 11px; }
 
 html:has(.kagura-collection-page) { color-scheme:light; }
 body:has(.kagura-collection-page) { background:#f8f8f6; color:#17191d; }
-body:has(.kagura-collection-page) .scroll-progress { background:#52617e; }
-body:has(.kagura-collection-page) ::selection { background:#d3dcfa; color:#192438; }
+body:has(.kagura-collection-page) .scroll-progress { background:#ff3b24; }
+body:has(.kagura-collection-page) ::selection { background:#ff3b24; color:#0b0b0d; }
 @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
 
 .album-art-dwolf .album-art-title,.album-art-vyron .album-art-title,.album-art-hackclaw .album-art-title{color:#f3f5ff;font-size:11.8cqw;text-shadow:0 1px 10px #10152035}

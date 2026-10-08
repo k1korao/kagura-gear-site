@@ -7,7 +7,7 @@ import { siteConfig, supportMailto } from "@/lib/site";
 import { KaguraIdentity } from "./KaguraIdentity";
 import styles from "./Navbar.module.css";
 
-function selectCategory(category: "glass" | "keycaps" | "metal", collection?: "core" | "artist" | "covers") {
+function selectCategory(category: "glass" | "metal", collection?: "core" | "artist" | "covers") {
   window.dispatchEvent(new CustomEvent("kagura:category", { detail: { category, ...(collection ? { collection } : {}) } }));
 }
 
@@ -27,7 +27,6 @@ export function Footer() {
           <Link className={styles.footerSubLink} href="/explore/glass/core" onClick={() => selectCategory("glass", "core")}>{copy.collections[0].label}</Link>
           <Link className={styles.footerSubLink} href="/explore/glass/artist" onClick={() => selectCategory("glass", "artist")}>{copy.collections[1].label}</Link>
           <Link className={styles.footerSubLink} href="/explore/glass/covers" onClick={() => selectCategory("glass", "covers")}>{copy.collections[2].label}</Link>
-          <Link href="/explore/keycaps" onClick={() => selectCategory("keycaps")}>{copy.keycaps}</Link>
           <Link href="/explore/metal" onClick={() => selectCategory("metal")}>{copy.metal}</Link>
         </div>
         <div className={styles.footerGroup}>

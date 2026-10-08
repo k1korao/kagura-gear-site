@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useEffect, useId, useRef, useState, type KeyboardEvent } from "react";
 import styles from "./ShrineDetails.module.css";
 import { AlbumArtwork } from "./AlbumArtwork";
@@ -12,7 +11,7 @@ type Tab = "specs" | "story" | "faq";
 type ShrineDetailsProps = {
   open: boolean;
   onClose: () => void;
-  kind: "glass" | "keycaps" | "metal";
+  kind: "glass" | "metal";
   collection?: "core" | "artist" | "covers";
   edition?: number;
 };
@@ -41,16 +40,10 @@ export function ShrineDetails({ open, onClose, kind, collection = "core", editio
     [text.thickness, text.tbc],
     [text.surface, text.tbc],
     [text.status, copy.experience.developing],
-  ] : isMetal ? [
+  ] : [
     [text.direction, copy.categories.metal],
     [text.preview, text.geometric],
     [text.materialsFinish, text.tbc],
-    [text.compatibility, text.tbc],
-    [text.status, text.future],
-  ] : [
-    [text.palette, text.colors],
-    [text.materialsProcess, text.tbc],
-    [text.profileKit, text.tbc],
     [text.compatibility, text.tbc],
     [text.status, copy.experience.developing],
   ];
@@ -146,17 +139,11 @@ export function ShrineDetails({ open, onClose, kind, collection = "core", editio
                 </div>
                 <figcaption>{isCovers ? editionName : concept.caption}<span>{isCovers ? text.designDimensions : text.designConcept}</span></figcaption>
               </figure>
-            ) : isMetal ? (
+            ) : (
               <figure className={`${styles.visual} ${styles.metalVisual}`}>
                 <div className={styles.metalObject} aria-hidden="true"><div className={styles.metalFace}><span>K</span><i /></div></div>
-                <span className={styles.conceptBadge}>{text.future}</span>
-                <figcaption>{concept.caption}<span>{text.specsTbc}</span></figcaption>
-              </figure>
-            ) : (
-              <figure className={`${styles.visual} ${styles.keysVisual}`}>
-                <Image src="/images/kagura-keycaps-cover.webp" alt={copy.experience.keyAlt} fill sizes="(max-width: 760px) 100vw, 60vw" className={styles.keycapsImage} />
                 <span className={styles.conceptBadge}>{text.conceptDeveloping}</span>
-                <figcaption>{concept.caption}<span>{text.layoutTbc}</span></figcaption>
+                <figcaption>{concept.caption}<span>{text.specsTbc}</span></figcaption>
               </figure>
             )}
 
@@ -225,7 +212,7 @@ export function ShrineDetails({ open, onClose, kind, collection = "core", editio
             <h3>{concept.asideTitle}</h3>
             <p className={styles.asideDescription}>{concept.description}</p>
             {isCovers ? <div className={styles.summaryRow}><span>{text.dimensions}</span><strong>490 × 420 mm</strong></div> : null}
-            <div className={styles.status}><span aria-hidden="true" />{isMetal ? text.future : copy.experience.developing}</div>
+            <div className={styles.status}><span aria-hidden="true" />{copy.experience.developing}</div>
             <p className={styles.releaseNote}>{text.releaseNote}</p>
             <Link href="/#newsletter" onClick={onClose} className={styles.primaryLink}>{copy.experience.release}<span aria-hidden="true">↗</span></Link>
             <div className={styles.asideFooter}><span>KIKORA</span><span>{text.footer1}<br />{text.footer2}</span></div>

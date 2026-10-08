@@ -38,12 +38,12 @@ function escapeHtml(value: string) {
 
 function buildCustomerText(email: string, locale: Locale) {
   const copy = newsletterEmailCopy[locale];
-  return [copy.heading, "", copy.body, "", copy.glass, absoluteUrl("/explore/glass"), copy.keycaps, absoluteUrl("/explore/keycaps"), copy.metal, absoluteUrl("/explore/metal"), "", copy.unsubscribe, email, siteConfig.supportEmail].join("\n");
+  return [copy.heading, "", copy.body, "", copy.glass, absoluteUrl("/explore/glass"), copy.metal, absoluteUrl("/explore/metal"), "", copy.unsubscribe, email, siteConfig.supportEmail].join("\n");
 }
 
 function buildCustomerHtml(email: string, locale: Locale) {
   const copy = newsletterEmailCopy[locale];
-  const links = [["glass", copy.glass], ["keycaps", copy.keycaps], ["metal", copy.metal]];
+  const links = [["glass", copy.glass], ["metal", copy.metal]];
   return `<div lang="${htmlLanguages[locale]}" style="background:#f7f7f5;color:#20242a;padding:36px;font-family:Arial,sans-serif;line-height:1.8;max-width:620px;margin:auto"><p>KIKORA</p><h1 style="font-size:30px;line-height:1.4">${escapeHtml(copy.heading)}</h1><p>${escapeHtml(copy.body)}</p>${links.map(([path, name]) => `<p><a style="color:#20242a" href="${absoluteUrl(`/explore/${path}`)}">${escapeHtml(name)} ↗</a></p>`).join("")}<hr style="border:0;border-top:1px solid #d5d8db;margin:32px 0"/><p style="font-size:12px">${escapeHtml(copy.unsubscribe)}<br/>${escapeHtml(email)}<br/>${escapeHtml(siteConfig.supportEmail)}</p></div>`;
 }
 

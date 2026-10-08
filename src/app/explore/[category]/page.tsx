@@ -5,7 +5,7 @@ import { pageMetadata } from "@/lib/metadata";
 import { getLocale } from "@/lib/locale-server";
 import { productCopy } from "@/lib/product-copy";
 
-const categories = ["glass", "keycaps", "metal"] as const;
+const categories = ["glass", "metal"] as const;
 export const dynamicParams = false;
 export function generateStaticParams() { return categories.map(category => ({ category })); }
 export async function generateMetadata({ params }: { params: Promise<{ category: string }> }) {
@@ -15,9 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
   const copy = productCopy[locale];
   const image = category === "glass"
     ? { url: "/images/album-concept-wraith.webp", width: 1254, height: 1254, alt: { en: "KIKORA Void FM glass mousepad cover artwork concept", ja: "KIKORA ガラスマウスパッド「虚空ラジオ」のカバーデザインコンセプト" }[locale] }
-    : category === "metal"
-      ? { url: "/brand/kikora-symbol.png", width: 512, height: 512, alt: "KIKORA" }
-      : undefined;
+    : { url: "/brand/kikora-symbol.png", width: 512, height: 512, alt: "KIKORA" };
   return pageMetadata({ title: copy.categories[category as ProductCategory], description: copy.metadata[category as ProductCategory], path: `/explore/${category}`, image });
 }
 export default async function ExplorePage({ params }: { params: Promise<{ category: string }> }) {
@@ -26,5 +24,5 @@ export default async function ExplorePage({ params }: { params: Promise<{ catego
   if (category === "glass") {
     return <main className="kagura-collection-page"><GlassCollectionsHub /></main>;
   }
-  return <main className="kagura-collection-page"><ShrineExperience key={category} category={category as "keycaps" | "metal"} /></main>;
+  return <main className="kagura-collection-page"><ShrineExperience key={category} category="metal" /></main>;
 }

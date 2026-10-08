@@ -1,6 +1,6 @@
 export const navigationCopy = {
   en: {
-    home: "KIKORA home", primary: "Primary navigation", expanded: "Full navigation", glass: "Glass mousepads", keycaps: "Keycaps", metal: "Metal customs",
+    home: "KIKORA home", primary: "Primary navigation", expanded: "Full navigation", glass: "Glass mousepads", metal: "Metal keycaps",
     glassCollections: "Glass mousepad collections", glassDirections: "GLASS / THREE DIRECTIONS",
     collections: [
       { id: "core", label: "Core", note: "Material. Surface. Feel." },
@@ -15,7 +15,7 @@ export const navigationCopy = {
     copyright: "All rights reserved.", privacy: "Privacy policy", terms: "Terms of service", principles: "ART / IDENTITY / COLLECTION", supportSubject: "KIKORA support request",
   },
   ja: {
-    home: "KIKORA ホーム", primary: "メインナビゲーション", expanded: "すべてのメニュー", glass: "ガラスマウスパッド", keycaps: "キーキャップ", metal: "メタルカスタム",
+    home: "KIKORA ホーム", primary: "メインナビゲーション", expanded: "すべてのメニュー", glass: "ガラスマウスパッド", metal: "メタルキーキャップ",
     glassCollections: "ガラスマウスパッドのシリーズ", glassDirections: "ガラスから広がる、3つの表現",
     collections: [
       { id: "core", label: "Core シリーズ", note: "素材と使い心地に向き合う" },

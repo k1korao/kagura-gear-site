@@ -11,7 +11,7 @@ export const coverEditions = [
 ] as const;
 
 const en = {
-  categories: { glass: "Glass mousepads", keycaps: "Keycaps", metal: "Metal customs" },
+  categories: { glass: "Glass mousepads", metal: "Metal keycaps" },
   editionNames: ["Starplayer.", "Void FM.", "The Chemist.", "Golden Hour.", "Redline.", "Afterburn.", "Night Signal."],
   collections: [
     { name: "Core glass", caption: "THE ESSENTIALS", description: "A quiet surface. A clear point of view. Our essential glass mousepad direction, designed around the way you play." },
@@ -21,10 +21,10 @@ const en = {
   experience: {
     explore: "Explore", allCollections: "ALL COLLECTIONS", glassCollections: "Glass mousepad collections", coverSeries: "01 / THE COVER SERIES", futureObjects: "01 / FUTURE OBJECTS",
     viewer: "Glass mousepad 3D desk. Click a neighbouring pad, or use the left and right arrow keys to change collection.", conceptVisualization: "concept visualization",
-    keyTitle: "Starplayer / Keys", keyKicker: "THE KEYCAP COLLECTION", metalKicker: "A NEW MATERIAL LANGUAGE", keyConcept: "Keycap concept", futureCollection: "Future collection", developing: "In development",
+    keyTitle: "Starplayer / Keys", keyKicker: "THE KEYCAP COLLECTION", metalKicker: "MACHINED METAL KEYCAPS", keyConcept: "Keycap concept", futureCollection: "Future collection", developing: "In development",
     format: "DESIGN FORMAT", series: "SERIES", palette: "PALETTE", colors: "Crimson / Violet", coverNumber: "Cover / 01", formStudy: "FORM STUDY — 001",
     keyDescription: "Reyna, remixed. Red and violet album-cover energy flows across a field of individual keys. A companion concept to the Starplayer glass edition.",
-    metalDescription: "Exploring sculptural forms and precise details for future custom metal objects. The first collection is on the drawing board.",
+    metalDescription: "Machined metal keycaps with sculpted geometry and real weight under your fingertips. The first designs are in development.",
     chooseArt: "Choose cover artwork", more: "see more", release: "Get release updates", artistNote: "Studio concept. Artist collaborations to be announced.", conceptNote: "Design preview. Final product details to be announced.",
     viewingAngle: "Viewing angle", deskView: "DESK VIEW", topView: "TOP VIEW", designStudy: "KIKORA / DESIGN STUDY", previous: "Previous glass collection", next: "Next glass collection", of: "of",
     help: "CLICK A PAD TO EXPLORE", unavailable: "CONCEPT / NOT YET AVAILABLE", withinGlass: "WITHIN THE GLASS COLLECTION", coverTitle: "One cover. One edition.", coverSubtitle: "Character and album-inspired artwork studies.",
@@ -47,15 +47,10 @@ const en = {
       storyTitle: "A surface with its own sound.", story: "Each Cover series mousepad is conceived as its own edition: one artwork, one visual identity. Music and album design guide the atmosphere, while final artwork and production specifications are still in development.",
       caption: "Covers / artwork study", question: "What does a Cover edition mean?", answer: "One artwork defines each edition. The direction draws on music and album visuals; the artwork shown here is a concept study, not an announced official collaboration.",
     },
-    keycaps: {
-      title: "Keycaps", index: "02 / KEYCAPS", tagline: "Reyna. Red light. A different kind of record.", asideTitle: "A new point of contact.", description: "Character art, reimagined across individual keycaps. A visual companion to the Starplayer glass edition.",
-      storyTitle: "One artwork. Across every key.", story: "The Cover series brings the atmosphere of a record sleeve to your keyboard. Reyna artwork is composed across individual keycap tops, framed by charcoal modifiers. This is an independent character remix concept, with no official collaboration implied. Materials, printing methods, profiles, and compatibility are still to be confirmed.",
-      caption: "Keycaps / printed artwork study", question: "Which keyboards will the keycaps fit?", answer: "Layout compatibility, keycap profile, and kit contents have not been announced. The image illustrates a design direction rather than a final kit.",
-    },
     metal: {
-      title: "Metal customs", index: "03 / METAL CUSTOMS", tagline: "An exploration of geometry, weight, and detail.", asideTitle: "A future in the details.", description: "Custom metal objects are a future direction for KIKORA. This keycap form is an early geometric study.",
-      storyTitle: "A small object. A strong presence.", story: "Metal customs is a future product direction exploring sculptural shapes and individual details for the desk. The keycap shape shown is a concept. Material grades, finishes, manufacturing processes, compatibility, and timing have not been confirmed.",
-      caption: "Metal / geometric study", question: "Is this metal keycap available?", answer: "Metal customs is a future plan. This geometric keycap is a form study; specifications, availability, and pricing have not been announced.",
+      title: "Metal keycaps", index: "02 / METAL KEYCAPS", tagline: "Weight, edge and finish — one key at a time.", asideTitle: "A future in the details.", description: "Metal keycaps are KIKORA’s second product line. The form shown is an early geometric study.",
+      storyTitle: "A small object. A strong presence.", story: "Metal keycaps explore sculptural shapes, machined edges and finishes you can feel with every press. The keycap shown is a concept. Material grades, finishes, manufacturing processes, compatibility, and timing have not been confirmed.",
+      caption: "Metal keycaps / geometric study", question: "Is this metal keycap available?", answer: "Not yet. This geometric keycap is a form study; specifications, availability, and pricing have not been announced.",
     },
   },
   details: {
@@ -64,7 +59,7 @@ const en = {
     notes: "KIKORA / Product notes", close: "Close", closeLabel: "Close product details", designDimensions: "490 × 420 mm design", designConcept: "Design concept", specsTbc: "Specifications to be confirmed", conceptDeveloping: "Concept / In development", layoutTbc: "Layout and profile to be confirmed", information: "information",
     metalLead: "An early look at what comes next.", lead: "The details are in development.", specNote: "Final specifications, pricing, and release timing will be shared as development progresses.", signoff: "KIKORA / Objects for your everyday.",
     confirmedQuestion: "What are the confirmed specifications?", glassAnswer: "The design dimensions are 490 × 420 mm. Glass thickness, surface finish, and base construction are still to be confirmed.", otherAnswer: "The current preview communicates a design direction. Final materials, dimensions, construction, and compatibility have not been announced.",
-    releaseQuestion: "How can I hear about the release?", releaseMetal: "Metal customs is a future plan.", releaseDeveloping: "This product direction is in development.", releaseBefore: " Pricing and release timing have not been announced. Visit the ", newsletter: "release newsletter", releaseAfter: " for future updates.",
+    releaseQuestion: "How can I hear about the release?", releaseMetal: "Metal keycaps are in development.", releaseDeveloping: "This product direction is in development.", releaseBefore: " Pricing and release timing have not been announced. Visit the ", newsletter: "release newsletter", releaseAfter: " for future updates.",
     overview: "Product overview", releaseNote: "Specs to be confirmed. Release details to come.", footer1: "Your desk.", footer2: "Your own expression.",
   },
   artwork: [
@@ -81,13 +76,12 @@ const en = {
   },
   metadata: {
     glass: "Explore KIKORA glass mousepads: Core, Artist, and Cover series. Independent design studies in a planned 490 × 420 mm format.",
-    keycaps: "Explore KIKORA keycap concepts. Character art and album-inspired compositions, reimagined across the keyboard.",
-    metal: "Explore KIKORA’s future direction for custom metal objects. Early studies in geometry, form, and detail.",
+    metal: "Explore KIKORA metal keycaps: early studies in machined geometry, weight and finish.",
   },
 };
 
 const ja: typeof en = {
-  categories: { glass: "ガラスマウスパッド", keycaps: "キーキャップ", metal: "メタルカスタム" },
+  categories: { glass: "ガラスマウスパッド", metal: "メタルキーキャップ" },
   editionNames: ["スタープレイヤー", "虚空ラジオ", "ケミスト", "ゴールデンアワー", "レッドライン", "残り火", "夜のシグナル"],
   collections: [
     { name: "Core シリーズ", caption: "シンプルを、突き詰める", description: "デスクには余白を、プレイには集中を。Core は、ガラスマウスパッドのシンプルなかたちを探るシリーズです。" },
@@ -97,10 +91,10 @@ const ja: typeof en = {
   experience: {
     explore: "コレクションを見る：", allCollections: "すべてのコレクション", glassCollections: "ガラスマウスパッドのシリーズ", coverSeries: "01 / COVER シリーズ", futureObjects: "01 / これからのプロダクト",
     viewer: "ガラスマウスパッドの 3D プレビュー。隣のパッドをクリックするか、左右の矢印キーでシリーズを切り替えられます。", conceptVisualization: "のコンセプトビジュアル",
-    keyTitle: "スタープレイヤー / キーキャップ", keyKicker: "キーキャップコレクション", metalKicker: "金属で探る、新しい表現", keyConcept: "キーキャップのコンセプト", futureCollection: "今後の企画", developing: "開発中",
+    keyTitle: "スタープレイヤー / キーキャップ", keyKicker: "キーキャップコレクション", metalKicker: "金属削り出しのキーキャップ", keyConcept: "キーキャップのコンセプト", futureCollection: "今後の企画", developing: "開発中",
     format: "デザイン寸法", series: "シリーズ", palette: "カラースタディ", colors: "クリムゾン / バイオレット", coverNumber: "Cover / 01", formStudy: "フォルムスタディ — 001",
     keyDescription: "レイナを、レコードジャケットのように。赤と紫のアートワークが、一つひとつのキーに広がります。「スタープレイヤー」のガラスエディションと響き合うキーキャップのコンセプトです。",
-    metalDescription: "彫刻のようなかたちと、細部の仕上げから考えるメタルプロダクト。最初のコレクションは、まだ構想の段階です。",
+    metalDescription: "彫刻的な幾何学と、指先に伝わる確かな重み。金属削り出しのキーキャップを開発しています。",
     chooseArt: "カバーアートを選ぶ", more: "詳しく見る", release: "発売情報を受け取る", artistNote: "オリジナルのコンセプトです。アーティストとのコラボレーションは今後発表予定。", conceptNote: "デザインのプレビューです。製品の最終仕様は後日お知らせします。",
     viewingAngle: "表示アングル", deskView: "デスクビュー", topView: "真上から見る", designStudy: "KIKORA / デザインスタディ", previous: "前のガラスシリーズへ", next: "次のガラスシリーズへ", of: "/",
     help: "パッドをクリックして切り替え", unavailable: "コンセプト / 発売前", withinGlass: "ガラスマウスパッド · COVER シリーズ", coverTitle: "一枚のアートから、一つのエディションへ。", coverSubtitle: "キャラクターとレコードジャケットに着想を得たアートワーク。",
@@ -123,15 +117,10 @@ const ja: typeof en = {
       storyTitle: "音が聞こえてくるような、一枚を。", story: "Cover シリーズは、一つのアートワークから一つのエディションを考えるコレクションです。音楽やアルバムデザインの空気感を手がかりに、独自のビジュアルを探っています。最終アートワークと製造仕様は開発中です。",
       caption: "Covers / アートワークスタディ", question: "Cover の各エディションは何が違いますか？", answer: "それぞれ一つのアートワークを軸に、異なる個性を持たせています。音楽やアルバムのビジュアルから着想を得たコンセプトで、公式コラボレーションの発表ではありません。",
     },
-    keycaps: {
-      title: "キーキャップ", index: "02 / キーキャップ", tagline: "レイナと赤い光。もう一つのレコードジャケット。", asideTitle: "指先から、自分らしく。", description: "キャラクターのアートワークを、キーの一つひとつに再構成。「スタープレイヤー」のガラスエディションとつながるビジュアルです。",
-      storyTitle: "一枚のアートを、すべてのキーへ。", story: "Cover シリーズのレコードジャケットのような空気感を、キーボードにも。レイナのアートワークを各キーのトップに配置し、チャコールの修飾キーで囲んでいます。自主制作の二次創作コンセプトで、公式コラボレーションではありません。素材、印刷方式、プロファイル、対応レイアウトは未定です。",
-      caption: "キーキャップ / 印刷デザインのコンセプト", question: "どのキーボードに対応しますか？", answer: "対応レイアウト、キーキャップのプロファイル、セット内容は未発表です。画像はデザインの方向性を示すもので、最終的なセット構成ではありません。",
-    },
     metal: {
-      title: "メタルカスタム", index: "03 / メタルカスタム", tagline: "かたち、重み、そして細部の探求。", asideTitle: "細部から、これからを考える。", description: "金属のカスタムプロダクトは、KIKORA の今後の企画です。このキーキャップは、幾何学的なかたちを探る初期スタディです。",
-      storyTitle: "小さなかたちに、確かな存在感を。", story: "メタルカスタムは、彫刻的なかたちと細かな表現からデスクの道具を考える今後の企画です。表示しているキーキャップはコンセプトモデル。素材の種類、表面仕上げ、製造方法、互換性、発売時期は未定です。",
-      caption: "メタル / フォルムスタディ", question: "この金属キーキャップは購入できますか？", answer: "メタルカスタムは今後の企画です。このキーキャップはかたちを検討するためのスタディで、仕様、発売時期、価格はまだ発表していません。",
+      title: "メタルキーキャップ", index: "02 / メタルキーキャップ", tagline: "重み、エッジ、仕上げ。ひとつのキーから。", asideTitle: "細部から、これからを考える。", description: "メタルキーキャップは KIKORA の2つ目のプロダクトライン。表示しているのは初期の造形スタディです。",
+      storyTitle: "小さなかたちに、確かな存在感を。", story: "メタルキーキャップは、彫刻的なかたち、削り出しのエッジ、押すたびに違いを感じる仕上げを探っています。表示しているキーキャップはコンセプトモデル。素材の種類、表面仕上げ、製造方法、互換性、発売時期は未定です。",
+      caption: "メタルキーキャップ / フォルムスタディ", question: "この金属キーキャップは購入できますか？", answer: "まだ購入いただけません。このキーキャップはかたちを検討するためのスタディで、仕様、発売時期、価格はまだ発表していません。",
     },
   },
   details: {
@@ -140,7 +129,7 @@ const ja: typeof en = {
     notes: "KIKORA / プロダクトノート", close: "閉じる", closeLabel: "製品の詳細を閉じる", designDimensions: "デザイン寸法 490 × 420 mm", designConcept: "デザインコンセプト", specsTbc: "最終仕様は未定", conceptDeveloping: "コンセプト / 開発中", layoutTbc: "レイアウト・プロファイルは未定", information: "の詳細",
     metalLead: "これからのプロダクトを、少しだけ。", lead: "細かな仕様は、開発を進めています。", specNote: "最終仕様、価格、発売時期は、開発の進捗に合わせてお知らせします。", signoff: "KIKORA / 日々の道具に、自分らしさを。",
     confirmedQuestion: "現時点で決まっている仕様は？", glassAnswer: "デザイン寸法は 490 × 420 mm です。ガラスの厚さ、表面仕上げ、ベースの構造は未定です。", otherAnswer: "現在のプレビューはデザインの方向性を示しています。最終的な素材、寸法、構造、互換性はまだ発表していません。",
-    releaseQuestion: "発売情報はどこで確認できますか？", releaseMetal: "メタルカスタムは今後の企画です。", releaseDeveloping: "現在、開発を進めている製品です。", releaseBefore: "価格と発売時期は未発表です。最新情報は", newsletter: "メールニュースへの登録", releaseAfter: "からお受け取りいただけます。",
+    releaseQuestion: "発売情報はどこで確認できますか？", releaseMetal: "メタルキーキャップは開発中です。", releaseDeveloping: "現在、開発を進めている製品です。", releaseBefore: "価格と発売時期は未発表です。最新情報は", newsletter: "メールニュースへの登録", releaseAfter: "からお受け取りいただけます。",
     overview: "製品の概要", releaseNote: "最終仕様は未定です。発売情報は後日お知らせします。", footer1: "いつものデスクに、", footer2: "自分らしさを。",
   },
   artwork: [
@@ -157,8 +146,7 @@ const ja: typeof en = {
   },
   metadata: {
     glass: "KIKORA のガラスマウスパッドを探る。Core、Artist、Cover の各シリーズで展開する、490 × 420 mm を想定したオリジナルのデザインコンセプト。",
-    keycaps: "KIKORA のキーキャップコンセプト。キャラクターアートとレコードジャケットの表現を、一つひとつのキーへ。",
-    metal: "KIKORA のメタルカスタム。幾何学的なかたちと細部から、これからのデスクプロダクトを考える初期スタディ。",
+    metal: "KIKORA のメタルキーキャップ。削り出しの幾何学、重み、仕上げを探る初期スタディ。",
   },
 };
 

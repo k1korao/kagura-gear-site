@@ -1,0 +1,153 @@
+.deck {
+  --px: 0; --py: 0;
+  --ink: #0b0b0d; --hot: #ff3b24; --paper: #f4f3ef;
+  position: absolute;
+  inset: 0;
+  touch-action: pan-y;
+}
+
+/* Glass pad */
+/* Every KIKORA glass pad is 490 × 420 mm (7:6) */
+.padWrap { position: absolute; right: 0; top: 6%; width: 90%; aspect-ratio: 49 / 42; perspective: 1400px; }
+.pad {
+  --lx: 70%; --ly: 30%;
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  background:
+    radial-gradient(110% 90% at 88% 10%, #ff3b242e, transparent 55%),
+    radial-gradient(80% 90% at 0% 100%, #3048d720, transparent 60%),
+    linear-gradient(160deg, #fdfdfc, #e6e9ec);
+  border: 1px solid #fff;
+  box-shadow:
+    inset 0 1px 0 #fff,
+    inset 0 0 0 1px #ffffff90,
+    0 5px 0 #d5dade,
+    0 7px 0 #b7bfc5,
+    0 50px 70px #1b1f2a26,
+    0 18px 26px #1b1f2a14;
+  transform: rotateX(calc(22deg + var(--py) * -10deg)) rotateY(calc(var(--px) * 12deg)) rotateZ(-7deg);
+  transform-style: preserve-3d;
+  transition: transform .35s cubic-bezier(.2, .7, .2, 1);
+  cursor: crosshair;
+}
+.padArtwork { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; animation: swap .7s cubic-bezier(.2, .7, .2, 1); }
+@keyframes swap { from { clip-path: inset(0 0 0 100%); filter: saturate(3) hue-rotate(60deg); } to { clip-path: inset(0); filter: none; } }
+.etch {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(#0b0b0d0b 1px, transparent 1px),
+    linear-gradient(90deg, #0b0b0d0b 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: linear-gradient(120deg, transparent 5%, #000 45%, transparent 95%);
+}
+.padArt { position: absolute; right: -8%; bottom: -22%; width: 62%; color: #fff; opacity: .12; transform: translate(calc(var(--px) * -14px), calc(var(--py) * -10px)); transition: transform .4s; }
+.padArt > svg { width: 100%; height: auto; }
+.padStripe { position: absolute; left: 0; right: 0; top: 38%; height: 18%; background: repeating-linear-gradient(90deg, #0b0b0d10 0 1px, transparent 1px 10px); mask-image: linear-gradient(90deg, transparent, #000 30%, #000 70%, transparent); }
+.trail { position: absolute; inset: 0; width: 100%; height: 100%; }
+.glare {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(260px circle at var(--lx) var(--ly), #ffffffd9, transparent 60%),
+    linear-gradient(115deg, transparent 30%, #ffffff80 42%, transparent 50%);
+  mix-blend-mode: soft-light;
+}
+.pulse {
+  position: absolute;
+  left: var(--lx);
+  top: var(--ly);
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border-radius: 50%;
+  border: 2px solid var(--hot);
+  animation: ring .9s cubic-bezier(.2, .7, .2, 1) forwards;
+  pointer-events: none;
+}
+@keyframes ring { to { transform: scale(26); opacity: 0; border-width: .3px; } }
+.padMark { position: absolute; left: 24px; bottom: 20px; display: flex; align-items: center; gap: 10px; color: #ffffffb0; font: 10px ui-monospace, monospace; letter-spacing: .16em; }
+.padMark > svg { width: 26px; height: 26px; }
+.readout { position: absolute; top: 16px; right: 18px; display: flex; gap: 14px; margin: 0; padding: 6px 10px; border-radius: 6px; background: #ffffffd0; backdrop-filter: blur(6px); font: 10px ui-monospace, monospace; letter-spacing: .1em; color: #0b0b0d80; }
+.readout > div { display: flex; gap: 5px; }
+.readout dd { margin: 0; color: var(--ink); font-variant-numeric: tabular-nums; }
+
+/* Metal token */
+.token { position: absolute; right: 1%; bottom: 2%; width: 104px; aspect-ratio: 1; perspective: 600px; z-index: 2; }
+.token > div {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #6d747a;
+  background: conic-gradient(from 210deg, #f6f7f8, #a9b0b6, #eef0f1, #8f979e, #f6f7f8);
+  box-shadow: inset 0 0 0 6px #ffffff80, inset 0 -6px 12px #5d656c60, 0 22px 30px #1b1f2a30;
+  transform: rotateY(calc(var(--px) * 70deg)) rotateX(calc(var(--py) * -40deg));
+  transition: transform .4s cubic-bezier(.2, .7, .2, 1);
+  animation: bob 5s ease-in-out infinite;
+}
+.token svg { width: 46%; height: 46%; filter: drop-shadow(1px 1px 0 #fff); }
+@keyframes bob { 50% { translate: 0 -8px; } }
+
+/* Keycaps */
+.keys {
+  position: absolute;
+  left: -2%;
+  bottom: 0;
+  z-index: 3;
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 18px;
+  background: #ffffffc0;
+  backdrop-filter: blur(14px);
+  border: 1px solid #fff;
+  box-shadow: 0 30px 50px #1b1f2a22, 0 0 0 1px #0b0b0d0d;
+  transform: rotate(-3deg) translate(calc(var(--px) * -18px), calc(var(--py) * -12px));
+  transition: transform .4s cubic-bezier(.2, .7, .2, 1);
+}
+.screen { display: flex; align-items: center; gap: 4px; height: 34px; padding: 0 12px; border-radius: 8px; background: var(--ink); color: var(--hot); font: 700 13px var(--font-cyber), ui-monospace, monospace; letter-spacing: .26em; overflow: hidden; white-space: nowrap; }
+.screen > i { width: 8px; height: 14px; background: var(--hot); animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.row { display: flex; gap: 10px; }
+.key {
+  position: relative;
+  width: clamp(48px, 4.4vw, 66px);
+  aspect-ratio: 1;
+  border-radius: 12px;
+  color: var(--ink);
+  color: #2f353b;
+  background: linear-gradient(135deg, #fbfcfc, #c3c9ce 38%, #eef1f3 62%, #a3abb2);
+  box-shadow: inset 0 1px 0 #fff, inset 0 -6px 0 #8d969d, 0 7px 0 #6f777e, 0 14px 18px #0b0b0d30;
+  text-shadow: 0 1px 0 #ffffffa0;
+  transition: transform .09s, box-shadow .09s, background .2s, color .2s;
+  cursor: pointer;
+}
+.key > span { position: absolute; left: 11px; top: 8px; font: 800 clamp(15px, 1.4vw, 20px)/1 var(--font-cyber), var(--font-display), sans-serif; }
+.key:hover { background: linear-gradient(135deg, #fff, #d3d8dc 38%, #f6f8f9 62%, #b3bac0); transform: translateY(-2px); }
+.key[data-hot=true] { background: linear-gradient(180deg, #ff5a45, #ff3b24); color: #fff; box-shadow: inset 0 -6px 0 #d92c16, inset 0 1px 0 #ff8a7a, 0 7px 0 #a8200f, 0 14px 18px #ff3b2440; }
+.key[data-down=true], .key:active { transform: translateY(6px); box-shadow: inset 0 -3px 0 #8d969d, 0 1px 0 #6f777e, 0 4px 6px #0b0b0d26; }
+.key[data-hot=true][data-down=true], .key[data-hot=true]:active { box-shadow: inset 0 -3px 0 #d92c16, 0 1px 0 #a8200f, 0 4px 6px #ff3b2440; }
+.key.space { width: 100%; aspect-ratio: auto; height: 50px; }
+.key.space > span { left: 50%; top: 50%; transform: translate(-50%, -60%); font-size: 12px; letter-spacing: .3em; }
+
+@media (max-width: 760px) {
+  .padWrap { right: 2%; top: 4%; width: 96%; }
+  .token { display: none; }
+  .readout { gap: 8px; top: 12px; right: 14px; font-size: 8px; }
+  .padMark { left: 16px; bottom: 14px; font-size: 8px; }
+  .keys { left: 0; padding: 10px; gap: 8px; }
+  .row { gap: 6px; }
+  .key { width: 44px; border-radius: 9px; }
+  .key > span { left: 8px; top: 6px; font-size: 14px; }
+  .key.space { width: 100%; height: 40px; }
+  .key.space > span { left: 50%; top: 50%; font-size: 11px; }
+  .screen { height: 28px; font-size: 11px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pad, .keys, .token > div { transition: none; animation: none; }
+}

@@ -7,7 +7,7 @@ export const siteConfig = {
   url: siteUrl,
   supportEmail: process.env.NEXT_PUBLIC_SUPPORT_EMAIL || "support@kikoragear.com",
   description:
-    "Discover KIKORA: independent glass mousepads, artist editions, keycaps and future metal custom objects. Precision meets personality.",
+    "Discover KIKORA: independent glass mousepads, artist editions and machined metal keycaps. Precision meets personality.",
   ogImage: "/brand/kikora-search-cover.webp",
 };
 
@@ -17,7 +17,6 @@ export const coreRoutes = [
   "/explore/glass/core",
   "/explore/glass/artist",
   "/explore/glass/covers",
-  "/explore/keycaps",
   "/explore/metal",
   "/about",
   "/faq",

@@ -10,7 +10,7 @@ import { CollectionSound } from "./CollectionSound";
 import { KaguraIdentity } from "./KaguraIdentity";
 import styles from "./Navbar.module.css";
 
-type Category = "glass" | "keycaps" | "metal";
+type Category = "glass" | "metal";
 type Collection = "core" | "artist" | "covers";
 
 
@@ -59,7 +59,6 @@ export function Navbar() {
             </div>
             {glassOpen && !menuOpen ? <div id="glass-navigation" className={styles.glassDropdown}><span className={styles.dropdownLabel}>{copy.glassDirections}</span>{glassCollections.map((collection) => <Link key={collection.id} href={`/explore/glass/${collection.id}`} onClick={() => followCategory("glass", collection.id)}><span>{collection.label}<small>{collection.note}</small></span><span aria-hidden="true">↗</span></Link>)}</div> : null}
           </div>
-          <Link href="/explore/keycaps" aria-current={pathname === "/explore/keycaps" ? "page" : undefined} onClick={() => followCategory("keycaps")}>{copy.keycaps}</Link>
           <Link href="/explore/metal" aria-current={pathname === "/explore/metal" ? "page" : undefined} onClick={() => followCategory("metal")}>{copy.metal}</Link>
         </nav>
         <div className={styles.tools}>
@@ -73,7 +72,6 @@ export function Navbar() {
           <span className={styles.menuLabel}>{copy.exploreObjects}</span>
           <div className={styles.mobileGlassRow}><Link href="/explore/glass" onClick={() => followCategory("glass")}>{copy.glass}</Link><button type="button" aria-label={glassOpen ? copy.hideGlass : copy.showGlass} aria-expanded={glassOpen} aria-controls="menu-glass-collections" onClick={() => setGlassOpen((value) => !value)}>{glassOpen ? "−" : "+"}</button></div>
           {glassOpen ? <div id="menu-glass-collections" className={styles.menuSubnav}>{glassCollections.map((collection) => <Link key={collection.id} href={`/explore/glass/${collection.id}`} onClick={() => followCategory("glass", collection.id)}>{collection.label}<span aria-hidden="true">↗</span></Link>)}</div> : null}
-          <Link className={styles.menuCategory} href="/explore/keycaps" onClick={() => followCategory("keycaps")}>{copy.keycaps}<span aria-hidden="true">↗</span></Link>
           <Link className={styles.menuCategory} href="/explore/metal" onClick={() => followCategory("metal")}>{copy.metal}<span aria-hidden="true">↗</span></Link>
         </div>
         <div className={styles.menuMore}><span className={styles.menuLabel}>KIKORA</span><Link href="/" onClick={closeMenus}>{copy.story}</Link><Link href="/about" onClick={closeMenus}>{copy.about}</Link><Link href="/contact" onClick={closeMenus}>{copy.contact}</Link><Link href="/faq" onClick={closeMenus}>{copy.faq}</Link><Link href="/#newsletter" onClick={closeMenus}>{copy.updates} <span aria-hidden="true">↗</span></Link></div>
