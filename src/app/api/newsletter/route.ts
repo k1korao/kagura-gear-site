@@ -7,6 +7,12 @@ import { absoluteUrl, siteConfig, supportMailto } from "@/lib/site";
 export const runtime = "nodejs";
 
 const resendEndpoint = "https://api.resend.com/emails";
+// Internal recipients are controlled on the server, never by signup form input.
+const notificationRecipients = [
+  "jeremy@kikoragear.com",
+  "official@kikoragear.com",
+  "yimin@kikoragear.com",
+];
 
 type NewsletterBody = {
   locale?: unknown;
@@ -55,14 +61,16 @@ async function sendEmail({
   subject,
   text,
   html,
+  includeUnsubscribe = false,
 }: {
   apiKey: string;
   fromEmail: string;
-  to: string;
+  to: string[];
   replyTo: string;
   subject: string;
   text: string;
   html: string;
+  includeUnsubscribe?: boolean;
 }) {
   return fetch(resendEndpoint, {
     method: "POST",
@@ -72,14 +80,14 @@ async function sendEmail({
     },
     body: JSON.stringify({
       from: fromEmail,
-      to: [to],
+      to,
       reply_to: replyTo,
       subject,
       text,
       html,
-      headers: {
+      headers: includeUnsubscribe ? {
         "List-Unsubscribe": `<mailto:${siteConfig.supportEmail}?subject=UNSUBSCRIBE>`,
-      },
+      } : undefined,
     }),
   });
 }
@@ -137,8 +145,6 @@ async function handlePost(request: Request, json: ReturnType<typeof mailCors>["j
 
   const apiKey = process.env.RESEND_API_KEY;
   const fromEmail = process.env.NEWSLETTER_FROM_EMAIL || process.env.CONTACT_FROM_EMAIL;
-  const notifyEmail =
-    process.env.NEWSLETTER_NOTIFY_EMAIL || process.env.CONTACT_TO_EMAIL || siteConfig.supportEmail;
 
   if (!apiKey || !fromEmail) {
     return json(
@@ -153,14 +159,21 @@ async function handlePost(request: Request, json: ReturnType<typeof mailCors>["j
 
   const customerText = buildCustomerText(email, locale);
   const customerHtml = buildCustomerHtml(email, locale);
+  const subscribedAt = new Date();
+  const subscribedAtShanghai = new Intl.DateTimeFormat("zh-CN", {
+    timeZone: "Asia/Shanghai",
+    year: "numeric", month: "2-digit", day: "2-digit",
+    hour: "2-digit", minute: "2-digit", second: "2-digit", hourCycle: "h23",
+  }).format(subscribedAt);
   const customerResponse = await sendEmail({
     apiKey,
     fromEmail,
-    to: email,
+    to: [email],
     replyTo: siteConfig.supportEmail,
     subject: copy.subject,
     text: customerText,
     html: customerHtml,
+    includeUnsubscribe: true,
   });
 
   if (!customerResponse.ok) {
@@ -175,14 +188,26 @@ async function handlePost(request: Request, json: ReturnType<typeof mailCors>["j
   const notificationResponse = await sendEmail({
     apiKey,
     fromEmail,
-    to: notifyEmail,
+    to: notificationRecipients,
     replyTo: email,
-    subject: "New KIKORA newsletter signup",
-    text: [`New newsletter signup: ${email}`, "", `A welcome email was sent. Preferred language: ${locale}.`].join("\n"),
+    subject: "【KIKORA】新订阅通知",
+    text: [
+      "网站收到一条新订阅。", "",
+      `订阅邮箱：${email}`,
+      `订阅时间：${subscribedAtShanghai}（北京时间，UTC+08:00）`,
+      `网站语言：${locale === "ja" ? "日语" : "英语"}`,
+      `来源：${absoluteUrl("/")}`,
+      "", "订阅者已同意接收更新，欢迎邮件已发送。",
+    ].join("\n"),
     html: `
-      <h2>New KIKORA newsletter signup</h2>
-      <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-      <p>A welcome email was sent. Preferred language: ${locale}.</p>
+      <div lang="zh-CN">
+        <h2>KIKORA 新订阅通知</h2>
+        <p><strong>订阅邮箱：</strong>${escapeHtml(email)}</p>
+        <p><strong>订阅时间：</strong>${escapeHtml(subscribedAtShanghai)}（北京时间，UTC+08:00）</p>
+        <p><strong>网站语言：</strong>${locale === "ja" ? "日语" : "英语"}</p>
+        <p><strong>来源：</strong>${escapeHtml(absoluteUrl("/"))}</p>
+        <p>订阅者已同意接收更新，欢迎邮件已发送。</p>
+      </div>
     `,
   });
 
