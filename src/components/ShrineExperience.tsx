@@ -31,7 +31,7 @@ export function ShrineExperience({ category }: { category: "metal" }) {
         <div className={styles.tags}><span>{copy.concepts.metal.caption}</span><span>{text.developing}</span></div>
         <p className={styles.description}>{text.metalDescription}</p>
         <button className={styles.more} type="button" aria-haspopup="dialog" onClick={() => setOpen(true)}>{text.more} <span aria-hidden="true">+</span></button>
-        <Link href="/#newsletter" className={styles.primaryButton}>{text.release} <span aria-hidden="true">↗</span></Link>
+        <Link href="/explore/keycaps#newsletter" className={styles.primaryButton}>{text.release} <span aria-hidden="true">↗</span></Link>
         <p className={styles.conceptNote}>{text.conceptNote}</p>
       </div>
       <div className={styles.stageBottom}>

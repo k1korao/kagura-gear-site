@@ -1,7 +1,9 @@
 "use client";
 
 import { FormEvent, useId, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import { useLocale } from "@/components/LocaleProvider";
+import { newsletterCategoryForPath, type NewsletterCategory } from "@/lib/newsletter-category";
 import { supportMailto } from "@/lib/site";
 import { supportCopy } from "@/lib/support-copy";
 import styles from "./SupportPages.module.css";
@@ -10,14 +12,36 @@ type NewsletterState = {
   status: "idle" | "sending" | "sent" | "error";
   notice?: keyof (typeof supportCopy)["en"]["newsletter"]["notices"];
   fallbackEmail?: string;
+  fallbackCategory?: NewsletterCategory;
 };
 
 export function NewsletterForm({ light = false }: { light?: boolean }) {
+  const defaultCategory = newsletterCategoryForPath(usePathname());
+  return <NewsletterFields key={defaultCategory} light={light} defaultCategory={defaultCategory} />;
+}
+
+function NewsletterFields({ light, defaultCategory }: { light: boolean; defaultCategory: NewsletterCategory }) {
   const locale = useLocale();
   const copy = supportCopy[locale].newsletter;
+  const categoryCopy = locale === "ja" ? {
+    legend: "受け取りたい情報",
+    keycaps: "キーキャップ",
+    keycapsNote: "セット・アーティザン",
+    other: "ガラスマウスパッド・その他",
+    otherNote: "キーキャップ以外の最新情報",
+    mailLabel: "購読カテゴリー",
+  } : {
+    legend: "Choose your updates",
+    keycaps: "Keycaps",
+    keycapsNote: "Sets & artisan keycaps",
+    other: "Glass mousepads & more",
+    otherNote: "All updates beyond keycaps",
+    mailLabel: "Subscription category",
+  };
   const id = useId();
   const pending = useRef(false);
   const [state, setState] = useState<NewsletterState>({ status: "idle" });
+  const [category, setCategory] = useState<NewsletterCategory>(defaultCategory);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -41,18 +65,19 @@ export function NewsletterForm({ light = false }: { light?: boolean }) {
     setState({ status: "sending", notice: "sending" });
     try {
       const response = await fetch("/api/newsletter", {
-        method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email, consent, company, locale }),
+        method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email, consent, company, locale, category }),
       });
       await response.json();
       if (!response.ok) {
         const notice = response.status === 400 ? "invalid" : response.status === 429 ? "limited" : response.status === 503 ? "unavailable" : response.status === 502 ? "failed" : "uncertain";
-        setState({ status: "error", notice, fallbackEmail: response.status === 400 ? undefined : email });
+        setState({ status: "error", notice, fallbackEmail: response.status === 400 ? undefined : email, fallbackCategory: category });
         return;
       }
       form.reset();
+      setCategory(defaultCategory);
       setState({ status: "sent", notice: "sent" });
     } catch {
-      setState({ status: "error", notice: "uncertain", fallbackEmail: email });
+      setState({ status: "error", notice: "uncertain", fallbackEmail: email, fallbackCategory: category });
     } finally {
       pending.current = false;
     }
@@ -60,6 +85,15 @@ export function NewsletterForm({ light = false }: { light?: boolean }) {
 
   return <form onSubmit={handleSubmit} onChange={() => { if (!pending.current && state.status !== "idle") setState({ status: "idle" }); }} noValidate className={styles.newsletter} data-light={light} aria-busy={state.status === "sending"}>
     <div className={styles.trap} aria-hidden="true"><label htmlFor={`${id}-company`}>{copy.company}</label><input id={`${id}-company`} name="company" tabIndex={-1} autoComplete="off" /></div>
+    <fieldset className={styles.newsletterCategories} disabled={state.status === "sending"}>
+      <legend>{categoryCopy.legend}</legend>
+      <div className={styles.newsletterCategoryOptions}>
+        {(["keycaps", "other"] as const).map(value => <label key={value} className={styles.newsletterCategory} data-selected={category === value}>
+          <input type="radio" name="category" value={value} checked={category === value} onChange={() => setCategory(value)} />
+          <span>{categoryCopy[value]}<small>{categoryCopy[value === "keycaps" ? "keycapsNote" : "otherNote"]}</small></span>
+        </label>)}
+      </div>
+    </fieldset>
     <div className={styles.newsletterRow}>
       <label className="sr-only" htmlFor={`${id}-email`}>{copy.email}</label>
       <input id={`${id}-email`} name="email" type="email" autoComplete="email" required maxLength={120} placeholder="you@example.com" className={styles.newsletterInput} disabled={state.status === "sending"} aria-describedby={`${id}-notice`} />
@@ -68,7 +102,7 @@ export function NewsletterForm({ light = false }: { light?: boolean }) {
     <label className={styles.newsletterConsent}><input name="consent" type="checkbox" required disabled={state.status === "sending"} aria-describedby={`${id}-notice`} /><span>{copy.consent}</span></label>
     <div id={`${id}-notice`} className={styles.newsletterNotice} data-status={state.status} aria-live="polite" aria-atomic="true">
       {state.notice ? <p>{copy.notices[state.notice]}</p> : null}
-      {state.fallbackEmail ? <a className={styles.fallback} href={supportMailto(copy.mailSubject, copy.mailBody.replace("{email}", state.fallbackEmail))}>{copy.emailAction}</a> : null}
+      {state.fallbackEmail ? <a className={styles.fallback} href={supportMailto(copy.mailSubject, `${copy.mailBody.replace("{email}", state.fallbackEmail)}\n\n${categoryCopy.mailLabel}: ${categoryCopy[state.fallbackCategory ?? category]} (${state.fallbackCategory ?? category})`)}>{copy.emailAction}</a> : null}
     </div>
   </form>;
 }

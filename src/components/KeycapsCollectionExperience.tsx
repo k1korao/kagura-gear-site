@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useLocale } from "@/components/LocaleProvider";
+import { KeycapsNewsletter } from "@/components/KeycapsNewsletter";
 import { keycapsCollectionCopy, keycapsCollectionIds, type KeycapsCollection } from "@/lib/keycaps-collection-copy";
 import styles from "./KeycapsCollectionExperience.module.css";
 
@@ -48,9 +49,10 @@ export function KeycapsCollectionExperience({ collection }: { collection: Keycap
         <h1 id="keycaps-title">{selected.name}</h1>
         <span className={styles.status}>{copy.developing}</span>
         <p className={styles.story}>{selected.story}</p>
-        <Link href="/#newsletter" className={styles.primaryButton}>{copy.release}<span aria-hidden="true">↗</span></Link>
+        <Link href="#newsletter" className={styles.primaryButton}>{copy.release}<span aria-hidden="true">↗</span></Link>
         <p className={styles.note}>{copy.conceptNote}</p>
       </div>
     </section>
+    <KeycapsNewsletter />
   </div>;
 }

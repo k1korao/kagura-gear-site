@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useLocale } from "@/components/LocaleProvider";
 import { KeycapsPreview } from "@/components/KeycapsCollectionExperience";
+import { KeycapsNewsletter } from "@/components/KeycapsNewsletter";
 import { keycapsCollectionCopy, keycapsCollectionIds } from "@/lib/keycaps-collection-copy";
 import styles from "./KeycapsCollectionsHub.module.css";
 
@@ -36,5 +37,6 @@ export function KeycapsCollectionsHub() {
       })}
     </div>
     <p className={styles.note}>{copy.conceptNote}</p>
+    <KeycapsNewsletter />
   </div>;
 }

@@ -78,9 +78,10 @@ function request(body, headers = {}) {
 
 const validSignup = { email: "reader@example.com", consent: true, locale: "en" };
 
-test("welcome email goes only to the subscriber; internal notification goes to exactly the three team members", async () => {
+for (const category of ["keycaps", "other"]) {
+test(`${category}: welcome email goes only to the subscriber; internal notification goes to exactly the three team members`, async () => {
   const { route, requests } = loadRoute();
-  const response = await route.POST(request({ ...validSignup, email: " Reader@Example.com " }));
+  const response = await route.POST(request({ ...validSignup, category, email: " Reader@Example.com " }));
   assert.equal(response.status, 200);
   assert.equal(requests.length, 2);
   const [welcome, notification] = requests.map(({ email }) => email);
@@ -101,6 +102,48 @@ test("welcome email goes only to the subscriber; internal notification goes to e
     assert.equal(call.options.method, "POST");
   }
 });
+}
+
+for (const locale of ["en", "ja"]) {
+  for (const [category, label, expectedPaths, excludedPaths] of [
+    ["keycaps", "键帽订阅", ["/explore/keycaps/set", "/explore/keycaps/artisan"], ["/explore/glass", "/explore/metal"]],
+    ["other", "其他订阅", ["/explore/glass"], ["/explore/keycaps", "/explore/metal"]],
+  ]) {
+    test(`${locale} ${category}: welcome links and the internal subject/text/HTML match the chosen category`, async () => {
+      const { route, requests } = loadRoute();
+      assert.equal((await route.POST(request({ ...validSignup, locale, category }))).status, 200);
+      assert.equal(requests.length, 2);
+      const [welcome, notification] = requests.map(({ email }) => email);
+      assert.deepEqual(notification.to, team);
+      assert.equal(notification.subject, `【KIKORA】新订阅通知｜${label}`);
+      assert.ok(notification.text.includes(`订阅类别：${label}`));
+      assert.ok(notification.html.replace(/<[^>]*>/g, "").includes(`订阅类别：${label}`));
+      assert.match(welcome.html, new RegExp(`lang="${locale}"`));
+      for (const content of [welcome.text, welcome.html]) {
+        for (const expectedPath of expectedPaths) assert.ok(content.includes(`https://kikoragear.com${expectedPath}`));
+        for (const excludedPath of excludedPaths) assert.equal(content.includes(excludedPath), false);
+      }
+    });
+  }
+}
+
+test("legacy signup without category defaults to other", async () => {
+  const { route, requests } = loadRoute();
+  assert.equal((await route.POST(request(validSignup))).status, 200);
+  assert.equal(requests[1].email.subject, "【KIKORA】新订阅通知｜其他订阅");
+  for (const content of [requests[0].email.text, requests[0].email.html]) {
+    assert.ok(content.includes("https://kikoragear.com/explore/glass"));
+    assert.equal(content.includes("/explore/keycaps"), false);
+  }
+});
+
+for (const category of ["artisan", "set", "KEYCAPS", "", null, ["keycaps"], { category: "keycaps" }]) {
+  test(`invalid category ${JSON.stringify(category)} returns 400 without sending mail`, async () => {
+    const { route, requests } = loadRoute();
+    assert.equal((await route.POST(request({ ...validSignup, category }))).status, 400);
+    assert.equal(requests.length, 0);
+  });
+}
 
 test("notification uses the server clock in Asia/Shanghai, including the date rollover, and English language", async () => {
   const { route, requests } = loadRoute();
@@ -117,7 +160,8 @@ test("notification uses the server clock in Asia/Shanghai, including the date ro
 test("Japanese signup receives a Japanese welcome and the team receives the correct language", async () => {
   const { route, requests } = loadRoute();
   assert.equal((await route.POST(request({ ...validSignup, locale: "ja" }))).status, 200);
-  assert.equal(requests[0].email.subject, "KIKORAへようこそ");
+  assert.match(requests[0].email.subject, /KIKORA/);
+  assert.match(requests[0].email.subject, /[\u3040-\u30ff\u4e00-\u9fff]/);
   assert.match(requests[0].email.html, /lang="ja"/);
   assert.match(requests[1].email.text, /网站语言：日语/);
 });

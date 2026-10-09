@@ -119,7 +119,15 @@ confirms consent, the site sends an automatic welcome email with recommended
 launch products and sends a separate internal notification to
 `jeremy@kikoragear.com`, `official@kikoragear.com`, and `yimin@kikoragear.com`.
 The notification includes the subscriber's email, signup time in Beijing time
-(Asia/Shanghai, UTC+08:00), and chosen site language. These recipients are fixed
+(Asia/Shanghai, UTC+08:00), chosen site language, and subscription category.
+There are two subscription categories: `keycaps` combines Keycaps Set and
+Artisan Keycaps; `other` covers glass mousepads and all other collections.
+The signup form shows the selected category; keycap pages default to keycaps,
+and other pages default to other. Subscribers can change the choice before
+submitting. Internal notification subjects and bodies distinguish “键帽订阅”
+from “其他订阅”, and welcome emails describe the selected category. Older clients
+that omit the category default to other; unrecognized categories are rejected.
+These recipients are fixed
 on the server in `src/app/api/newsletter/route.ts`; the old
 `NEWSLETTER_NOTIFY_EMAIL` variable is no longer used. Internal addresses are
 never included in the customer's welcome email. A failed notification returns

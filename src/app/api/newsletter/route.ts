@@ -2,6 +2,7 @@ import { mailCors, mailPreflight } from "@/lib/cors";
 import { getLocale } from "@/lib/locale-server";
 import { htmlLanguages, isLocale, type Locale } from "@/lib/locale";
 import { newsletterEmailCopy } from "@/lib/newsletter-copy";
+import { isNewsletterCategory, type NewsletterCategory } from "@/lib/newsletter-category";
 import { absoluteUrl, siteConfig, supportMailto } from "@/lib/site";
 
 export const runtime = "nodejs";
@@ -19,6 +20,7 @@ type NewsletterBody = {
   email?: unknown;
   consent?: unknown;
   company?: unknown;
+  category?: unknown;
 };
 
 function normalize(value: unknown, maxLength: number) {
@@ -42,15 +44,16 @@ function escapeHtml(value: string) {
     .replaceAll("'", "&#039;");
 }
 
-function buildCustomerText(email: string, locale: Locale) {
+function buildCustomerText(email: string, locale: Locale, category: NewsletterCategory) {
   const copy = newsletterEmailCopy[locale];
-  return [copy.heading, "", copy.body, "", copy.glass, absoluteUrl("/explore/glass"), copy.metal, absoluteUrl("/explore/metal"), "", copy.unsubscribe, email, siteConfig.supportEmail].join("\n");
+  const selected = copy.categories[category];
+  return [selected.heading, "", selected.body, "", ...selected.links.flatMap(link => [link.label, absoluteUrl(link.path)]), "", copy.unsubscribe, email, siteConfig.supportEmail].join("\n");
 }
 
-function buildCustomerHtml(email: string, locale: Locale) {
+function buildCustomerHtml(email: string, locale: Locale, category: NewsletterCategory) {
   const copy = newsletterEmailCopy[locale];
-  const links = [["glass", copy.glass], ["metal", copy.metal]];
-  return `<div lang="${htmlLanguages[locale]}" style="background:#f7f7f5;color:#20242a;padding:36px;font-family:Arial,sans-serif;line-height:1.8;max-width:620px;margin:auto"><p>KIKORA</p><h1 style="font-size:30px;line-height:1.4">${escapeHtml(copy.heading)}</h1><p>${escapeHtml(copy.body)}</p>${links.map(([path, name]) => `<p><a style="color:#20242a" href="${absoluteUrl(`/explore/${path}`)}">${escapeHtml(name)} ↗</a></p>`).join("")}<hr style="border:0;border-top:1px solid #d5d8db;margin:32px 0"/><p style="font-size:12px">${escapeHtml(copy.unsubscribe)}<br/>${escapeHtml(email)}<br/>${escapeHtml(siteConfig.supportEmail)}</p></div>`;
+  const selected = copy.categories[category];
+  return `<div lang="${htmlLanguages[locale]}" style="background:#f7f7f5;color:#20242a;padding:36px;font-family:Arial,sans-serif;line-height:1.8;max-width:620px;margin:auto"><p>KIKORA</p><h1 style="font-size:30px;line-height:1.4">${escapeHtml(selected.heading)}</h1><p>${escapeHtml(selected.body)}</p>${selected.links.map(link => `<p><a style="color:#20242a" href="${absoluteUrl(link.path)}">${escapeHtml(link.label)} ↗</a></p>`).join("")}<hr style="border:0;border-top:1px solid #d5d8db;margin:32px 0"/><p style="font-size:12px">${escapeHtml(copy.unsubscribe)}<br/>${escapeHtml(email)}<br/>${escapeHtml(siteConfig.supportEmail)}</p></div>`;
 }
 
 async function sendEmail({
@@ -143,6 +146,14 @@ async function handlePost(request: Request, json: ReturnType<typeof mailCors>["j
     );
   }
 
+  // Requests from older forms belong to the non-keycap list by default.
+  if (body.category !== undefined && !isNewsletterCategory(body.category)) {
+    return json({ message: "Please select a valid subscription category." }, { status: 400 });
+  }
+  const category: NewsletterCategory = body.category ?? "other";
+  const categoryLabel = category === "keycaps" ? "键帽订阅" : "其他订阅";
+  const selectedCopy = copy.categories[category];
+
   const apiKey = process.env.RESEND_API_KEY;
   const fromEmail = process.env.NEWSLETTER_FROM_EMAIL || process.env.CONTACT_FROM_EMAIL;
 
@@ -151,14 +162,14 @@ async function handlePost(request: Request, json: ReturnType<typeof mailCors>["j
       {
         message:
           "The automatic email sender is not connected yet. Please email support directly for launch updates.",
-        mailtoHref: supportMailto(copy.fallback, `${copy.request}${email}`),
+        mailtoHref: supportMailto(copy.fallback, `${copy.request}${email}\n${selectedCopy.label}`),
       },
       { status: 503 },
     );
   }
 
-  const customerText = buildCustomerText(email, locale);
-  const customerHtml = buildCustomerHtml(email, locale);
+  const customerText = buildCustomerText(email, locale, category);
+  const customerHtml = buildCustomerHtml(email, locale, category);
   const subscribedAt = new Date();
   const subscribedAtShanghai = new Intl.DateTimeFormat("zh-CN", {
     timeZone: "Asia/Shanghai",
@@ -170,7 +181,7 @@ async function handlePost(request: Request, json: ReturnType<typeof mailCors>["j
     fromEmail,
     to: [email],
     replyTo: siteConfig.supportEmail,
-    subject: copy.subject,
+    subject: selectedCopy.subject,
     text: customerText,
     html: customerHtml,
     includeUnsubscribe: true,
@@ -190,9 +201,10 @@ async function handlePost(request: Request, json: ReturnType<typeof mailCors>["j
     fromEmail,
     to: notificationRecipients,
     replyTo: email,
-    subject: "【KIKORA】新订阅通知",
+    subject: `【KIKORA】新订阅通知｜${categoryLabel}`,
     text: [
       "网站收到一条新订阅。", "",
+      `订阅类别：${categoryLabel}`,
       `订阅邮箱：${email}`,
       `订阅时间：${subscribedAtShanghai}（北京时间，UTC+08:00）`,
       `网站语言：${locale === "ja" ? "日语" : "英语"}`,
@@ -202,6 +214,7 @@ async function handlePost(request: Request, json: ReturnType<typeof mailCors>["j
     html: `
       <div lang="zh-CN">
         <h2>KIKORA 新订阅通知</h2>
+        <p><strong>订阅类别：</strong>${categoryLabel}</p>
         <p><strong>订阅邮箱：</strong>${escapeHtml(email)}</p>
         <p><strong>订阅时间：</strong>${escapeHtml(subscribedAtShanghai)}（北京时间，UTC+08:00）</p>
         <p><strong>网站语言：</strong>${locale === "ja" ? "日语" : "英语"}</p>
