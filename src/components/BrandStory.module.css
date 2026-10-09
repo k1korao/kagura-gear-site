@@ -53,7 +53,8 @@
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 .introTop { display: flex; justify-content: space-between; gap: 18px; padding-bottom: 20px; font: 11px/1.5 ui-monospace, monospace; letter-spacing: .12em; color: var(--mute-on-paper); border-bottom: 1px solid var(--line-on-paper); }
-.heroGrid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 2%; min-height: 660px; height: calc(100svh - 190px); max-height: 1000px; padding: 20px 0; }
+/* Grow with the copy; reserve space for the deck's rotation and pointer movement. */
+.heroGrid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 2%; min-height: clamp(660px, calc(100svh - 190px), 1000px); padding: 28px 0 56px; }
 .heroCopy { position: relative; z-index: 4; pointer-events: none; }
 .heroCopy a { pointer-events: auto; }
 .heroCopy > .eyebrow { color: var(--hot-text); }
@@ -120,7 +121,7 @@
 .heroActions > a:last-child:hover { border-color: var(--hot-text); color: var(--hot-text); }
 .heroActions > a > span { font-size: 18px; }
 
-.heroCollage { height: 100%; min-height: 560px; position: relative; perspective: 1300px; }
+.heroCollage { align-self: stretch; min-height: max(560px, 40vw); position: relative; perspective: 1300px; }
 .collageGrid { position: absolute; inset: 4% 0 6%; background-image: linear-gradient(#0b0b0d0a 1px, transparent 1px), linear-gradient(90deg, #0b0b0d0a 1px, transparent 1px); background-size: 56px 56px; border: 1px solid #0b0b0d0d; mask-image: radial-gradient(closest-side, #000 60%, transparent); }
 .collageCoordinates { position: absolute; top: -18px; left: 6%; font: 10px ui-monospace, monospace; color: var(--mute-on-paper); letter-spacing: .14em; }
 .introBottom { display: flex; justify-content: space-between; align-items: center; gap: 20px; border-top: 1px solid var(--line-on-paper); padding: 20px 0 22px; margin-top: 24px; font: 10px/1.8 ui-monospace, monospace; letter-spacing: .1em; color: var(--mute-on-paper); }
@@ -290,7 +291,7 @@
 
 /* ---------- Responsive ---------- */
 @media (min-width: 1800px) {
-  .heroGrid { max-height: 1100px; min-height: 800px; }
+  .heroGrid { min-height: clamp(800px, calc(100svh - 190px), 1100px); }
   .heroDescription { font-size: 16px; }
   .pinned { min-height: 720px; }
   .description { font-size: 17px; max-width: 460px; }
@@ -300,7 +301,7 @@
   .heroCopy h1 { font-size: 11.5vw; }
   .heroCopy h2 { font-size: 22px; }
   .heroDescription { font-size: 13px; }
-  .heroCollage { min-height: 500px; height: 90%; }
+  .heroCollage { min-height: 500px; }
   .introBottom > span { display: none; }
   .manifesto { padding: 90px 6%; grid-template-columns: .3fr 1.7fr; }
   .manifestoCopy { gap: 28px; }
@@ -324,7 +325,7 @@
   .heroDescription { font-size: 14px; }
   .heroActions { margin-top: 24px; gap: 10px; }
   .heroActions > a { flex: 1 1 auto; justify-content: space-between; min-height: 52px; font-size: 12px; padding: 0 18px; }
-  .heroCollage { width: 100%; height: 470px; min-height: 0; margin: 48px 0 10px; }
+  .heroCollage { width: 100%; height: max(470px, 82vw); min-height: 0; margin: 48px 0 40px; }
   .collageCoordinates { font-size: 8px; }
   .introBottom { margin-top: 18px; padding: 16px 0; flex-direction: column; align-items: flex-start; gap: 10px; }
   .introBottom > p { font-size: 11px; }
