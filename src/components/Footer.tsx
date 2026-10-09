@@ -1,10 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useLocale } from "@/components/LocaleProvider";
 import { navigationCopy } from "@/lib/navigation-copy";
-import { newsletterHrefForPath } from "@/lib/newsletter-category";
 import { siteConfig, supportMailto } from "@/lib/site";
 import { KaguraIdentity } from "./KaguraIdentity";
 import styles from "./Navbar.module.css";
@@ -14,7 +12,6 @@ function selectCategory(category: "glass" | "metal", collection?: "core" | "arti
 }
 
 export function Footer() {
-  const pathname = usePathname();
   const copy = navigationCopy[useLocale()];
   return (
     <footer className={styles.footer}>
@@ -45,7 +42,7 @@ export function Footer() {
           <span>{copy.status}</span>
           <h2>{copy.invitation[0]}<br />{copy.invitation[1]}</h2>
           <p>{copy.invitationBody}</p>
-          <Link href={newsletterHrefForPath(pathname)}>{copy.updatesAction} <span aria-hidden="true">↗</span></Link>
+          <Link href="/#newsletter">{copy.updatesAction} <span aria-hidden="true">↗</span></Link>
         </div>
       </div>
       <div className={styles.footerBottom}>

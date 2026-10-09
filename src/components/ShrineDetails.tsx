@@ -203,7 +203,7 @@ export function ShrineDetails({ open, onClose, kind, collection = "core", editio
             >
               <details open><summary>{concept.question}</summary><p>{concept.answer}</p></details>
               <details><summary>{text.confirmedQuestion}</summary><p>{isGlass ? text.glassAnswer : text.otherAnswer}</p></details>
-              <details><summary>{text.releaseQuestion}</summary><p>{isMetal ? text.releaseMetal : text.releaseDeveloping}{text.releaseBefore}<Link href={isMetal ? "/explore/keycaps#newsletter" : "/#newsletter"} onClick={onClose}>{text.newsletter}</Link>{text.releaseAfter}</p></details>
+              <details><summary>{text.releaseQuestion}</summary><p>{isMetal ? text.releaseMetal : text.releaseDeveloping}{text.releaseBefore}<Link href="/#newsletter" onClick={onClose}>{text.newsletter}</Link>{text.releaseAfter}</p></details>
             </section>
           </div>
 
@@ -214,7 +214,7 @@ export function ShrineDetails({ open, onClose, kind, collection = "core", editio
             {isCovers ? <div className={styles.summaryRow}><span>{text.dimensions}</span><strong>490 × 420 mm</strong></div> : null}
             <div className={styles.status}><span aria-hidden="true" />{copy.experience.developing}</div>
             <p className={styles.releaseNote}>{text.releaseNote}</p>
-            <Link href={isMetal ? "/explore/keycaps#newsletter" : "/#newsletter"} onClick={onClose} className={styles.primaryLink}>{copy.experience.release}<span aria-hidden="true">↗</span></Link>
+            <Link href="/#newsletter" onClick={onClose} className={styles.primaryLink}>{copy.experience.release}<span aria-hidden="true">↗</span></Link>
             <div className={styles.asideFooter}><span>KIKORA</span><span>{text.footer1}<br />{text.footer2}</span></div>
           </aside>
         </div>

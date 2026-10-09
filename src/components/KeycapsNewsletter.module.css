@@ -1,3 +1,0 @@
-.section{max-width:1600px;margin:70px auto 0;padding:46px 0 8px;border-top:1px solid #d9dee0;display:grid;grid-template-columns:1fr 1.1fr;align-items:center;gap:9%;scroll-margin-top:115px}.eyebrow{font:9px monospace;letter-spacing:.1em;color:#738088}.section h2{margin:17px 0;font:400 clamp(28px,3vw,43px)/1.2 var(--font-display),sans-serif;letter-spacing:-.035em;text-wrap:balance}.description{max-width:410px;font-size:13px;line-height:1.85;color:#717c83}.section form{align-self:center}
-@media(max-width:900px){.section{gap:5%;grid-template-columns:1fr 1.2fr}}
-@media(max-width:760px){.section{display:grid;grid-template-columns:1fr;gap:28px;margin-top:48px;padding-top:32px;scroll-margin-top:100px}.section h2{font-size:30px}.description{max-width:none;font-size:12px}}

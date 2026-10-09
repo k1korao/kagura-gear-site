@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useLocale } from "@/components/LocaleProvider";
 import { navigationCopy } from "@/lib/navigation-copy";
-import { newsletterHrefForPath } from "@/lib/newsletter-category";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { CollectionSound } from "./CollectionSound";
 import { KaguraIdentity } from "./KaguraIdentity";
@@ -84,7 +83,7 @@ export function Navbar() {
             </div>;
           })}
         </div>
-        <div className={styles.menuMore}><span className={styles.menuLabel}>KIKORA</span><Link href="/" onClick={closeMenus}>{copy.story}</Link><Link href="/about" onClick={closeMenus}>{copy.about}</Link><Link href="/contact" onClick={closeMenus}>{copy.contact}</Link><Link href="/faq" onClick={closeMenus}>{copy.faq}</Link><Link href={newsletterHrefForPath(pathname)} onClick={closeMenus}>{copy.updates} <span aria-hidden="true">↗</span></Link></div>
+        <div className={styles.menuMore}><span className={styles.menuLabel}>KIKORA</span><Link href="/" onClick={closeMenus}>{copy.story}</Link><Link href="/about" onClick={closeMenus}>{copy.about}</Link><Link href="/contact" onClick={closeMenus}>{copy.contact}</Link><Link href="/faq" onClick={closeMenus}>{copy.faq}</Link><Link href="/#newsletter" onClick={closeMenus}>{copy.updates} <span aria-hidden="true">↗</span></Link></div>
       </nav> : null}
     </header>
   );
