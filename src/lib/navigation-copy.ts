@@ -1,6 +1,12 @@
 export const navigationCopy = {
   en: {
-    home: "KIKORA home", primary: "Primary navigation", expanded: "Full navigation", glass: "Glass mousepads", metal: "Metal keycaps",
+    home: "KIKORA home", primary: "Primary navigation", expanded: "Full navigation", glass: "Glass mousepads", keycaps: "Keycaps",
+    keycapsCollections: "Keycap collections", keycapsDirections: "KEYCAPS / TWO DIRECTIONS",
+    keycapCollections: [
+      { id: "set", label: "Keycaps Set", note: "A complete look for your keyboard" },
+      { id: "artisan", label: "Artisan Keycaps", note: "Small objects with individual character" },
+    ],
+    hideKeycaps: "Hide keycap collections", showKeycaps: "Show keycap collections",
     glassCollections: "Glass mousepad collections", glassDirections: "GLASS / THREE DIRECTIONS",
     collections: [
       { id: "core", label: "Core", note: "Material. Surface. Feel." },
@@ -15,7 +21,13 @@ export const navigationCopy = {
     copyright: "All rights reserved.", privacy: "Privacy policy", terms: "Terms of service", principles: "ART / IDENTITY / COLLECTION", supportSubject: "KIKORA support request",
   },
   ja: {
-    home: "KIKORA ホーム", primary: "メインナビゲーション", expanded: "すべてのメニュー", glass: "ガラスマウスパッド", metal: "メタルキーキャップ",
+    home: "KIKORA ホーム", primary: "メインナビゲーション", expanded: "すべてのメニュー", glass: "ガラスマウスパッド", keycaps: "キーキャップ",
+    keycapsCollections: "キーキャップのシリーズ", keycapsDirections: "キーキャップから広がる、2つの表現",
+    keycapCollections: [
+      { id: "set", label: "キーキャップセット", note: "キーボード全体で楽しむデザイン" },
+      { id: "artisan", label: "アーティザンキーキャップ", note: "ひとつのキーに宿る個性" },
+    ],
+    hideKeycaps: "キーキャップのシリーズを閉じる", showKeycaps: "キーキャップのシリーズを開く",
     glassCollections: "ガラスマウスパッドのシリーズ", glassDirections: "ガラスから広がる、3つの表現",
     collections: [
       { id: "core", label: "Core シリーズ", note: "素材と使い心地に向き合う" },

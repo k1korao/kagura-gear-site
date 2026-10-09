@@ -5,6 +5,7 @@ import { Tektur } from "next/font/google";
 import { Fragment, useEffect, useRef, useState } from "react";
 import { useLocale } from "@/components/LocaleProvider";
 import { brandCopy } from "@/lib/brand-copy";
+import { navigationCopy } from "@/lib/navigation-copy";
 import { supportMailto } from "@/lib/site";
 import styles from "./BrandStory.module.css";
 import { KaguraSymbol } from "./KaguraSymbol";
@@ -48,6 +49,7 @@ function Lines({ lines }: { lines: string[] }) {
 export function BrandStory() {
   const locale = useLocale();
   const copy = brandCopy[locale];
+  const navigation = navigationCopy[locale];
   const { hero, manifesto, creators, discover, closing } = copy;
   const storyCopy = copy.story;
   const { chapters } = storyCopy;
@@ -164,7 +166,7 @@ export function BrandStory() {
       <div className={styles.discoverHeading}><div><p className={styles.eyebrow}>{discover.label}</p><h2 id="discover-title" lang="en">A WORLD.<br /><span>MANY FORMS.</span></h2></div><p><Lines lines={discover.copy} /></p></div>
       <div className={styles.categories}>
         <article className={styles.category}><Link href="/explore/glass" className={styles.categoryVisual} aria-label={discover.categories[0].aria}><div className={styles.glassStudy} aria-hidden="true"><MonochromePadSurface tone="black" className={styles.padSurface} /></div><span className={styles.categoryArrow} aria-hidden="true">↗</span></Link><div className={styles.categoryHeading}><span>{discover.categories[0].label}</span><h3><Link href="/explore/glass">{discover.categories[0].title}</Link></h3><p>{discover.categories[0].copy}</p><div className={styles.subcategories}><Link href="/explore/glass/core">{discover.collections[0]}</Link><Link href="/explore/glass/artist">{discover.collections[1]}</Link><Link href="/explore/glass/covers">{discover.collections[2]}</Link></div></div></article>
-        <article className={styles.category}><Link href="/explore/metal" className={styles.categoryVisual} aria-label={discover.categories[1].aria}><div className={`${styles.miniKeys} ${styles.metalKeys}`} aria-hidden="true">{["K", "I", "K", "O", "R", "A"].map((key, index) => <span key={index}>{key}</span>)}</div><span className={styles.categoryArrow} aria-hidden="true">↗</span></Link><div className={styles.categoryHeading}><span>{discover.categories[1].label}</span><h3><Link href="/explore/metal">{discover.categories[1].title}</Link></h3><p>{discover.categories[1].copy}</p><span className={styles.development}>{discover.categories[1].status}</span></div></article>
+        <article className={styles.category}><Link href="/explore/keycaps" className={styles.categoryVisual} aria-label={discover.categories[1].aria}><div className={`${styles.miniKeys} ${styles.metalKeys}`} aria-hidden="true">{["K", "I", "K", "O", "R", "A"].map((key, index) => <span key={index}>{key}</span>)}</div><span className={styles.categoryArrow} aria-hidden="true">↗</span></Link><div className={styles.categoryHeading}><span>{discover.categories[1].label}</span><h3><Link href="/explore/keycaps">{discover.categories[1].title}</Link></h3><p>{discover.categories[1].copy}</p><div className={styles.subcategories}>{navigation.keycapCollections.map(collection => <Link key={collection.id} href={`/explore/keycaps/${collection.id}`}>{collection.label}</Link>)}</div></div></article>
       </div>
     </section>
     <section className={styles.closing}><span>{closing.label}</span><h2><Lines lines={closing.title} /></h2><Link href="/about">{closing.link} <span aria-hidden="true">↗</span></Link></section>

@@ -74,7 +74,7 @@ export const brandCopy: Record<Locale, BrandCopy> = {
       label: "EXPLORE THE OBJECTS", copy: ["One connection. More than one way to collect it.", "Step into a category and explore the ideas taking shape."],
       categories: [
         { title: "Glass mousepads", aria: "Explore glass mousepads", alt: "Wraith glass mousepad design study", label: "01 / A CANVAS FOR YOUR WORLD", copy: "A whole world, laid out before you." },
-        { title: "Metal keycaps", aria: "Explore metal keycaps", alt: "", label: "02 / ART AT YOUR FINGERTIPS", copy: "Machined weight and edge in every keystroke.", status: "IN DEVELOPMENT" },
+        { title: "Keycaps", aria: "Explore keycaps", alt: "", label: "02 / ART AT YOUR FINGERTIPS", copy: "A complete set. A single statement key." },
       ],
       collections: ["Core", "Artist editions", "Cover series"],
     },
@@ -125,7 +125,7 @@ export const brandCopy: Record<Locale, BrandCopy> = {
       label: "作品のかたちを探す", copy: ["ひとつの「好き」に、いくつもの集め方を。", "気になるカテゴリーから、制作中のアイデアをご覧ください。"],
       categories: [
         { title: "ガラスマウスパッド", aria: "ガラスマウスパッドを見る", alt: "レイスを描いたガラスマウスパッドのデザインスタディ", label: "01 / あなたの世界を描くキャンバス", copy: "ひとつの世界を、目の前いっぱいに。" },
-        { title: "メタルキーキャップ", aria: "メタルキーキャップを見る", alt: "", label: "02 / 指先に触れるアート", copy: "キーを打つたび、削り出しの重みとエッジを。", status: "開発中" },
+        { title: "キーキャップ", aria: "キーキャップを見る", alt: "", label: "02 / 指先に触れるアート", copy: "セット全体で楽しむ世界観。ひとつのキーで伝える個性。" },
       ],
       collections: ["Core シリーズ", "Artist シリーズ", "Cover シリーズ"],
     },

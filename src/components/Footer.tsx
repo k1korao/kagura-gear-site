@@ -27,7 +27,8 @@ export function Footer() {
           <Link className={styles.footerSubLink} href="/explore/glass/core" onClick={() => selectCategory("glass", "core")}>{copy.collections[0].label}</Link>
           <Link className={styles.footerSubLink} href="/explore/glass/artist" onClick={() => selectCategory("glass", "artist")}>{copy.collections[1].label}</Link>
           <Link className={styles.footerSubLink} href="/explore/glass/covers" onClick={() => selectCategory("glass", "covers")}>{copy.collections[2].label}</Link>
-          <Link href="/explore/metal" onClick={() => selectCategory("metal")}>{copy.metal}</Link>
+          <Link href="/explore/keycaps">{copy.keycaps}</Link>
+          {copy.keycapCollections.map(collection => <Link key={collection.id} className={styles.footerSubLink} href={`/explore/keycaps/${collection.id}`}>{collection.label}</Link>)}
         </div>
         <div className={styles.footerGroup}>
           <h2>{copy.information}</h2>

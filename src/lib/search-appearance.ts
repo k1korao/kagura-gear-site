@@ -4,13 +4,13 @@ import { absoluteUrl, siteConfig } from "@/lib/site";
 
 export const searchAppearanceCopy = {
   en: {
-    title: "Glass Mousepads, Metal Keycaps & Artist Editions",
-    description: "Meet KIKORA (Kikora Gear): glass mousepads and metal keycaps inspired by games, anime and independent art. Explore design studies for Core, Artist and Cover collections, and discover the story behind the brand.",
+    title: "Glass Mousepads, Keycaps & Artist Editions",
+    description: "Meet KIKORA (Kikora Gear): glass mousepads and keycaps inspired by games, anime and independent art. Explore Core, Artist and Cover collections, Keycaps Set and Artisan Keycaps, and the story behind the brand.",
     imageAlt: "KIKORA original character Neon Ronin under a neon torii gate",
   },
   ja: {
-    title: "ガラスマウスパッド・メタルキーキャップとアート",
-    description: "ゲームやアニメ、独立した作家の表現から生まれるKIKORA（Kikora Gear）。ガラスマウスパッドとメタルキーキャップのデザインコンセプトをご紹介します。Core・Artist・Coverの各シリーズや、ブランドの物語をご覧ください。",
+    title: "ガラスマウスパッド・キーキャップとアート",
+    description: "ゲームやアニメ、独立した作家の表現から生まれるKIKORA（Kikora Gear）。ガラスマウスパッドのCore・Artist・Coverシリーズ、キーキャップセット、アーティザンキーキャップとブランドの物語をご紹介します。",
     imageAlt: "ネオンの鳥居の下に立つ KIKORA オリジナルキャラクター「NEON RONIN」",
   },
 } satisfies Record<Locale, { title: string; description: string; imageAlt: string }>;
@@ -28,7 +28,11 @@ export function homeStructuredData(locale: Locale) {
       name: collection.label,
       path: `/explore/glass/${collection.id}`,
     })),
-    { name: navigation.metal, path: "/explore/metal" },
+    { name: navigation.keycaps, path: "/explore/keycaps" },
+    ...navigation.keycapCollections.map(collection => ({
+      name: collection.label,
+      path: `/explore/keycaps/${collection.id}`,
+    })),
     { name: navigation.about, path: "/about" },
     { name: navigation.contact, path: "/contact" },
   ];

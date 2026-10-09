@@ -19,7 +19,7 @@ export const aboutCopy = {
     objectsLabel: "04 / ART TAKES FORM", objectsTitle: ["One world.", "More ways to keep it."], objectsBody: "We’re exploring three kinds of objects, bringing the image, the feel and the way you use them into the work itself.",
     objects: [
       { href: "/explore/glass", label: "01 / GLASS MOUSEPADS", title: "Glass mousepads", body: "A full canvas at the center of your desk.", action: "Explore the direction" },
-      { href: "/explore/metal", label: "02 / METAL KEYCAPS", title: "Metal keycaps", body: "Machined weight and edge, right under your fingertips.", action: "See what’s taking shape" },
+      { href: "/explore/keycaps", label: "02 / KEYCAPS", title: "Keycaps", body: "Explore complete keycap sets and individual artisan keys.", action: "See what’s taking shape" },
     ],
     invitationLabel: "THE STORY IS STILL BEING WRITTEN.", invitationTitle: ["Find your world.", "Keep a piece of it close."], invitationBody: ["Artist collaborations and limited-edition collections are in development.", "Follow the next idea, the next artist and the next piece as they take shape."], invitationAction: "Follow new editions",
   },
@@ -43,7 +43,7 @@ export const aboutCopy = {
     objectsLabel: "04 / アートを、触れられるかたちに", objectsTitle: ["ひとつの世界を、", "いろいろなかたちで集める。"], objectsBody: "いま構想しているのは、3つのプロダクト。絵の魅力も、触れた感覚も、使う時間も、作品の一部にしたいと考えています。",
     objects: [
       { href: "/explore/glass", label: "01 / ガラスマウスパッド", title: "ガラスマウスパッド", body: "一枚の絵を、デスクの中心に。", action: "コンセプトを見る" },
-      { href: "/explore/metal", label: "02 / メタルキーキャップ", title: "メタルキーキャップ", body: "削り出しの重みとエッジを、指先に。", action: "開発中のシリーズを見る" },
+      { href: "/explore/keycaps", label: "02 / キーキャップ", title: "キーキャップ", body: "セット全体で楽しむデザインと、一つのキーに宿る個性。", action: "開発中のシリーズを見る" },
     ],
     invitationLabel: "物語は、これからも続いていく。", invitationTitle: ["心に響いた世界を、", "いつもそばに。"], invitationBody: ["作家との共創シリーズ、限定コレクションを準備しています。", "次に出会う作家と作品を、一緒に楽しみにしていてください。"], invitationAction: "新作の情報を受け取る",
   },
