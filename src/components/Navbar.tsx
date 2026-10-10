@@ -67,7 +67,6 @@ export function Navbar() {
               {expanded ? <div id={`${category.id}-navigation`} className={styles.glassDropdown}><span className={styles.dropdownLabel}>{category.directions}</span>{category.collections.map(collection => <Link key={collection.id} href={`/explore/${category.id}/${collection.id}`} aria-current={pathname === `/explore/${category.id}/${collection.id}` ? "page" : undefined} onClick={() => followCategory(category.id, collection.id)}><span>{collection.label}<small>{collection.note}</small></span><span aria-hidden="true">↗</span></Link>)}</div> : null}
             </div>;
           })}
-          <a className={styles.discordLink} href={siteConfig.discordInviteUrl} target="_blank" rel="noopener noreferrer" aria-label={copy.discordLabel} onClick={closeMenus}><DiscordIcon /><span>Discord</span></a>
         </nav>
         <div className={styles.tools}>
           {premium ? <CollectionSound /> : null}

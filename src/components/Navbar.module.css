@@ -39,7 +39,7 @@
 .footerBrand > a:first-child { display: inline-flex; min-height: 38px; align-items: center; }
 .footerBrand p { margin: 21px 0 12px; color: #6a7688; font-size: 12px; line-height: 1.9; }
 .footerBrand > a[href^="mailto:"] { color: #5e708b; font-size: 11px; }
-.desktopNav > .discordLink, .menuMore > .discordLink { gap: 9px; }
+.menuMore > .discordLink { gap: 9px; }
 .discordLink svg, .discordButton svg { flex-shrink: 0; }
 .footerBrand > .discordButton { display: flex; width: fit-content; min-height: 44px; align-items: center; gap: 10px; margin-top: 19px; padding: 0 14px; border: 1px solid #dce1e8; border-radius: 4px; color: #3b5074; font-size: 12px; }
 .footerBrand > .discordButton:hover { border-color: #3356bd; color: #3356bd; background: #f7f9fc; }
