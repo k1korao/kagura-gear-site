@@ -50,8 +50,8 @@ export async function generateMetadata(): Promise<Metadata> {
     images: [
       {
         url: siteConfig.ogImage,
-        width: 1536,
-        height: 1024,
+        width: siteConfig.ogImageWidth,
+        height: siteConfig.ogImageHeight,
         alt: imageAlt,
       },
     ],

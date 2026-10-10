@@ -23,9 +23,6 @@ export async function generateMetadata({ params }: PageProps) {
     title: concept.title,
     description: concept.story,
     path: `/explore/glass/${collection}`,
-    image: collection === "covers"
-      ? { url: "/images/album-concept-wraith.webp", width: 1254, height: 1254, alt: productCopy[locale].artwork[1].alt }
-      : { url: "/brand/kikora-symbol.png", width: 512, height: 512, alt: `KIKORA / ${concept.title}` },
   });
 }
 

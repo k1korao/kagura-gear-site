@@ -9,7 +9,9 @@ export const siteConfig = {
   supportEmail: process.env.NEXT_PUBLIC_SUPPORT_EMAIL || "support@kikoragear.com",
   description:
     "Discover KIKORA: independent glass mousepads, artist editions and machined metal keycaps. Precision meets personality.",
-  ogImage: "/brand/kikora-search-cover.webp",
+  ogImage: "/brand/kikora-social-logo.png",
+  ogImageWidth: 1200,
+  ogImageHeight: 630,
 };
 
 export const coreRoutes = [

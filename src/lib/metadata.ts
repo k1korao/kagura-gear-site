@@ -21,8 +21,8 @@ export async function pageMetadata({ title, description, path, image }: PageMeta
   const fullTitle = path === "/" ? `KIKORA (Kikora Gear) | ${title}` : `${title} | ${siteConfig.name}`;
   const previewImage = image ?? {
     url: siteConfig.ogImage,
-    width: 1536,
-    height: 1024,
+    width: siteConfig.ogImageWidth,
+    height: siteConfig.ogImageHeight,
     alt: searchAppearanceCopy[locale].imageAlt,
   };
 
