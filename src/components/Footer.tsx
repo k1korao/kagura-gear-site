@@ -5,6 +5,7 @@ import { useLocale } from "@/components/LocaleProvider";
 import { navigationCopy } from "@/lib/navigation-copy";
 import { siteConfig, supportMailto } from "@/lib/site";
 import { KaguraIdentity } from "./KaguraIdentity";
+import { DiscordIcon } from "./DiscordIcon";
 import styles from "./Navbar.module.css";
 
 function selectCategory(category: "glass" | "metal", collection?: "core" | "artist" | "covers") {
@@ -20,6 +21,7 @@ export function Footer() {
           <Link href="/" aria-label={copy.home}><KaguraIdentity /></Link>
           <p>{copy.brand[0]}<br />{copy.brand[1]}</p>
           <a href={supportMailto(copy.supportSubject)}>{siteConfig.supportEmail}</a>
+          <a className={styles.discordButton} href={siteConfig.discordInviteUrl} target="_blank" rel="noopener noreferrer" aria-label={copy.discordLabel}><DiscordIcon /><span>{copy.discord}</span><span aria-hidden="true">↗</span></a>
         </div>
         <div className={styles.footerGroup}>
           <h2>{copy.explore}</h2>

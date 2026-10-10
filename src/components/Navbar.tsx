@@ -5,6 +5,8 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useLocale } from "@/components/LocaleProvider";
 import { navigationCopy } from "@/lib/navigation-copy";
+import { siteConfig } from "@/lib/site";
+import { DiscordIcon } from "./DiscordIcon";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { CollectionSound } from "./CollectionSound";
 import { KaguraIdentity } from "./KaguraIdentity";
@@ -65,6 +67,7 @@ export function Navbar() {
               {expanded ? <div id={`${category.id}-navigation`} className={styles.glassDropdown}><span className={styles.dropdownLabel}>{category.directions}</span>{category.collections.map(collection => <Link key={collection.id} href={`/explore/${category.id}/${collection.id}`} aria-current={pathname === `/explore/${category.id}/${collection.id}` ? "page" : undefined} onClick={() => followCategory(category.id, collection.id)}><span>{collection.label}<small>{collection.note}</small></span><span aria-hidden="true">↗</span></Link>)}</div> : null}
             </div>;
           })}
+          <a className={styles.discordLink} href={siteConfig.discordInviteUrl} target="_blank" rel="noopener noreferrer" aria-label={copy.discordLabel} onClick={closeMenus}><DiscordIcon /><span>Discord</span></a>
         </nav>
         <div className={styles.tools}>
           {premium ? <CollectionSound /> : null}
@@ -83,7 +86,7 @@ export function Navbar() {
             </div>;
           })}
         </div>
-        <div className={styles.menuMore}><span className={styles.menuLabel}>KIKORA</span><Link href="/" onClick={closeMenus}>{copy.story}</Link><Link href="/about" onClick={closeMenus}>{copy.about}</Link><Link href="/contact" onClick={closeMenus}>{copy.contact}</Link><Link href="/faq" onClick={closeMenus}>{copy.faq}</Link><Link href="/#newsletter" onClick={closeMenus}>{copy.updates} <span aria-hidden="true">↗</span></Link></div>
+        <div className={styles.menuMore}><span className={styles.menuLabel}>KIKORA</span><Link href="/" onClick={closeMenus}>{copy.story}</Link><Link href="/about" onClick={closeMenus}>{copy.about}</Link><Link href="/contact" onClick={closeMenus}>{copy.contact}</Link><Link href="/faq" onClick={closeMenus}>{copy.faq}</Link><Link href="/#newsletter" onClick={closeMenus}>{copy.updates} <span aria-hidden="true">↗</span></Link><a className={styles.discordLink} href={siteConfig.discordInviteUrl} target="_blank" rel="noopener noreferrer" aria-label={copy.discordLabel} onClick={closeMenus}><DiscordIcon /><span>{copy.discord}</span><span aria-hidden="true">↗</span></a></div>
       </nav> : null}
     </header>
   );

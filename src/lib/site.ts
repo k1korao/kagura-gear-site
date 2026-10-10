@@ -5,6 +5,7 @@ export const siteConfig = {
   name: "KIKORA",
   slogan: "Collect Your World",
   url: siteUrl,
+  discordInviteUrl: "https://discord.gg/h4sKrchhHT",
   supportEmail: process.env.NEXT_PUBLIC_SUPPORT_EMAIL || "support@kikoragear.com",
   description:
     "Discover KIKORA: independent glass mousepads, artist editions and machined metal keycaps. Precision meets personality.",

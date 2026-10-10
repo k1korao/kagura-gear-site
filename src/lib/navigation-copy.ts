@@ -1,5 +1,6 @@
 export const navigationCopy = {
   en: {
+    discord: "Join Discord", discordLabel: "Join the KikoraGear Discord community (opens in a new tab)",
     home: "KIKORA home", primary: "Primary navigation", expanded: "Full navigation", glass: "Glass mousepads", keycaps: "Keycaps",
     keycapsCollections: "Keycap collections", keycapsDirections: "KEYCAPS / TWO DIRECTIONS",
     keycapCollections: [
@@ -21,6 +22,7 @@ export const navigationCopy = {
     copyright: "All rights reserved.", privacy: "Privacy policy", terms: "Terms of service", principles: "ART / IDENTITY / COLLECTION", supportSubject: "KIKORA support request",
   },
   ja: {
+    discord: "Discord に参加", discordLabel: "KikoraGear の Discord コミュニティに参加（新しいタブで開きます）",
     home: "KIKORA ホーム", primary: "メインナビゲーション", expanded: "すべてのメニュー", glass: "ガラスマウスパッド", keycaps: "キーキャップ",
     keycapsCollections: "キーキャップのシリーズ", keycapsDirections: "キーキャップから広がる、2つの表現",
     keycapCollections: [

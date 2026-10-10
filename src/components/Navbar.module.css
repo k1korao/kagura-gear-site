@@ -38,7 +38,11 @@
 .footerGrid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.1fr; gap: 6%; max-width: 1500px; margin: auto; }
 .footerBrand > a:first-child { display: inline-flex; min-height: 38px; align-items: center; }
 .footerBrand p { margin: 21px 0 12px; color: #6a7688; font-size: 12px; line-height: 1.9; }
-.footerBrand > a:last-child { color: #5e708b; font-size: 11px; }
+.footerBrand > a[href^="mailto:"] { color: #5e708b; font-size: 11px; }
+.desktopNav > .discordLink, .menuMore > .discordLink { gap: 9px; }
+.discordLink svg, .discordButton svg { flex-shrink: 0; }
+.footerBrand > .discordButton { display: flex; width: fit-content; min-height: 44px; align-items: center; gap: 10px; margin-top: 19px; padding: 0 14px; border: 1px solid #dce1e8; border-radius: 4px; color: #3b5074; font-size: 12px; }
+.footerBrand > .discordButton:hover { border-color: #3356bd; color: #3356bd; background: #f7f9fc; }
 .footerGroup { display: flex; flex-direction: column; align-items: flex-start; }
 .footerGroup h2, .footerNote > span { margin: 2px 0 17px; font: 9px/1.6 monospace; letter-spacing: .1em; color: #6a7688; }
 .footerGroup a { display: inline-flex; min-height: 34px; align-items: center; color: #4f5d72; font-size: 12px; }
