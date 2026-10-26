@@ -30,6 +30,8 @@ type DragState = {
 const WIDTH = 4.9;
 const DEPTH = 4.2;
 const SPACING = 5.85;
+const COVER_EMBLEM = "/brand/kikora-cover-mark.svg";
+const hasMultipleEditions = coverEditions.length > 1;
 const clampPosition = (position: number) => Math.max(0, Math.min(coverEditions.length - 1, position));
 const clampIndex = (index: number) => Math.round(clampPosition(index));
 
@@ -61,29 +63,11 @@ function printCanvas(edition: number, image?: HTMLImageElement) {
   ctx.fillStyle = cover.color;
   ctx.fillRect(0, 0, w, h);
   if (image) {
-    const scale = Math.max(w / image.naturalWidth, h / image.naturalHeight);
+    const scale = Math.min(w / image.naturalWidth, h / image.naturalHeight);
     const iw = image.naturalWidth * scale;
     const ih = image.naturalHeight * scale;
     ctx.drawImage(image, (w - iw) / 2, (h - ih) / 2, iw, ih);
   }
-  const shade = ctx.createLinearGradient(0, 0, 0, h * 0.28);
-  shade.addColorStop(0, "rgba(8,12,18,.24)");
-  shade.addColorStop(1, "rgba(8,12,18,0)");
-  ctx.fillStyle = shade;
-  ctx.fillRect(0, 0, w, h * 0.28);
-  ctx.fillStyle = [0, 2, 3].includes(edition) ? "#fbe04c" : "#f3f5ff";
-  let typeSize = cover.id === "wraith" ? 182 : 155;
-  ctx.font = `900 ${typeSize}px Arial, sans-serif`;
-  while (ctx.measureText(cover.title).width > w * 0.89 && typeSize > 80) {
-    typeSize -= 2;
-    ctx.font = `900 ${typeSize}px Arial, sans-serif`;
-  }
-  ctx.textBaseline = "top";
-  ctx.fillText(cover.title, w * 0.05, h * 0.045);
-  ctx.font = "700 16px monospace";
-  ctx.fillStyle = "#f3f5ff";
-  ctx.fillText(`KIKORA / COVER STUDY — ${String(edition + 1).padStart(3, "0")}`, w * 0.05, h * 0.94);
-  ctx.textBaseline = "alphabetic";
   return canvas;
 }
 
@@ -115,6 +99,8 @@ export function GlassExplorer({ active, topView, onSelect }: GlassExplorerProps)
     let dirty = true;
     const pendingImages: HTMLImageElement[] = [];
     let rendered = false;
+    let loadedPrints = 0;
+    let revealed = false;
     const geometries = new Set<THREE.BufferGeometry>();
     const materials = new Set<THREE.Material>();
     const textures = new Set<THREE.Texture>();
@@ -250,13 +236,14 @@ export function GlassExplorer({ active, topView, onSelect }: GlassExplorerProps)
     let viewMix = propsRef.current.topView ? 1 : 0;
     let positioned = false;
     function loadPrints() {
-      coverEditions.forEach((edition, index) => {
+      coverEditions.forEach((_, index) => {
         const image = new Image();
         image.decoding = "async";
         pendingImages.push(image);
         image.onload = () => {
           if (disposed) return;
           const nextMap = texture(new THREE.CanvasTexture(printCanvas(index, image)));
+          loadedPrints += 1;
           const previous = surfaceMaterials[index].map;
           surfaceMaterials[index].map = nextMap;
           surfaceMaterials[index].needsUpdate = true;
@@ -265,10 +252,10 @@ export function GlassExplorer({ active, topView, onSelect }: GlassExplorerProps)
           start();
         };
         image.onerror = () => {
-          // Its original colored print remains usable if an artwork cannot load.
+          // Keep the CSS emblem visible if the 3D print cannot load.
           if (!disposed) { dirty = true; start(); }
         };
-        image.src = `/images/album-concept-${edition.id}.webp`;
+        image.src = COVER_EMBLEM;
       });
     }
 
@@ -318,7 +305,8 @@ export function GlassExplorer({ active, topView, onSelect }: GlassExplorerProps)
         try { renderer.render(scene, camera); }
         catch { failed = true; setReady(false); return; }
         dirty = false;
-        if (!rendered) { rendered = true; setReady(true); }
+        rendered = true;
+        if (!revealed && loadedPrints === coverEditions.length) { revealed = true; setReady(true); }
       }
       if (moving) raf = requestAnimationFrame(tick);
     }
@@ -408,7 +396,7 @@ export function GlassExplorer({ active, topView, onSelect }: GlassExplorerProps)
   useEffect(() => { controlsRef.current?.update(); }, [active, topView]);
 
   function onPointerDown(event: ReactPointerEvent<HTMLDivElement>) {
-    if (event.button !== 0 || !event.isPrimary || dragRef.current) return;
+    if (!hasMultipleEditions || event.button !== 0 || !event.isPrimary || dragRef.current) return;
     const width = event.currentTarget.clientWidth;
     const mobile = width <= 749;
     // Match the physical rail spacing closely enough that a pad follows the hand.
@@ -467,6 +455,7 @@ export function GlassExplorer({ active, topView, onSelect }: GlassExplorerProps)
       ref={hostRef}
       className={`${styles.stage} ${ready ? styles.ready : ""}`}
       aria-hidden="true"
+      data-interactive={hasMultipleEditions}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={finishPointer}
@@ -481,11 +470,8 @@ export function GlassExplorer({ active, topView, onSelect }: GlassExplorerProps)
                 key={edition.id}
                 className={styles.fallbackPad}
                 data-edition={index}
-                style={{ backgroundColor: edition.color, backgroundImage: `url(/images/album-concept-${edition.id}.webp)` }}
-              >
-                <strong className={[0, 2, 3].includes(index) ? styles.warmTitle : ""}>{edition.title}</strong>
-                <span>KIKORA <small>COVER STUDY — {String(index + 1).padStart(3, "0")}</small></span>
-              </div>
+                style={{ backgroundColor: edition.color, backgroundImage: `url(${COVER_EMBLEM})` }}
+              />
             ))}
           </div>
         </div>

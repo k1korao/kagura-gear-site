@@ -11,6 +11,7 @@ import shared from "./ShrineExperience.module.css";
 import styles from "./AlbumCollection.module.css";
 
 const GlassExplorer = dynamic(() => import("./GlassExplorer").then(module => module.GlassExplorer), { ssr: false });
+const hasMultipleEditions = coverEditions.length > 1;
 const clamp = (index: number) => Math.max(0, Math.min(coverEditions.length - 1, Math.round(index)));
 
 export function AlbumCollection({ initialEdition = 0 }: { initialEdition?: number }) {
@@ -52,7 +53,8 @@ export function AlbumCollection({ initialEdition = 0 }: { initialEdition?: numbe
         <p className={styles.intro}>{album.coverIntro}</p>
       </div>
 
-      <div className={`${shared.viewer} ${styles.viewer}`} role="group" tabIndex={0} aria-label={album.viewer} onKeyDown={event => {
+      <div className={`${shared.viewer} ${styles.viewer}`} role={hasMultipleEditions ? "group" : "img"} tabIndex={hasMultipleEditions ? 0 : undefined} aria-label={album.viewer} onKeyDown={event => {
+        if (!hasMultipleEditions) return;
         let next: number;
         if (event.key === "ArrowLeft") next = active - 1;
         else if (event.key === "ArrowRight") next = active + 1;
@@ -69,7 +71,7 @@ export function AlbumCollection({ initialEdition = 0 }: { initialEdition?: numbe
         <p className={shared.productKicker}>{copy.artwork[active].caption}</p>
         <h2 id="album-edition-title" className={styles.editionTitle}>{name}</h2>
         <div className={shared.tags}><span>{copy.categories.glass}</span><span>{text.developing}</span></div>
-        <dl className={shared.specs}><div><dt>{text.format}</dt><dd>490 × 420 <small>mm</small></dd></div><div><dt>{album.edition}</dt><dd>{String(active + 1).padStart(2, "0")} / {String(coverEditions.length).padStart(2, "0")}</dd></div></dl>
+        <dl className={shared.specs}><div><dt>{text.format}</dt><dd>490 × 420 <small>mm</small></dd></div>{hasMultipleEditions ? <div><dt>{album.edition}</dt><dd>{String(active + 1).padStart(2, "0")} / {String(coverEditions.length).padStart(2, "0")}</dd></div> : null}</dl>
         <p className={shared.description}>{copy.collections[2].description}</p>
         <button className={shared.more} type="button" aria-haspopup="dialog" onClick={() => setOpen(true)}>{text.more} <span aria-hidden="true">+</span></button>
         <Link href="/#newsletter" className={shared.primaryButton}>{text.release} <span aria-hidden="true">↗</span></Link>
@@ -78,8 +80,8 @@ export function AlbumCollection({ initialEdition = 0 }: { initialEdition?: numbe
 
       <div className={`${shared.stageBottom} ${styles.controls}`}>
         <div className={shared.viewControl} role="group" aria-label={text.viewingAngle}><button type="button" aria-pressed={!flat} onClick={() => setFlat(false)}>{text.deskView}</button><button type="button" aria-pressed={flat} onClick={() => setFlat(true)}>{text.topView}</button></div>
-        <div className={`${shared.pagination} ${styles.pagination}`}><button type="button" aria-label={album.previous} disabled={active === 0} onClick={() => select(active - 1)}>←</button><span aria-live="polite" aria-atomic="true">{active + 1} {text.of} {coverEditions.length}<span className={shared.srOnly}>: {name}</span></span><button type="button" aria-label={album.next} disabled={active === coverEditions.length - 1} onClick={() => select(active + 1)}>→</button></div>
-        <span className={shared.help}>{album.help}</span>
+        {hasMultipleEditions ? <div className={`${shared.pagination} ${styles.pagination}`}><button type="button" aria-label={album.previous} disabled={active === 0} onClick={() => select(active - 1)}>←</button><span aria-live="polite" aria-atomic="true">{active + 1} {text.of} {coverEditions.length}<span className={shared.srOnly}>: {name}</span></span><button type="button" aria-label={album.next} disabled={active === coverEditions.length - 1} onClick={() => select(active + 1)}>→</button></div> : null}
+        {hasMultipleEditions ? <span className={shared.help}>{album.help}</span> : null}
       </div>
     </section>
     <section className={styles.notes} aria-label={text.designStudy}>

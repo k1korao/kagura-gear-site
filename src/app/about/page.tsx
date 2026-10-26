@@ -26,8 +26,7 @@ export default async function AboutPage() {
         </div>
         <figure className={styles.heroVisual}>
           <div className={styles.heroImage}>
-            <Image src="/images/album-concept-wraith.webp" alt={copy.wraithAlt} fill priority sizes="(max-width: 760px) 90vw, 46vw" />
-            <span className={styles.imageMark}>{copy.visualMark[0]}<br />{copy.visualMark[1]}</span>
+            <Image src="/brand/kikora-kunai-icon.svg" alt={copy.brandMarkAlt} fill priority sizes="(max-width: 760px) 90vw, 46vw" />
           </div>
           <figcaption><span>{copy.visualStudy}</span><span>{copy.visualNote}</span></figcaption>
         </figure>
@@ -52,7 +51,7 @@ export default async function AboutPage() {
 
       <section className={styles.creatorStory} aria-labelledby="creators-title">
         <figure className={styles.creatorVisual}>
-          <div><Image src="/images/album-concept-reyna.webp" alt={copy.reynaAlt} fill sizes="(max-width: 760px) 90vw, 43vw" /></div>
+          <div><Image src="/brand/kikora-wordmark-dark.svg" alt={copy.wordmarkAlt} fill sizes="(max-width: 760px) 90vw, 43vw" /></div>
           <figcaption>{copy.creatorVisualNote}</figcaption>
         </figure>
         <div className={styles.creatorCopy}>

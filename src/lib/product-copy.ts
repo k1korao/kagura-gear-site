@@ -1,22 +1,16 @@
 import type { Locale } from "@/lib/locale";
 
 export const coverEditions = [
-  { id: "reyna", name: "Starplayer.", title: "STARPLAYER.", color: "#ab4548" },
-  { id: "wraith", name: "Void FM.", title: "VOID FM.", color: "#3e5b94" },
-  { id: "chemist", name: "The Chemist.", title: "THE CHEMIST.", color: "#7c8349" },
-  { id: "seer", name: "Golden Hour.", title: "GOLDEN HOUR.", color: "#ae7037" },
-  { id: "dwolf", name: "Redline.", title: "REDLINE.", color: "#a33031" },
-  { id: "vyron", name: "Afterburn.", title: "AFTERBURN.", color: "#566978" },
-  { id: "hackclaw", name: "Night Signal.", title: "NIGHT SIGNAL.", color: "#827085" },
+  { id: "signature", name: "KIKORA / Cover study", title: "KIKORA", color: "#521be6" },
 ] as const;
 
 const en = {
   categories: { glass: "Glass mousepads", metal: "Metal keycaps" },
-  editionNames: ["Starplayer.", "Void FM.", "The Chemist.", "Golden Hour.", "Redline.", "Afterburn.", "Night Signal."],
+  editionNames: ["KIKORA / Cover study"],
   collections: [
     { name: "Core glass", caption: "THE ESSENTIALS", description: "A quiet surface. A clear point of view. Our essential glass mousepad direction, designed around the way you play." },
     { name: "Artist editions", caption: "A CANVAS FOR COLLABORATION", description: "A space for future artist and IP collaborations. This original studio study explores what could come next; collaborations are still to be announced." },
-    { name: "Cover series", caption: "MUSIC, REIMAGINED", description: "Game worlds meet the visual language of records. One artwork per edition, in a collection of character and album-inspired design studies." },
+    { name: "Cover series", caption: "MUSIC, REIMAGINED", description: "Music and the visual language of records inspire this collection. Future artwork and editions are in development." },
   ],
   experience: {
     explore: "Explore", allCollections: "ALL COLLECTIONS", glassCollections: "Glass mousepad collections", coverSeries: "01 / THE COVER SERIES", futureObjects: "01 / FUTURE OBJECTS",
@@ -27,8 +21,8 @@ const en = {
     metalDescription: "Machined metal keycaps with sculpted geometry and real weight under your fingertips. The first designs are in development.",
     chooseArt: "Choose cover artwork", more: "see more", release: "Get release updates", artistNote: "Studio concept. Artist collaborations to be announced.", conceptNote: "Design preview. Final product details to be announced.",
     viewingAngle: "Viewing angle", deskView: "DESK VIEW", topView: "TOP VIEW", designStudy: "KIKORA / DESIGN STUDY", previous: "Previous glass collection", next: "Next glass collection", of: "of",
-    help: "CLICK A PAD TO EXPLORE", unavailable: "CONCEPT / NOT YET AVAILABLE", withinGlass: "WITHIN THE GLASS COLLECTION", coverTitle: "One cover. One edition.", coverSubtitle: "Character and album-inspired artwork studies.",
-    coverNote: "Independent concept artwork. No official game or recording-artist collaboration is implied.",
+    help: "CLICK A PAD TO EXPLORE", unavailable: "CONCEPT / NOT YET AVAILABLE", withinGlass: "WITHIN THE GLASS COLLECTION", coverTitle: "One cover. One edition.", coverSubtitle: "A KIKORA identity preview. Future artwork to be announced.",
+    coverNote: "KIKORA identity preview. Artwork, editions and release details will be announced as the collection develops.",
     keyAlt: "KIKORA Reyna keycap concept: red and violet character artwork flowing across individual keycaps on a silver-gray keyboard",
   },
   concepts: {
@@ -45,7 +39,7 @@ const en = {
     covers: {
       title: "Cover series", index: "01 / GLASS — COVERS", tagline: "One artwork. One edition. A new way to set the tone.", asideTitle: "Set your own tone.", description: "Album-inspired visual editions for your desk. One artwork at a time.",
       storyTitle: "A surface with its own sound.", story: "Each Cover series mousepad is conceived as its own edition: one artwork, one visual identity. Music and album design guide the atmosphere, while final artwork and production specifications are still in development.",
-      caption: "Covers / artwork study", question: "What does a Cover edition mean?", answer: "One artwork defines each edition. The direction draws on music and album visuals; the artwork shown here is a concept study, not an announced official collaboration.",
+      caption: "Covers / identity preview", question: "What does a Cover edition mean?", answer: "One artwork will define each future edition. The current preview uses KIKORA’s own identity; collection artwork and collaborations have not been announced.",
     },
     metal: {
       title: "Metal keycaps", index: "02 / METAL KEYCAPS", tagline: "Weight, edge and finish — one key at a time.", asideTitle: "A future in the details.", description: "Metal keycaps are KIKORA’s second product line. The form shown is an early geometric study.",
@@ -63,13 +57,7 @@ const en = {
     overview: "Product overview", releaseNote: "Specs to be confirmed. Release details to come.", footer1: "Your desk.", footer2: "Your own expression.",
   },
   artwork: [
-    { caption: "REYNA / CHARACTER REMIX CONCEPT 001", alt: "Reyna fan art in violet light against a vivid red album-cover background" },
-    { caption: "WRAITH / CHARACTER REMIX CONCEPT 002", alt: "Wraith fan art in a cold blue science-fiction album-cover composition" },
-    { caption: "CAUSTIC / CINEMATIC REMIX CONCEPT 003", alt: "Caustic in an industrial warehouse with olive-green barrels and warm cinematic backlight" },
-    { caption: "SEER / CHARACTER REMIX CONCEPT 004", alt: "Golden Hour: Seer-inspired portrait in copper-orange, gold and deep navy album-cover tones" },
-    { caption: "D-WOLF / CHARACTER REMIX CONCEPT 005", alt: "Redline: D-Wolf-inspired character art with a red album-cover palette" },
-    { caption: "VYRON / CHARACTER REMIX CONCEPT 006", alt: "Afterburn: Vyron-inspired character art in a cinematic album-cover composition" },
-    { caption: "HACKCLAW / CHARACTER REMIX CONCEPT 007", alt: "Night Signal: Hackclaw-inspired character art in a nocturnal album-cover composition" },
+    { caption: "KIKORA / IDENTITY PREVIEW", alt: "KIKORA single K logo with kunai and chain on purple" },
   ],
   sound: {
     unavailable: "Music is not connected yet. View track information", startingLabel: "Sound on, starting. Turn sound off", onLabel: "Sound on. Turn sound off", offLabel: "Sound off. Turn sound on", on: "SOUND ON", off: "SOUND OFF", settings: "Music volume and track information", heading: "LISTEN ALONG", close: "Close music settings", trackPending: "A soundtrack for the collection", volume: "Volume", percent: "percent", error: "Audio couldn’t start. Try again.", retry: "Retry audio", starting: "Starting audio…", playing: "Playing. Close this panel to keep listening.", stopped: "Sound is off. Play when you feel like it.", noSource: "Our background track is being selected. No audio is connected yet.",
@@ -82,11 +70,11 @@ const en = {
 
 const ja: typeof en = {
   categories: { glass: "ガラスマウスパッド", metal: "メタルキーキャップ" },
-  editionNames: ["スタープレイヤー", "虚空ラジオ", "ケミスト", "ゴールデンアワー", "レッドライン", "残り火", "夜のシグナル"],
+  editionNames: ["KIKORA / Cover スタディ"],
   collections: [
     { name: "Core シリーズ", caption: "シンプルを、突き詰める", description: "デスクには余白を、プレイには集中を。Core は、ガラスマウスパッドのシンプルなかたちを探るシリーズです。" },
     { name: "Artist シリーズ", caption: "表現が広がる、一枚のキャンバス", description: "これからのアーティストや IP とのコラボレーションに向けたシリーズ。現在のビジュアルは、色と構図の可能性を探るオリジナルのコンセプトです。具体的なコラボレーションは未発表です。" },
-    { name: "Cover シリーズ", caption: "音楽の空気を、デスクに", description: "ゲームの世界と、レコードジャケットの表現が出会う。一枚のアートワークを一つのエディションに仕立てる、キャラクターと音楽から生まれたデザインスタディです。" },
+    { name: "Cover シリーズ", caption: "音楽の空気を、デスクに", description: "音楽とレコードジャケットの表現に着想を得たシリーズです。今後のアートワークとエディションを開発しています。" },
   ],
   experience: {
     explore: "コレクションを見る：", allCollections: "すべてのコレクション", glassCollections: "ガラスマウスパッドのシリーズ", coverSeries: "01 / COVER シリーズ", futureObjects: "01 / これからのプロダクト",
@@ -97,8 +85,8 @@ const ja: typeof en = {
     metalDescription: "彫刻的な幾何学と、指先に伝わる確かな重み。金属削り出しのキーキャップを開発しています。",
     chooseArt: "カバーアートを選ぶ", more: "詳しく見る", release: "発売情報を受け取る", artistNote: "オリジナルのコンセプトです。アーティストとのコラボレーションは今後発表予定。", conceptNote: "デザインのプレビューです。製品の最終仕様は後日お知らせします。",
     viewingAngle: "表示アングル", deskView: "デスクビュー", topView: "真上から見る", designStudy: "KIKORA / デザインスタディ", previous: "前のガラスシリーズへ", next: "次のガラスシリーズへ", of: "/",
-    help: "パッドをクリックして切り替え", unavailable: "コンセプト / 発売前", withinGlass: "ガラスマウスパッド · COVER シリーズ", coverTitle: "一枚のアートから、一つのエディションへ。", coverSubtitle: "キャラクターとレコードジャケットに着想を得たアートワーク。",
-    coverNote: "自主制作の二次創作コンセプトです。ゲームや音楽アーティストとの公式コラボレーションではありません。",
+    help: "パッドをクリックして切り替え", unavailable: "コンセプト / 発売前", withinGlass: "ガラスマウスパッド · COVER シリーズ", coverTitle: "一枚のアートから、一つのエディションへ。", coverSubtitle: "KIKORA のブランドプレビュー。今後のアートワークは後日発表します。",
+    coverNote: "KIKORA のブランドプレビューです。アートワーク、エディション、発売情報は開発の進捗に合わせてお知らせします。",
     keyAlt: "シルバーグレーのキーボードに、赤と紫のレイナのアートワークがキーをまたいで広がる KIKORA キーキャップのコンセプト",
   },
   concepts: {
@@ -115,7 +103,7 @@ const ja: typeof en = {
     covers: {
       title: "Cover シリーズ", index: "01 / ガラスマウスパッド — COVERS", tagline: "一枚のアートで、デスクの空気が変わる。", asideTitle: "好きなムードを、デスクに。", description: "レコードジャケットに着想を得た、一枚ずつ異なる個性を持つエディション。",
       storyTitle: "音が聞こえてくるような、一枚を。", story: "Cover シリーズは、一つのアートワークから一つのエディションを考えるコレクションです。音楽やアルバムデザインの空気感を手がかりに、独自のビジュアルを探っています。最終アートワークと製造仕様は開発中です。",
-      caption: "Covers / アートワークスタディ", question: "Cover の各エディションは何が違いますか？", answer: "それぞれ一つのアートワークを軸に、異なる個性を持たせています。音楽やアルバムのビジュアルから着想を得たコンセプトで、公式コラボレーションの発表ではありません。",
+      caption: "Covers / ブランドプレビュー", question: "Cover の各エディションは何が違いますか？", answer: "今後の各エディションは、一つのアートワークを軸に構想しています。現在のプレビューには KIKORA のロゴを使用しており、製品のアートワークやコラボレーションは未発表です。",
     },
     metal: {
       title: "メタルキーキャップ", index: "02 / メタルキーキャップ", tagline: "重み、エッジ、仕上げ。ひとつのキーから。", asideTitle: "細部から、これからを考える。", description: "メタルキーキャップは KIKORA の2つ目のプロダクトライン。表示しているのは初期の造形スタディです。",
@@ -133,13 +121,7 @@ const ja: typeof en = {
     overview: "製品の概要", releaseNote: "最終仕様は未定です。発売情報は後日お知らせします。", footer1: "いつものデスクに、", footer2: "自分らしさを。",
   },
   artwork: [
-    { caption: "レイナ / 二次創作コンセプト 001", alt: "鮮やかな赤いレコードジャケット風の背景に、紫の光を浴びたレイナを描いたファンアート" },
-    { caption: "レイス / 二次創作コンセプト 002", alt: "冷たい青を基調に、SF のレコードジャケット風に構成したレイスのファンアート" },
-    { caption: "コースティック / シネマティックコンセプト 003", alt: "オリーブグリーンのドラム缶が並ぶ倉庫で、暖かな逆光に照らされたコースティック" },
-    { caption: "シア / 二次創作コンセプト 004", alt: "ゴールデンアワー：銅色とゴールドを背景に、つばの広い帽子に手を添えるシアのポートレート" },
-    { caption: "D-WOLF / 二次創作コンセプト 005", alt: "レッドライン：D-Wolf に着想を得た、赤を基調とするレコードジャケット風のコンセプト" },
-    { caption: "VYRON / 二次創作コンセプト 006", alt: "残り火：Vyron に着想を得た、映画のようなレコードジャケット風のコンセプト" },
-    { caption: "HACKCLAW / 二次創作コンセプト 007", alt: "夜のシグナル：Hackclaw に着想を得た、夜の空気を描くレコードジャケット風のコンセプト" },
+    { caption: "KIKORA / ブランドプレビュー", alt: "紫の背景に苦無とチェーンを組み合わせた KIKORA の K ロゴ" },
   ],
   sound: {
     unavailable: "音源はまだ設定されていません。詳細を見る", startingLabel: "音楽を読み込み中。音楽をオフにする", onLabel: "音楽はオンです。オフにする", offLabel: "音楽はオフです。オンにする", on: "サウンド ON", off: "サウンド OFF", settings: "音量と楽曲情報", heading: "音楽と一緒に", close: "音楽設定を閉じる", trackPending: "コレクションに合う一曲を", volume: "音量", percent: "パーセント", error: "再生できませんでした。もう一度お試しください。", retry: "もう一度再生", starting: "音楽を読み込み中…", playing: "再生中です。パネルを閉じても音楽は続きます。", stopped: "音楽はオフです。お好きなときに再生してください。", noSource: "BGM を選曲中です。現在、音源はまだ設定されていません。",

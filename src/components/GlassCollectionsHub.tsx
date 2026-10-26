@@ -21,7 +21,7 @@ export function GlassCollectionsHub() {
       const art = new URLSearchParams(window.location.search).get("art");
       const edition = coverEditions.find(item => item.id === art);
       // The old page kept its artwork query while switching collection hashes.
-      const target = isGlassCollection(collection) ? collection : edition ? "covers" : null;
+      const target = isGlassCollection(collection) ? collection : art ? "covers" : null;
       if (!target) return;
       const query = target === "covers" && edition ? `?art=${edition.id}` : "";
       router.replace(`/explore/glass/${target}${query}`);
@@ -46,7 +46,7 @@ export function GlassCollectionsHub() {
       {glassCollectionIds.map((id, index) => <Link key={id} href={`/explore/glass/${id}`} className={`${styles.collection} ${styles[id]}`}>
         <div className={styles.visual} aria-hidden="true">
           <span className={styles.index}>0{index + 1} / {id.toUpperCase()}</span>
-          {id === "core" ? <div className={styles.corePad}><i /><span>KIKORA / CORE</span></div> : id === "artist" ? <div className={styles.artistPad}><i /><b /><span>KIKORA / ARTIST</span></div> : <div className={styles.albumPads}><div><Image src="/images/album-concept-wraith.webp" alt="" fill sizes="(max-width:760px) 65vw, 23vw" /></div><div><Image src="/images/album-concept-reyna.webp" alt="" fill sizes="(max-width:760px) 65vw, 23vw" /></div></div>}
+          {id === "core" ? <div className={styles.corePad}><i /><span>KIKORA / CORE</span></div> : id === "artist" ? <div className={styles.artistPad}><i /><b /><span>KIKORA / ARTIST</span></div> : <div className={styles.albumPads}><div><Image src="/brand/kikora-kunai-icon.svg" alt="" fill sizes="(max-width:760px) 65vw, 23vw" /></div></div>}
           <span className={styles.mode}>{copy.interactions[index]}</span>
           <span className={styles.arrow}>↗</span>
         </div>

@@ -2,15 +2,16 @@
 
 import Image from "next/image";
 import { useLocale } from "@/components/LocaleProvider";
-import { coverEditions, productCopy } from "@/lib/product-copy";
+import styles from "./AlbumArtwork.module.css";
 
-export function AlbumArtwork({ edition, priority = false }: { edition: number; priority?: boolean }) {
+const ALT = {
+  en: "KIKORA Cover study with the original lime K and kunai emblem on purple",
+  ja: "パープルを背景に、ライム色の K とクナイのオリジナルロゴを配した KIKORA Cover コンセプト",
+};
+
+export function AlbumArtwork({ priority = false }: { edition: number; priority?: boolean }) {
   const locale = useLocale();
-  const cover = coverEditions[edition] ?? coverEditions[0];
-  const copy = productCopy[locale].artwork[edition] ?? productCopy[locale].artwork[0];
-  return <div className={`album-art-image album-art-${cover.id}`}>
-    <Image src={`/images/album-concept-${cover.id}.webp`} alt={copy.alt} fill sizes="(max-width: 760px) 85vw, 55vw" priority={priority} draggable={false} />
-    <span className="album-art-title">{cover.title}</span>
-    <span className="album-art-caption">{copy.caption}</span>
+  return <div className={styles.artwork}>
+    <Image src="/brand/kikora-kunai-icon.svg" alt={ALT[locale]} fill sizes="(max-width: 760px) 85vw, 55vw" priority={priority} draggable={false} className={styles.emblem} />
   </div>;
 }

@@ -18,9 +18,9 @@
 .textLink span { font-size:20px; font-weight:300; }
 .textLink:hover { color:#521be6; border-color:#521be6; }
 .heroVisual { margin:0; }
-.heroImage { position:relative; aspect-ratio:4/4.7; overflow:hidden; background:#b6c2d1; }
-.heroImage img { object-fit:cover; object-position:center; }
-.heroImage::after { content:""; position:absolute; inset:55% 0 0; background:linear-gradient(transparent,#0712259e); pointer-events:none; }
+.heroImage { position:relative; aspect-ratio:4/4.7; overflow:hidden; background:#521be6; }
+.heroImage img { object-fit:contain; object-position:center; }
+
 .imageMark { position:absolute; z-index:1; left:7%; bottom:7%; font-family:var(--font-display); font-size:clamp(34px,4.4vw,62px); font-weight:500; line-height:1; letter-spacing:-.045em; color:white; }
 .heroVisual figcaption { display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px; padding-top:13px; font-size:9px; color:#778091; }
 .heroVisual figcaption span:first-child { font-family:var(--font-display); letter-spacing:.08em; }
@@ -46,8 +46,8 @@
 .belief p { font-size:12px; }
 .creatorStory { display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:9%; padding-bottom:85px; }
 .creatorVisual { margin:0; }
-.creatorVisual>div { position:relative; aspect-ratio:1; overflow:hidden; background:#b84942; }
-.creatorVisual img { object-fit:cover; }
+.creatorVisual>div { position:relative; aspect-ratio:1; overflow:hidden; background:#08090a; }
+.creatorVisual img { object-fit:contain; padding:8%; }
 .creatorVisual figcaption { margin-top:14px; color:#7d8797; font-size:9px; letter-spacing:.03em; }
 .creatorCopy h2 { font-size:clamp(29px,3.6vw,51px); }
 .creatorCopy>p:not(.eyebrow) { margin:0 0 17px; }
