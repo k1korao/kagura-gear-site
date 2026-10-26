@@ -1,5 +1,5 @@
 .gallery {
-  --ink: #0b0b0d; --hot: #ff3b24; --hot-text: #d92c16; --mute: #5d5d63;
+  --ink: #08090a; --hot: #b4f528; --hot-text: #521be6; --mute: #5d5d63;
   position: relative;
   padding: 120px 0 90px;
   background: #fff;
@@ -64,13 +64,13 @@
 .caption > span:first-child { color: var(--ink); font-weight: 700; }
 
 .controls { display: flex; justify-content: center; align-items: center; gap: 22px; margin-top: 20px; }
-.controls > button { width: 48px; height: 48px; border-radius: 50%; border: 1px solid #0b0b0d30; font-size: 20px; transition: background .25s, color .25s, border-color .25s; }
-.controls > button:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+.controls > button { width: 48px; height: 48px; border-radius: 0; border: 1px solid #08090a30; font-size: 20px; transition: background .25s, color .25s, border-color .25s; }
+.controls > button:hover { background: var(--hot); color: var(--ink); border-color: var(--ink); }
 .controls button:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
 .choices { display: flex; align-items: center; gap: 8px; }
-.choices button { display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; border-radius: 24px; border: 1px solid transparent; font: 600 10px/1 ui-monospace, monospace; letter-spacing: .08em; color: var(--mute); transition: border-color .25s, color .25s; }
-.choices button[aria-pressed=true] { border-color: #0b0b0d50; color: var(--ink); }
-.swatch { width: 12px; height: 12px; border: 1px solid #0b0b0d30; border-radius: 50%; background: #fafaf9; }
+.choices button { display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; border-radius: 0; border: 1px solid transparent; font: 600 10px/1 ui-monospace, monospace; letter-spacing: .08em; color: var(--mute); transition: border-color .25s, color .25s; }
+.choices button[aria-pressed=true] { border-color: var(--hot-text); color: var(--hot-text); }
+.swatch { width: 12px; height: 12px; border: 1px solid #08090a30; border-radius: 50%; background: #fafaf9; }
 .swatch[data-tone=black] { background: #141416; border-color: #141416; }
 .status { text-align: center; margin: 16px 6% 0; font-size: 12px; line-height: 1.7; color: var(--mute); }
 .status b { color: var(--ink); letter-spacing: .08em; }

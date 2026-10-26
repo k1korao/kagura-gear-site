@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: PageProps) {
     title: copy.name,
     description: copy.description,
     path: `/explore/keycaps/${collection}`,
-    image: { url: "/brand/kikora-symbol.png", width: 512, height: 512, alt: `KIKORA / ${copy.name}` },
+    image: { url: "/brand/kikora-kunai-icon.png", width: 512, height: 512, alt: `KIKORA / ${copy.name}` },
   });
 }
 

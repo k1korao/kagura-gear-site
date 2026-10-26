@@ -1,1 +1,8 @@
-.identity{display:inline-flex;align-items:center;gap:14px;color:inherit}.symbol{display:block;width:46px;height:46px;flex:none}.word{display:block}.word svg{width:123px;height:auto}@media(max-width:760px){.compact .word{display:none}.compact .symbol{width:46px;height:46px}.identity{gap:12px}}
+.identity { display: inline-flex; align-items: center; color: inherit; flex-shrink: 0; }
+.identity .word { display: block; width: 220px; height: auto; }
+.compact .word { width: 168px; }
+@media (max-width: 760px) {
+  .identity .word { width: 194px; }
+  .compact .word { width: 130px; }
+}
+@media (max-width: 380px) { .compact .word { width: 116px; } }

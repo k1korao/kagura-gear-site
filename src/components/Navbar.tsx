@@ -20,6 +20,7 @@ export function Navbar() {
   const premium = pathname === "/" || pathname.startsWith("/shrine") || pathname.startsWith("/explore");
   const [menuOpen, setMenuOpen] = useState(false);
   const [openCategory, setOpenCategory] = useState<Category | null>(null);
+  const clickOpenedCategory = useRef<Category | null>(null);
   const headerRef = useRef<HTMLElement>(null);
   const menuTrigger = useRef<HTMLButtonElement>(null);
   const categoryTriggers = useRef<Partial<Record<Category, HTMLButtonElement | null>>>({});
@@ -33,6 +34,7 @@ export function Navbar() {
     function dismissOutside(event: PointerEvent) {
       if (event.target instanceof Node && !headerRef.current?.contains(event.target)) {
         setMenuOpen(false);
+        clickOpenedCategory.current = null;
         setOpenCategory(null);
       }
     }
@@ -40,7 +42,8 @@ export function Navbar() {
     return () => document.removeEventListener("pointerdown", dismissOutside);
   }, [menuOpen, openCategory]);
 
-  function closeMenus() { setMenuOpen(false); setOpenCategory(null); }
+  function closeCategory() { clickOpenedCategory.current = null; setOpenCategory(null); }
+  function closeMenus() { setMenuOpen(false); closeCategory(); }
   function followCategory(category: Category, collection?: string) {
     closeMenus();
     if (category === "glass") {
@@ -52,17 +55,35 @@ export function Navbar() {
     <header ref={headerRef} className={styles.header} onKeyDown={(event) => {
       if (event.key !== "Escape") return;
       if (menuOpen) { event.preventDefault(); closeMenus(); menuTrigger.current?.focus(); }
-      else if (openCategory) { event.preventDefault(); setOpenCategory(null); categoryTriggers.current[openCategory]?.focus(); }
+      else if (openCategory) { event.preventDefault(); closeCategory(); categoryTriggers.current[openCategory]?.focus(); }
     }}>
       <div className={styles.bar}>
         <Link href="/" className={styles.brand} aria-label={copy.home} onClick={closeMenus}><KaguraIdentity compact /></Link>
         <nav className={styles.desktopNav} aria-label={copy.primary}>
           {categories.map(category => {
             const expanded = openCategory === category.id && !menuOpen;
-            return <div key={category.id} className={styles.glassNav} onMouseEnter={() => { if (!menuOpen) setOpenCategory(category.id); }} onMouseLeave={() => { if (!menuOpen) setOpenCategory(null); }} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setOpenCategory(null); }}>
+            return <div key={category.id} className={styles.glassNav}
+              onPointerEnter={(event) => {
+                if (menuOpen || event.pointerType !== "mouse") return;
+                if (clickOpenedCategory.current !== category.id) clickOpenedCategory.current = null;
+                setOpenCategory(category.id);
+              }}
+              onPointerLeave={(event) => {
+                if (menuOpen || event.pointerType !== "mouse" || clickOpenedCategory.current === category.id || event.currentTarget.contains(document.activeElement)) return;
+                setOpenCategory(value => value === category.id ? null : value);
+              }}
+              onBlur={(event) => {
+                if (event.currentTarget.contains(event.relatedTarget as Node | null)) return;
+                if (clickOpenedCategory.current === category.id) clickOpenedCategory.current = null;
+                setOpenCategory(value => value === category.id ? null : value);
+              }}>
               <div className={styles.glassLink}>
                 <Link href={`/explore/${category.id}`} aria-current={pathname === `/explore/${category.id}` ? "page" : undefined} onClick={() => followCategory(category.id)}>{category.label}</Link>
-                <button ref={element => { categoryTriggers.current[category.id] = element; }} type="button" className={styles.submenuToggle} aria-label={category.collectionsLabel} aria-expanded={expanded} aria-controls={`${category.id}-navigation`} onClick={() => { setMenuOpen(false); setOpenCategory(value => value === category.id ? null : category.id); }}><svg viewBox="0 0 12 12" width="10" height="10" aria-hidden="true"><path d="m2 4 4 4 4-4" /></svg></button>
+                <button ref={element => { categoryTriggers.current[category.id] = element; }} type="button" className={styles.submenuToggle} aria-label={category.collectionsLabel} aria-expanded={expanded} aria-controls={`${category.id}-navigation`} onClick={() => {
+                  setMenuOpen(false);
+                  if (clickOpenedCategory.current === category.id) closeCategory();
+                  else { clickOpenedCategory.current = category.id; setOpenCategory(category.id); }
+                }}><svg viewBox="0 0 12 12" width="10" height="10" aria-hidden="true"><path d="m2 4 4 4 4-4" /></svg></button>
               </div>
               {expanded ? <div id={`${category.id}-navigation`} className={styles.glassDropdown}><span className={styles.dropdownLabel}>{category.directions}</span>{category.collections.map(collection => <Link key={collection.id} href={`/explore/${category.id}/${collection.id}`} aria-current={pathname === `/explore/${category.id}/${collection.id}` ? "page" : undefined} onClick={() => followCategory(category.id, collection.id)}><span>{collection.label}<small>{collection.note}</small></span><span aria-hidden="true">↗</span></Link>)}</div> : null}
             </div>;
@@ -71,7 +92,7 @@ export function Navbar() {
         <div className={styles.tools}>
           {premium ? <CollectionSound /> : null}
           <LanguageSwitcher />
-          <button ref={menuTrigger} type="button" className={`${styles.menuToggle} ${menuOpen ? styles.menuActive : ""}`} aria-expanded={menuOpen} aria-controls="site-navigation-menu" aria-label={menuOpen ? copy.closeMenu : copy.openMenu} onClick={() => { setMenuOpen(value => !value); setOpenCategory(null); }}><span>{menuOpen ? copy.close : copy.menu}</span><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">{menuOpen ? <path d="m4 4 12 12M4 16 16 4" /> : <path d="M2 6h16M2 13h16" />}</svg></button>
+          <button ref={menuTrigger} type="button" className={`${styles.menuToggle} ${menuOpen ? styles.menuActive : ""}`} aria-expanded={menuOpen} aria-controls="site-navigation-menu" aria-label={menuOpen ? copy.closeMenu : copy.openMenu} onClick={() => { setMenuOpen(value => !value); closeCategory(); }}><span>{menuOpen ? copy.close : copy.menu}</span><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">{menuOpen ? <path d="m4 4 12 12M4 16 16 4" /> : <path d="M2 6h16M2 13h16" />}</svg></button>
         </div>
       </div>
       {menuOpen ? <nav id="site-navigation-menu" className={styles.menuPanel} aria-label={copy.expanded}>

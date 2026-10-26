@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
   const locale = await getLocale();
   if (category === "metal") {
     const keycaps = keycapsCollectionCopy[locale];
-    return pageMetadata({ title: keycaps.hubTitle, description: keycaps.hubDescription, path: "/explore/keycaps", image: { url: "/brand/kikora-symbol.png", width: 512, height: 512, alt: "KIKORA / Keycaps" } });
+    return pageMetadata({ title: keycaps.hubTitle, description: keycaps.hubDescription, path: "/explore/keycaps", image: { url: "/brand/kikora-kunai-icon.png", width: 512, height: 512, alt: "KIKORA / Keycaps" } });
   }
   const copy = productCopy[locale];
   return pageMetadata({ title: copy.categories[category], description: copy.metadata[category], path: `/explore/${category}` });

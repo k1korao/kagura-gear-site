@@ -6,12 +6,12 @@ export const searchAppearanceCopy = {
   en: {
     title: "Glass Mousepads, Keycaps & Artist Editions",
     description: "Meet KIKORA (Kikora Gear): glass mousepads and keycaps inspired by games, anime and independent art. Explore Core, Artist and Cover collections, Keycaps Set and Artisan Keycaps, and the story behind the brand.",
-    imageAlt: "KIKORA logo and wordmark on a white background",
+    imageAlt: "KIKORA wordmark with kunai and chain on a black background",
   },
   ja: {
     title: "ガラスマウスパッド・キーキャップとアート",
     description: "ゲームやアニメ、独立した作家の表現から生まれるKIKORA（Kikora Gear）。ガラスマウスパッドのCore・Artist・Coverシリーズ、キーキャップセット、アーティザンキーキャップとブランドの物語をご紹介します。",
-    imageAlt: "白い背景に KIKORA のロゴとワードマーク",
+    imageAlt: "黒い背景に苦無とチェーン付きの KIKORA ワードマーク",
   },
 } satisfies Record<Locale, { title: string; description: string; imageAlt: string }>;
 
@@ -46,7 +46,7 @@ export function homeStructuredData(locale: Locale) {
         name: siteConfig.name,
         alternateName: "Kikora Gear",
         url: homeUrl,
-        logo: absoluteUrl("/brand/kikora-symbol.png"),
+        logo: absoluteUrl("/brand/kikora-kunai-icon.png"),
         description: copy.description,
         email: siteConfig.supportEmail,
       },

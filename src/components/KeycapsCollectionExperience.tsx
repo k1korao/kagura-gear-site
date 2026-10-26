@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useLocale } from "@/components/LocaleProvider";
+import { KaguraWordmark } from "./KaguraWordmark";
 import { keycapsCollectionCopy, keycapsCollectionIds, type KeycapsCollection } from "@/lib/keycaps-collection-copy";
 import styles from "./KeycapsCollectionExperience.module.css";
 
@@ -17,11 +18,11 @@ export function KeycapsPreview({ collection }: { collection: KeycapsCollection }
   return collection === "set" ? <div className={styles.setScene} aria-hidden="true">
     <div className={styles.keyboard}>
       {keyRows.map((row, index) => <div key={index} className={styles.keyRow}>
-        {row.map((legend, keyIndex) => <div key={`${index}-${keyIndex}`} className={`${styles.key} ${legend === "KIKORA" ? styles.spacebar : ""} ${index === 0 && keyIndex === 0 ? styles.accent : ""}`}><span>{legend}</span></div>)}
+        {row.map((legend, keyIndex) => <div key={`${index}-${keyIndex}`} className={`${styles.key} ${legend === "KIKORA" ? styles.spacebar : ""} ${index === 0 && keyIndex === 0 ? styles.accent : ""}`}>{legend === "KIKORA" ? <KaguraWordmark className={styles.brandMark} /> : <span>{legend}</span>}</div>)}
       </div>)}
     </div>
   </div> : <div className={styles.artisanScene} aria-hidden="true">
-    <div className={styles.artisanKey}><i>↗</i><span>KIKORA</span></div>
+    <div className={styles.artisanKey}><i>↗</i><KaguraWordmark className={styles.brandMark} /></div>
     <div className={styles.artisanSmall} />
   </div>;
 }

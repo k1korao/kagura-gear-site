@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Tektur } from "next/font/google";
 import { Fragment, useEffect, useRef, useState } from "react";
 import { useLocale } from "@/components/LocaleProvider";
@@ -8,7 +9,7 @@ import { brandCopy } from "@/lib/brand-copy";
 import { navigationCopy } from "@/lib/navigation-copy";
 import { supportMailto } from "@/lib/site";
 import styles from "./BrandStory.module.css";
-import { KaguraSymbol } from "./KaguraSymbol";
+import { KaguraWordmark } from "./KaguraWordmark";
 import { HeroDeck } from "./HeroDeck";
 import { ArtGallery } from "./ArtGallery";
 import { MonochromePadSurface } from "./MonochromePadSurface";
@@ -123,6 +124,7 @@ export function BrandStory() {
           <div className={styles.heroActions}><a href="#manifesto">{hero.storyAction} <span aria-hidden="true">↘</span></a><a href="#creators">{hero.creatorAction} <span aria-hidden="true">↗</span></a></div>
         </div>
         <div className={styles.heroCollage}>
+          <div className={styles.heroSignature}><Image src="/brand/kikora-wordmark-dark.svg" alt="KIKORA" width={900} height={340} priority /></div>
           <div className={styles.collageGrid} aria-hidden="true" />
           <span className={styles.collageCoordinates}>{hero.coordinates}</span>
           <HeroDeck hint={DECK_COPY[locale].hint} padLabel={DECK_COPY[locale].pad} keysLabel={DECK_COPY[locale].keys} />
@@ -136,7 +138,7 @@ export function BrandStory() {
     <ArtGallery />
 
     <section id="manifesto" className={styles.manifesto} aria-labelledby="manifesto-title">
-      <div className={styles.manifestoSide}><span className={styles.eyebrow}>{manifesto.label}</span><span className={styles.sectionIndex}>[ 01 — 03 ]</span></div>
+      <div className={styles.manifestoSide}><span className={styles.eyebrow}>{manifesto.label}</span><KaguraWordmark className={styles.manifestoMark} /><span className={styles.sectionIndex}>[ 01 — 03 ]</span></div>
       <div><h2 id="manifesto-title">{manifesto.title[0]}<br />{manifesto.title[1]}<span>{manifesto.title[2]}</span></h2><div className={styles.manifestoCopy}>{manifesto.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}</div></div>
     </section>
 
@@ -146,7 +148,7 @@ export function BrandStory() {
         <div className={styles.chapters}>{chapters.map((item,index) => <article id={`story-chapter-${index}`} key={item.number} className={styles.chapter} data-active={chapter === index}>
           <div className={styles.chapterCopy}><p className={styles.eyebrow}>{item.number} / {item.label}</p><h2><Lines lines={item.title} /></h2><p className={styles.description}>{item.copy}</p><span className={styles.chapterNote}>{item.note}</span></div>
           <div className={`${styles.chapterVisual} ${styles[`visual${index}`]}`} aria-hidden="true">
-            {index === 0 ? <><div className={styles.artistFrame}><MonochromePadSurface tone="white" className={styles.padSurface} /></div><div className={styles.artistSlip}><span><Lines lines={storyCopy.artistTitle} /></span><p><Lines lines={storyCopy.artistTopics} /></p><i>{storyCopy.artistNote}</i></div><span className={styles.visualCaption}>{storyCopy.artistCaption}</span></> : index === 1 ? <><div className={styles.materialPhoto}><div className={styles.matGlass}><MonochromePadSurface tone="white" /></div><span className={styles.matKey}><b>K</b></span><span className={styles.matMetal}><KaguraSymbol /></span></div><div className={styles.materialSwatches}>{storyCopy.materialNames.map(name => <span key={name}>{name}<i /></span>)}</div><span className={styles.visualCaption}>{storyCopy.materialCaption}</span></> : <><div className={styles.collectorArt}><MonochromePadSurface tone="black" className={styles.padSurface} /></div><div className={styles.collectorLabel}><span>{storyCopy.collectorLabel}</span><strong><Lines lines={storyCopy.collectorTitle} /></strong><p><Lines lines={storyCopy.collectorCopy} /></p><div>{storyCopy.collectorTags}</div></div><span className={styles.visualCaption}>{storyCopy.collectorCaption}</span></>}
+            {index === 0 ? <><div className={styles.artistFrame}><MonochromePadSurface tone="white" className={styles.padSurface} /></div><div className={styles.artistSlip}><span><Lines lines={storyCopy.artistTitle} /></span><p><Lines lines={storyCopy.artistTopics} /></p><i>{storyCopy.artistNote}</i></div><span className={styles.visualCaption}>{storyCopy.artistCaption}</span></> : index === 1 ? <><div className={styles.materialPhoto}><div className={styles.matGlass}><MonochromePadSurface tone="white" /></div><span className={styles.matKey}><b>K</b></span><span className={styles.matMetal}><KaguraWordmark /></span></div><div className={styles.materialSwatches}>{storyCopy.materialNames.map(name => <span key={name}>{name}<i /></span>)}</div><span className={styles.visualCaption}>{storyCopy.materialCaption}</span></> : <><div className={styles.collectorArt}><MonochromePadSurface tone="black" className={styles.padSurface} /></div><div className={styles.collectorLabel}><span>{storyCopy.collectorLabel}</span><strong><Lines lines={storyCopy.collectorTitle} /></strong><p><Lines lines={storyCopy.collectorCopy} /></p><div>{storyCopy.collectorTags}</div></div><span className={styles.visualCaption}>{storyCopy.collectorCaption}</span></>}
           </div>
         </article>)}</div>
         <div className={styles.storyBottom}><span>{storyCopy.bottomLine}</span><div className={styles.progress} aria-hidden="true"><i /></div><a href="#creators">{storyCopy.nextChapter} <span aria-hidden="true">↘</span></a></div>

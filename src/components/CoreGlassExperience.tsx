@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useId, useRef, useState, type CSSProperties, type KeyboardEvent, type PointerEvent } from "react";
 import { useLocale } from "./LocaleProvider";
+import { KaguraWordmark } from "./KaguraWordmark";
 import { productCopy } from "@/lib/product-copy";
 import styles from "./CoreGlassExperience.module.css";
 
@@ -104,7 +105,7 @@ export function CoreGlassExperience() {
           <div className={styles.stageCoordinates} aria-hidden="true"><span>01</span><span>+</span><span>+</span><span>+</span></div>
           <div className={styles.shadow} aria-hidden="true" />
           <div className={styles.pad} aria-hidden="true">
-            <div className={styles.padSurface}><span className={styles.brand}>KIKORA</span><span className={styles.padCaption}>CORE / 001</span><span className={styles.reflection} /></div>
+            <div className={styles.padSurface}><KaguraWordmark className={styles.brand} /><span className={styles.padCaption}>CORE / 001</span><span className={styles.reflection} /></div>
           </div>
           <div className={styles.surfaceLabel} aria-hidden="true"><span />CORE — 001</div>
         </div>

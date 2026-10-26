@@ -33,12 +33,12 @@ export async function generateMetadata(): Promise<Metadata> {
   },
   icons: {
     icon: [
-      { url: "/brand/kikora.ico", type: "image/x-icon", sizes: "256x256" },
-      { url: "/brand/kikora-symbol.svg", type: "image/svg+xml" },
-      { url: "/brand/kikora-symbol.png", type: "image/png", sizes: "512x512" },
+      { url: "/brand/kikora-kunai-icon.png", type: "image/png", sizes: "512x512" },
+      { url: "/brand/kikora-kunai.ico", type: "image/x-icon", sizes: "16x16 32x32 48x48 64x64 128x128 256x256" },
+      { url: "/brand/kikora-kunai-icon.svg", type: "image/svg+xml", sizes: "any" },
     ],
-    shortcut: "/brand/kikora.ico",
-    apple: [{ url: "/brand/kikora-apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+    shortcut: "/brand/kikora-kunai.ico",
+    apple: [{ url: "/brand/kikora-kunai-apple.png", sizes: "180x180", type: "image/png" }],
   },
   openGraph: {
     type: "website",

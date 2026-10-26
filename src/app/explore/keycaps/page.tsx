@@ -9,7 +9,7 @@ export async function generateMetadata() {
     title: copy.hubTitle,
     description: copy.hubDescription,
     path: "/explore/keycaps",
-    image: { url: "/brand/kikora-symbol.png", width: 512, height: 512, alt: "KIKORA / Keycaps" },
+    image: { url: "/brand/kikora-kunai-icon.png", width: 512, height: 512, alt: "KIKORA / Keycaps" },
   });
 }
 

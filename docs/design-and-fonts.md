@@ -1,4 +1,4 @@
-# KAGURA design and font sources
+# KIKORA design and font sources
 
 The homepage is a brand story. Product explorers live at /explore/glass, /explore/keycaps and /explore/metal. Glass has Core, Artist and Cover series. Cover-series artwork is one collection, not the overall site identity. Concept imagery does not establish final manufacturing specifications or announced collaborations.
 
@@ -9,7 +9,7 @@ Display type: Oxanium, unmodified variable font from the official Google Fonts r
 Source: https://github.com/google/fonts/tree/main/ofl/oxanium
 License: https://github.com/google/fonts/blob/main/ofl/oxanium/OFL.txt
 
-The KAGURA wordmark is an original vector drawing, implemented in KaguraWordmark.tsx. No WALLHACK logo or font file is included.
+The current KIKORA wordmark is the supplied A variant from `logo矢量图.zip`, including its kunai and chain. Its original vector paths are extracted from the PDF-compatible RGB Illustrator master and used in `KaguraWordmark.tsx`. The black/white foreground adapts to the surface; the original lime and pink offsets are retained. Do not substitute the B variant without the owner’s request. No WALLHACK logo or font file is included.
 
 ## Interaction reference
 
@@ -30,10 +30,12 @@ English and Japanese have individually authored copy dictionaries. The site defa
 
 Legacy demo cloth-pad product and collection URLs redirect into current collection pages. Their unconfirmed prices and Shopify placeholder instructions are no longer part of the visitor journey. Shipping and returns pages reflect the current prelaunch status.
 
-## Open Interval symbol
+## Current brand identity — 26 October 2026
 
-`public/brand/kagura-symbol.svg` and `KaguraSymbol.tsx` contain an original, non-letter spatial emblem. Two suspended folds leave a central opening, suggesting a frame, an entrance or a display plane without assigning a single literal meaning. Two tonal faces create restrained 2.5D depth. Its silhouette also works in a single ink. This replaces the Refracted Orbit proposal following the owner's request for a simpler symbol and more interpretive space.
+The owner-supplied identity uses graffiti lettering, sharp cuts and displaced colour edges. Screen colours from `KIKORA logo_COLOR.jpg`: lime `#b4f528`, purple `#521be6`, pink `#f52882` and black. The website uses black and paper-white base surfaces, lime on dark surfaces, purple for readable links and controls on light surfaces, and pink for small offset details. Product artwork and glass/metal material colours remain independent of the UI palette.
 
-The component inherits currentColor and uses face opacity, so the same geometry works on light and dark backgrounds. It needs no masks, filters, gradients or unique IDs. Desktop navigation combines the emblem with the existing custom KAGURA wordmark. Mobile navigation uses the emblem alone. The hero stamp, footer, browser and touch icons share the same identity. It is not traced from WALLHACK or another peripheral brand. No trademark clearance is implied.
+The A wordmark with kunai and chain is used in navigation, footer, hero, product previews and social preview. `public/brand/kikora-wordmark-light.svg` is the original black A01 artwork and `kikora-wordmark-dark.svg` is white A02. Both are tightly bounded, transparent, original vector paths. The C single-letter mark is reserved for small icons and decorative emblems; it does not replace the complete website wordmark. New browser, Apple and social icons use `kikora-graffiti-*` filenames for cache separation. Older identity assets remain only for compatibility with existing references.
+
+The homepage retains its English/Japanese story, glass-finish switch, interactive keycaps, artwork carousel, collection routes and prelaunch status. Reduced-motion alternatives are retained. Current previews are design studies and do not establish final product artwork or released collaborations.
 
 Cover edition display names are separately authored in English and Japanese and are shared by selectors, card labels, accessibility labels and detail panels. English lettering inside the artwork remains part of the artwork; the stable `art` identifiers and chosen cover survive a locale change.

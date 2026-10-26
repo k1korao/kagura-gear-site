@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import styles from "./HeroDeck.module.css";
-import { KaguraSymbol } from "./KaguraSymbol";
+import { KaguraWordmark } from "./KaguraWordmark";
 import { useLocale } from "./LocaleProvider";
 import { MonochromePadSurface } from "./MonochromePadSurface";
 
@@ -70,7 +70,7 @@ export function HeroDeck({ hint, padLabel, keysLabel }: { hint: string; padLabel
       </div>
     </div>
 
-    <div className={styles.token} aria-hidden="true"><div><KaguraSymbol /></div></div>
+    <div className={styles.token} aria-hidden="true"><div><KaguraWordmark /></div></div>
 
     <div className={styles.keys} role="group" aria-label={keysLabel}>
       <div className={styles.screen} aria-hidden="true"><span>{typed || hint}</span><i /></div>

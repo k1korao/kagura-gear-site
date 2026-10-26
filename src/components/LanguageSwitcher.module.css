@@ -1,1 +1,6 @@
-.select{width:66px;min-width:58px;height:36px;padding:0 5px;border:1px solid #c5cfd655;border-radius:2px;background:#fff;color:#465461;font:10px var(--font-display),"PingFang SC","Yu Gothic",sans-serif;cursor:pointer}.select:focus-visible{outline:2px solid #405bbd;outline-offset:3px}.select:disabled{opacity:.5;cursor:wait}@media(max-width:760px){.select{width:60px;height:34px;font-size:9px}}
+.select { width: 66px; min-width: 58px; height: 36px; padding: 0 5px; border: 1px solid #ffffff35; border-radius: 0; background: var(--brand-ink); color: var(--brand-paper); color-scheme: dark; font: 10px Arial, "PingFang SC", "Yu Gothic", sans-serif; cursor: pointer; }
+.select:hover { border-color: var(--brand-lime); }
+.select:focus-visible { outline: 2px solid var(--brand-lime); outline-offset: 3px; }
+.select:disabled { opacity: .5; cursor: wait; }
+.select option { background: var(--brand-ink); color: var(--brand-paper); }
+@media (max-width: 760px) { .select { width: 60px; height: 34px; font-size: 9px; } }
