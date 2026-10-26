@@ -403,6 +403,9 @@
   .creatorPoster { min-height: 440px; }
   .collectorLabel > strong { font-size: 19px; }
 }
+@media (max-width: 760px) {
+  .heroCollage:has([data-drop-unlocked="true"]) { height: max(680px, 110vw); }
+}
 @media (prefers-reduced-motion: reduce) {
   .marqueeTrack { animation: none; }
   .story { height: auto; }

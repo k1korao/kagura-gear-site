@@ -85,6 +85,101 @@ When your Shopify products are ready:
 
 Future headless Shopify placeholders are listed in `.env.example`.
 
+## Private drop-code validation
+
+`POST /api/discount` accepts JSON `{ "code": "YOUR-CAMPAIGN-CODE" }` from the
+same website origin. This is an optional, read-only Shopify integration. No
+discounts, customer records, or redemption counters are created by this website.
+Without the three server settings below, it returns HTTP 503 with
+`{ "status": "unavailable" }`; there are no demo codes or production mock modes.
+
+Before enabling it:
+
+1. Confirm the actual Shopify store and create an Admin API connection with only
+   `read_discounts` access. Put its token in Vercel server environment variables,
+   never in Git or any `NEXT_PUBLIC_*` variable. Keep the token valid/renewed using
+   the connection's supported authentication flow.
+2. Create a real **Basic discount code** in Shopify with a start time, a finite
+   end time, and a positive **total usage limit**. Set customer eligibility,
+   eligible products, minimum purchases, combinations, and per-customer limits
+   in Shopify as needed. Automatic, Buy X Get Y, free-shipping, app discounts,
+   and unlimited/open-ended codes are unsupported by this endpoint.
+3. Set `SHOPIFY_STORE_DOMAIN` to the exact `your-store.myshopify.com` hostname
+   (no protocol, port, or path), and set `SHOPIFY_ADMIN_ACCESS_TOKEN` to that
+   store's read-only Admin token. These are separate from the old public
+   Storefront placeholders above.
+4. Put only the campaigns approved for this private drop in `KIKORA_DROP_CODES`,
+   comma-separated. Matching is case-insensitive; surrounding spaces are removed.
+   Codes must use `A-Z`, `0-9`, `-`, or `_`, begin with a letter/digit, and be at
+   most 64 characters. The maximum is 100 entries / 8192 configuration characters.
+   The list stays on the server; an unlisted code never triggers a Shopify query.
+   Removing a code from this list disables this website's lookup only; deactivate
+   it in Shopify to stop redemption through other channels. Redeploy after
+   changing deployment environment variables.
+
+The server uses Admin GraphQL API `2026-10`, a five-second provider timeout,
+no caching, and no provider redirects. Review Shopify API version support when
+maintaining this connection. JSON request bodies are limited to 1024 bytes.
+
+A successful HTTP 200 response is:
+
+```json
+{
+  "status": "valid",
+  "code": "YOUR-CAMPAIGN-CODE",
+  "discount": { "type": "percentage", "value": 15 },
+  "checkoutUrl": "https://your-store.myshopify.com/discount/YOUR-CAMPAIGN-CODE?redirect=/collections/all",
+  "endsAt": "2026-12-01T00:00:00.000Z"
+}
+```
+
+`percentage.value` is the percentage to display: Shopify `0.15` becomes `15`.
+A fixed amount instead has `{ "type": "amount", "value": 10, "currency": "USD",
+"appliesOnEachItem": false }`. A true `appliesOnEachItem` means the amount applies
+to each eligible item; false means it is allocated across eligible items.
+`endsAt` is always a finite UTC timestamp for a successful response.
+
+`checkoutUrl` is the existing response field name for a **Shopify shareable
+discount link**. It applies the code on the real Shopify store and takes the
+visitor to `/collections/all` to choose products; it does not create a cart,
+start checkout, or apply a discount on this Next.js site. The destination is
+fixed on the server and cannot be supplied by the visitor.
+
+`valid` means the allowlisted campaign currently passes configuration and time
+checks, **not that a use has been reserved or redeemed**. Customer, product,
+minimum-purchase, combination, and remaining-use eligibility are decided by
+Shopify checkout. Shopify's `asyncUsageCount` may lag actual usage: this endpoint
+conservatively rejects a code once that count reaches the limit, but a lower
+count is never a promise of availability. It does not display a remaining count
+or subtract uses on Enter. Concurrent visitors can receive a successful check;
+Shopify enforces the true limit at checkout. Show this qualification with the
+displayed discount and link.
+
+Other responses contain only `status`: `invalid`, `not_started`, or `expired`
+(HTTP 400), or `unavailable` (HTTP 503 for missing configuration, unsupported
+discounts, invalid provider data, access errors, timeouts, or provider failures).
+When Shopify's observed usage count reaches the limit, the endpoint returns
+`expired` (ended or no longer available). Request validation also uses 403 for a
+forbidden origin, 413 for an oversized body, and 415 for a non-JSON content type,
+all with `status: "invalid"`. Provider errors, tokens, and the campaign list are
+never included in responses or logs.
+
+This public lookup is not customer authentication. Anyone who learns an active
+code may try it, subject to Shopify's configured customer restrictions. Origin
+checks protect browser access but cannot authenticate a non-browser client.
+Configure deployment-level rate limits if needed; there is no shared rate-limit
+database in this site. The endpoint's tests mock the provider only inside the
+test harness and make no live Shopify calls:
+
+```bash
+node --test tests/discount.test.mjs
+```
+
+Official references: [discount lookup](https://shopify.dev/docs/api/admin-graphql/2026-10/queries/codeDiscountNodeByCode),
+[Basic discount fields and asynchronous usage count](https://shopify.dev/docs/api/admin-graphql/2026-10/objects/DiscountCodeBasic),
+[fixed amount semantics](https://shopify.dev/docs/api/admin-graphql/2026-10/objects/DiscountAmount),
+and [shareable discount links](https://help.shopify.com/en/manual/discounts/managing-discounts).
+
 ## Support Email and Contact Form
 
 The production support inbox is:

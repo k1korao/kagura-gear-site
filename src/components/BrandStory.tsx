@@ -17,8 +17,8 @@ import { MonochromePadSurface } from "./MonochromePadSurface";
 const MARQUEE = ["GLASS MOUSEPADS", "490 × 420 MM", "METAL KEYCAPS", "ARTIST EDITIONS", "COLLECT YOUR WORLD"];
 
 const DECK_COPY = {
-  en: { hint: "TYPE OR TAP", pad: "KIKORA glass mousepad in white or black: move your pointer to explore the glass finish", keys: "Interactive metal keycaps: press K, I, O, R or A on your keyboard" },
-  ja: { hint: "キーを押してみて", pad: "ホワイトとブラックの KIKORA ガラスマウスパッド：ポインターを動かしてガラスの質感をご覧ください", keys: "インタラクティブなメタルキーキャップ：キーボードで K・I・O・R・A を押してください" },
+  en: { hint: "ENTER DROP CODE", pad: "KIKORA glass mousepad in white or black: move your pointer to explore the glass finish", keys: "Private drop discount code keyboard" },
+  ja: { hint: "割引コードを入力", pad: "ホワイトとブラックの KIKORA ガラスマウスパッド：ポインターを動かしてガラスの質感をご覧ください", keys: "限定割引コードの入力キーボード" },
 } as const;
 
 const cyber = Tektur({ subsets: ["latin"], axes: ["wdth"], variable: "--font-cyber", display: "swap" });
