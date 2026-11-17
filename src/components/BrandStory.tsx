@@ -17,8 +17,8 @@ import { MonochromePadSurface } from "./MonochromePadSurface";
 const MARQUEE = ["GLASS MOUSEPADS", "490 × 420 MM", "METAL KEYCAPS", "ARTIST EDITIONS", "COLLECT YOUR WORLD"];
 
 const DECK_COPY = {
-  en: { hint: "ENTER DROP CODE", pad: "KIKORA glass mousepad in white or black: move your pointer to explore the glass finish", keys: "Private drop discount code keyboard" },
-  ja: { hint: "割引コードを入力", pad: "ホワイトとブラックの KIKORA ガラスマウスパッド：ポインターを動かしてガラスの質感をご覧ください", keys: "限定割引コードの入力キーボード" },
+  en: { pad: "KIKORA glass mousepad in white or black: move your pointer to explore the glass finish", keys: "Interactive KIKORA logo keyboard" },
+  ja: { pad: "ホワイトとブラックの KIKORA ガラスマウスパッド：ポインターを動かしてガラスの質感をご覧ください", keys: "KIKORA ロゴで遊べるキーボード" },
 } as const;
 
 const cyber = Tektur({ subsets: ["latin"], axes: ["wdth"], variable: "--font-cyber", display: "swap" });
@@ -127,7 +127,7 @@ export function BrandStory() {
           <div className={styles.heroSignature}><Image src="/brand/kikora-wordmark-dark.svg" alt="KIKORA" width={900} height={340} priority /></div>
           <div className={styles.collageGrid} aria-hidden="true" />
           <span className={styles.collageCoordinates}>{hero.coordinates}</span>
-          <HeroDeck hint={DECK_COPY[locale].hint} padLabel={DECK_COPY[locale].pad} keysLabel={DECK_COPY[locale].keys} />
+          <HeroDeck padLabel={DECK_COPY[locale].pad} keysLabel={DECK_COPY[locale].keys} />
         </div>
       </div>
       <div className={styles.introBottom}><a href="#manifesto">{hero.storyStart} <span aria-hidden="true">↓</span></a><p>{hero.disclaimer}</p><span>{hero.bottomLine}</span></div>

@@ -25,7 +25,7 @@ export const products: Product[] = [
     series: "KIKORA Series",
     tagline: "Control surface for tactical FPS aim.",
     price: "$39.00",
-    // Replace this placeholder description when your final Shopify product copy is ready.
+    // Replace this placeholder description when your final product copy is ready.
     shortDescription:
       "A steady, locked-in cloth surface tuned for micro-corrections and tactical FPS control.",
     description:
@@ -46,7 +46,7 @@ export const products: Product[] = [
     series: "Sakura Series",
     tagline: "Fast glide for wide flicks and tracking.",
     price: "$42.00",
-    // Replace this placeholder description when your final Shopify product copy is ready.
+    // Replace this placeholder description when your final product copy is ready.
     shortDescription:
       "A fast, low-friction pad for wide flicks, smooth tracking, and high-sensitivity setups.",
     description:
@@ -67,7 +67,7 @@ export const products: Product[] = [
     series: "Shrine Series",
     tagline: "Full desk ritual for keyboard setups.",
     price: "$58.00",
-    // Replace this placeholder description when your final Shopify product copy is ready.
+    // Replace this placeholder description when your final product copy is ready.
     shortDescription:
       "An oversized desk mat with a premium woven top, clean edge stitching, and shrine-inspired details.",
     description:
