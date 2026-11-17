@@ -48,7 +48,7 @@ export const supportCopy: Record<Locale, SupportCopy> = {
     },
     contactForm: {
       name: "Name", namePlaceholder: "What should we call you?", email: "Email", topic: "What’s on your mind?", message: "Message", messagePlaceholder: "Tell us about your question, work or collaboration idea.", company: "Company",
-      topics: [{ value: "Product question", label: "Product question" }, { value: "Collaboration", label: "Artist / original IP collaboration" }, { value: "Wholesale", label: "Brand or business partnership" }, { value: "Order support", label: "Order enquiry" }, { value: "Other", label: "Something else" }],
+      topics: [{ value: "Product question", label: "Product question" }, { value: "Collaboration", label: "Artist / original IP collaboration" }, { value: "Wholesale", label: "Brand or business partnership" }, { value: "Other", label: "Something else" }],
       submit: "Send message", sending: "Sending…", emailAction: "Send this message by email", mailSubject: "KIKORA enquiry: {topic}", mailHeading: "Hello KIKORA,",
       notices: {
         idle: "We reply from {email}. If the form is unavailable, you can send the same message using your email app.", sending: "Sending your message…", sent: "Your message has been sent. We’ll reply from {email}.",
@@ -88,7 +88,7 @@ export const supportCopy: Record<Locale, SupportCopy> = {
     },
     contactForm: {
       name: "お名前・作家名", namePlaceholder: "お呼びするお名前を教えてください", email: "メールアドレス", topic: "お問い合わせの種類", message: "お問い合わせ内容", messagePlaceholder: "ご質問、作品、コラボレーションのアイデアをご記入ください。", company: "会社名",
-      topics: [{ value: "Product question", label: "作品について" }, { value: "Collaboration", label: "作家・オリジナル IP との共創" }, { value: "Wholesale", label: "ブランド・事業者との協業" }, { value: "Order support", label: "ご注文について" }, { value: "Other", label: "その他" }],
+      topics: [{ value: "Product question", label: "作品について" }, { value: "Collaboration", label: "作家・オリジナル IP との共創" }, { value: "Wholesale", label: "ブランド・事業者との協業" }, { value: "Other", label: "その他" }],
       submit: "メッセージを送る", sending: "送信中…", emailAction: "この内容をメールで送る", mailSubject: "KIKORA へのお問い合わせ：{topic}", mailHeading: "KIKORA ご担当者様",
       notices: {
         idle: "{email} から返信します。フォームを利用できない場合は、同じ内容をメールアプリから送信できます。", sending: "メッセージを送信しています…", sent: "メッセージを送信しました。{email} から返信します。",

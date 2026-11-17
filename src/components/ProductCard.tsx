@@ -1,7 +1,6 @@
 import Link from "next/link";
 import type { Product } from "@/lib/products";
 import { ProductVisual } from "@/components/ProductVisual";
-import { ShopifyBuyButtonSlot } from "@/components/ShopifyBuyButtonSlot";
 
 export function ProductCard({ product }: { product: Product }) {
   return (
@@ -37,7 +36,6 @@ export function ProductCard({ product }: { product: Product }) {
             </span>
           ))}
         </div>
-        <ShopifyBuyButtonSlot productName={product.name} compact />
         <Link
           href={`/products/${product.slug}`}
           className="premium-button w-fit border border-sakura/30 px-4 py-3 text-sm font-black uppercase tracking-[0.18em] text-sakura transition hover:border-sakura hover:text-bone"

@@ -200,3 +200,21 @@ test("a forbidden browser origin is rejected before any mail is sent", async () 
   assert.equal((await route.POST(request(validSignup, { Origin: "https://untrusted.example" }))).status, 403);
   assert.equal(requests.length, 0);
 });
+
+for (const origin of ["https://a6tuzq-ge.myshopify.com", "https://andakeyi.myshopify.com"]) {
+  test(`retired commerce origin ${origin} cannot send mail`, async () => {
+    const { route, requests } = loadRoute();
+    const response = await route.POST(request(validSignup, { Origin: origin }));
+    assert.equal(response.status, 403);
+    assert.equal(response.headers.get("Access-Control-Allow-Origin"), null);
+    assert.equal(requests.length, 0);
+  });
+}
+
+test("the current www origin can still use the email signup", async () => {
+  const { route, requests } = loadRoute();
+  const response = await route.POST(request(validSignup, { Origin: "https://www.kikoragear.com" }));
+  assert.equal(response.status, 200);
+  assert.equal(response.headers.get("Access-Control-Allow-Origin"), "https://www.kikoragear.com");
+  assert.equal(requests.length, 2);
+});

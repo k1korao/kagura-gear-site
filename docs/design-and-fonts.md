@@ -28,7 +28,7 @@ The homepage now tells a three-chapter story: independent creators, art taking p
 
 English and Japanese have individually authored copy dictionaries. The site defaults to English; saved Chinese or unsupported language preferences fall back to English. A one-year `kagura-language` preference cookie controls server-rendered copy, document language, page metadata and customer welcome emails. Switching reloads the same URL, preserving collection hashes and the selected cover's `art` query. Browser auto-translation is discouraged with `translate="no"` and Google notranslate metadata. This is editorial localization, not a claim of human native-language sign-off.
 
-Legacy demo cloth-pad product and collection URLs redirect into current collection pages. Their unconfirmed prices and Shopify placeholder instructions are no longer part of the visitor journey. Shipping and returns pages reflect the current prelaunch status.
+Legacy demo cloth-pad product and collection URLs redirect into current collection pages. Their unconfirmed prices and retired purchase placeholders are no longer part of the visitor journey. Shipping and returns pages reflect the current prelaunch status.
 
 ## Current brand identity — 26 October 2026
 

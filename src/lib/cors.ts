@@ -1,10 +1,8 @@
 import { NextResponse } from "next/server";
 
-const storefrontOrigins = new Set([
+const siteOrigins = new Set([
   "https://kikoragear.com",
   "https://www.kikoragear.com",
-  "https://a6tuzq-ge.myshopify.com",
-  "https://andakeyi.myshopify.com",
 ]);
 
 // Origin checks protect browser callers; recipients and message templates stay
@@ -13,7 +11,7 @@ export function mailCors(request: Request) {
   const origin = request.headers.get("origin");
   const allowed = origin === null
     ? request.headers.get("sec-fetch-site") !== "cross-site"
-    : storefrontOrigins.has(origin) || origin === new URL(request.url).origin;
+    : siteOrigins.has(origin) || origin === new URL(request.url).origin;
   const corsHeaders = new Headers({ Vary: "Origin", "Cache-Control": "no-store" });
 
   if (allowed && origin !== null) {
